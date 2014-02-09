@@ -1,0 +1,603 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		105957FCD2AB4AD6AB8E34D5 /* libPods-RuntimeNetworkFoundationTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D12B31D577645C0BB2AB9D7 /* libPods-RuntimeNetworkFoundationTests.a */; };
+		2D3D0176FE874C5DBD4C46AC /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4BD02A68E494F6CADDF1672 /* libPods.a */; };
+		3B2CB31A9B65EE688B170F0D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3B2CB0DC25BDC06782C5BB14 /* InfoPlist.strings */; };
+		3B2CB38A6D148F8F07939136 /* RNFAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2CB645226B389478CA4D0C /* RNFAppDelegate.m */; };
+		3B2CB55E6BFD83D8838B376A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2CB0BD00D6F77F413E2749 /* UIKit.framework */; };
+		3B2CB77292CEBF074041F767 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2CB85946B9C96E17DB2C85 /* main.m */; };
+		3B2CB7EB616E1016DC961DC3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B2CBB510FDDA0628EC4B825 /* Images.xcassets */; };
+		3B2CB800BF850D772357B0D3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2CBF27269CB87C24599AAF /* CoreGraphics.framework */; };
+		3B2CBB1125738BA8B6120E32 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2CB500C66AF8C6D65BF5FA /* Foundation.framework */; };
+		5218571418A7F98F00D70786 /* RNFCacheHandler.h in Resources */ = {isa = PBXBuildFile; fileRef = 5218570C18A7F98F00D70786 /* RNFCacheHandler.h */; };
+		5218571518A7F98F00D70786 /* RNFCacheStrategy.h in Resources */ = {isa = PBXBuildFile; fileRef = 5218570D18A7F98F00D70786 /* RNFCacheStrategy.h */; };
+		5218571618A7F98F00D70786 /* RNFDataDeserializer.h in Resources */ = {isa = PBXBuildFile; fileRef = 5218570E18A7F98F00D70786 /* RNFDataDeserializer.h */; };
+		5218571718A7F98F00D70786 /* RNFDataSerializer.h in Resources */ = {isa = PBXBuildFile; fileRef = 5218570F18A7F98F00D70786 /* RNFDataSerializer.h */; };
+		5218571818A7F98F00D70786 /* RNFOperation.h in Resources */ = {isa = PBXBuildFile; fileRef = 5218571018A7F98F00D70786 /* RNFOperation.h */; };
+		5218571918A7F98F00D70786 /* RNFOperationQueue.h in Resources */ = {isa = PBXBuildFile; fileRef = 5218571118A7F98F00D70786 /* RNFOperationQueue.h */; };
+		5218571A18A7F98F00D70786 /* RNFResponseDeserializer.h in Resources */ = {isa = PBXBuildFile; fileRef = 5218571218A7F98F00D70786 /* RNFResponseDeserializer.h */; };
+		5218571B18A7F98F00D70786 /* RNFSerializable.h in Resources */ = {isa = PBXBuildFile; fileRef = 5218571318A7F98F00D70786 /* RNFSerializable.h */; };
+		5218571F18A7FC0E00D70786 /* RNFEndpointManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5218571E18A7FC0E00D70786 /* RNFEndpointManager.m */; };
+		5218572218A7FCD900D70786 /* RNFEndpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 5218572118A7FCD900D70786 /* RNFEndpoint.m */; };
+		5218572518A7FFD900D70786 /* RNFDefaultOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5218572418A7FFD900D70786 /* RNFDefaultOperation.m */; };
+		5218572C18A8182500D70786 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2CB6C2A088A7A190B2B38B /* XCTest.framework */; };
+		5218572D18A8182500D70786 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2CB500C66AF8C6D65BF5FA /* Foundation.framework */; };
+		5218572E18A8182500D70786 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2CB0BD00D6F77F413E2749 /* UIKit.framework */; };
+		5218573418A8182500D70786 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5218573218A8182500D70786 /* InfoPlist.strings */; };
+		52F7A2A518A8191100378EFA /* RNFEndpointManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 52F7A2A418A8191100378EFA /* RNFEndpointManagerTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5218573818A8182500D70786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3B2CB5149BB2B52C779CE69A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3B2CB5AA59F80EEFFFB3FFDE;
+			remoteInfo = RuntimeNetworkFoundation;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3B2CB0BD00D6F77F413E2749 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		3B2CB2240F80CE6BE87EDF18 /* RuntimeNetworkFoundation-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = "RuntimeNetworkFoundation-Info.plist"; sourceTree = "<group>"; };
+		3B2CB500C66AF8C6D65BF5FA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		3B2CB645226B389478CA4D0C /* RNFAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNFAppDelegate.m; sourceTree = "<group>"; };
+		3B2CB6C2A088A7A190B2B38B /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		3B2CB76D5914BB11036B3DF0 /* RuntimeNetworkFoundation-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RuntimeNetworkFoundation-Prefix.pch"; sourceTree = "<group>"; };
+		3B2CB85946B9C96E17DB2C85 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		3B2CB920D518D89DFA704620 /* RuntimeNetworkFoundation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RuntimeNetworkFoundation.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B2CB93240FAA6CBCA190BE5 /* RNFAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNFAppDelegate.h; sourceTree = "<group>"; };
+		3B2CB93B3FCFEB1CDDA7FDE8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		3B2CBB510FDDA0628EC4B825 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		3B2CBF27269CB87C24599AAF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		44F2752C9E6942ADA0B0267B /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		4D2AEE38A65E445A906C7D6B /* Pods-RuntimeNetworkFoundationTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RuntimeNetworkFoundationTests.xcconfig"; path = "Pods/Pods-RuntimeNetworkFoundationTests.xcconfig"; sourceTree = "<group>"; };
+		5218570C18A7F98F00D70786 /* RNFCacheHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RNFCacheHandler.h; path = RuntimeNetworkFoundation/RNFCacheHandler.h; sourceTree = "<group>"; };
+		5218570D18A7F98F00D70786 /* RNFCacheStrategy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RNFCacheStrategy.h; path = RuntimeNetworkFoundation/RNFCacheStrategy.h; sourceTree = "<group>"; };
+		5218570E18A7F98F00D70786 /* RNFDataDeserializer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RNFDataDeserializer.h; path = RuntimeNetworkFoundation/RNFDataDeserializer.h; sourceTree = "<group>"; };
+		5218570F18A7F98F00D70786 /* RNFDataSerializer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RNFDataSerializer.h; path = RuntimeNetworkFoundation/RNFDataSerializer.h; sourceTree = "<group>"; };
+		5218571018A7F98F00D70786 /* RNFOperation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RNFOperation.h; path = RuntimeNetworkFoundation/RNFOperation.h; sourceTree = "<group>"; };
+		5218571118A7F98F00D70786 /* RNFOperationQueue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RNFOperationQueue.h; path = RuntimeNetworkFoundation/RNFOperationQueue.h; sourceTree = "<group>"; };
+		5218571218A7F98F00D70786 /* RNFResponseDeserializer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RNFResponseDeserializer.h; path = RuntimeNetworkFoundation/RNFResponseDeserializer.h; sourceTree = "<group>"; };
+		5218571318A7F98F00D70786 /* RNFSerializable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RNFSerializable.h; path = RuntimeNetworkFoundation/RNFSerializable.h; sourceTree = "<group>"; };
+		5218571C18A7FA0900D70786 /* RNF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNF.h; path = RuntimeNetworkFoundation/RNF.h; sourceTree = "<group>"; };
+		5218571D18A7FC0E00D70786 /* RNFEndpointManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNFEndpointManager.h; path = RuntimeNetworkFoundation/RNFEndpointManager.h; sourceTree = "<group>"; };
+		5218571E18A7FC0E00D70786 /* RNFEndpointManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RNFEndpointManager.m; path = RuntimeNetworkFoundation/RNFEndpointManager.m; sourceTree = "<group>"; };
+		5218572018A7FCD900D70786 /* RNFEndpoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNFEndpoint.h; path = RuntimeNetworkFoundation/RNFEndpoint.h; sourceTree = "<group>"; };
+		5218572118A7FCD900D70786 /* RNFEndpoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RNFEndpoint.m; path = RuntimeNetworkFoundation/RNFEndpoint.m; sourceTree = "<group>"; };
+		5218572318A7FFD900D70786 /* RNFDefaultOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNFDefaultOperation.h; path = RuntimeNetworkFoundation/RNFDefaultOperation.h; sourceTree = "<group>"; };
+		5218572418A7FFD900D70786 /* RNFDefaultOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RNFDefaultOperation.m; path = RuntimeNetworkFoundation/RNFDefaultOperation.m; sourceTree = "<group>"; };
+		5218572618A8041300D70786 /* RNFRequestAuthentication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNFRequestAuthentication.h; path = RuntimeNetworkFoundation/RNFRequestAuthentication.h; sourceTree = "<group>"; };
+		5218572B18A8182500D70786 /* RuntimeNetworkFoundationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RuntimeNetworkFoundationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5218573118A8182500D70786 /* RuntimeNetworkFoundationTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RuntimeNetworkFoundationTests-Info.plist"; sourceTree = "<group>"; };
+		5218573318A8182500D70786 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		5218573718A8182500D70786 /* RuntimeNetworkFoundationTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RuntimeNetworkFoundationTests-Prefix.pch"; sourceTree = "<group>"; };
+		52F7A2A418A8191100378EFA /* RNFEndpointManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNFEndpointManagerTests.m; sourceTree = "<group>"; };
+		5D12B31D577645C0BB2AB9D7 /* libPods-RuntimeNetworkFoundationTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RuntimeNetworkFoundationTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4BD02A68E494F6CADDF1672 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3B2CB0F820D93AD843F11CB0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B2CBB1125738BA8B6120E32 /* Foundation.framework in Frameworks */,
+				3B2CB800BF850D772357B0D3 /* CoreGraphics.framework in Frameworks */,
+				3B2CB55E6BFD83D8838B376A /* UIKit.framework in Frameworks */,
+				2D3D0176FE874C5DBD4C46AC /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5218572818A8182500D70786 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5218572C18A8182500D70786 /* XCTest.framework in Frameworks */,
+				5218572E18A8182500D70786 /* UIKit.framework in Frameworks */,
+				5218572D18A8182500D70786 /* Foundation.framework in Frameworks */,
+				105957FCD2AB4AD6AB8E34D5 /* libPods-RuntimeNetworkFoundationTests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3B2CB16DF384C66BF80A5995 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3B2CB920D518D89DFA704620 /* RuntimeNetworkFoundation.app */,
+				5218572B18A8182500D70786 /* RuntimeNetworkFoundationTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3B2CB5F9CDD4FA280D6F466A = {
+			isa = PBXGroup;
+			children = (
+				5218572F18A8182500D70786 /* RuntimeNetworkFoundationTests */,
+				3B2CB16DF384C66BF80A5995 /* Products */,
+				3B2CBAABFCA1C60A9EA9F24C /* Frameworks */,
+				3B2CB705FA00B52601EEE499 /* RuntimeNetworkFoundation */,
+				44F2752C9E6942ADA0B0267B /* Pods.xcconfig */,
+				4D2AEE38A65E445A906C7D6B /* Pods-RuntimeNetworkFoundationTests.xcconfig */,
+			);
+			sourceTree = "<group>";
+		};
+		3B2CB606359205BD01E0F4ED /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3B2CB2240F80CE6BE87EDF18 /* RuntimeNetworkFoundation-Info.plist */,
+				3B2CB0DC25BDC06782C5BB14 /* InfoPlist.strings */,
+				3B2CB85946B9C96E17DB2C85 /* main.m */,
+				3B2CB76D5914BB11036B3DF0 /* RuntimeNetworkFoundation-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3B2CB705FA00B52601EEE499 /* RuntimeNetworkFoundation */ = {
+			isa = PBXGroup;
+			children = (
+				5218570B18A7F98100D70786 /* RNF */,
+				3B2CB606359205BD01E0F4ED /* Supporting Files */,
+				3B2CB93240FAA6CBCA190BE5 /* RNFAppDelegate.h */,
+				3B2CB645226B389478CA4D0C /* RNFAppDelegate.m */,
+				3B2CBB510FDDA0628EC4B825 /* Images.xcassets */,
+			);
+			path = RuntimeNetworkFoundation;
+			sourceTree = "<group>";
+		};
+		3B2CBAABFCA1C60A9EA9F24C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3B2CB500C66AF8C6D65BF5FA /* Foundation.framework */,
+				3B2CBF27269CB87C24599AAF /* CoreGraphics.framework */,
+				3B2CB0BD00D6F77F413E2749 /* UIKit.framework */,
+				3B2CB6C2A088A7A190B2B38B /* XCTest.framework */,
+				E4BD02A68E494F6CADDF1672 /* libPods.a */,
+				5D12B31D577645C0BB2AB9D7 /* libPods-RuntimeNetworkFoundationTests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5218570B18A7F98100D70786 /* RNF */ = {
+			isa = PBXGroup;
+			children = (
+				5218570C18A7F98F00D70786 /* RNFCacheHandler.h */,
+				5218570D18A7F98F00D70786 /* RNFCacheStrategy.h */,
+				5218570E18A7F98F00D70786 /* RNFDataDeserializer.h */,
+				5218570F18A7F98F00D70786 /* RNFDataSerializer.h */,
+				5218571018A7F98F00D70786 /* RNFOperation.h */,
+				5218571118A7F98F00D70786 /* RNFOperationQueue.h */,
+				5218571218A7F98F00D70786 /* RNFResponseDeserializer.h */,
+				5218571318A7F98F00D70786 /* RNFSerializable.h */,
+				5218571C18A7FA0900D70786 /* RNF.h */,
+				5218571D18A7FC0E00D70786 /* RNFEndpointManager.h */,
+				5218571E18A7FC0E00D70786 /* RNFEndpointManager.m */,
+				5218572018A7FCD900D70786 /* RNFEndpoint.h */,
+				5218572118A7FCD900D70786 /* RNFEndpoint.m */,
+				5218572318A7FFD900D70786 /* RNFDefaultOperation.h */,
+				5218572418A7FFD900D70786 /* RNFDefaultOperation.m */,
+				5218572618A8041300D70786 /* RNFRequestAuthentication.h */,
+			);
+			name = RNF;
+			sourceTree = "<group>";
+		};
+		5218572F18A8182500D70786 /* RuntimeNetworkFoundationTests */ = {
+			isa = PBXGroup;
+			children = (
+				5218573018A8182500D70786 /* Supporting Files */,
+				52F7A2A418A8191100378EFA /* RNFEndpointManagerTests.m */,
+			);
+			path = RuntimeNetworkFoundationTests;
+			sourceTree = "<group>";
+		};
+		5218573018A8182500D70786 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5218573118A8182500D70786 /* RuntimeNetworkFoundationTests-Info.plist */,
+				5218573218A8182500D70786 /* InfoPlist.strings */,
+				5218573718A8182500D70786 /* RuntimeNetworkFoundationTests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3B2CB5AA59F80EEFFFB3FFDE /* RuntimeNetworkFoundation */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3B2CB13BA1C45C4D25368F26 /* Build configuration list for PBXNativeTarget "RuntimeNetworkFoundation" */;
+			buildPhases = (
+				BC46B72021C9486BAFBB9F11 /* Check Pods Manifest.lock */,
+				3B2CB8A7005A3EBFDC635B4A /* Sources */,
+				3B2CB0F820D93AD843F11CB0 /* Frameworks */,
+				3B2CB0186ABDAD2BCE175041 /* Resources */,
+				60A48877BBC747F99AB8B6F9 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RuntimeNetworkFoundation;
+			productName = RuntimeNetworkFoundation;
+			productReference = 3B2CB920D518D89DFA704620 /* RuntimeNetworkFoundation.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5218572A18A8182500D70786 /* RuntimeNetworkFoundationTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5218573A18A8182500D70786 /* Build configuration list for PBXNativeTarget "RuntimeNetworkFoundationTests" */;
+			buildPhases = (
+				2C0E5F03ACD54A7EA6A2CA90 /* Check Pods Manifest.lock */,
+				5218572718A8182500D70786 /* Sources */,
+				5218572818A8182500D70786 /* Frameworks */,
+				5218572918A8182500D70786 /* Resources */,
+				5A45627D428D412EBC157FF6 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5218573918A8182500D70786 /* PBXTargetDependency */,
+			);
+			name = RuntimeNetworkFoundationTests;
+			productName = RuntimeNetworkFoundationTests;
+			productReference = 5218572B18A8182500D70786 /* RuntimeNetworkFoundationTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3B2CB5149BB2B52C779CE69A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Vittorio Monaco";
+				TargetAttributes = {
+					5218572A18A8182500D70786 = {
+						TestTargetID = 3B2CB5AA59F80EEFFFB3FFDE;
+					};
+				};
+			};
+			buildConfigurationList = 3B2CBB43A0C993A8B5684B7E /* Build configuration list for PBXProject "RuntimeNetworkFoundation" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 3B2CB5F9CDD4FA280D6F466A;
+			productRefGroup = 3B2CB16DF384C66BF80A5995 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3B2CB5AA59F80EEFFFB3FFDE /* RuntimeNetworkFoundation */,
+				5218572A18A8182500D70786 /* RuntimeNetworkFoundationTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3B2CB0186ABDAD2BCE175041 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B2CB31A9B65EE688B170F0D /* InfoPlist.strings in Resources */,
+				3B2CB7EB616E1016DC961DC3 /* Images.xcassets in Resources */,
+				5218571518A7F98F00D70786 /* RNFCacheStrategy.h in Resources */,
+				5218571918A7F98F00D70786 /* RNFOperationQueue.h in Resources */,
+				5218571818A7F98F00D70786 /* RNFOperation.h in Resources */,
+				5218571A18A7F98F00D70786 /* RNFResponseDeserializer.h in Resources */,
+				5218571718A7F98F00D70786 /* RNFDataSerializer.h in Resources */,
+				5218571618A7F98F00D70786 /* RNFDataDeserializer.h in Resources */,
+				5218571418A7F98F00D70786 /* RNFCacheHandler.h in Resources */,
+				5218571B18A7F98F00D70786 /* RNFSerializable.h in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5218572918A8182500D70786 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5218573418A8182500D70786 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2C0E5F03ACD54A7EA6A2CA90 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		5A45627D428D412EBC157FF6 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-RuntimeNetworkFoundationTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		60A48877BBC747F99AB8B6F9 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BC46B72021C9486BAFBB9F11 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3B2CB8A7005A3EBFDC635B4A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B2CB77292CEBF074041F767 /* main.m in Sources */,
+				3B2CB38A6D148F8F07939136 /* RNFAppDelegate.m in Sources */,
+				5218571F18A7FC0E00D70786 /* RNFEndpointManager.m in Sources */,
+				5218572518A7FFD900D70786 /* RNFDefaultOperation.m in Sources */,
+				5218572218A7FCD900D70786 /* RNFEndpoint.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5218572718A8182500D70786 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				52F7A2A518A8191100378EFA /* RNFEndpointManagerTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5218573918A8182500D70786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3B2CB5AA59F80EEFFFB3FFDE /* RuntimeNetworkFoundation */;
+			targetProxy = 5218573818A8182500D70786 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3B2CB0DC25BDC06782C5BB14 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3B2CB93B3FCFEB1CDDA7FDE8 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		5218573218A8182500D70786 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5218573318A8182500D70786 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3B2CB3A9C17B39A747ECA173 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 44F2752C9E6942ADA0B0267B /* Pods.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RuntimeNetworkFoundation/RuntimeNetworkFoundation-Prefix.pch";
+				INFOPLIST_FILE = "RuntimeNetworkFoundation/RuntimeNetworkFoundation-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		3B2CB4FC60AE8C914FB083BA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 44F2752C9E6942ADA0B0267B /* Pods.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RuntimeNetworkFoundation/RuntimeNetworkFoundation-Prefix.pch";
+				INFOPLIST_FILE = "RuntimeNetworkFoundation/RuntimeNetworkFoundation-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		3B2CBD878024F8C3985E43A5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3B2CBF2A3DE95028C1F01B8F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5218573B18A8182500D70786 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4D2AEE38A65E445A906C7D6B /* Pods-RuntimeNetworkFoundationTests.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/RuntimeNetworkFoundation.app/RuntimeNetworkFoundation";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RuntimeNetworkFoundationTests/RuntimeNetworkFoundationTests-Prefix.pch";
+				INFOPLIST_FILE = "RuntimeNetworkFoundationTests/RuntimeNetworkFoundationTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+		5218573C18A8182500D70786 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4D2AEE38A65E445A906C7D6B /* Pods-RuntimeNetworkFoundationTests.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/RuntimeNetworkFoundation.app/RuntimeNetworkFoundation";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RuntimeNetworkFoundationTests/RuntimeNetworkFoundationTests-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "RuntimeNetworkFoundationTests/RuntimeNetworkFoundationTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3B2CB13BA1C45C4D25368F26 /* Build configuration list for PBXNativeTarget "RuntimeNetworkFoundation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3B2CB3A9C17B39A747ECA173 /* Release */,
+				3B2CB4FC60AE8C914FB083BA /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3B2CBB43A0C993A8B5684B7E /* Build configuration list for PBXProject "RuntimeNetworkFoundation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3B2CBF2A3DE95028C1F01B8F /* Release */,
+				3B2CBD878024F8C3985E43A5 /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5218573A18A8182500D70786 /* Build configuration list for PBXNativeTarget "RuntimeNetworkFoundationTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5218573B18A8182500D70786 /* Release */,
+				5218573C18A8182500D70786 /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3B2CB5149BB2B52C779CE69A /* Project object */;
+}

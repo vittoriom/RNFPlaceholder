@@ -1,0 +1,5 @@
+platform :ios, :deployment_target => "5.1"
+
+target :RuntimeNetworkFoundationTests, :exclusive => true do
+	pod 'Kiwi/XCTest'
+end
