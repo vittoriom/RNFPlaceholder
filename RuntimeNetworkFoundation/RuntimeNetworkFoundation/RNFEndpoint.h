@@ -9,13 +9,14 @@
 #import <Foundation/Foundation.h>
 
 @protocol RNFOperation;
+@protocol RNFConfigurationLoader;
 
 @interface RNFEndpoint : NSObject
 
 @property (nonatomic, readonly) NSURL *baseURL;
 @property (nonatomic, readonly) NSString *name;
 
-- (id) initWithConfiguration:(NSDictionary *)configuration;
+- (id) initWithConfigurator:(id<RNFConfigurationLoader>)configurator;
 
 - (id) initWithName:(NSString *)name;
 

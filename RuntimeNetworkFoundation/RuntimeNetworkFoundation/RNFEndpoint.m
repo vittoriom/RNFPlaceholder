@@ -11,6 +11,8 @@
 #import "RNFResponseDeserializer.h"
 #import "RNFOperation.h"
 #import "RNFCacheHandler.h"
+#import "RNFConfigurationLoader.h"
+#import "RNFLogger.h"
 
 @interface RNFEndpoint ()
 
@@ -23,8 +25,8 @@
 @property (nonatomic, strong) id<RNFCacheHandler> cacheHandler;
 @property (nonatomic, assign) BOOL cacheResults;
 @property (nonatomic, strong) NSArray *operations;
-
-@property (nonatomic, strong) NSDictionary *cachedConfiguration;
+@property (nonatomic, strong) id<RNFConfigurationLoader> configurator;
+@property (nonatomic, weak) id<RNFLogger> logger;
 
 @end
 
