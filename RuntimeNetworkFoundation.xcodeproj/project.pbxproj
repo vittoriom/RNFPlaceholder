@@ -16,6 +16,9 @@
 		3B2CB7EB616E1016DC961DC3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B2CBB510FDDA0628EC4B825 /* Images.xcassets */; };
 		3B2CB800BF850D772357B0D3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2CBF27269CB87C24599AAF /* CoreGraphics.framework */; };
 		3B2CBB1125738BA8B6120E32 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2CB500C66AF8C6D65BF5FA /* Foundation.framework */; };
+		521533E718A973BB0082ACC9 /* RNFPlistConfigurationLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 521533E618A973BB0082ACC9 /* RNFPlistConfigurationLoader.m */; };
+		521533EA18A9754E0082ACC9 /* RNFDictionaryConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 521533E918A9754E0082ACC9 /* RNFDictionaryConfiguration.m */; };
+		521533EC18A976170082ACC9 /* sampleConfiguration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 521533EB18A976170082ACC9 /* sampleConfiguration.plist */; };
 		5218571418A7F98F00D70786 /* RNFCacheHandler.h in Resources */ = {isa = PBXBuildFile; fileRef = 5218570C18A7F98F00D70786 /* RNFCacheHandler.h */; };
 		5218571518A7F98F00D70786 /* RNFCacheStrategy.h in Resources */ = {isa = PBXBuildFile; fileRef = 5218570D18A7F98F00D70786 /* RNFCacheStrategy.h */; };
 		5218571618A7F98F00D70786 /* RNFDataDeserializer.h in Resources */ = {isa = PBXBuildFile; fileRef = 5218570E18A7F98F00D70786 /* RNFDataDeserializer.h */; };
@@ -31,6 +34,7 @@
 		5218572D18A8182500D70786 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2CB500C66AF8C6D65BF5FA /* Foundation.framework */; };
 		5218572E18A8182500D70786 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2CB0BD00D6F77F413E2749 /* UIKit.framework */; };
 		5218573418A8182500D70786 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5218573218A8182500D70786 /* InfoPlist.strings */; };
+		52C8DF2E18A96A6100DBA94D /* RNFEndpointTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C8DF2D18A96A6100DBA94D /* RNFEndpointTests.m */; };
 		52F7A2A518A8191100378EFA /* RNFEndpointManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 52F7A2A418A8191100378EFA /* RNFEndpointManagerTests.m */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +63,11 @@
 		3B2CBF27269CB87C24599AAF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		44F2752C9E6942ADA0B0267B /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		4D2AEE38A65E445A906C7D6B /* Pods-RuntimeNetworkFoundationTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RuntimeNetworkFoundationTests.xcconfig"; path = "Pods/Pods-RuntimeNetworkFoundationTests.xcconfig"; sourceTree = "<group>"; };
+		521533E518A973BB0082ACC9 /* RNFPlistConfigurationLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNFPlistConfigurationLoader.h; path = RuntimeNetworkFoundation/RNFPlistConfigurationLoader.h; sourceTree = "<group>"; };
+		521533E618A973BB0082ACC9 /* RNFPlistConfigurationLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RNFPlistConfigurationLoader.m; path = RuntimeNetworkFoundation/RNFPlistConfigurationLoader.m; sourceTree = "<group>"; };
+		521533E818A9754E0082ACC9 /* RNFDictionaryConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNFDictionaryConfiguration.h; path = RuntimeNetworkFoundation/RNFDictionaryConfiguration.h; sourceTree = "<group>"; };
+		521533E918A9754E0082ACC9 /* RNFDictionaryConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RNFDictionaryConfiguration.m; path = RuntimeNetworkFoundation/RNFDictionaryConfiguration.m; sourceTree = "<group>"; };
+		521533EB18A976170082ACC9 /* sampleConfiguration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = sampleConfiguration.plist; sourceTree = "<group>"; };
 		5218570C18A7F98F00D70786 /* RNFCacheHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RNFCacheHandler.h; path = RuntimeNetworkFoundation/RNFCacheHandler.h; sourceTree = "<group>"; };
 		5218570D18A7F98F00D70786 /* RNFCacheStrategy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RNFCacheStrategy.h; path = RuntimeNetworkFoundation/RNFCacheStrategy.h; sourceTree = "<group>"; };
 		5218570E18A7F98F00D70786 /* RNFDataDeserializer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RNFDataDeserializer.h; path = RuntimeNetworkFoundation/RNFDataDeserializer.h; sourceTree = "<group>"; };
@@ -79,8 +88,10 @@
 		5218573118A8182500D70786 /* RuntimeNetworkFoundationTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RuntimeNetworkFoundationTests-Info.plist"; sourceTree = "<group>"; };
 		5218573318A8182500D70786 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5218573718A8182500D70786 /* RuntimeNetworkFoundationTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RuntimeNetworkFoundationTests-Prefix.pch"; sourceTree = "<group>"; };
+		5241E24018A96D6F0062CF84 /* RNFConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNFConfiguration.h; path = RuntimeNetworkFoundation/RNFConfiguration.h; sourceTree = "<group>"; };
 		524D592718A9406F0056930E /* RNFConfigurationLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNFConfigurationLoader.h; path = RuntimeNetworkFoundation/RNFConfigurationLoader.h; sourceTree = "<group>"; };
 		524D592818A940E90056930E /* RNFLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNFLogger.h; path = RuntimeNetworkFoundation/RNFLogger.h; sourceTree = "<group>"; };
+		52C8DF2D18A96A6100DBA94D /* RNFEndpointTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNFEndpointTests.m; sourceTree = "<group>"; };
 		52F7A2A418A8191100378EFA /* RNFEndpointManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNFEndpointManagerTests.m; sourceTree = "<group>"; };
 		5D12B31D577645C0BB2AB9D7 /* libPods-RuntimeNetworkFoundationTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RuntimeNetworkFoundationTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4BD02A68E494F6CADDF1672 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -172,14 +183,7 @@
 		5218570B18A7F98100D70786 /* RNF */ = {
 			isa = PBXGroup;
 			children = (
-				5218570C18A7F98F00D70786 /* RNFCacheHandler.h */,
-				5218570D18A7F98F00D70786 /* RNFCacheStrategy.h */,
-				5218570E18A7F98F00D70786 /* RNFDataDeserializer.h */,
-				5218570F18A7F98F00D70786 /* RNFDataSerializer.h */,
-				5218571018A7F98F00D70786 /* RNFOperation.h */,
-				5218571118A7F98F00D70786 /* RNFOperationQueue.h */,
-				5218571218A7F98F00D70786 /* RNFResponseDeserializer.h */,
-				5218571318A7F98F00D70786 /* RNFSerializable.h */,
+				52C8DF2C18A9683E00DBA94D /* Protocols */,
 				5218571C18A7FA0900D70786 /* RNF.h */,
 				5218571D18A7FC0E00D70786 /* RNFEndpointManager.h */,
 				5218571E18A7FC0E00D70786 /* RNFEndpointManager.m */,
@@ -187,9 +191,10 @@
 				5218572118A7FCD900D70786 /* RNFEndpoint.m */,
 				5218572318A7FFD900D70786 /* RNFDefaultOperation.h */,
 				5218572418A7FFD900D70786 /* RNFDefaultOperation.m */,
-				5218572618A8041300D70786 /* RNFRequestAuthentication.h */,
-				524D592718A9406F0056930E /* RNFConfigurationLoader.h */,
-				524D592818A940E90056930E /* RNFLogger.h */,
+				521533E518A973BB0082ACC9 /* RNFPlistConfigurationLoader.h */,
+				521533E618A973BB0082ACC9 /* RNFPlistConfigurationLoader.m */,
+				521533E818A9754E0082ACC9 /* RNFDictionaryConfiguration.h */,
+				521533E918A9754E0082ACC9 /* RNFDictionaryConfiguration.m */,
 			);
 			name = RNF;
 			sourceTree = "<group>";
@@ -199,6 +204,8 @@
 			children = (
 				5218573018A8182500D70786 /* Supporting Files */,
 				52F7A2A418A8191100378EFA /* RNFEndpointManagerTests.m */,
+				52C8DF2D18A96A6100DBA94D /* RNFEndpointTests.m */,
+				521533EB18A976170082ACC9 /* sampleConfiguration.plist */,
 			);
 			path = RuntimeNetworkFoundationTests;
 			sourceTree = "<group>";
@@ -211,6 +218,25 @@
 				5218573718A8182500D70786 /* RuntimeNetworkFoundationTests-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		52C8DF2C18A9683E00DBA94D /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				5218570C18A7F98F00D70786 /* RNFCacheHandler.h */,
+				5218570D18A7F98F00D70786 /* RNFCacheStrategy.h */,
+				5218570E18A7F98F00D70786 /* RNFDataDeserializer.h */,
+				5218570F18A7F98F00D70786 /* RNFDataSerializer.h */,
+				5218571018A7F98F00D70786 /* RNFOperation.h */,
+				5218571118A7F98F00D70786 /* RNFOperationQueue.h */,
+				5218571218A7F98F00D70786 /* RNFResponseDeserializer.h */,
+				5218571318A7F98F00D70786 /* RNFSerializable.h */,
+				5218572618A8041300D70786 /* RNFRequestAuthentication.h */,
+				524D592718A9406F0056930E /* RNFConfigurationLoader.h */,
+				524D592818A940E90056930E /* RNFLogger.h */,
+				5241E24018A96D6F0062CF84 /* RNFConfiguration.h */,
+			);
+			name = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -310,6 +336,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5218573418A8182500D70786 /* InfoPlist.strings in Resources */,
+				521533EC18A976170082ACC9 /* sampleConfiguration.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -387,7 +414,9 @@
 				3B2CB38A6D148F8F07939136 /* RNFAppDelegate.m in Sources */,
 				5218571F18A7FC0E00D70786 /* RNFEndpointManager.m in Sources */,
 				5218572518A7FFD900D70786 /* RNFDefaultOperation.m in Sources */,
+				521533EA18A9754E0082ACC9 /* RNFDictionaryConfiguration.m in Sources */,
 				5218572218A7FCD900D70786 /* RNFEndpoint.m in Sources */,
+				521533E718A973BB0082ACC9 /* RNFPlistConfigurationLoader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -396,6 +425,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				52F7A2A518A8191100378EFA /* RNFEndpointManagerTests.m in Sources */,
+				52C8DF2E18A96A6100DBA94D /* RNFEndpointTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

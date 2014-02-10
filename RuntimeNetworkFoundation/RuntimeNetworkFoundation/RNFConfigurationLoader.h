@@ -8,14 +8,22 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol RNFConfiguration;
+
+@interface RNFConfigurationNotFound : NSException
+
+@end
+
 @protocol RNFConfigurationLoader <NSObject>
 
-- (NSDictionary *) endpointAttributes;
+- (id<RNFConfiguration>) endpointAttributes;
 
 - (NSArray *) operations;
 
 @optional
 
 - (void) load;
+
++ (id<RNFConfigurationLoader>) RNFConfigurationLoaderForEndpointWithName:(NSString *)name;
 
 @end

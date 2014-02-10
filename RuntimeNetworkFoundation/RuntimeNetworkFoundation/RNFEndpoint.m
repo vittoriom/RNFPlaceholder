@@ -13,30 +13,82 @@
 #import "RNFCacheHandler.h"
 #import "RNFConfigurationLoader.h"
 #import "RNFLogger.h"
+#import "RNFConfiguration.h"
+#import "RNFPlistConfigurationLoader.h"
 
 @interface RNFEndpoint ()
 
+//Extension points
 @property (nonatomic, strong) Class<RNFOperation> operationClass;
+@property (nonatomic, strong) id<RNFResponseDeserializer> responseDeserializer;
+@property (nonatomic, strong) id<RNFConfigurationLoader> configurator;
+
+//Operation handling
+@property (nonatomic, strong) NSArray *operations;
+@property (nonatomic, strong) id<RNFOperationQueue> networkQueue;
+
+//Caching module
+@property (nonatomic, strong) id<RNFCacheHandler> cacheHandler;
+@property (nonatomic, assign) BOOL cacheResults;
+
+//Attributes
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSURL *baseURL;
 @property (nonatomic, strong) NSDictionary *headers;
-@property (nonatomic, strong) id<RNFResponseDeserializer> responseDeserializer;
-@property (nonatomic, strong) id<RNFOperationQueue> networkQueue;
-@property (nonatomic, strong) id<RNFCacheHandler> cacheHandler;
-@property (nonatomic, assign) BOOL cacheResults;
-@property (nonatomic, strong) NSArray *operations;
-@property (nonatomic, strong) id<RNFConfigurationLoader> configurator;
+@property (nonatomic, strong) id<RNFConfiguration> configuration;
+
+//Attached behaviors
 @property (nonatomic, weak) id<RNFLogger> logger;
 
 @end
 
 @implementation RNFEndpoint
 
-@dynamic operationClass;
-//@dynamic name;
-@dynamic baseURL;
-@dynamic headers;
-@dynamic cacheResults;
+#pragma mark - Initializers
+
+- (id) initWithConfigurator:(id<RNFConfigurationLoader>)configurator
+{
+    return [self init];
+}
+
+- (id) initWithName:(NSString *)name
+{
+    self = [self init];
+    
+    _name = name;
+    
+    //Eagerly load the configuration
+    id<RNFConfigurationLoader> configurationLoader = [[RNFPlistConfigurationLoader alloc] initWithPlistName:name];
+    _configurator = configurationLoader;
+    _configuration = [configurationLoader endpointAttributes];
+    
+    if(!_configuration)
+        @throw [[RNFConfigurationNotFound alloc] initWithName:NSStringFromClass([RNFConfigurationNotFound class])
+                                                       reason: [NSString stringWithFormat:NSLocalizedString(@"No plist configuration has been found for plist file with name %@", @""), name]
+                                                     userInfo:nil];
+    
+    return self;
+}
+
+- (id) init
+{
+    return [super init];
+}
+
+#pragma mark - Convenience methods
+
+- (id<RNFOperation>) operationWithName:(NSString *)name
+{
+    for (id<RNFOperation> operation in self.operations)
+    {
+        if([[operation name] isEqualToString:name])
+            return operation;
+    }
+    
+    return nil;
+}
+
+#pragma mark - Runtime machinery
 
 + (BOOL) resolveInstanceMethod:(SEL)sel
 {
