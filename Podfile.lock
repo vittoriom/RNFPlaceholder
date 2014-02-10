@@ -1,4 +1,9 @@
 PODS:
+  - CocoaLumberjack (1.8.0):
+    - CocoaLumberjack/Extensions
+  - CocoaLumberjack/Core (1.8.0)
+  - CocoaLumberjack/Extensions (1.8.0):
+    - CocoaLumberjack/Core
   - Kiwi/ARC (2.2.3)
   - Kiwi/NonARC (2.2.3)
   - Kiwi/XCTest (2.2.3):
@@ -6,9 +11,11 @@ PODS:
     - Kiwi/NonARC
 
 DEPENDENCIES:
+  - CocoaLumberjack
   - Kiwi/XCTest
 
 SPEC CHECKSUMS:
+  CocoaLumberjack: 6ed94046d2ca7fde03a73b3d01b8cfc56574b314
   Kiwi: 04c51e880831d291748ec702d42c4101f7eb95c9
 
 COCOAPODS: 0.29.0

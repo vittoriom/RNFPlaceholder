@@ -1,5 +1,7 @@
 platform :ios, :deployment_target => "5.1"
 
+pod 'CocoaLumberjack'
+
 target :RuntimeNetworkFoundationTests, :exclusive => true do
 	pod 'Kiwi/XCTest'
 end

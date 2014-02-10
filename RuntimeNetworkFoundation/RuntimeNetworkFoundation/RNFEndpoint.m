@@ -61,12 +61,6 @@
     //Eagerly load the configuration
     id<RNFConfigurationLoader> configurationLoader = [[RNFPlistConfigurationLoader alloc] initWithPlistName:name];
     _configurator = configurationLoader;
-    _configuration = [configurationLoader endpointAttributes];
-    
-    if(!_configuration)
-        @throw [[RNFConfigurationNotFound alloc] initWithName:NSStringFromClass([RNFConfigurationNotFound class])
-                                                       reason: [NSString stringWithFormat:NSLocalizedString(@"No plist configuration has been found for plist file with name %@", @""), name]
-                                                     userInfo:nil];
     
     [self loadConfigurationForConfigurator:_configurator];
     

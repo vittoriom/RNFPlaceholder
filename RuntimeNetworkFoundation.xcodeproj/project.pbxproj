@@ -35,6 +35,7 @@
 		5218572D18A8182500D70786 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2CB500C66AF8C6D65BF5FA /* Foundation.framework */; };
 		5218572E18A8182500D70786 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2CB0BD00D6F77F413E2749 /* UIKit.framework */; };
 		5218573418A8182500D70786 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5218573218A8182500D70786 /* InfoPlist.strings */; };
+		527FBE5A18A97B5E009959E7 /* sampleConfiguration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 521533EB18A976170082ACC9 /* sampleConfiguration.plist */; };
 		52C8DF2E18A96A6100DBA94D /* RNFEndpointTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C8DF2D18A96A6100DBA94D /* RNFEndpointTests.m */; };
 		52F7A2A518A8191100378EFA /* RNFEndpointManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 52F7A2A418A8191100378EFA /* RNFEndpointManagerTests.m */; };
 /* End PBXBuildFile section */
@@ -331,6 +332,7 @@
 				5218571A18A7F98F00D70786 /* RNFResponseDeserializer.h in Resources */,
 				5218571718A7F98F00D70786 /* RNFDataSerializer.h in Resources */,
 				5218571618A7F98F00D70786 /* RNFDataDeserializer.h in Resources */,
+				527FBE5A18A97B5E009959E7 /* sampleConfiguration.plist in Resources */,
 				5218571418A7F98F00D70786 /* RNFCacheHandler.h in Resources */,
 				5218571B18A7F98F00D70786 /* RNFSerializable.h in Resources */,
 			);
@@ -475,6 +477,7 @@
 				GCC_PREFIX_HEADER = "RuntimeNetworkFoundation/RuntimeNetworkFoundation-Prefix.pch";
 				INFOPLIST_FILE = "RuntimeNetworkFoundation/RuntimeNetworkFoundation-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -488,7 +491,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RuntimeNetworkFoundation/RuntimeNetworkFoundation-Prefix.pch";
 				INFOPLIST_FILE = "RuntimeNetworkFoundation/RuntimeNetworkFoundation-Info.plist";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -580,6 +585,7 @@
 				INFOPLIST_FILE = "RuntimeNetworkFoundationTests/RuntimeNetworkFoundationTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Release;
@@ -601,8 +607,10 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "RuntimeNetworkFoundationTests/RuntimeNetworkFoundationTests-Info.plist";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Debug;

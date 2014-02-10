@@ -1,7 +1,8 @@
-#import "RNFEndpoint.h"
 #import "RNFDefaultOperation.h"
+#import "RNFEndpoint.h"
 #import "RNFOperation.h"
 #import "RNFConfigurationLoader.h"
+#import "RNFConfigurationNotFound.h"
 
 SPEC_BEGIN(RNFEndpointTests)
 
@@ -74,6 +75,13 @@ describe(@"Endpoints", ^{
         it(@"should load a plist configuration with that name", ^{
             NSURL *plistURL = [NSURL URLWithString:@"http://vittoriomonaco.it/api"];
             [[[endpoint baseURL] should] equal:plistURL];
+        });
+        
+        it(@"should throw an exception if the plist is not found", ^{
+            [[theBlock(^{
+                id dummy = [[RNFEndpoint alloc] initWithName:@"notFound"];
+                [dummy description];
+            }) should] raise];
         });
     });
     

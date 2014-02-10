@@ -8,6 +8,7 @@
 
 #import "RNFPlistConfigurationLoader.h"
 #import "RNFConfiguration.h"
+#import "RNFConfigurationNotFound.h"
 #import "RNFDictionaryConfiguration.h"
 
 @implementation RNFPlistConfigurationLoader
@@ -20,6 +21,16 @@
 - (id) initWithPlistName:(NSString *)plistName
 {
     self = [self init];
+    
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:plistName ofType:@"plist"];
+    
+    if(!filePath)
+        @throw [[RNFConfigurationNotFound alloc] initWithName:NSStringFromClass([RNFConfigurationNotFound class])
+                                                       reason: [NSString stringWithFormat:NSLocalizedString(@"No plist configuration has been found for plist file with name %@", @""), plistName]
+                                                     userInfo:nil];
+    
+    
     
     return self;
 }
