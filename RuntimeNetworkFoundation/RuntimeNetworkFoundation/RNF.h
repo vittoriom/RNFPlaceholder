@@ -34,4 +34,5 @@ typedef void(^RNFCompletionBlockComplete)(id response, NSError *error, BOOL cach
 #import "RNFEndpoint.h"
 #import "RNFEndpointManager.h"
 
-@class RNF
+//Exceptions
+#import "RNFConfigurationNotFound.h"

@@ -14,6 +14,7 @@
 #import "RNFConfigurationLoader.h"
 #import "RNFLogger.h"
 #import "RNFConfiguration.h"
+#import "RNFConfigurationNotFound.h"
 #import "RNFPlistConfigurationLoader.h"
 
 @interface RNFEndpoint ()
@@ -67,12 +68,26 @@
                                                        reason: [NSString stringWithFormat:NSLocalizedString(@"No plist configuration has been found for plist file with name %@", @""), name]
                                                      userInfo:nil];
     
+    [self loadConfigurationForConfigurator:_configurator];
+    
     return self;
 }
 
 - (id) init
 {
     return [super init];
+}
+
+- (void) loadConfigurationForConfigurator:(id<RNFConfigurationLoader>)configurator
+{
+    id<RNFConfiguration> config = [configurator endpointAttributes];
+    
+    if([config respondsToSelector:@selector(name)])
+        self.name = [config name];
+    
+    self.baseURL = [config baseURL];
+    
+    //TODO Load the other attributes...
 }
 
 #pragma mark - Convenience methods

@@ -12,7 +12,7 @@
 
 - (NSURL *) baseURL
 {
-    return nil;
+    return [NSURL URLWithString:@"http://vittoriomonaco.it/api"];
 }
 
 - (NSArray *) operations

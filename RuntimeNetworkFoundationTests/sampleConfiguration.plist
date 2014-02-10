@@ -6,7 +6,5 @@
 	<array/>
 	<key>baseURL</key>
 	<string>http://vittoriomonaco.it/api</string>
-	<key>name</key>
-	<string>sampleConfiguration</string>
 </dict>
 </plist>

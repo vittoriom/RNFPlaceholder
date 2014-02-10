@@ -76,6 +76,10 @@ describe(@"Endpoints", ^{
             [[[endpoint baseURL] should] equal:plistURL];
         });
     });
+    
+    context(@"when initialized with a configurator", ^{
+        
+    });
 });
 
 SPEC_END

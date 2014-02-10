@@ -19,6 +19,7 @@
 		521533E718A973BB0082ACC9 /* RNFPlistConfigurationLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 521533E618A973BB0082ACC9 /* RNFPlistConfigurationLoader.m */; };
 		521533EA18A9754E0082ACC9 /* RNFDictionaryConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 521533E918A9754E0082ACC9 /* RNFDictionaryConfiguration.m */; };
 		521533EC18A976170082ACC9 /* sampleConfiguration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 521533EB18A976170082ACC9 /* sampleConfiguration.plist */; };
+		521533EF18A978CB0082ACC9 /* RNFConfigurationNotFound.m in Sources */ = {isa = PBXBuildFile; fileRef = 521533EE18A978CB0082ACC9 /* RNFConfigurationNotFound.m */; };
 		5218571418A7F98F00D70786 /* RNFCacheHandler.h in Resources */ = {isa = PBXBuildFile; fileRef = 5218570C18A7F98F00D70786 /* RNFCacheHandler.h */; };
 		5218571518A7F98F00D70786 /* RNFCacheStrategy.h in Resources */ = {isa = PBXBuildFile; fileRef = 5218570D18A7F98F00D70786 /* RNFCacheStrategy.h */; };
 		5218571618A7F98F00D70786 /* RNFDataDeserializer.h in Resources */ = {isa = PBXBuildFile; fileRef = 5218570E18A7F98F00D70786 /* RNFDataDeserializer.h */; };
@@ -68,6 +69,8 @@
 		521533E818A9754E0082ACC9 /* RNFDictionaryConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNFDictionaryConfiguration.h; path = RuntimeNetworkFoundation/RNFDictionaryConfiguration.h; sourceTree = "<group>"; };
 		521533E918A9754E0082ACC9 /* RNFDictionaryConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RNFDictionaryConfiguration.m; path = RuntimeNetworkFoundation/RNFDictionaryConfiguration.m; sourceTree = "<group>"; };
 		521533EB18A976170082ACC9 /* sampleConfiguration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = sampleConfiguration.plist; sourceTree = "<group>"; };
+		521533ED18A978CB0082ACC9 /* RNFConfigurationNotFound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNFConfigurationNotFound.h; path = RuntimeNetworkFoundation/RNFConfigurationNotFound.h; sourceTree = "<group>"; };
+		521533EE18A978CB0082ACC9 /* RNFConfigurationNotFound.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RNFConfigurationNotFound.m; path = RuntimeNetworkFoundation/RNFConfigurationNotFound.m; sourceTree = "<group>"; };
 		5218570C18A7F98F00D70786 /* RNFCacheHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RNFCacheHandler.h; path = RuntimeNetworkFoundation/RNFCacheHandler.h; sourceTree = "<group>"; };
 		5218570D18A7F98F00D70786 /* RNFCacheStrategy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RNFCacheStrategy.h; path = RuntimeNetworkFoundation/RNFCacheStrategy.h; sourceTree = "<group>"; };
 		5218570E18A7F98F00D70786 /* RNFDataDeserializer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RNFDataDeserializer.h; path = RuntimeNetworkFoundation/RNFDataDeserializer.h; sourceTree = "<group>"; };
@@ -195,6 +198,8 @@
 				521533E618A973BB0082ACC9 /* RNFPlistConfigurationLoader.m */,
 				521533E818A9754E0082ACC9 /* RNFDictionaryConfiguration.h */,
 				521533E918A9754E0082ACC9 /* RNFDictionaryConfiguration.m */,
+				521533ED18A978CB0082ACC9 /* RNFConfigurationNotFound.h */,
+				521533EE18A978CB0082ACC9 /* RNFConfigurationNotFound.m */,
 			);
 			name = RNF;
 			sourceTree = "<group>";
@@ -410,6 +415,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				521533EF18A978CB0082ACC9 /* RNFConfigurationNotFound.m in Sources */,
 				3B2CB77292CEBF074041F767 /* main.m in Sources */,
 				3B2CB38A6D148F8F07939136 /* RNFAppDelegate.m in Sources */,
 				5218571F18A7FC0E00D70786 /* RNFEndpointManager.m in Sources */,

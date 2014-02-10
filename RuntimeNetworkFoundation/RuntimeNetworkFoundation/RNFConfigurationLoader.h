@@ -10,10 +10,6 @@
 
 @protocol RNFConfiguration;
 
-@interface RNFConfigurationNotFound : NSException
-
-@end
-
 @protocol RNFConfigurationLoader <NSObject>
 
 - (id<RNFConfiguration>) endpointAttributes;
