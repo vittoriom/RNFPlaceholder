@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ *  This exception is thrown when a configuration with some given name can't be found
+ */
 @interface RNFConfigurationNotFound : NSException
 
 @end

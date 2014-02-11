@@ -19,6 +19,7 @@ typedef void(^RNFCompletionBlockComplete)(id response, NSError *error, BOOL cach
 
 #endif
 
+//Protocols
 #import "RNFCacheHandler.h"
 #import "RNFCacheStrategy.h"
 #import "RNFDataDeserializer.h"
@@ -33,6 +34,8 @@ typedef void(^RNFCompletionBlockComplete)(id response, NSError *error, BOOL cach
 #import "RNFLogger.h"
 #import "RNFEndpoint.h"
 #import "RNFEndpointManager.h"
+#import "RNFValueTransformer.h"
 
 //Exceptions
 #import "RNFConfigurationNotFound.h"
+#import "RNFMalformedConfiguration.h"

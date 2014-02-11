@@ -9,6 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "RNFConfiguration.h"
 
+/**
+ *  Provides default values for optional parameters in a configuration
+ *  If you're providing your own RNFConfiguration implementation,
+ *  please subclass this class
+ */
 @interface RNFDefaultConfiguration : NSObject <RNFConfiguration>
 
 @end

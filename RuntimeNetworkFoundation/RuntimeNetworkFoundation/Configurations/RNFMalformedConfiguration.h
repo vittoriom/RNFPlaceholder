@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ *  This exception is thrown when a configuration is missing mandatory parameters
+ */
 @interface RNFMalformedConfiguration : NSException
 
 @end
