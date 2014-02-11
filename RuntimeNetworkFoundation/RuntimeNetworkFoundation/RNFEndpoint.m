@@ -44,25 +44,31 @@
 @end
 
 @implementation RNFEndpoint
+{
+    BOOL _configurationLoaded;
+}
 
 #pragma mark - Initializers
 
 - (id) initWithConfigurator:(id<RNFConfigurationLoader>)configurator
 {
-    return [self init];
+    self = [self init];
+    
+    _configurator = configurator;
+    
+    return self;
 }
 
 - (id) initWithName:(NSString *)name
 {
-    self = [self init];
+    id<RNFConfigurationLoader> configurationLoader = [[RNFPlistConfigurationLoader alloc] initWithPlistName:name];
+    
+    self = [self initWithConfigurator:configurationLoader];
     
     _name = name;
     
     //Eagerly load the configuration
-    id<RNFConfigurationLoader> configurationLoader = [[RNFPlistConfigurationLoader alloc] initWithPlistName:name];
-    _configurator = configurationLoader;
-    
-    [self loadConfigurationForConfigurator:_configurator];
+    [self loadConfigurationForConfigurator:configurationLoader];
     
     return self;
 }
@@ -74,14 +80,34 @@
 
 - (void) loadConfigurationForConfigurator:(id<RNFConfigurationLoader>)configurator
 {
-    id<RNFConfiguration> config = [configurator endpointAttributes];
+    @synchronized(self)
+    {
+        if(_configurationLoaded)
+            return;
+        
+        _configurationLoaded = YES;
+        
+        id<RNFConfiguration> config = [configurator endpointAttributes];
+        
+        if([config respondsToSelector:@selector(name)])
+            self.name = [config name];
+        
+        self.baseURL = [config baseURL];
+        
+        //TODO Load the other attributes...
+        
+        self.configuration = config;
+    }
+}
+
+#pragma mark - Getters
+
+- (NSURL *) baseURL
+{
+    if(!_configuration)
+        [self loadConfigurationForConfigurator:self.configurator];
     
-    if([config respondsToSelector:@selector(name)])
-        self.name = [config name];
-    
-    self.baseURL = [config baseURL];
-    
-    //TODO Load the other attributes...
+    return _baseURL;
 }
 
 #pragma mark - Convenience methods

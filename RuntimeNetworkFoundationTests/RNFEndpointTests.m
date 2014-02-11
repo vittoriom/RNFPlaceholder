@@ -2,6 +2,7 @@
 #import "RNFEndpoint.h"
 #import "RNFOperation.h"
 #import "RNFConfigurationLoader.h"
+#import "RNFPlistConfigurationLoader.h"
 #import "RNFConfigurationNotFound.h"
 
 SPEC_BEGIN(RNFEndpointTests)
@@ -64,7 +65,7 @@ describe(@"Endpoints", ^{
     });
     
     context(@"when initialized with a name", ^{
-        beforeEach(^{
+        beforeAll(^{
             endpoint = [[RNFEndpoint alloc] initWithName:@"sampleConfiguration"];
         });
         
@@ -86,7 +87,18 @@ describe(@"Endpoints", ^{
     });
     
     context(@"when initialized with a configurator", ^{
+        it(@"should not load the attributes eagerly", ^{
+            RNFPlistConfigurationLoader *configurationLoader = [[RNFPlistConfigurationLoader alloc] initWithPlistName:@"sampleConfiguration"];
+            [[configurationLoader shouldNot] receive:@selector(endpointAttributes)];
+            RNFEndpoint *endpoint = [[RNFEndpoint alloc] initWithConfigurator:configurationLoader];
+            [endpoint description];
+        });
         
+        it(@"should load the attributes when asked the first time", ^{
+            RNFPlistConfigurationLoader *configurationLoader = [[RNFPlistConfigurationLoader alloc] initWithPlistName:@"sampleConfiguration"];
+            RNFEndpoint *endpoint = [[RNFEndpoint alloc] initWithConfigurator:configurationLoader];
+            [[[endpoint baseURL] should] equal:[NSURL URLWithString:@"http://vittoriomonaco.it/api"]];
+        });
     });
 });
 

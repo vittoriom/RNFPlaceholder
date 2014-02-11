@@ -8,11 +8,26 @@
 
 #import "RNFDictionaryConfiguration.h"
 
+@interface RNFDictionaryConfiguration ()
+
+@property (nonatomic, strong) NSDictionary *internalDictionary;
+
+@end
+
 @implementation RNFDictionaryConfiguration
+
+- (instancetype) initWithDictionary:(NSDictionary *)dictionary
+{
+    self = [self init];
+    
+    _internalDictionary = dictionary;
+    
+    return self;
+}
 
 - (NSURL *) baseURL
 {
-    return [NSURL URLWithString:@"http://vittoriomonaco.it/api"];
+    return [NSURL URLWithString:[self.internalDictionary objectForKey:@"baseURL"]];
 }
 
 - (NSArray *) operations

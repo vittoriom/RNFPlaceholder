@@ -11,4 +11,6 @@
 
 @interface RNFDictionaryConfiguration : NSObject <RNFConfiguration>
 
+- (instancetype) initWithDictionary:(NSDictionary *)dictionary;
+
 @end

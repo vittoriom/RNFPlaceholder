@@ -11,6 +11,12 @@
 #import "RNFConfigurationNotFound.h"
 #import "RNFDictionaryConfiguration.h"
 
+@interface RNFPlistConfigurationLoader ()
+
+@property (nonatomic, strong) id<RNFConfiguration> configuration;
+
+@end
+
 @implementation RNFPlistConfigurationLoader
 
 - (NSArray *) operations
@@ -22,15 +28,16 @@
 {
     self = [self init];
     
-    NSFileManager *fileManager = [NSFileManager defaultManager];
     NSString *filePath = [[NSBundle mainBundle] pathForResource:plistName ofType:@"plist"];
     
     if(!filePath)
         @throw [[RNFConfigurationNotFound alloc] initWithName:NSStringFromClass([RNFConfigurationNotFound class])
                                                        reason: [NSString stringWithFormat:NSLocalizedString(@"No plist configuration has been found for plist file with name %@", @""), plistName]
                                                      userInfo:nil];
+    //Read the plist
+    NSDictionary *plistContents = [[NSDictionary alloc] initWithContentsOfFile:filePath];
     
-    
+    _configuration = [[RNFDictionaryConfiguration alloc] initWithDictionary:plistContents];
     
     return self;
 }
@@ -42,7 +49,7 @@
 
 - (id<RNFConfiguration>) endpointAttributes
 {
-    return [[RNFDictionaryConfiguration alloc] init];
+    return self.configuration;
 }
 
 @end
