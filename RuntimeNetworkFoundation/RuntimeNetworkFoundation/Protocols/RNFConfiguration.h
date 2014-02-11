@@ -98,7 +98,7 @@ static const NSString * kRNFConfigurationEndpointLoggerClass = @"loggerClass";
  *
  *  @return If cacheResults is YES, the class to use as a cache handler. By default the value is NSCache
  */
-- (id<RNFCacheHandler>) cacheClass;
+- (Class<RNFCacheHandler>) cacheClass;
 
 /**
  *  This parameter is optional, so the method may return nil or a default class

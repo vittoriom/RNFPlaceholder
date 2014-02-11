@@ -96,9 +96,7 @@
         
         id<RNFConfiguration> config = [configurator endpointAttributes];
         
-        if([config respondsToSelector:@selector(name)])
-            self.name = [config name];
-        
+        self.name = [config name];
         self.baseURL = [config baseURL];
         
         //TODO Load the other attributes...
