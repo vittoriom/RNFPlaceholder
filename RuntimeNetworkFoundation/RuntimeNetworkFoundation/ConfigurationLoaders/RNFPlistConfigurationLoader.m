@@ -19,11 +19,6 @@
 
 @implementation RNFPlistConfigurationLoader
 
-- (NSArray *) operations
-{
-    return @[];
-}
-
 - (id) initWithPlistName:(NSString *)plistName
 {
     self = [self init];

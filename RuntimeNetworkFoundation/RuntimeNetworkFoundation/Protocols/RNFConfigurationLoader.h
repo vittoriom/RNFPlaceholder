@@ -14,8 +14,6 @@
 
 - (id<RNFConfiguration>) endpointAttributes;
 
-- (NSArray *) operations;
-
 @optional
 
 - (void) load;

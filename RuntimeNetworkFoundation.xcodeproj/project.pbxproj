@@ -87,6 +87,7 @@
 		5224682818A97FC700124AE5 /* RNFRequestAuthentication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNFRequestAuthentication.h; path = RuntimeNetworkFoundation/Protocols/RNFRequestAuthentication.h; sourceTree = "<group>"; };
 		5224682918A97FC700124AE5 /* RNFResponseDeserializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNFResponseDeserializer.h; path = RuntimeNetworkFoundation/Protocols/RNFResponseDeserializer.h; sourceTree = "<group>"; };
 		5224682A18A97FC700124AE5 /* RNFSerializable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNFSerializable.h; path = RuntimeNetworkFoundation/Protocols/RNFSerializable.h; sourceTree = "<group>"; };
+		52815F1518AAA51000A629C4 /* RNFValueTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNFValueTransformer.h; path = RuntimeNetworkFoundation/Protocols/RNFValueTransformer.h; sourceTree = "<group>"; };
 		52C8DF2D18A96A6100DBA94D /* RNFEndpointTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNFEndpointTests.m; sourceTree = "<group>"; };
 		52F7A2A418A8191100378EFA /* RNFEndpointManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNFEndpointManagerTests.m; sourceTree = "<group>"; };
 		5D12B31D577645C0BB2AB9D7 /* libPods-RuntimeNetworkFoundationTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RuntimeNetworkFoundationTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -257,6 +258,7 @@
 				5224682818A97FC700124AE5 /* RNFRequestAuthentication.h */,
 				5224682918A97FC700124AE5 /* RNFResponseDeserializer.h */,
 				5224682A18A97FC700124AE5 /* RNFSerializable.h */,
+				52815F1518AAA51000A629C4 /* RNFValueTransformer.h */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
