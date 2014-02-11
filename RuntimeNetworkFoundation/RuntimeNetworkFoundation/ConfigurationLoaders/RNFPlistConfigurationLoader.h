@@ -13,6 +13,15 @@
 
 @interface RNFPlistConfigurationLoader : NSObject <RNFConfigurationLoader>
 
+/**
+ *  Initializes a new instance of RNFPlistConfigurationLoader with a given plist
+ *
+ *  @param plistName the name of the plist file to load from the main bundle
+ *
+ *  @return a configured instance of RNFConfigurationLoader
+ *
+ *  @throws RNFConfigurationNotFound if the plist can't be found
+ */
 - (id) initWithPlistName:(NSString *)plistName;
 
 @end

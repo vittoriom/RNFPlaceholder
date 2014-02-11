@@ -16,6 +16,7 @@
 		3B2CB7EB616E1016DC961DC3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B2CBB510FDDA0628EC4B825 /* Images.xcassets */; };
 		3B2CB800BF850D772357B0D3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2CBF27269CB87C24599AAF /* CoreGraphics.framework */; };
 		3B2CBB1125738BA8B6120E32 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2CB500C66AF8C6D65BF5FA /* Foundation.framework */; };
+		520A273D18AAC198000CF13B /* RNFMalformedConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 520A273C18AAC198000CF13B /* RNFMalformedConfiguration.m */; };
 		521533EC18A976170082ACC9 /* sampleConfiguration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 521533EB18A976170082ACC9 /* sampleConfiguration.plist */; };
 		5218571F18A7FC0E00D70786 /* RNFEndpointManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5218571E18A7FC0E00D70786 /* RNFEndpointManager.m */; };
 		5218572218A7FCD900D70786 /* RNFEndpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 5218572118A7FCD900D70786 /* RNFEndpoint.m */; };
@@ -57,6 +58,8 @@
 		3B2CBF27269CB87C24599AAF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		44F2752C9E6942ADA0B0267B /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		4D2AEE38A65E445A906C7D6B /* Pods-RuntimeNetworkFoundationTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RuntimeNetworkFoundationTests.xcconfig"; path = "Pods/Pods-RuntimeNetworkFoundationTests.xcconfig"; sourceTree = "<group>"; };
+		520A273B18AAC198000CF13B /* RNFMalformedConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNFMalformedConfiguration.h; path = RuntimeNetworkFoundation/Configurations/RNFMalformedConfiguration.h; sourceTree = "<group>"; };
+		520A273C18AAC198000CF13B /* RNFMalformedConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RNFMalformedConfiguration.m; path = RuntimeNetworkFoundation/Configurations/RNFMalformedConfiguration.m; sourceTree = "<group>"; };
 		521533EB18A976170082ACC9 /* sampleConfiguration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = sampleConfiguration.plist; sourceTree = "<group>"; };
 		5218571C18A7FA0900D70786 /* RNF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNF.h; path = RuntimeNetworkFoundation/RNF.h; sourceTree = "<group>"; };
 		5218571D18A7FC0E00D70786 /* RNFEndpointManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNFEndpointManager.h; path = RuntimeNetworkFoundation/RNFEndpointManager.h; sourceTree = "<group>"; };
@@ -239,6 +242,8 @@
 			children = (
 				5224681318A97F7600124AE5 /* RNFDictionaryConfiguration.h */,
 				5224681418A97F7600124AE5 /* RNFDictionaryConfiguration.m */,
+				520A273B18AAC198000CF13B /* RNFMalformedConfiguration.h */,
+				520A273C18AAC198000CF13B /* RNFMalformedConfiguration.m */,
 			);
 			name = Configurations;
 			sourceTree = "<group>";
@@ -429,6 +434,7 @@
 			files = (
 				3B2CB77292CEBF074041F767 /* main.m in Sources */,
 				5224681E18A97FA900124AE5 /* RNFPlistConfigurationLoader.m in Sources */,
+				520A273D18AAC198000CF13B /* RNFMalformedConfiguration.m in Sources */,
 				3B2CB38A6D148F8F07939136 /* RNFAppDelegate.m in Sources */,
 				5224681518A97F7600124AE5 /* RNFDictionaryConfiguration.m in Sources */,
 				5224681D18A97FA900124AE5 /* RNFConfigurationNotFound.m in Sources */,

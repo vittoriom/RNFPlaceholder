@@ -14,6 +14,17 @@
 @protocol RNFCacheHandler;
 @protocol RNFLogger;
 
+static const NSString * kRNFConfigurationEndpointBaseURL = @"baseURL";
+static const NSString * kRNFConfigurationEndpointOperations = @"operations";
+static const NSString * kRNFConfigurationEndpointName = @"name";
+static const NSString * kRNFConfigurationEndpointDefaultHeaders = @"headers";
+static const NSString * kRNFConfigurationEndpointResponseDeserializer = @"responseDeserializer";
+static const NSString * kRNFConfigurationEndpointOperationClass = @"operationClass";
+static const NSString * kRNFConfigurationEndpointOperationQueueClass = @"operationQueueClass";
+static const NSString * kRNFConfigurationEndpointShouldCacheResults = @"cacheResults";
+static const NSString * kRNFConfigurationEndpointCacheClass = @"cacheClass";
+static const NSString * kRNFConfigurationEndpointLoggerClass = @"loggerClass";
+
 @protocol RNFConfiguration <NSObject>
 
 /**

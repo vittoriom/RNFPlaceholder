@@ -3,7 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>operations</key>
-	<array/>
+	<array>
+		<string>dummy</string>
+	</array>
 	<key>baseURL</key>
 	<string>http://vittoriomonaco.it/api</string>
 </dict>
