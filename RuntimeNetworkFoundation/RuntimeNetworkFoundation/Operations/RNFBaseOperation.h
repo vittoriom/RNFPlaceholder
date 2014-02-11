@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "RNFOperation.h"
 
-@interface RNFDefaultOperation : NSOperation <RNFOperation>
+/**
+ *  RNFOperation base class
+ */
+@interface RNFBaseOperation : NSOperation <RNFOperation>
 
 @end

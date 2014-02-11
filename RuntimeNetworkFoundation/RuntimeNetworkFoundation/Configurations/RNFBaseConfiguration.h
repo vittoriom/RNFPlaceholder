@@ -14,6 +14,6 @@
  *  If you're providing your own RNFConfiguration implementation,
  *  please subclass this class
  */
-@interface RNFDefaultConfiguration : NSObject <RNFConfiguration>
+@interface RNFBaseConfiguration : NSObject <RNFConfiguration>
 
 @end

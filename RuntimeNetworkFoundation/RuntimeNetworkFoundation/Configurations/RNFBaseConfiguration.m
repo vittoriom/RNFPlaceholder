@@ -6,11 +6,11 @@
 //  Copyright (c) 2014 Vittorio Monaco. All rights reserved.
 //
 
-#import "RNFDefaultConfiguration.h"
+#import "RNFBaseConfiguration.h"
 #import "RNFMalformedConfiguration.h"
-#import "RNFDefaultOperation.h"
+#import "RNFBaseOperation.h"
 
-@implementation RNFDefaultConfiguration
+@implementation RNFBaseConfiguration
 
 - (NSURL *) baseURL
 {
@@ -43,7 +43,7 @@
 
 - (Class<RNFOperation>) operationClass
 {
-    return [RNFDefaultOperation class];
+    return [RNFBaseOperation class];
 }
 
 - (Class<RNFOperationQueue>) operationQueueClass

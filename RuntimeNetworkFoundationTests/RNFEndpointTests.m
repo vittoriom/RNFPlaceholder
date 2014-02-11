@@ -1,4 +1,4 @@
-#import "RNFDefaultOperation.h"
+#import "RNFBaseOperation.h"
 #import "RNFEndpoint.h"
 #import "RNFOperation.h"
 #import "RNFConfigurationLoader.h"
@@ -26,7 +26,7 @@ describe(@"Endpoints", ^{
         });
         
         it(@"should return the correct operation if any", ^{
-            id operation = [RNFDefaultOperation new];
+            id operation = [RNFBaseOperation new];
             [[operation should] receive:@selector(name) andReturn:@"operation1"];
             
             [[endpoint should] receive:@selector(operations) andReturn:@[operation]];
@@ -36,7 +36,7 @@ describe(@"Endpoints", ^{
         });
         
         it(@"should return the correct operation even in a set of more than one", ^{
-            id operation = [RNFDefaultOperation new], operation2 = [RNFDefaultOperation new];
+            id operation = [RNFBaseOperation new], operation2 = [RNFBaseOperation new];
             [[operation should] receive:@selector(name) andReturn:@"operation1"];
             [[operation2 should] receive:@selector(name) andReturn:@"operation2"];
             
@@ -47,7 +47,7 @@ describe(@"Endpoints", ^{
         });
         
         it(@"should return immediately without scanning subsequent operations after finding one", ^{
-            id operation = [RNFDefaultOperation new], operation2 = [RNFDefaultOperation new];
+            id operation = [RNFBaseOperation new], operation2 = [RNFBaseOperation new];
             [[operation should] receive:@selector(name) andReturn:@"operation1"];
             [[operation2 shouldNot] receive:@selector(name) andReturn:@"operation2"];
             

@@ -6,22 +6,47 @@
 //  Copyright (c) 2014 Vittorio Monaco. All rights reserved.
 //
 
-#import "RNFDefaultOperation.h"
+#import "RNFBaseOperation.h"
 
-@interface RNFDefaultOperation ()
+@interface RNFBaseOperation ()
 
 @property (nonatomic, strong, readwrite) NSString *name;
 @property (nonatomic, strong) NSURL *url;
 @property (nonatomic, strong) NSString *method;
-@property (nonatomic, strong) RNFEndpoint *endpoint;
 @property (nonatomic, strong) NSDictionary *headers;
-@property (nonatomic, strong) NSDictionary *body;
+@property (nonatomic, strong) NSData *body;
 
 @property (nonatomic, copy) RNFCompletionBlockGeneric completionBlock;
 
 @end
 
-@implementation RNFDefaultOperation
+@implementation RNFBaseOperation
+
+#pragma mark - Initializers
+
+- (instancetype) initWithURL:(NSURL *)url method:(NSString *)method
+{
+    
+}
+
+#pragma mark - Properties
+
+- (NSString *) name
+{
+    return nil;
+}
+
+- (void) setHeaders:(NSDictionary *)headers
+{
+    
+}
+
+- (void) setBody:(NSData *)body
+{
+    
+}
+
+#pragma mark - NSOperation related methods
 
 - (void) start
 {
@@ -47,6 +72,8 @@
 {
     return NO;
 }
+
+#pragma mark - RNFOperation
 
 - (void) startWithCompletionBlock:(RNFCompletionBlockGeneric)completion
 {
