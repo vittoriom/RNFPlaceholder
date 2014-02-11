@@ -65,10 +65,10 @@
     
     self = [self initWithConfigurator:configurationLoader];
     
-    _name = name;
-    
     //Eagerly load the configuration
     [self loadConfigurationForConfigurator:configurationLoader];
+    
+    _name = name;
     
     return self;
 }
