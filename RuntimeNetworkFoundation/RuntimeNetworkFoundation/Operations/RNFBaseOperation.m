@@ -27,7 +27,7 @@
 
 - (instancetype) initWithURL:(NSURL *)url method:(NSString *)method
 {
-    
+    return [self init];
 }
 
 #pragma mark - Properties
