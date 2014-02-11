@@ -78,12 +78,19 @@
     return [super init];
 }
 
+#pragma mark - Configuration loading
+
 - (void) loadConfigurationForConfigurator:(id<RNFConfigurationLoader>)configurator
 {
     @synchronized(self)
     {
         if(_configurationLoaded)
             return;
+        
+        if ([configurator respondsToSelector:@selector(load)])
+        {
+            [configurator load];
+        }
         
         _configurationLoaded = YES;
         
@@ -100,7 +107,7 @@
     }
 }
 
-#pragma mark - Getters
+#pragma mark - dynamic getters
 
 - (NSURL *) baseURL
 {
