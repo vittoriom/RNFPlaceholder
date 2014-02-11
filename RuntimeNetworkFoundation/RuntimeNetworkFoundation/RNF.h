@@ -13,9 +13,11 @@
 
 typedef void(^RNFCompletionBlockGeneric)(id response, ...);
 
-typedef void(^RNFCompletionBlock)(id response, NSError *error, NSUInteger statusCode);
+typedef void(^RNFCompletionBlock)(id response, id<RNFOperation> operation, NSUInteger statusCode);
 
-typedef void(^RNFCompletionBlockComplete)(id response, NSError *error, BOOL cached, NSUInteger statusCode, NSURLResponse *originalResponse);
+typedef void(^RNFCompletionBlockComplete)(id response, id<RNFOperation> operation, NSUInteger statusCode, BOOL cached, NSURLResponse *originalResponse);
+
+typedef void(^RNFErrorBlock)(id response, NSError *error, NSUInteger statusCode);
 
 #endif
 

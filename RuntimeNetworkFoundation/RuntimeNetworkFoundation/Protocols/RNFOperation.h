@@ -11,34 +11,41 @@
 @protocol RNFOperation <NSObject>
 
 /**
- *  <#Description#>
+ *  Initializes an RNFOperation with a given url and HTTP method
  *
- *  @param url    <#url description#>
- *  @param method <#method description#>
+ *  @param url    The complete URL that this RNFOperation should call
+ *  @param method The HTTP method (GET, POST, PUT, DELETE, TRACE, HEAD, CONNECT, OPTIONS) to use
  *
- *  @return <#return value description#>
+ *  @return a initialized RNFOperation
  */
-- (id) initWithURL:(NSURL *)url
-            method:(NSString *)method;
+- (instancetype) initWithURL:(NSURL *)url
+                      method:(NSString *)method;
 
 /**
- *  <#Description#>
+ *  Starts the RNFOperation instance
+ *  When the operation is completed, RNFCompletionBlockGeneric is called
+ *  If the operation failed, RNFErrorBlock is called instead
  *
- *  @param completion <#completion description#>
+ *  @param completion the completion block to call if the operation succeeds
+ *  @param error      the completion block to call if the operation fails
+ *
+ *  @discussion If the operation is cached and there is no network connection, the completion block is immediately called with the cached data.
+ *              If the operation is cached, network connection is present but connection timeout occurs, the completion block is called with the cached data instead.
  */
-- (void) startWithCompletionBlock:(RNFCompletionBlockGeneric)completion;
+- (void) startWithCompletionBlock:(RNFCompletionBlockGeneric)completion
+                       errorBlock:(RNFErrorBlock)error;
 
 /**
- *  <#Description#>
+ *  Sets the headers of the operation
  *
- *  @param headers <#headers description#>
+ *  @param headers The NSDictionary containing the key-value pairs headers of the operation
  */
 - (void) setHeaders:(NSDictionary *)headers;
 
 /**
- *  <#Description#>
+ *  Sets the body of the operation
  *
- *  @param body <#body description#>
+ *  @param body The NSData instance representing the body of the operation
  */
 - (void) setBody:(NSData *)body;
 

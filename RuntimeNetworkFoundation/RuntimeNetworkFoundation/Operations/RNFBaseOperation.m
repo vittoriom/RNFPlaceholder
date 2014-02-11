@@ -17,6 +17,7 @@
 @property (nonatomic, strong) NSData *body;
 
 @property (nonatomic, copy) RNFCompletionBlockGeneric completionBlock;
+@property (nonatomic, copy) RNFErrorBlock errorBlock;
 
 @end
 
@@ -75,7 +76,7 @@
 
 #pragma mark - RNFOperation
 
-- (void) startWithCompletionBlock:(RNFCompletionBlockGeneric)completion
+- (void) startWithCompletionBlock:(RNFCompletionBlockGeneric)completion errorBlock:(RNFErrorBlock)error
 {
     
 }
