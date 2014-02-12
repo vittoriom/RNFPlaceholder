@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol RNFConfiguration;
+@protocol RNFEndpointConfiguration;
 
 @protocol RNFConfigurationLoader <NSObject>
 
@@ -17,7 +17,7 @@
  *  @return The RNFConfiguration object representing the endpoint Attributes
  *  Please see the wiki for the complete list of mandatory and optional attributes for endpoints
  */
-- (id<RNFConfiguration>) endpointAttributes;
+- (id<RNFEndpointConfiguration>) endpointAttributes;
 
 @optional
 

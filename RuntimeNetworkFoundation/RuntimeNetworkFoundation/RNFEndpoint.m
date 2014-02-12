@@ -13,7 +13,7 @@
 #import "RNFCacheHandler.h"
 #import "RNFConfigurationLoader.h"
 #import "RNFLogger.h"
-#import "RNFConfiguration.h"
+#import "RNFEndpointConfiguration.h"
 #import "RNFConfigurationNotFound.h"
 #import "RNFPlistConfigurationLoader.h"
 
@@ -36,7 +36,7 @@
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSURL *baseURL;
 @property (nonatomic, strong) NSDictionary *headers;
-@property (nonatomic, strong) id<RNFConfiguration> configuration;
+@property (nonatomic, strong) id<RNFEndpointConfiguration> configuration;
 
 //Attached behaviors
 @property (nonatomic, weak) id<RNFLogger> logger;
@@ -94,7 +94,7 @@
         
         _configurationLoaded = YES;
         
-        id<RNFConfiguration> config = [configurator endpointAttributes];
+        id<RNFEndpointConfiguration> config = [configurator endpointAttributes];
         
         self.name = [config name];
         self.baseURL = [config baseURL];

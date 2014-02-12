@@ -7,13 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "RNFConfiguration.h"
+#import "RNFEndpointConfiguration.h"
 
 /**
  *  Provides default values for optional parameters in a configuration
  *  If you're providing your own RNFConfiguration implementation,
  *  please subclass this class
  */
-@interface RNFBaseEndpointConfiguration : NSObject <RNFConfiguration>
+@interface RNFBaseEndpointConfiguration : NSObject <RNFEndpointConfiguration>
 
 @end

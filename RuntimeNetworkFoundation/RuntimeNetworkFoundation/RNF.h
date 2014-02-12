@@ -16,7 +16,7 @@
 #import "RNFRequestAuthentication.h"
 #import "RNFResponseDeserializer.h"
 #import "RNFSerializable.h"
-#import "RNFConfiguration.h"
+#import "RNFEndpointConfiguration.h"
 #import "RNFConfigurationLoader.h"
 #import "RNFLogger.h"
 #import "RNFEndpoint.h"

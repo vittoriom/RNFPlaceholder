@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "RNFConfigurationLoader.h"
 
-@protocol RNFConfiguration;
+@protocol RNFEndpointConfiguration;
 
 @interface RNFPlistConfigurationLoader : NSObject <RNFConfigurationLoader>
 
@@ -22,6 +22,6 @@
  *
  *  @throws RNFConfigurationNotFound if the plist can't be found
  */
-- (id) initWithPlistName:(NSString *)plistName;
+- (instancetype) initWithPlistName:(NSString *)plistName;
 
 @end

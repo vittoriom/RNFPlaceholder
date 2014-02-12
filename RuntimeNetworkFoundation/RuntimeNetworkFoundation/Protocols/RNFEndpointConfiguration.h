@@ -25,7 +25,7 @@ static const NSString * kRNFConfigurationEndpointShouldCacheResults = @"cacheRes
 static const NSString * kRNFConfigurationEndpointCacheClass = @"cacheClass";
 static const NSString * kRNFConfigurationEndpointLoggerClass = @"loggerClass";
 
-@protocol RNFConfiguration <NSObject>
+@protocol RNFEndpointConfiguration <NSObject>
 
 /**
  *  The baseURL of the configured endpoint

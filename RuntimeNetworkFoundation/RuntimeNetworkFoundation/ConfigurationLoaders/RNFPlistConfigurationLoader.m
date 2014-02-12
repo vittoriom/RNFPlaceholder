@@ -7,19 +7,19 @@
 //
 
 #import "RNFPlistConfigurationLoader.h"
-#import "RNFConfiguration.h"
+#import "RNFEndpointConfiguration.h"
 #import "RNFConfigurationNotFound.h"
 #import "RNFDictionaryEndpointConfiguration.h"
 
 @interface RNFPlistConfigurationLoader ()
 
-@property (nonatomic, strong) id<RNFConfiguration> configuration;
+@property (nonatomic, strong) id<RNFEndpointConfiguration> configuration;
 
 @end
 
 @implementation RNFPlistConfigurationLoader
 
-- (id) initWithPlistName:(NSString *)plistName
+- (instancetype) initWithPlistName:(NSString *)plistName
 {
     self = [self init];
     
@@ -42,7 +42,7 @@
     return [[RNFPlistConfigurationLoader alloc] initWithPlistName:name];
 }
 
-- (id<RNFConfiguration>) endpointAttributes
+- (id<RNFEndpointConfiguration>) endpointAttributes
 {
     return self.configuration;
 }
