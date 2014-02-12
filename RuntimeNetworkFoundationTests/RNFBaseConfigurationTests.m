@@ -1,0 +1,66 @@
+#import "RNFBaseConfiguration.h"
+
+SPEC_BEGIN(RNFBaseConfigurationTests)
+
+describe(@"Base configuration",^{
+    __block RNFBaseConfiguration *_configuration;
+    
+    beforeAll(^{
+        _configuration = [RNFBaseConfiguration new];
+    });
+    
+    it(@"should raise if asked for base URL",^{
+        [[theBlock(^{
+            [_configuration baseURL];
+        }) should] raise];
+    });
+    
+    it(@"should raise if asked for operations", ^{
+        [[theBlock(^{
+            [_configuration operations];
+        }) should] raise];
+    });
+    
+    context(@"when asked for optional parameters", ^{
+        it(@"should return nil for name", ^{
+            [[[_configuration name] should] beNil];
+        });
+        
+        it(@"should return nil for headers", ^{
+            [[[_configuration headers] should] beNil];
+        });
+        
+        it(@"should return nil for deserializer", ^{
+            id deserializer = [_configuration deserializer];
+            [[deserializer should] beNil];
+        });
+        
+        it(@"should return nil for logger", ^{
+            id logger = [_configuration logger];
+            [[logger should] beNil];
+        });
+        
+        it(@"should return a NSOperation subclass for operationClass", ^{
+            Class operationClass = [_configuration operationClass];
+            id dummyObject = [operationClass new];
+            [[theValue([dummyObject isKindOfClass:[NSOperation class]]) should] beTrue];
+        });
+        
+        it(@"should return a NSOperationQueue subclass for operationQueueClass", ^{
+            Class operationQueueClass = [_configuration operationQueueClass];
+            id dummyObject = [operationQueueClass new];
+            [[theValue([dummyObject isKindOfClass:[NSOperationQueue class]]) should] beTrue];
+        });
+        
+        it(@"should cache results", ^{
+            [[theValue([_configuration cacheResults]) should] beTrue];
+        });
+        
+        it(@"should return a class for cacheClass", ^{
+            Class cacheClass = [_configuration cacheClass];
+            [[theValue(cacheClass) shouldNot] beNil];
+        });
+    });
+});
+
+SPEC_END

@@ -38,16 +38,22 @@
     
     if (![dictionary objectForKey:kRNFConfigurationEndpointBaseURL])
     {
-        errorMessage = NSLocalizedString(@"No baseURL is configured for the endpoint", @"");
+        errorMessage = [NSString stringWithFormat:@"No %@ is configured for the endpoint", kRNFConfigurationEndpointBaseURL];
     } else if(![dictionary objectForKey:kRNFConfigurationEndpointOperations])
     {
-        errorMessage = NSLocalizedString(@"No operations are configured for the endpoint", @"");
+        errorMessage = [NSString stringWithFormat:@"No %@ are configured for the endpoint", kRNFConfigurationEndpointOperations];
     }
     
     NSArray *operations = self.operations;
     if([operations count] == 0)
     {
-        errorMessage = NSLocalizedString(@"Operations array has 0 elements", @"");
+        errorMessage = @"Operations array has 0 elements";
+    }
+    
+    NSURL *baseURL = self.baseURL;
+    if(!baseURL)
+    {
+        errorMessage = [NSString stringWithFormat:@"The specified %@ is not valid", kRNFConfigurationEndpointBaseURL];
     }
     
     if(errorMessage)
