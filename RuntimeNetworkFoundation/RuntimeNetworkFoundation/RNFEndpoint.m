@@ -17,6 +17,8 @@
 #import "RNFConfigurationNotFound.h"
 #import "RNFPlistConfigurationLoader.h"
 
+#import <objc/runtime.h>
+
 @interface RNFEndpoint ()
 
 //Extension points
@@ -130,14 +132,20 @@
 
 #pragma mark - Runtime machinery
 
-+ (BOOL) resolveInstanceMethod:(SEL)sel
+- (id) forwardingTargetForSelector:(SEL)aSelector
 {
-    //1. Do we have a cached configuration already? If yes, get the name from there
-    //1.1 If not, try to load the configuration
-    //1.1.1 If loading fails, return NO
-    //1.1.2 Cache the configuration
+    NSString *selectorAsString = NSStringFromSelector(aSelector);
     
-    //2. If the configuration doesn't contain the method, return NO
+    if(!self.configuration)
+    {
+        [self loadConfigurationForConfigurator:self.configurator];
+    }
+    
+    NSArray *operations = [self.configuration operations];
+    
+    if(![operations containsObject:selectorAsString])
+        return nil;
+    
     
     //3. Create a IMP block with the following steps:
     
@@ -158,8 +166,8 @@
     
     //4. Add the IMP block as an instance selector to the self class
     
-    //5. Return YES
-    return YES;
+    //5. Return self
+    return self;
 }
 
 @end

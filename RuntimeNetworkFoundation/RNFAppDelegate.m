@@ -8,6 +8,7 @@
 
 #import "RNFAppDelegate.h"
 #import "RNF.h"
+#import "RNFEndpoint+test.h"
 
 @implementation RNFAppDelegate
 
@@ -24,6 +25,12 @@
     [manager addEndpoint:endpoint];
     
     NSLog(@"Endpoint: %@, manager: %@",endpoint,manager);
+    
+    [endpoint getAnswersWithMaxResults:10
+                       completionBlock:^(id response, id<RNFOperation> operation, NSUInteger statusCode) {
+                           NSLog(@"Raw response: %@ with status code: %d",response,statusCode);
+                           NSLog(@"Operation was: %@",operation);
+                       }];
     
     return YES;
 }
