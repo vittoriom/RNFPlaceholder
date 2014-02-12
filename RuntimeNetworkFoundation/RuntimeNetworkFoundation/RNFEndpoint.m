@@ -132,6 +132,11 @@
 
 #pragma mark - Runtime machinery
 
+- (void) forwardInvocation:(NSInvocation *)anInvocation
+{
+    [anInvocation invoke];
+}
+
 - (id) forwardingTargetForSelector:(SEL)aSelector
 {
     NSString *selectorAsString = NSStringFromSelector(aSelector);
@@ -146,7 +151,10 @@
     if(![operations containsObject:selectorAsString])
         return nil;
     
-    
+    class_replaceMethod([self class], aSelector, imp_implementationWithBlock(^{
+        
+        NSLog(@"Ehi ho!");
+    }), "v@:");
     //3. Create a IMP block with the following steps:
     
         //1. Create the RNFOperation with the given configuration
