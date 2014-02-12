@@ -7,9 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "RNFBaseConfiguration.h"
+#import "RNFBaseEndpointConfiguration.h"
 
-@interface RNFDictionaryConfiguration : RNFBaseConfiguration
+@interface RNFDictionaryEndpointConfiguration : RNFBaseEndpointConfiguration
 
 /**
  *  Initializes an instance of RNFConfiguration based on a backing NSDictionary with the given dictionary values

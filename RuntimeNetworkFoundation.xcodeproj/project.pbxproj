@@ -24,16 +24,16 @@
 		5218572D18A8182500D70786 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2CB500C66AF8C6D65BF5FA /* Foundation.framework */; };
 		5218572E18A8182500D70786 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2CB0BD00D6F77F413E2749 /* UIKit.framework */; };
 		5218573418A8182500D70786 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5218573218A8182500D70786 /* InfoPlist.strings */; };
-		5224681518A97F7600124AE5 /* RNFDictionaryConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 5224681418A97F7600124AE5 /* RNFDictionaryConfiguration.m */; };
+		5224681518A97F7600124AE5 /* RNFDictionaryEndpointConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 5224681418A97F7600124AE5 /* RNFDictionaryEndpointConfiguration.m */; };
 		5224681818A97F8B00124AE5 /* RNFBaseOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5224681718A97F8B00124AE5 /* RNFBaseOperation.m */; };
 		5224681D18A97FA900124AE5 /* RNFConfigurationNotFound.m in Sources */ = {isa = PBXBuildFile; fileRef = 5224681A18A97FA900124AE5 /* RNFConfigurationNotFound.m */; };
 		5224681E18A97FA900124AE5 /* RNFPlistConfigurationLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 5224681C18A97FA900124AE5 /* RNFPlistConfigurationLoader.m */; };
 		527FBE5A18A97B5E009959E7 /* sampleConfiguration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 521533EB18A976170082ACC9 /* sampleConfiguration.plist */; };
-		5280FC4F18ABF71900835D48 /* RNFBaseConfigurationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5280FC4E18ABF71900835D48 /* RNFBaseConfigurationTests.m */; };
-		5280FC5118ABF9B100835D48 /* RNFDictionaryConfigurationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5280FC5018ABF9B100835D48 /* RNFDictionaryConfigurationTests.m */; };
+		5280FC4F18ABF71900835D48 /* RNFBaseEndpointConfigurationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5280FC4E18ABF71900835D48 /* RNFBaseEndpointConfigurationTests.m */; };
+		5280FC5118ABF9B100835D48 /* RNFDictionaryEndpointConfigurationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5280FC5018ABF9B100835D48 /* RNFDictionaryEndpointConfigurationTests.m */; };
 		52C8DF2E18A96A6100DBA94D /* RNFEndpointTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C8DF2D18A96A6100DBA94D /* RNFEndpointTests.m */; };
 		52F7A2A518A8191100378EFA /* RNFEndpointManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 52F7A2A418A8191100378EFA /* RNFEndpointManagerTests.m */; };
-		52FE715818AAC4EE00E1C67A /* RNFBaseConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 52FE715718AAC4EE00E1C67A /* RNFBaseConfiguration.m */; };
+		52FE715818AAC4EE00E1C67A /* RNFBaseEndpointConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 52FE715718AAC4EE00E1C67A /* RNFBaseEndpointConfiguration.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,8 +73,8 @@
 		5218573118A8182500D70786 /* RuntimeNetworkFoundationTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RuntimeNetworkFoundationTests-Info.plist"; sourceTree = "<group>"; };
 		5218573318A8182500D70786 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5218573718A8182500D70786 /* RuntimeNetworkFoundationTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RuntimeNetworkFoundationTests-Prefix.pch"; sourceTree = "<group>"; };
-		5224681318A97F7600124AE5 /* RNFDictionaryConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNFDictionaryConfiguration.h; path = RuntimeNetworkFoundation/Configurations/RNFDictionaryConfiguration.h; sourceTree = "<group>"; };
-		5224681418A97F7600124AE5 /* RNFDictionaryConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RNFDictionaryConfiguration.m; path = RuntimeNetworkFoundation/Configurations/RNFDictionaryConfiguration.m; sourceTree = "<group>"; };
+		5224681318A97F7600124AE5 /* RNFDictionaryEndpointConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNFDictionaryEndpointConfiguration.h; path = RuntimeNetworkFoundation/Configurations/RNFDictionaryEndpointConfiguration.h; sourceTree = "<group>"; };
+		5224681418A97F7600124AE5 /* RNFDictionaryEndpointConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RNFDictionaryEndpointConfiguration.m; path = RuntimeNetworkFoundation/Configurations/RNFDictionaryEndpointConfiguration.m; sourceTree = "<group>"; };
 		5224681618A97F8B00124AE5 /* RNFBaseOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNFBaseOperation.h; path = RuntimeNetworkFoundation/Operations/RNFBaseOperation.h; sourceTree = "<group>"; };
 		5224681718A97F8B00124AE5 /* RNFBaseOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RNFBaseOperation.m; path = RuntimeNetworkFoundation/Operations/RNFBaseOperation.m; sourceTree = "<group>"; };
 		5224681918A97FA900124AE5 /* RNFConfigurationNotFound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNFConfigurationNotFound.h; path = RuntimeNetworkFoundation/ConfigurationLoaders/RNFConfigurationNotFound.h; sourceTree = "<group>"; };
@@ -93,13 +93,13 @@
 		5224682818A97FC700124AE5 /* RNFRequestAuthentication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNFRequestAuthentication.h; path = RuntimeNetworkFoundation/Protocols/RNFRequestAuthentication.h; sourceTree = "<group>"; };
 		5224682918A97FC700124AE5 /* RNFResponseDeserializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNFResponseDeserializer.h; path = RuntimeNetworkFoundation/Protocols/RNFResponseDeserializer.h; sourceTree = "<group>"; };
 		5224682A18A97FC700124AE5 /* RNFSerializable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNFSerializable.h; path = RuntimeNetworkFoundation/Protocols/RNFSerializable.h; sourceTree = "<group>"; };
-		5280FC4E18ABF71900835D48 /* RNFBaseConfigurationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNFBaseConfigurationTests.m; sourceTree = "<group>"; };
-		5280FC5018ABF9B100835D48 /* RNFDictionaryConfigurationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNFDictionaryConfigurationTests.m; sourceTree = "<group>"; };
+		5280FC4E18ABF71900835D48 /* RNFBaseEndpointConfigurationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNFBaseEndpointConfigurationTests.m; sourceTree = "<group>"; };
+		5280FC5018ABF9B100835D48 /* RNFDictionaryEndpointConfigurationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNFDictionaryEndpointConfigurationTests.m; sourceTree = "<group>"; };
 		52815F1518AAA51000A629C4 /* RNFValueTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNFValueTransformer.h; path = RuntimeNetworkFoundation/Protocols/RNFValueTransformer.h; sourceTree = "<group>"; };
 		52C8DF2D18A96A6100DBA94D /* RNFEndpointTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNFEndpointTests.m; sourceTree = "<group>"; };
 		52F7A2A418A8191100378EFA /* RNFEndpointManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNFEndpointManagerTests.m; sourceTree = "<group>"; };
-		52FE715618AAC4EE00E1C67A /* RNFBaseConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNFBaseConfiguration.h; path = RuntimeNetworkFoundation/Configurations/RNFBaseConfiguration.h; sourceTree = "<group>"; };
-		52FE715718AAC4EE00E1C67A /* RNFBaseConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RNFBaseConfiguration.m; path = RuntimeNetworkFoundation/Configurations/RNFBaseConfiguration.m; sourceTree = "<group>"; };
+		52FE715618AAC4EE00E1C67A /* RNFBaseEndpointConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNFBaseEndpointConfiguration.h; path = RuntimeNetworkFoundation/Configurations/RNFBaseEndpointConfiguration.h; sourceTree = "<group>"; };
+		52FE715718AAC4EE00E1C67A /* RNFBaseEndpointConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RNFBaseEndpointConfiguration.m; path = RuntimeNetworkFoundation/Configurations/RNFBaseEndpointConfiguration.m; sourceTree = "<group>"; };
 		5D12B31D577645C0BB2AB9D7 /* libPods-RuntimeNetworkFoundationTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RuntimeNetworkFoundationTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4BD02A68E494F6CADDF1672 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -210,8 +210,8 @@
 				52F7A2A418A8191100378EFA /* RNFEndpointManagerTests.m */,
 				52C8DF2D18A96A6100DBA94D /* RNFEndpointTests.m */,
 				521533EB18A976170082ACC9 /* sampleConfiguration.plist */,
-				5280FC4E18ABF71900835D48 /* RNFBaseConfigurationTests.m */,
-				5280FC5018ABF9B100835D48 /* RNFDictionaryConfigurationTests.m */,
+				5280FC4E18ABF71900835D48 /* RNFBaseEndpointConfigurationTests.m */,
+				5280FC5018ABF9B100835D48 /* RNFDictionaryEndpointConfigurationTests.m */,
 			);
 			path = RuntimeNetworkFoundationTests;
 			sourceTree = "<group>";
@@ -249,12 +249,12 @@
 		5224681218A97F4900124AE5 /* Configurations */ = {
 			isa = PBXGroup;
 			children = (
-				5224681318A97F7600124AE5 /* RNFDictionaryConfiguration.h */,
-				5224681418A97F7600124AE5 /* RNFDictionaryConfiguration.m */,
+				5224681318A97F7600124AE5 /* RNFDictionaryEndpointConfiguration.h */,
+				5224681418A97F7600124AE5 /* RNFDictionaryEndpointConfiguration.m */,
 				520A273B18AAC198000CF13B /* RNFMalformedConfiguration.h */,
 				520A273C18AAC198000CF13B /* RNFMalformedConfiguration.m */,
-				52FE715618AAC4EE00E1C67A /* RNFBaseConfiguration.h */,
-				52FE715718AAC4EE00E1C67A /* RNFBaseConfiguration.m */,
+				52FE715618AAC4EE00E1C67A /* RNFBaseEndpointConfiguration.h */,
+				52FE715718AAC4EE00E1C67A /* RNFBaseEndpointConfiguration.m */,
 			);
 			name = Configurations;
 			sourceTree = "<group>";
@@ -446,9 +446,9 @@
 				3B2CB77292CEBF074041F767 /* main.m in Sources */,
 				5224681E18A97FA900124AE5 /* RNFPlistConfigurationLoader.m in Sources */,
 				520A273D18AAC198000CF13B /* RNFMalformedConfiguration.m in Sources */,
-				52FE715818AAC4EE00E1C67A /* RNFBaseConfiguration.m in Sources */,
+				52FE715818AAC4EE00E1C67A /* RNFBaseEndpointConfiguration.m in Sources */,
 				3B2CB38A6D148F8F07939136 /* RNFAppDelegate.m in Sources */,
-				5224681518A97F7600124AE5 /* RNFDictionaryConfiguration.m in Sources */,
+				5224681518A97F7600124AE5 /* RNFDictionaryEndpointConfiguration.m in Sources */,
 				5224681D18A97FA900124AE5 /* RNFConfigurationNotFound.m in Sources */,
 				5224681818A97F8B00124AE5 /* RNFBaseOperation.m in Sources */,
 				5218571F18A7FC0E00D70786 /* RNFEndpointManager.m in Sources */,
@@ -461,9 +461,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				52F7A2A518A8191100378EFA /* RNFEndpointManagerTests.m in Sources */,
-				5280FC5118ABF9B100835D48 /* RNFDictionaryConfigurationTests.m in Sources */,
+				5280FC5118ABF9B100835D48 /* RNFDictionaryEndpointConfigurationTests.m in Sources */,
 				52C8DF2E18A96A6100DBA94D /* RNFEndpointTests.m in Sources */,
-				5280FC4F18ABF71900835D48 /* RNFBaseConfigurationTests.m in Sources */,
+				5280FC4F18ABF71900835D48 /* RNFBaseEndpointConfigurationTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

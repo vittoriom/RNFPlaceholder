@@ -1,26 +1,26 @@
-#import "RNFDictionaryConfiguration.h"
+#import "RNFDictionaryEndpointConfiguration.h"
 
-SPEC_BEGIN(RNFDictionaryConfigurationTests)
+SPEC_BEGIN(RNFDictionaryEndpointConfigurationTests)
 
 describe(@"Dictionary configuration", ^{
     context(@"when initialized with an improper configuration", ^{
         it(@"should raise if baseURL is missing", ^{
             [[theBlock(^{
-                id dummy = [[RNFDictionaryConfiguration alloc] initWithDictionary:@{kRNFConfigurationEndpointOperations : @[ @1 ]}];
+                id dummy = [[RNFDictionaryEndpointConfiguration alloc] initWithDictionary:@{kRNFConfigurationEndpointOperations : @[ @1 ]}];
                 [dummy description];
             }) should] raise];
         });
         
         it(@"should raise if operations are missing", ^{
             [[theBlock(^{
-                id dummy = [[RNFDictionaryConfiguration alloc] initWithDictionary:@{kRNFConfigurationEndpointBaseURL : @"http://google.it"}];
+                id dummy = [[RNFDictionaryEndpointConfiguration alloc] initWithDictionary:@{kRNFConfigurationEndpointBaseURL : @"http://google.it"}];
                 [dummy description];
             }) should] raise];
         });
         
         it(@"should raise if operations array is empty", ^{
             [[theBlock(^{
-                id dummy = [[RNFDictionaryConfiguration alloc] initWithDictionary:@{
+                id dummy = [[RNFDictionaryEndpointConfiguration alloc] initWithDictionary:@{
                                                                                     kRNFConfigurationEndpointBaseURL : @"http://google.it",
                                                                                     kRNFConfigurationEndpointOperations : @[ ]}];
                 [dummy description];

@@ -6,11 +6,11 @@
 //  Copyright (c) 2014 Vittorio Monaco. All rights reserved.
 //
 
-#import "RNFBaseConfiguration.h"
+#import "RNFBaseEndpointConfiguration.h"
 #import "RNFMalformedConfiguration.h"
 #import "RNFBaseOperation.h"
 
-@implementation RNFBaseConfiguration
+@implementation RNFBaseEndpointConfiguration
 
 - (NSURL *) baseURL
 {

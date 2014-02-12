@@ -8,6 +8,14 @@
 
 #import "RNFBaseOperation.h"
 
+typedef enum {
+    RNFOperationStateFinished,
+    RNFOperationStateFailed,
+    RNFOperationStateCanceled,
+    RNFOperationStateIdle,
+    RNFOperationStateExecuting
+} RNFOperationState;
+
 @interface RNFBaseOperation ()
 
 @property (nonatomic, strong, readwrite) NSString *name;
@@ -19,6 +27,8 @@
 @property (nonatomic, copy) RNFCompletionBlockGeneric completionBlock;
 @property (nonatomic, copy) RNFErrorBlock errorBlock;
 
+@property (nonatomic, assign) RNFOperationState operationState;
+
 @end
 
 @implementation RNFBaseOperation
@@ -27,7 +37,11 @@
 
 - (instancetype) initWithURL:(NSURL *)url method:(NSString *)method
 {
-    return [self init];
+    self = [self init];
+    
+    _operationState = RNFOperationStateIdle;
+    
+    return self;
 }
 
 #pragma mark - Properties
@@ -51,34 +65,45 @@
 
 - (void) start
 {
-    
+    if([self isCancelled])
+        return;
+   
+    //Start connection
 }
 
 - (BOOL) isConcurrent
 {
-    return NO;
+    return YES;
 }
 
 - (void) cancel
 {
+    if([self isFinished])
+        return;
     
+    self.operationState = RNFOperationStateCanceled;
+}
+
+- (BOOL) isReady
+{
+    return [super isReady] && self.operationState == RNFOperationStateIdle;
 }
 
 - (BOOL) isExecuting
 {
-    return NO;
+    return self.operationState == RNFOperationStateExecuting;
 }
 
 - (BOOL) isFinished
 {
-    return NO;
+    return self.operationState == RNFOperationStateFinished || self.operationState == RNFOperationStateFailed;
 }
 
 #pragma mark - RNFOperation
 
 - (void) startWithCompletionBlock:(RNFCompletionBlockGeneric)completion errorBlock:(RNFErrorBlock)error
 {
-    
+    [self start];
 }
 
 @end

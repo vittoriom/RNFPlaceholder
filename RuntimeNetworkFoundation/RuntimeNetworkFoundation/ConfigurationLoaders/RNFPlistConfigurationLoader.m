@@ -9,7 +9,7 @@
 #import "RNFPlistConfigurationLoader.h"
 #import "RNFConfiguration.h"
 #import "RNFConfigurationNotFound.h"
-#import "RNFDictionaryConfiguration.h"
+#import "RNFDictionaryEndpointConfiguration.h"
 
 @interface RNFPlistConfigurationLoader ()
 
@@ -32,7 +32,7 @@
     //Read the plist
     NSDictionary *plistContents = [[NSDictionary alloc] initWithContentsOfFile:filePath];
     
-    _configuration = [[RNFDictionaryConfiguration alloc] initWithDictionary:plistContents];
+    _configuration = [[RNFDictionaryEndpointConfiguration alloc] initWithDictionary:plistContents];
     
     return self;
 }

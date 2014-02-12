@@ -1,12 +1,12 @@
-#import "RNFBaseConfiguration.h"
+#import "RNFBaseEndpointConfiguration.h"
 
-SPEC_BEGIN(RNFBaseConfigurationTests)
+SPEC_BEGIN(RNFBaseEndpointConfigurationTests)
 
 describe(@"Base configuration",^{
-    __block RNFBaseConfiguration *_configuration;
+    __block RNFBaseEndpointConfiguration *_configuration;
     
     beforeAll(^{
-        _configuration = [RNFBaseConfiguration new];
+        _configuration = [RNFBaseEndpointConfiguration new];
     });
     
     it(@"should raise if asked for base URL",^{
