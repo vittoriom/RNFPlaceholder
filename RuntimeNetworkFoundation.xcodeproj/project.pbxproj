@@ -65,6 +65,7 @@
 		44F2752C9E6942ADA0B0267B /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		4D2AEE38A65E445A906C7D6B /* Pods-RuntimeNetworkFoundationTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RuntimeNetworkFoundationTests.xcconfig"; path = "Pods/Pods-RuntimeNetworkFoundationTests.xcconfig"; sourceTree = "<group>"; };
 		52080C6D18AC10D900EA9C32 /* sampleMisonfiguration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = sampleMisonfiguration.plist; sourceTree = "<group>"; };
+		52080C7018AC129400EA9C32 /* RNFTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNFTypes.h; path = RuntimeNetworkFoundation/RNFTypes.h; sourceTree = "<group>"; };
 		520A273B18AAC198000CF13B /* RNFMalformedConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNFMalformedConfiguration.h; path = RuntimeNetworkFoundation/Configurations/RNFMalformedConfiguration.h; sourceTree = "<group>"; };
 		520A273C18AAC198000CF13B /* RNFMalformedConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RNFMalformedConfiguration.m; path = RuntimeNetworkFoundation/Configurations/RNFMalformedConfiguration.m; sourceTree = "<group>"; };
 		521533EB18A976170082ACC9 /* sampleConfiguration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = sampleConfiguration.plist; sourceTree = "<group>"; };
@@ -204,6 +205,7 @@
 				5218571E18A7FC0E00D70786 /* RNFEndpointManager.m */,
 				5218572018A7FCD900D70786 /* RNFEndpoint.h */,
 				5218572118A7FCD900D70786 /* RNFEndpoint.m */,
+				52080C7018AC129400EA9C32 /* RNFTypes.h */,
 			);
 			name = RNF;
 			sourceTree = "<group>";

@@ -4,7 +4,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "RNF.h"
+#import "RNFTypes.h"
 
 @class RNFEndpoint;
 
