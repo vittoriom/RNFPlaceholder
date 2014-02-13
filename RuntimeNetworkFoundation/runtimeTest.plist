@@ -8,7 +8,7 @@
 			<key>runtimeMethod</key>
 			<string>getAnswersWithMaxResults:completionBlock:</string>
 			<key>URL</key>
-			<string>questions?pagesize=10&amp;order=desc&amp;sort=activity&amp;site=stackoverflow</string>
+			<string>questions?pagesize={0}&amp;order=desc&amp;sort=activity&amp;site=stackoverflow</string>
 		</dict>
 	</array>
 	<key>baseURL</key>

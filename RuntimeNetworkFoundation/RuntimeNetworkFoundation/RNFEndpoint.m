@@ -172,7 +172,28 @@
     
     class_replaceMethod([self class], aSelector, imp_implementationWithBlock(^(RNFEndpoint *endpointSelf, ...){
         //1. Create the RNFOperation with the given configuration
-		NSURL *operationURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",[self baseURL].absoluteString,operationConfiguration[@"URL"]]];
+		va_list args;
+        va_start(args, endpointSelf);
+        
+		NSMutableArray *argsArray = [NSMutableArray new];
+		
+        id arg;
+		RNFCompletionBlock completion;
+		for(int i=0; i<argsCount; i++)
+		{
+            arg = va_arg(args, id);
+			[argsArray addObject:arg];
+            
+            if ([arg isKindOfClass:NSClassFromString(@"NSBlock")]) {
+                NSLog(@"FOUND BLOCK");
+				completion = arg;
+            }
+        }
+		
+        va_end(args);
+		NSString *queryString = operationConfiguration[@"URL"];
+		queryString = [queryString stringByReplacingOccurrencesOfString:@"{0}" withString:[NSString stringWithFormat:@"%@",argsArray[0]]];
+		NSURL *operationURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",[self baseURL].absoluteString,queryString]];
 		
 		NSLog(@"URL to call: %@",operationURL);
 		
@@ -182,23 +203,7 @@
         //3. Serialize the parameters based on the configuration
         //4. Enqueue the RNFOperation in the RNFOperationQueue
         //5.0 Search the completion block
-        va_list args;
-        va_start(args, endpointSelf);
         
-        id arg;
-		RNFCompletionBlock completion;
-		for(int i=0; i<argsCount; i++)
-		{
-            arg = va_arg(args, id);
-            NSLog(@"arg: %@",arg);
-            
-            if ([arg isKindOfClass:NSClassFromString(@"NSBlock")]) {
-                NSLog(@"FOUND BLOCK");
-				completion = arg;
-            }
-        }
-		
-        va_end(args);
         
         //5. Setup the completion block.
 		[operation startWithCompletionBlock:^(id response, id<RNFOperation> operation, NSUInteger statusCode, BOOL cached) {

@@ -24,7 +24,7 @@
     
     [manager addEndpoint:endpoint];
     
-    [endpoint getAnswersWithMaxResults:@10
+    [endpoint getAnswersWithMaxResults:@2
                        completionBlock:^(id response, id<RNFOperation> operation, NSUInteger statusCode) {
                            NSLog(@"JSON Response: %@",[NSJSONSerialization JSONObjectWithData:response
 																					  options:NSJSONReadingAllowFragments
