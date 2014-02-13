@@ -31,6 +31,11 @@
     return nil;
 }
 
+- (NSNumber *) portNumber
+{
+    return nil;
+}
+
 - (NSDictionary *) headers
 {
     return nil;

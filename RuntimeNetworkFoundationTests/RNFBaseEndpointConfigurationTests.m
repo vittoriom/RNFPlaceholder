@@ -60,6 +60,10 @@ describe(@"Base configuration",^{
             Class cacheClass = [_configuration cacheClass];
             [[theValue(cacheClass) shouldNot] beNil];
         });
+        
+        it(@"should return a port number", ^{
+            [[[_configuration portNumber] should] beNil];
+        });
     });
 });
 

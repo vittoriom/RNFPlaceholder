@@ -125,6 +125,11 @@
     }
 }
 
+- (NSNumber *) portNumber
+{
+    return [self.internalDictionary objectForKey:kRNFConfigurationEndpointPortNumber] ?: [super portNumber];
+}
+
 - (Class<RNFOperation>) operationClass
 {
     return [self classFromKey:kRNFConfigurationEndpointOperationClass] ?: [super operationClass];

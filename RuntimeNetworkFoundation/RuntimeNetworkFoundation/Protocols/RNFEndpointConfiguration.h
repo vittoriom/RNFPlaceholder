@@ -24,6 +24,7 @@ static const NSString * kRNFConfigurationEndpointOperationQueueClass = @"operati
 static const NSString * kRNFConfigurationEndpointShouldCacheResults = @"cacheResults";
 static const NSString * kRNFConfigurationEndpointCacheClass = @"cacheClass";
 static const NSString * kRNFConfigurationEndpointLoggerClass = @"loggerClass";
+static const NSString * kRNFConfigurationEndpointPortNumber = @"port";
 
 @protocol RNFEndpointConfiguration <NSObject>
 
@@ -46,6 +47,15 @@ static const NSString * kRNFConfigurationEndpointLoggerClass = @"loggerClass";
 - (NSArray *) operations;
 
 @optional
+
+/**
+ *  The port number to reach the endpoint
+ *
+ *  @discussion this parameter is optional, so it may return nil or a default number
+ *
+ *  @return the port number to reach the endpoint, or nil if not configured
+ */
+- (NSNumber *) portNumber;
 
 /**
  *  This parameter is optional, so the method may return nil
