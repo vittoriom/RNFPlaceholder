@@ -24,13 +24,15 @@
     
     [manager addEndpoint:endpoint];
     
-    [endpoint getAnswersWithMaxResults:@2
-                       completionBlock:^(id response, id<RNFOperation> operation, NSUInteger statusCode) {
+    id<RNFOperation> createdOperation = [endpoint getAnswersWithMaxResults:@2
+                       completionBlock:^(id response, id<RNFOperation> operation, NSUInteger statusCode, BOOL cached) {
                            NSLog(@"JSON Response: %@",[NSJSONSerialization JSONObjectWithData:response
 																					  options:NSJSONReadingAllowFragments
 																						error:nil]);
                            NSLog(@"Operation was: %@",operation);
                        }];
+    
+    NSLog(@"Operation is: %@",createdOperation);
     
     return YES;
 }

@@ -171,7 +171,7 @@
 	NSDictionary *operationConfiguration = [operations objectAtIndex:i];
 	NSUInteger argsCount = [[selectorAsString componentsSeparatedByString:@":"] count] - 1;
     
-    class_replaceMethod([self class], aSelector, imp_implementationWithBlock(^(RNFEndpoint *endpointSelf, ...){
+    class_replaceMethod([self class], aSelector, imp_implementationWithBlock(^id<RNFOperation>(RNFEndpoint *endpointSelf, ...){
     	va_list args;
         va_start(args, endpointSelf);
         
@@ -214,6 +214,8 @@
         //5.3 If the RNFOperation has a dataDeserializer, deserialize the response
         //5.4 Call the given completion block
         //5.5 Eventually cache the response with the cacheHandler
+        
+        return operation;
     }), [self methodSignatureForMethodWithArguments:argsCount]);
     
     return self;
