@@ -11,6 +11,15 @@
 #import "RNFDataSerializer.h"
 #import "RNFDataDeserializer.h"
 
+static const NSString * kRNFConfigurationOperationURL = @"URL";
+static const NSString * kRNFConfigurationOperationRuntimeMethodName = @"runtimeMethod";
+static const NSString * kRNFConfigurationOperationHTTPMethod = @"HTTPMethod";
+static const NSString * kRNFConfigurationOperationHTTPBody = @"body";
+static const NSString * kRNFConfigurationOperationResponseDeserializer = @"responseDeserializer";
+static const NSString * kRNFConfigurationOperationDataDeserializer = @"dataDeserializer";
+static const NSString * kRNFConfigurationOperationDataSerializer = @"dataSerializer";
+static const NSString * kRNFConfigurationOperationAuthenticationHandler = @"authenticationHandler";
+
 @protocol RNFOperationConfiguration <NSObject>
 
 - (NSString *) runtimeMethodName;

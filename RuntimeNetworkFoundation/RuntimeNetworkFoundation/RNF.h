@@ -23,6 +23,7 @@
 #import "RNFEndpointManager.h"
 #import "RNFValueTransformer.h"
 #import "RNFOperationSerializer.h"
+#import "RNFOperationConfiguration.h"
 #import "NSMethodSignature+OperateOnSelectors.h"
 #import "RNFTypes.h"
 
