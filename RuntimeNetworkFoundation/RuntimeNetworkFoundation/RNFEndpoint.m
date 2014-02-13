@@ -178,7 +178,7 @@
 		NSMutableArray *argsArray = [NSMutableArray new];
 		
         id arg;
-		RNFCompletionBlock completion;
+		RNFCompletionBlockComplete completion;
 		for(int i=0; i<argsCount; i++)
 		{
             arg = va_arg(args, id);

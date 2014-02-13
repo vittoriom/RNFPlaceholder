@@ -11,7 +11,11 @@
 
 @protocol RNFOperation;
 
-typedef void(^RNFCompletionBlock)(id response, id<RNFOperation> operation, NSUInteger statusCode, BOOL cached);
+typedef void(^RNFCompletionBlock)(id response, id<RNFOperation> operation, NSUInteger statusCode);
+
+typedef void(^RNFCompletionBlockBasic)(id response);
+
+typedef void(^RNFCompletionBlockComplete)(id response, id<RNFOperation> operation, NSUInteger statusCode, BOOL cached);
 
 typedef void(^RNFErrorBlock)(id response, NSError *error, NSUInteger statusCode);
 

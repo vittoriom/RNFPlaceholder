@@ -30,11 +30,13 @@
 																					  options:NSJSONReadingAllowFragments
 																						error:nil]);
                            NSLog(@"Operation was: %@",operation);
+                           NSLog(@"Cached: %d",cached);
+                           NSLog(@"Status code: %d",statusCode);
                        }];
     
     NSLog(@"Operation is: %@",createdOperation);
     
-    [endpoint getAnswersWithCompletionBlock:^(id response, id<RNFOperation> operation, NSUInteger statusCode, BOOL cached) {
+    [endpoint getAnswersWithCompletionBlock:^(id response) {
         NSLog(@"Test: %@",response);
     }];
     

@@ -103,7 +103,7 @@ typedef enum {
 
 #pragma mark - RNFOperation
 
-- (void) startWithCompletionBlock:(RNFCompletionBlock)completion errorBlock:(RNFErrorBlock)error
+- (void) startWithCompletionBlock:(RNFCompletionBlockComplete)completion errorBlock:(RNFErrorBlock)error
 {
 	NSURLRequest *request = [NSURLRequest requestWithURL:self.url];
 	[NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue new] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {

@@ -11,8 +11,8 @@
 
 @interface RNFEndpoint (test)
 
-- (id<RNFOperation>) getAnswersWithMaxResults:(NSNumber *)maxResults completionBlock:(RNFCompletionBlock)completion;
+- (id<RNFOperation>) getAnswersWithMaxResults:(NSNumber *)maxResults completionBlock:(RNFCompletionBlockComplete)completion;
 
-- (void) getAnswersWithCompletionBlock:(RNFCompletionBlock)completion;
+- (void) getAnswersWithCompletionBlock:(RNFCompletionBlockBasic)completion;
 
 @end
