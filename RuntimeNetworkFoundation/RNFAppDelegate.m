@@ -34,6 +34,10 @@
     
     NSLog(@"Operation is: %@",createdOperation);
     
+    [endpoint getAnswersWithCompletionBlock:^(id response, id<RNFOperation> operation, NSUInteger statusCode, BOOL cached) {
+        NSLog(@"Test: %@",response);
+    }];
+    
     return YES;
 }
 

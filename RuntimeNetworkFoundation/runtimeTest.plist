@@ -6,6 +6,12 @@
 	<array>
 		<dict>
 			<key>runtimeMethod</key>
+			<string>getAnswersWithCompletionBlock:</string>
+			<key>URL</key>
+			<string>questions?pagesize=5&amp;order=desc&amp;sort=activity&amp;site=stackoverflow</string>
+		</dict>
+		<dict>
+			<key>runtimeMethod</key>
 			<string>getAnswersWithMaxResults:completionBlock:</string>
 			<key>URL</key>
 			<string>questions?pagesize=2&amp;order=desc&amp;sort=activity&amp;site=stackoverflow</string>

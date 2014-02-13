@@ -13,4 +13,6 @@
 
 - (id<RNFOperation>) getAnswersWithMaxResults:(NSNumber *)maxResults completionBlock:(RNFCompletionBlock)completion;
 
+- (void) getAnswersWithCompletionBlock:(RNFCompletionBlock)completion;
+
 @end
