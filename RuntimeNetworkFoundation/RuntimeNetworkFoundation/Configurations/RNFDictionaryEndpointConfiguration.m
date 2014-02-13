@@ -11,7 +11,7 @@
 
 @interface RNFDictionaryEndpointConfiguration ()
 
-@property (nonatomic, strong) NSDictionary *internalDictionary;
+@property (nonatomic, strong) NSMutableDictionary *internalDictionary;
 @property (nonatomic, strong) id<RNFResponseDeserializer> cachedDeserializer;
 @property (nonatomic, strong) id<RNFLogger> cachedLogger;
 
@@ -25,7 +25,7 @@
 {
     self = [self init];
     
-    _internalDictionary = dictionary;
+    _internalDictionary = [dictionary mutableCopy];
     
     [self performSanityCheckOnDictionary:dictionary];
     

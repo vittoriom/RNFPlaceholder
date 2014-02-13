@@ -12,6 +12,6 @@
 @interface RNFEndpoint (test)
 
 //http://api.stackexchange.com/2.2/answers?pagesize=10&order=desc&sort=votes&site=stackoverflow
-- (void) getAnswersWithMaxResults:(NSInteger)maxResults completionBlock:(RNFCompletionBlock)completion;
+- (void) getAnswersWithMaxResults:(NSNumber *)maxResults completionBlock:(RNFCompletionBlock)completion;
 
 @end

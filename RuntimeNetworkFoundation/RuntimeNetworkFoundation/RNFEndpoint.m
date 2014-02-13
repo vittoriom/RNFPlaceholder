@@ -7,15 +7,9 @@
 //
 
 #import "RNFEndpoint.h"
-#import "RNFOperationQueue.h"
-#import "RNFResponseDeserializer.h"
-#import "RNFOperation.h"
-#import "RNFCacheHandler.h"
-#import "RNFConfigurationLoader.h"
-#import "RNFLogger.h"
-#import "RNFEndpointConfiguration.h"
-#import "RNFConfigurationNotFound.h"
+#import "RNF.h"
 #import "RNFPlistConfigurationLoader.h"
+#import "RNFBaseOperation.h"
 
 #import <objc/runtime.h>
 
@@ -132,6 +126,18 @@
 
 #pragma mark - Runtime machinery
 
+- (const char *) methodSignatureForMethodWithArguments:(NSUInteger)argsCount
+{
+	NSMutableString *buildingSignature = [[NSMutableString alloc] initWithString:@"v@:"];
+	
+	for (int i=0; i<argsCount; i++)
+	{
+		[buildingSignature appendString:@"@"];
+	}
+		
+	return [buildingSignature UTF8String];
+}
+
 - (void) forwardInvocation:(NSInvocation *)anInvocation
 {
     [anInvocation invoke];
@@ -148,33 +154,58 @@
     
     NSArray *operations = [self.configuration operations];
     
-    if(![operations containsObject:selectorAsString])
-        return nil;
+	int i=0;
+	for (NSDictionary *operation in operations) {
+		if ([[operation objectForKey:@"runtimeMethod"] isEqualToString:selectorAsString]) {
+			break;
+		} else
+			i++;
+	}
+
+	NSDictionary *operationConfiguration = [operations objectAtIndex:i];
+	NSUInteger argsCount = [[selectorAsString componentsSeparatedByString:@":"] count] - 1;
     
-    class_replaceMethod([self class], aSelector, imp_implementationWithBlock(^{
-        
-        NSLog(@"Ehi ho!");
-    }), "v@:");
-    //3. Create a IMP block with the following steps:
-    
+    class_replaceMethod([self class], aSelector, imp_implementationWithBlock(^(RNFEndpoint *endpointSelf, ...){
         //1. Create the RNFOperation with the given configuration
-    
+		NSURL *operationURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",[self baseURL].absoluteString,operationConfiguration[@"URL"]]];
+		
+		NSLog(@"URL to call: %@",operationURL);
+		
+        RNFBaseOperation *operation = [[RNFBaseOperation alloc] initWithURL:operationURL method:@"GET"];
+		
         //2. If the cacheHandler has a cached response already, start calling the given completion block
-    
         //3. Serialize the parameters based on the configuration
-    
         //4. Enqueue the RNFOperation in the RNFOperationQueue
-    
+        //5.0 Search the completion block
+        va_list args;
+        va_start(args, endpointSelf);
+        
+        id arg;
+		for(int i=0; i<argsCount; i++)
+		{
+            arg = va_arg(args, id);
+            NSLog(@"arg: %@",arg);
+            
+            if ([arg isKindOfClass:NSClassFromString(@"NSBlock")]) {
+                NSLog(@"FOUND BLOCK");
+            }
+        }
+		
+        va_end(args);
+        
         //5. Setup the completion block.
+		[operation startWithCompletionBlock:^(id response, ...) {
+			NSLog(@"Operation completed! Response: %@", response);
+		} errorBlock:^(id response, NSError *error, NSUInteger statusCode) {
+			NSLog(@"Something went wrong: %@",error);
+		}];
         //5.1 If error is not nil, call the given completion block
         //5.2 If error is nil, deserialize the response with the responseDeserializer
         //5.3 If the RNFOperation has a dataDeserializer, deserialize the response
         //5.4 Call the given completion block
         //5.5 Eventually cache the response with the cacheHandler
+    }), [self methodSignatureForMethodWithArguments:argsCount]);
     
-    //4. Add the IMP block as an instance selector to the self class
-    
-    //5. Return self
     return self;
 }
 

@@ -1,2 +1,5 @@
 Pods
 RuntimeNetworkFoundation.xcworkspace
+.idea
+RuntimeNetworkFoundation.xcscheme
+xcschememanagement.plist

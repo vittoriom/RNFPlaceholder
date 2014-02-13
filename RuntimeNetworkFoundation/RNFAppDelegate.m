@@ -26,7 +26,7 @@
     
     NSLog(@"Endpoint: %@, manager: %@",endpoint,manager);
     
-    [endpoint getAnswersWithMaxResults:10
+    [endpoint getAnswersWithMaxResults:@10
                        completionBlock:^(id response, id<RNFOperation> operation, NSUInteger statusCode) {
                            NSLog(@"Raw response: %@ with status code: %d",response,statusCode);
                            NSLog(@"Operation was: %@",operation);

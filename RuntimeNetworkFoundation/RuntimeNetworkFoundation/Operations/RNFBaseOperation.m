@@ -103,7 +103,7 @@ typedef enum {
 
 - (void) startWithCompletionBlock:(RNFCompletionBlockGeneric)completion errorBlock:(RNFErrorBlock)error
 {
-    [self start];
+	completion(nil, self, 0);
 }
 
 @end
