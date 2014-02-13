@@ -36,6 +36,7 @@
 		5280FC5118ABF9B100835D48 /* RNFDictionaryEndpointConfigurationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5280FC5018ABF9B100835D48 /* RNFDictionaryEndpointConfigurationTests.m */; };
 		52C8DF2E18A96A6100DBA94D /* RNFEndpointTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C8DF2D18A96A6100DBA94D /* RNFEndpointTests.m */; };
 		52F7A2A518A8191100378EFA /* RNFEndpointManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 52F7A2A418A8191100378EFA /* RNFEndpointManagerTests.m */; };
+		52F8477218AD65900093A433 /* NSMethodSignature+OperateOnSelectors.m in Sources */ = {isa = PBXBuildFile; fileRef = 52F8477118AD65900093A433 /* NSMethodSignature+OperateOnSelectors.m */; };
 		52FE715818AAC4EE00E1C67A /* RNFBaseEndpointConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 52FE715718AAC4EE00E1C67A /* RNFBaseEndpointConfiguration.m */; };
 		A4E3839118ACF82600AACB04 /* runtimeTest.plist in Resources */ = {isa = PBXBuildFile; fileRef = A4E3839018ACF82600AACB04 /* runtimeTest.plist */; };
 /* End PBXBuildFile section */
@@ -106,6 +107,8 @@
 		52815F1518AAA51000A629C4 /* RNFValueTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNFValueTransformer.h; path = RuntimeNetworkFoundation/Protocols/RNFValueTransformer.h; sourceTree = "<group>"; };
 		52C8DF2D18A96A6100DBA94D /* RNFEndpointTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNFEndpointTests.m; sourceTree = "<group>"; };
 		52F7A2A418A8191100378EFA /* RNFEndpointManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNFEndpointManagerTests.m; sourceTree = "<group>"; };
+		52F8477018AD65900093A433 /* NSMethodSignature+OperateOnSelectors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSMethodSignature+OperateOnSelectors.h"; path = "RuntimeNetworkFoundation/Categories/NSMethodSignature+OperateOnSelectors.h"; sourceTree = "<group>"; };
+		52F8477118AD65900093A433 /* NSMethodSignature+OperateOnSelectors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSMethodSignature+OperateOnSelectors.m"; path = "RuntimeNetworkFoundation/Categories/NSMethodSignature+OperateOnSelectors.m"; sourceTree = "<group>"; };
 		52FE715618AAC4EE00E1C67A /* RNFBaseEndpointConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNFBaseEndpointConfiguration.h; path = RuntimeNetworkFoundation/Configurations/RNFBaseEndpointConfiguration.h; sourceTree = "<group>"; };
 		52FE715718AAC4EE00E1C67A /* RNFBaseEndpointConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RNFBaseEndpointConfiguration.m; path = RuntimeNetworkFoundation/Configurations/RNFBaseEndpointConfiguration.m; sourceTree = "<group>"; };
 		5D12B31D577645C0BB2AB9D7 /* libPods-RuntimeNetworkFoundationTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RuntimeNetworkFoundationTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -201,6 +204,7 @@
 		5218570B18A7F98100D70786 /* RNF */ = {
 			isa = PBXGroup;
 			children = (
+				52F8476F18AD65750093A433 /* Categories */,
 				5224681218A97F4900124AE5 /* Configurations */,
 				5224681118A97F4100124AE5 /* Operations */,
 				5224681018A97F2D00124AE5 /* ConfigurationLoaders */,
@@ -307,6 +311,15 @@
 				52815F1518AAA51000A629C4 /* RNFValueTransformer.h */,
 			);
 			name = Protocols;
+			sourceTree = "<group>";
+		};
+		52F8476F18AD65750093A433 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				52F8477018AD65900093A433 /* NSMethodSignature+OperateOnSelectors.h */,
+				52F8477118AD65900093A433 /* NSMethodSignature+OperateOnSelectors.m */,
+			);
+			name = Categories;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -481,6 +494,7 @@
 				520A273D18AAC198000CF13B /* RNFMalformedConfiguration.m in Sources */,
 				52FE715818AAC4EE00E1C67A /* RNFBaseEndpointConfiguration.m in Sources */,
 				3B2CB38A6D148F8F07939136 /* RNFAppDelegate.m in Sources */,
+				52F8477218AD65900093A433 /* NSMethodSignature+OperateOnSelectors.m in Sources */,
 				5224681518A97F7600124AE5 /* RNFDictionaryEndpointConfiguration.m in Sources */,
 				5224681D18A97FA900124AE5 /* RNFConfigurationNotFound.m in Sources */,
 				5224681818A97F8B00124AE5 /* RNFBaseOperation.m in Sources */,

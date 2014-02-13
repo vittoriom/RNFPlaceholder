@@ -169,7 +169,7 @@
 		return self;
 
 	NSDictionary *operationConfiguration = [operations objectAtIndex:i];
-	NSUInteger argsCount = [[selectorAsString componentsSeparatedByString:@":"] count] - 1;
+	NSUInteger argsCount = [NSMethodSignature numberOfArgumentsForSelector:aSelector];
     
     class_replaceMethod([self class], aSelector, imp_implementationWithBlock(^id<RNFOperation>(RNFEndpoint *endpointSelf, ...){
     	va_list args;

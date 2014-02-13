@@ -22,6 +22,7 @@
 #import "RNFEndpoint.h"
 #import "RNFEndpointManager.h"
 #import "RNFValueTransformer.h"
+#import "NSMethodSignature+OperateOnSelectors.h"
 #import "RNFTypes.h"
 
 //Exceptions
