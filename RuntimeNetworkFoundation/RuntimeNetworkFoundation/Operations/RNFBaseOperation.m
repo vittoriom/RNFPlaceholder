@@ -24,7 +24,7 @@ typedef enum {
 @property (nonatomic, strong) NSDictionary *headers;
 @property (nonatomic, strong) NSData *body;
 
-@property (nonatomic, copy) RNFCompletionBlockGeneric completionBlock;
+@property (nonatomic, copy) RNFCompletionBlock completionBlock;
 @property (nonatomic, copy) RNFErrorBlock errorBlock;
 
 @property (nonatomic, assign) RNFOperationState operationState;
@@ -101,9 +101,9 @@ typedef enum {
 
 #pragma mark - RNFOperation
 
-- (void) startWithCompletionBlock:(RNFCompletionBlockGeneric)completion errorBlock:(RNFErrorBlock)error
+- (void) startWithCompletionBlock:(RNFCompletionBlock)completion errorBlock:(RNFErrorBlock)error
 {
-	completion(nil, self, 0);
+	completion(nil, self, 0, NO);
 }
 
 @end

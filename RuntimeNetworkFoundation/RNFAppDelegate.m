@@ -27,8 +27,9 @@
     NSLog(@"Endpoint: %@, manager: %@",endpoint,manager);
     
     [endpoint getAnswersWithMaxResults:@10
-                       completionBlock:^(id response, id<RNFOperation> operation, NSUInteger statusCode) {
+                       completionBlock:^(id response, id<RNFOperation> operation, NSUInteger statusCode, BOOL cached) {
                            NSLog(@"Raw response: %@ with status code: %d",response,statusCode);
+						   NSLog(@"Cached ? %@",cached ? @"YES":@"NO");
                            NSLog(@"Operation was: %@",operation);
                        }];
     

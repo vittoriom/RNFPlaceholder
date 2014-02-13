@@ -155,12 +155,17 @@
     NSArray *operations = [self.configuration operations];
     
 	int i=0;
+	BOOL found = NO;
 	for (NSDictionary *operation in operations) {
 		if ([[operation objectForKey:@"runtimeMethod"] isEqualToString:selectorAsString]) {
+			found = YES;
 			break;
 		} else
 			i++;
 	}
+	
+	if(!found)
+		return self;
 
 	NSDictionary *operationConfiguration = [operations objectAtIndex:i];
 	NSUInteger argsCount = [[selectorAsString componentsSeparatedByString:@":"] count] - 1;
@@ -181,6 +186,7 @@
         va_start(args, endpointSelf);
         
         id arg;
+		RNFCompletionBlock completion;
 		for(int i=0; i<argsCount; i++)
 		{
             arg = va_arg(args, id);
@@ -188,14 +194,17 @@
             
             if ([arg isKindOfClass:NSClassFromString(@"NSBlock")]) {
                 NSLog(@"FOUND BLOCK");
+				completion = arg;
             }
         }
 		
         va_end(args);
         
         //5. Setup the completion block.
-		[operation startWithCompletionBlock:^(id response, ...) {
+		[operation startWithCompletionBlock:^(id response, id<RNFOperation> operation, NSUInteger statusCode, BOOL cached) {
 			NSLog(@"Operation completed! Response: %@", response);
+			if(completion)
+				completion(response, operation, statusCode, cached);
 		} errorBlock:^(id response, NSError *error, NSUInteger statusCode) {
 			NSLog(@"Something went wrong: %@",error);
 		}];

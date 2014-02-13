@@ -32,7 +32,7 @@
  *  @discussion If the operation is cached and there is no network connection, the completion block is immediately called with the cached data.
  *              If the operation is cached, network connection is present but connection timeout occurs, the completion block is called with the cached data instead.
  */
-- (void) startWithCompletionBlock:(RNFCompletionBlockGeneric)completion
+- (void) startWithCompletionBlock:(RNFCompletionBlock)completion
                        errorBlock:(RNFErrorBlock)error;
 
 /**
