@@ -7,6 +7,6 @@
 
 @protocol RNFSerializable <NSObject>
 
-///To be determined
+- (NSString *) serialize;
 
 @end
