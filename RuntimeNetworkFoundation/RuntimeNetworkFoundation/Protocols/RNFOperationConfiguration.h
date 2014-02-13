@@ -13,6 +13,7 @@
 
 static const NSString * kRNFConfigurationOperationURL = @"URL";
 static const NSString * kRNFConfigurationOperationRuntimeMethodName = @"runtimeMethod";
+static const NSString * kRNFConfigurationOperationName = @"name";
 static const NSString * kRNFConfigurationOperationHTTPMethod = @"HTTPMethod";
 static const NSString * kRNFConfigurationOperationHTTPBody = @"body";
 static const NSString * kRNFConfigurationOperationResponseDeserializer = @"responseDeserializer";
@@ -25,6 +26,8 @@ static const NSString * kRNFConfigurationOperationAuthenticationHandler = @"auth
 - (NSString *) runtimeMethodName;
 
 - (NSURL *) URL;
+
+- (NSString *) name;
 
 @optional
 

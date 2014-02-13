@@ -156,9 +156,9 @@
     
 	int i=0;
 	BOOL found = NO;
-	for (NSDictionary *operation in operations)
+	for (id<RNFOperationConfiguration> operation in operations)
     {
-		if ([[operation objectForKey:@"runtimeMethod"] isEqualToString:selectorAsString]) {
+		if ([[operation runtimeMethodName] isEqualToString:selectorAsString]) {
 			found = YES;
 			break;
 		} else
@@ -168,7 +168,7 @@
 	if(!found)
 		return self;
 
-	NSDictionary *operationConfiguration = [operations objectAtIndex:i];
+	id<RNFOperationConfiguration> operationConfiguration = [operations objectAtIndex:i];
 	NSUInteger argsCount = [NSMethodSignature numberOfArgumentsForSelector:aSelector];
     
     class_replaceMethod([self class], aSelector, imp_implementationWithBlock(^id<RNFOperation>(RNFEndpoint *endpointSelf, ...){
@@ -193,7 +193,7 @@
         
     	NSURL *operationURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",
                                                     [self baseURL].absoluteString,
-                                                    operationConfiguration[@"URL"]]];
+                                                    [operationConfiguration URL].absoluteString]];
 		
         RNFBaseOperation *operation = [[RNFBaseOperation alloc] initWithURL:operationURL method:@"GET"];
 		

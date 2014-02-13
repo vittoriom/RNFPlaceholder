@@ -7,6 +7,7 @@
 //
 
 #import "RNFDictionaryOperationConfiguration.h"
+#import "RNFMalformedConfiguration.h"
 
 @interface RNFDictionaryOperationConfiguration ()
 
@@ -24,6 +25,8 @@
     
     _internalDictionary = dictionary;
     
+    [self performSanityCheckOnDictionary:dictionary];
+    
     return self;
 }
 
@@ -31,6 +34,20 @@
 
 - (void) performSanityCheckOnDictionary:(NSDictionary *)dictionary
 {
+    NSString *errorMessage = nil;
+    
+    if (![dictionary objectForKey:kRNFConfigurationOperationRuntimeMethodName] && ![dictionary objectForKey:kRNFConfigurationOperationName])
+    {
+        errorMessage = [NSString stringWithFormat:@"No %@ nor %@ is configured for the operation", kRNFConfigurationOperationRuntimeMethodName, kRNFConfigurationOperationName];
+    } else if(![dictionary objectForKey:kRNFConfigurationOperationURL])
+    {
+        errorMessage = [NSString stringWithFormat:@"No %@ is configured for the operation",kRNFConfigurationOperationURL];
+    }
+    
+    if(errorMessage)
+        @throw [[RNFMalformedConfiguration alloc] initWithName:NSStringFromClass([RNFMalformedConfiguration class])
+                                                        reason:errorMessage
+                                                      userInfo:nil];
 }
 
 #pragma mark - Helpers
@@ -48,6 +65,11 @@
 }
 
 #pragma mark - Getters
+
+- (NSString *) name
+{
+    return [self.internalDictionary objectForKey:kRNFConfigurationOperationName] ?: [super name];
+}
 
 - (NSString *) runtimeMethodName
 {

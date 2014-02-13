@@ -8,6 +8,7 @@
 
 #import "RNFDictionaryEndpointConfiguration.h"
 #import "RNFMalformedConfiguration.h"
+#import "RNFDictionaryOperationConfiguration.h"
 
 @interface RNFDictionaryEndpointConfiguration ()
 
@@ -51,6 +52,14 @@
     {
         errorMessage = @"Operations array has 0 elements";
     }
+    
+    NSMutableArray *operationsObjects = [NSMutableArray new];
+    for (NSDictionary *operationDictionary in operations)
+    {
+        RNFDictionaryOperationConfiguration *operationConfiguration = [[RNFDictionaryOperationConfiguration alloc] initWithDictionary:operationDictionary];
+        [operationsObjects addObject:operationConfiguration];
+    }
+    self.internalDictionary[kRNFConfigurationEndpointOperations] = operationsObjects;
     
     NSURL *baseURL = self.baseURL;
     if(!baseURL)
