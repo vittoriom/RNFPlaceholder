@@ -25,11 +25,6 @@
                                                   userInfo:nil];
 }
 
-- (NSString *) name
-{
-    return nil;
-}
-
 - (NSString *) HTTPMethod
 {
     return @"GET";

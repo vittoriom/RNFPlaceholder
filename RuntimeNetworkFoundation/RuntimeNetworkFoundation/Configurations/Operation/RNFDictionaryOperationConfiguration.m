@@ -36,9 +36,9 @@
 {
     NSString *errorMessage = nil;
     
-    if (![dictionary objectForKey:kRNFConfigurationOperationRuntimeMethodName] && ![dictionary objectForKey:kRNFConfigurationOperationName])
+    if (![dictionary objectForKey:kRNFConfigurationOperationName])
     {
-        errorMessage = [NSString stringWithFormat:@"No %@ nor %@ is configured for the operation", kRNFConfigurationOperationRuntimeMethodName, kRNFConfigurationOperationName];
+        errorMessage = [NSString stringWithFormat:@"No %@ is configured for the operation", kRNFConfigurationOperationName];
     } else if(![dictionary objectForKey:kRNFConfigurationOperationURL])
     {
         errorMessage = [NSString stringWithFormat:@"No %@ is configured for the operation",kRNFConfigurationOperationURL];
@@ -66,14 +66,9 @@
 
 #pragma mark - Getters
 
-- (NSString *) name
-{
-    return [self.internalDictionary objectForKey:kRNFConfigurationOperationName] ?: [super name];
-}
-
 - (NSString *) runtimeMethodName
 {
-    return [self.internalDictionary objectForKey:kRNFConfigurationOperationRuntimeMethodName];
+    return [self.internalDictionary objectForKey:kRNFConfigurationOperationName];
 }
 
 - (NSURL *) URL

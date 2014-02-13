@@ -5,7 +5,7 @@
 	<key>operations</key>
 	<array>
 		<dict>
-			<key>runtimeMethod</key>
+			<key>name</key>
 			<string>getAnswersWithMaxResults:completionBlock:</string>
 			<key>URL</key>
 			<string>test</string>

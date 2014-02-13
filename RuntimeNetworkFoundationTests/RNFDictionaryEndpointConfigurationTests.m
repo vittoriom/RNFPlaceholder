@@ -1,5 +1,7 @@
 #import "RNFDictionaryEndpointConfiguration.h"
 #import "RNFBaseOperation.h"
+#import "RNFOperationConfiguration.h"
+#import "RNFBaseOperationConfiguration.h"
 
 SPEC_BEGIN(RNFDictionaryEndpointConfigurationTests)
 
@@ -45,7 +47,13 @@ describe(@"Dictionary configuration", ^{
                                                                                              kRNFConfigurationEndpointOperationClass : @"RNFBaseOperation",
                                                                                              kRNFConfigurationEndpointOperationQueueClass : @"NSOperationQueue",
                                                                                              kRNFConfigurationEndpointOperations : @[
-                                                                                                        @1, @2
+                                                                                                     @{
+                                                                                                         kRNFConfigurationOperationURL : @"test",
+                                                                                                         kRNFConfigurationOperationName : @"test"
+                                                                                                         }, @{
+                                                                                                         kRNFConfigurationOperationName : @"test2",
+                                                                                                         kRNFConfigurationOperationURL : @"test2"
+                                                                                                         }
                                                                                                      ],
                                                                                              kRNFConfigurationEndpointResponseDeserializer : @"NSArray",
                                                                                              kRNFConfigurationEndpointShouldCacheResults : @NO,
@@ -91,7 +99,7 @@ describe(@"Dictionary configuration", ^{
         it(@"should correctly read the operations array", ^{
             NSArray *operations = [configuration operations];
             [[operations should] haveCountOf:2];
-            [[operations[0] should] equal:@1];
+            [[theValue([operations[0] isKindOfClass:[RNFBaseOperationConfiguration class]]) should] beTrue];
         });
         
         it(@"should correctly instantiate the response deserializer", ^{
