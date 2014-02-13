@@ -202,7 +202,6 @@
         
         //5. Setup the completion block.
 		[operation startWithCompletionBlock:^(id response, id<RNFOperation> operation, NSUInteger statusCode, BOOL cached) {
-			NSLog(@"Operation completed! Response: %@", response);
 			if(completion)
 				completion(response, operation, statusCode, cached);
 		} errorBlock:^(id response, NSError *error, NSUInteger statusCode) {

@@ -40,6 +40,8 @@ typedef enum {
     self = [self init];
     
     _operationState = RNFOperationStateIdle;
+	_url = url;
+	_method = method;
     
     return self;
 }
@@ -103,7 +105,13 @@ typedef enum {
 
 - (void) startWithCompletionBlock:(RNFCompletionBlock)completion errorBlock:(RNFErrorBlock)error
 {
-	completion(nil, self, 0, NO);
+	NSURLRequest *request = [NSURLRequest requestWithURL:self.url];
+	[NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue new] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+		if(connectionError)
+			error(data, connectionError, [connectionError code]);
+		else
+			completion(data, self, 200, NO);
+	}];
 }
 
 @end

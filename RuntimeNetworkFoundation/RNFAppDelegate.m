@@ -20,16 +20,15 @@
     [self.window makeKeyAndVisible];
     
     RNFEndpointManager *manager = [RNFEndpointManager new];
-    RNFEndpoint *endpoint = [[RNFEndpoint alloc] initWithName:@"sampleConfiguration"];
+    RNFEndpoint *endpoint = [[RNFEndpoint alloc] initWithName:@"runtimeTest"];
     
     [manager addEndpoint:endpoint];
     
-    NSLog(@"Endpoint: %@, manager: %@",endpoint,manager);
-    
     [endpoint getAnswersWithMaxResults:@10
                        completionBlock:^(id response, id<RNFOperation> operation, NSUInteger statusCode) {
-                           NSLog(@"Raw response: %@ with status code: %d",response,statusCode);
-//						   NSLog(@"Cached ? %@",cached ? @"YES":@"NO");
+                           NSLog(@"JSON Response: %@",[NSJSONSerialization JSONObjectWithData:response
+																					  options:NSJSONReadingAllowFragments
+																						error:nil]);
                            NSLog(@"Operation was: %@",operation);
                        }];
     

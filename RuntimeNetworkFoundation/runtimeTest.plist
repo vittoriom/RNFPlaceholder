@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>operations</key>
+	<array>
+		<dict>
+			<key>runtimeMethod</key>
+			<string>getAnswersWithMaxResults:completionBlock:</string>
+			<key>URL</key>
+			<string>questions?pagesize=10&amp;order=desc&amp;sort=activity&amp;site=stackoverflow</string>
+		</dict>
+	</array>
+	<key>baseURL</key>
+	<string>https://api.stackexchange.com/2.2</string>
+</dict>
+</plist>

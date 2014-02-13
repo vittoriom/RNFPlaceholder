@@ -37,6 +37,7 @@
 		52C8DF2E18A96A6100DBA94D /* RNFEndpointTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C8DF2D18A96A6100DBA94D /* RNFEndpointTests.m */; };
 		52F7A2A518A8191100378EFA /* RNFEndpointManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 52F7A2A418A8191100378EFA /* RNFEndpointManagerTests.m */; };
 		52FE715818AAC4EE00E1C67A /* RNFBaseEndpointConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 52FE715718AAC4EE00E1C67A /* RNFBaseEndpointConfiguration.m */; };
+		A4E3839118ACF82600AACB04 /* runtimeTest.plist in Resources */ = {isa = PBXBuildFile; fileRef = A4E3839018ACF82600AACB04 /* runtimeTest.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +109,7 @@
 		52FE715618AAC4EE00E1C67A /* RNFBaseEndpointConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNFBaseEndpointConfiguration.h; path = RuntimeNetworkFoundation/Configurations/RNFBaseEndpointConfiguration.h; sourceTree = "<group>"; };
 		52FE715718AAC4EE00E1C67A /* RNFBaseEndpointConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RNFBaseEndpointConfiguration.m; path = RuntimeNetworkFoundation/Configurations/RNFBaseEndpointConfiguration.m; sourceTree = "<group>"; };
 		5D12B31D577645C0BB2AB9D7 /* libPods-RuntimeNetworkFoundationTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RuntimeNetworkFoundationTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4E3839018ACF82600AACB04 /* runtimeTest.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = runtimeTest.plist; sourceTree = "<group>"; };
 		E4BD02A68E494F6CADDF1672 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -176,6 +178,7 @@
 				3B2CB606359205BD01E0F4ED /* Supporting Files */,
 				3B2CB93240FAA6CBCA190BE5 /* RNFAppDelegate.h */,
 				3B2CB645226B389478CA4D0C /* RNFAppDelegate.m */,
+				A4E3839018ACF82600AACB04 /* runtimeTest.plist */,
 				3B2CBB510FDDA0628EC4B825 /* Images.xcassets */,
 				52080C7118AC12FD00EA9C32 /* RNFEndpoint+test.h */,
 			);
@@ -388,6 +391,7 @@
 				3B2CB31A9B65EE688B170F0D /* InfoPlist.strings in Resources */,
 				52080C6E18AC10D900EA9C32 /* sampleMisonfiguration.plist in Resources */,
 				3B2CB7EB616E1016DC961DC3 /* Images.xcassets in Resources */,
+				A4E3839118ACF82600AACB04 /* runtimeTest.plist in Resources */,
 				527FBE5A18A97B5E009959E7 /* sampleConfiguration.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
