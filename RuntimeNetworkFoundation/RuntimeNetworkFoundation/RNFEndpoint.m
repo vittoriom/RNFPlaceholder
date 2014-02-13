@@ -156,7 +156,8 @@
     
 	int i=0;
 	BOOL found = NO;
-	for (NSDictionary *operation in operations) {
+	for (NSDictionary *operation in operations)
+    {
 		if ([[operation objectForKey:@"runtimeMethod"] isEqualToString:selectorAsString]) {
 			found = YES;
 			break;
@@ -171,8 +172,7 @@
 	NSUInteger argsCount = [[selectorAsString componentsSeparatedByString:@":"] count] - 1;
     
     class_replaceMethod([self class], aSelector, imp_implementationWithBlock(^(RNFEndpoint *endpointSelf, ...){
-        //1. Create the RNFOperation with the given configuration
-		va_list args;
+    	va_list args;
         va_start(args, endpointSelf);
         
 		NSMutableArray *argsArray = [NSMutableArray new];
@@ -185,17 +185,15 @@
 			[argsArray addObject:arg];
             
             if ([arg isKindOfClass:NSClassFromString(@"NSBlock")]) {
-                NSLog(@"FOUND BLOCK");
-				completion = arg;
+    			completion = arg;
             }
         }
 		
         va_end(args);
-		NSString *queryString = operationConfiguration[@"URL"];
-		queryString = [queryString stringByReplacingOccurrencesOfString:@"{0}" withString:[NSString stringWithFormat:@"%@",argsArray[0]]];
-		NSURL *operationURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",[self baseURL].absoluteString,queryString]];
-		
-		NSLog(@"URL to call: %@",operationURL);
+        
+    	NSURL *operationURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",
+                                                    [self baseURL].absoluteString,
+                                                    operationConfiguration[@"URL"]]];
 		
         RNFBaseOperation *operation = [[RNFBaseOperation alloc] initWithURL:operationURL method:@"GET"];
 		
@@ -203,7 +201,6 @@
         //3. Serialize the parameters based on the configuration
         //4. Enqueue the RNFOperation in the RNFOperationQueue
         //5.0 Search the completion block
-        
         
         //5. Setup the completion block.
 		[operation startWithCompletionBlock:^(id response, id<RNFOperation> operation, NSUInteger statusCode, BOOL cached) {
