@@ -49,8 +49,6 @@
  */
 - (void) setBody:(NSData *)body;
 
-@optional
-
 /**
  *  The name of the operation
  *  This can be used as a convenience hook for getting a specific operation from a RNFEndpoint

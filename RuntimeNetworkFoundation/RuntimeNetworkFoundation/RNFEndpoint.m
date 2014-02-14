@@ -158,7 +158,7 @@
 	BOOL found = NO;
 	for (id<RNFOperationConfiguration> operation in operations)
     {
-		if ([[operation runtimeMethodName] isEqualToString:selectorAsString]) {
+		if ([[operation name] isEqualToString:selectorAsString]) {
 			found = YES;
 			break;
 		} else

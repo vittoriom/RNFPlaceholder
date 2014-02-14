@@ -8,6 +8,7 @@
 
 #import "RNFBaseOperationConfiguration.h"
 #import "RNFMalformedConfiguration.h"
+#import "RNFBaseOperation.h"
 
 @implementation RNFBaseOperationConfiguration
 
@@ -46,6 +47,21 @@
 }
 
 - (id<RNFDataDeserializer>) dataDeserializer
+{
+    return nil;
+}
+
+- (Class<RNFOperation>) operationClass
+{
+    return [RNFBaseOperation class];
+}
+
+- (BOOL) cacheResults
+{
+    return YES;
+}
+
+- (NSDictionary *) headers
 {
     return nil;
 }

@@ -113,4 +113,23 @@
         return [super responseDeserializer];
 }
 
+- (Class<RNFOperation>) operationClass
+{
+    Class operationClass = [self classFromKey:kRNFConfigurationOperationOperationClass];
+    return operationClass ?: [super operationClass];
+}
+
+- (BOOL) cacheResults
+{
+    if([self.internalDictionary objectForKey:kRNFConfigurationOperationShouldCacheResults])
+        return [[self.internalDictionary objectForKey:kRNFConfigurationOperationShouldCacheResults] boolValue];
+    else
+        return [super cacheResults];
+}
+
+- (NSDictionary *) headers
+{
+    return [self.internalDictionary objectForKey:kRNFConfigurationOperationHeaders] ?: [super headers];
+}
+
 @end

@@ -10,6 +10,7 @@
 #import "RNFResponseDeserializer.h"
 #import "RNFDataSerializer.h"
 #import "RNFDataDeserializer.h"
+#import "RNFOperation.h"
 
 static const NSString * kRNFConfigurationOperationURL = @"URL";
 static const NSString * kRNFConfigurationOperationName = @"name";
@@ -19,6 +20,9 @@ static const NSString * kRNFConfigurationOperationResponseDeserializer = @"respo
 static const NSString * kRNFConfigurationOperationDataDeserializer = @"dataDeserializer";
 static const NSString * kRNFConfigurationOperationDataSerializer = @"dataSerializer";
 static const NSString * kRNFConfigurationOperationAuthenticationHandler = @"authenticationHandler";
+static const NSString * kRNFConfigurationOperationHeaders = @"headers";
+static const NSString * kRNFConfigurationOperationShouldCacheResults = @"cacheResults";
+static const NSString * kRNFConfigurationOperationOperationClass = @"operationClass";
 
 @protocol RNFOperationConfiguration <NSObject>
 
@@ -44,6 +48,21 @@ static const NSString * kRNFConfigurationOperationAuthenticationHandler = @"auth
 - (NSURL *) URL;
 
 @optional
+
+/**
+ *  @return The headers to use for this operation
+ */
+- (NSDictionary *) headers;
+
+/**
+ *  @return Whether this operation should cache results or not
+ */
+- (BOOL) cacheResults;
+
+/**
+ *  @return The class to use for this operation at runtime
+ */
+- (Class<RNFOperation>) operationClass;
 
 /**
  *
