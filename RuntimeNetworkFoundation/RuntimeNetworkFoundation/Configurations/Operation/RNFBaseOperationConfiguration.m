@@ -11,7 +11,7 @@
 
 @implementation RNFBaseOperationConfiguration
 
-- (NSString *) runtimeMethodName
+- (NSString *) name
 {
     @throw [[RNFMalformedConfiguration alloc] initWithName:NSStringFromClass([RNFMalformedConfiguration class])
                                                     reason:NSLocalizedString(@"If you got here, something is wrong in your subclass", @"")

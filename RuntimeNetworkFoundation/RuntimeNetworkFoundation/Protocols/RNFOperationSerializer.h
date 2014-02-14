@@ -12,6 +12,7 @@
 @protocol RNFOperationSerializer <NSObject>
 
 - (void) serializeOperation:(id<RNFOperation>)operation;
+
 - (NSArray *) deserializeOperations;
 
 @optional

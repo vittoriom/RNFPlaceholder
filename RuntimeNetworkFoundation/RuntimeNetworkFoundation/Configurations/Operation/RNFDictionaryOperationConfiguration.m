@@ -66,7 +66,7 @@
 
 #pragma mark - Getters
 
-- (NSString *) runtimeMethodName
+- (NSString *) name
 {
     return [self.internalDictionary objectForKey:kRNFConfigurationOperationName];
 }
