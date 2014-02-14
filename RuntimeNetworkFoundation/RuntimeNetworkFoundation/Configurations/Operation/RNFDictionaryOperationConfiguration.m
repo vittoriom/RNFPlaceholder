@@ -39,7 +39,8 @@
     if (![dictionary objectForKey:kRNFConfigurationOperationName])
     {
         errorMessage = [NSString stringWithFormat:@"No %@ is configured for the operation", kRNFConfigurationOperationName];
-    } else if(![dictionary objectForKey:kRNFConfigurationOperationURL])
+    }
+    else if(![dictionary objectForKey:kRNFConfigurationOperationURL])
     {
         errorMessage = [NSString stringWithFormat:@"No %@ is configured for the operation",kRNFConfigurationOperationURL];
     }
