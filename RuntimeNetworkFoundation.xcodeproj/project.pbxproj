@@ -53,6 +53,7 @@
 		5285650D18AD6FF800CA9E46 /* RNFBaseOperationConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 5285650C18AD6FF800CA9E46 /* RNFBaseOperationConfiguration.m */; };
 		5285651018AD70CA00CA9E46 /* RNFDictionaryOperationConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 5285650F18AD70CA00CA9E46 /* RNFDictionaryOperationConfiguration.m */; };
 		528AA5B118AE911F00A07294 /* RNFBaseOperationConfigurationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 528AA5B018AE911F00A07294 /* RNFBaseOperationConfigurationTests.m */; };
+		52B944A118AE99F3006BF402 /* NSMethodSignatureCategoryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 52B944A018AE99F3006BF402 /* NSMethodSignatureCategoryTests.m */; };
 		52C8DF2E18A96A6100DBA94D /* RNFEndpointTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C8DF2D18A96A6100DBA94D /* RNFEndpointTests.m */; };
 		52F7A2A518A8191100378EFA /* RNFEndpointManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 52F7A2A418A8191100378EFA /* RNFEndpointManagerTests.m */; };
 		52F8477218AD65900093A433 /* NSMethodSignature+OperateOnSelectors.m in Sources */ = {isa = PBXBuildFile; fileRef = 52F8477118AD65900093A433 /* NSMethodSignature+OperateOnSelectors.m */; };
@@ -133,6 +134,7 @@
 		5285650E18AD70CA00CA9E46 /* RNFDictionaryOperationConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNFDictionaryOperationConfiguration.h; path = RuntimeNetworkFoundation/Configurations/Operation/RNFDictionaryOperationConfiguration.h; sourceTree = "<group>"; };
 		5285650F18AD70CA00CA9E46 /* RNFDictionaryOperationConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RNFDictionaryOperationConfiguration.m; path = RuntimeNetworkFoundation/Configurations/Operation/RNFDictionaryOperationConfiguration.m; sourceTree = "<group>"; };
 		528AA5B018AE911F00A07294 /* RNFBaseOperationConfigurationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNFBaseOperationConfigurationTests.m; sourceTree = "<group>"; };
+		52B944A018AE99F3006BF402 /* NSMethodSignatureCategoryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSMethodSignatureCategoryTests.m; sourceTree = "<group>"; };
 		52C8DF2D18A96A6100DBA94D /* RNFEndpointTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNFEndpointTests.m; sourceTree = "<group>"; };
 		52F7A2A418A8191100378EFA /* RNFEndpointManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNFEndpointManagerTests.m; sourceTree = "<group>"; };
 		52F8477018AD65900093A433 /* NSMethodSignature+OperateOnSelectors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSMethodSignature+OperateOnSelectors.h"; path = "RuntimeNetworkFoundation/Categories/NSMethodSignature+OperateOnSelectors.h"; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 				52C8DF2D18A96A6100DBA94D /* RNFEndpointTests.m */,
 				521533EB18A976170082ACC9 /* sampleConfiguration.plist */,
 				52080C6D18AC10D900EA9C32 /* sampleMisonfiguration.plist */,
+				52B944A018AE99F3006BF402 /* NSMethodSignatureCategoryTests.m */,
 			);
 			path = RuntimeNetworkFoundationTests;
 			sourceTree = "<group>";
@@ -573,6 +576,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B944A118AE99F3006BF402 /* NSMethodSignatureCategoryTests.m in Sources */,
 				528AA5B118AE911F00A07294 /* RNFBaseOperationConfigurationTests.m in Sources */,
 				52F7A2A518A8191100378EFA /* RNFEndpointManagerTests.m in Sources */,
 				5280FC5118ABF9B100835D48 /* RNFDictionaryEndpointConfigurationTests.m in Sources */,
