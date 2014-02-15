@@ -45,13 +45,15 @@
         
         id argObject = arguments[argIndex];
         
+        NSString *serializedObject = [argObject conformsToProtocol:@protocol(RNFSerializable)] ? [(id<RNFSerializable>)argObject serialize] : [argObject description];
+        
         if(![self objectIsSerializable:argObject])
             @throw [RNFParametersParserError exceptionWithName:NSStringFromClass([RNFParametersParserError class])
                                            reason:[NSString stringWithFormat:@"Object %@ is not serializable",argObject]
                                          userInfo:nil];
         
         [result replaceCharactersInRange:completePlaceholderRange
-                              withString:[argObject description]];
+                              withString:serializedObject];
     }
     
     return [result copy];
