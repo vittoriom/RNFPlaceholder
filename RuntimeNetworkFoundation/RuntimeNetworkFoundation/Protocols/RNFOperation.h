@@ -55,4 +55,10 @@
  */
 @property (nonatomic, readonly) NSString *name;
 
+/**
+ *  The uniqueIdentifier of the operation
+ *  This can be overriden in your implementation if you have special needs
+ */
+@property (nonatomic, readonly) NSString *uniqueIdentifier;
+
 @end

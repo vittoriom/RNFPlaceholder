@@ -202,10 +202,16 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"completion";
         [operation setHeaders:[operationConfiguration headers]];
         [operation setBody:[operationConfiguration HTTPBody]];
         
-        //3. If the cacheHandler has a cached response already, start calling the given completion block
+        /*TODO id cachedData = [self.cacheHandler cachedObjectWithKey:[operation uniqueIdentifier]];
+        if (cachedData)
+        {
+            if(completion)
+                completion(cachedData, operation, 200, YES);
+            
+            return operation;
+        }*/
         
-        //4. Enqueue the RNFOperation in the RNFOperationQueue
-		//[self.networkQueue enqueueOperation:operation];
+        //TODO [self.networkQueue enqueueOperation:operation];
         
         [operation startWithCompletionBlock:^(id response, id<RNFOperation> operation, NSUInteger statusCode, BOOL cached) {
             Class deserializer = [self.configuration deserializer];

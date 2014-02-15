@@ -29,6 +29,8 @@ typedef enum {
 
 @property (nonatomic, assign) RNFOperationState operationState;
 
+@property (nonatomic, strong, readwrite) NSString *uniqueIdentifier;
+
 @end
 
 @implementation RNFBaseOperation
@@ -61,6 +63,12 @@ typedef enum {
 - (void) setBody:(NSData *)body
 {
     
+}
+
+- (NSString *) uniqueIdentifier
+{
+    //TODO make smarter method here
+    return nil;
 }
 
 #pragma mark - NSOperation related methods
