@@ -118,13 +118,9 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"completion";
 
 - (id<RNFOperation>) operationWithName:(NSString *)name
 {
-    for (id<RNFOperation> operation in self.operations)
-    {
-        if([[operation name] isEqualToString:name])
-            return operation;
-    }
-    
-    return nil;
+    return [self.operations objectPassingTest:^BOOL(id<RNFOperation> operation) {
+        return [[operation name] isEqualToString:name];
+    }];
 }
 
 #pragma mark - Runtime machinery

@@ -24,8 +24,11 @@
 #import "RNFValueTransformer.h"
 #import "RNFOperationSerializer.h"
 #import "RNFOperationConfiguration.h"
-#import "NSMethodSignature+OperateOnSelectors.h"
 #import "RNFTypes.h"
+
+//Categories
+#import "NSMethodSignature+OperateOnSelectors.h"
+#import "NSArray+Blocks.h"
 
 //Exceptions
 #import "RNFConfigurationNotFound.h"
