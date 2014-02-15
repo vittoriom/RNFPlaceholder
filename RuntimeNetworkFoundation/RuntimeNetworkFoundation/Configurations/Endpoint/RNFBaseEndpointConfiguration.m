@@ -41,7 +41,7 @@
     return nil;
 }
 
-- (id<RNFResponseDeserializer>) deserializer
+- (Class<RNFResponseDeserializer>) deserializer
 {
     return nil;
 }
@@ -66,7 +66,7 @@
     return [NSCache class];
 }
 
-- (id<RNFLogger>) logger
+- (Class<RNFLogger>) logger
 {
     return nil;
 }

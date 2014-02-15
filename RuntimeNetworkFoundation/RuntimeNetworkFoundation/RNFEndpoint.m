@@ -18,9 +18,6 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"completion";
 
 @interface RNFEndpoint ()
 
-//Extension points
-@property (nonatomic, strong) Class<RNFOperation> operationClass;
-@property (nonatomic, strong) id<RNFResponseDeserializer> responseDeserializer;
 @property (nonatomic, strong) id<RNFConfigurationLoader> configurator;
 
 //Operation handling
@@ -29,16 +26,14 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"completion";
 
 //Caching module
 @property (nonatomic, strong) id<RNFCacheHandler> cacheHandler;
-@property (nonatomic, assign) BOOL cacheResults;
 
 //Attributes
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSURL *baseURL;
-@property (nonatomic, strong) NSDictionary *headers;
 @property (nonatomic, strong) id<RNFEndpointConfiguration> configuration;
 
 //Attached behaviors
-@property (nonatomic, weak) id<RNFLogger> logger;
+@property (nonatomic, strong) id<RNFLogger> logger;
 
 @end
 
@@ -98,7 +93,17 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"completion";
         self.name = [config name];
         self.baseURL = [config baseURL];
         
-        //TODO Load the other attributes...
+        Class operationQueueClass = [config operationQueueClass];
+        if(operationQueueClass)
+            self.networkQueue = [operationQueueClass new];
+        
+        Class cacheHandler = [config cacheClass];
+        if(cacheHandler)
+            self.cacheHandler = [cacheHandler new];
+        
+        Class loggerClass = [config logger];
+        if (loggerClass)
+            self.logger = [loggerClass new];
         
         self.configuration = config;
     }
@@ -198,11 +203,22 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"completion";
         [operation setBody:[operationConfiguration HTTPBody]];
         
         //3. If the cacheHandler has a cached response already, start calling the given completion block
+        
         //4. Enqueue the RNFOperation in the RNFOperationQueue
-		
+		//[self.networkQueue enqueueOperation:operation];
+        
         [operation startWithCompletionBlock:^(id response, id<RNFOperation> operation, NSUInteger statusCode, BOOL cached) {
             id<RNFResponseDeserializer> deserializer = [self.configuration deserializer];
             id deserializedResponse = deserializer ? [deserializer deserializeResponse:response] : response;
+        
+            /*
+            //TODO Data deserialization
+            id<RNFDataDeserializer> dataDeserializer = [operationConfiguration dataDeserializer];
+            id deserializedObject = dataDeserializer ? [dataDeserializer deserializeData:deserializedResponse
+                                                                            usingMapping:nil
+                                                                              transforms:nil
+                                                                               intoClass:nil];
+            */
             
             if(completion)
 				completion(deserializedResponse, operation, statusCode, cached);
@@ -210,8 +226,8 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"completion";
 			NSLog(@"Something went wrong: %@",error);
 		}];
         
-        //5 If the RNFOperation has a dataDeserializer, deserialize the response
-        //6 Eventually cache the response with the cacheHandler
+        if([operationConfiguration cacheResults])
+            ; //TODO cache the response with the cacheHandler
         
         return operation;
     }), [NSMethodSignature methodSignatureForMethodWithArguments:argsCount]);

@@ -128,21 +128,9 @@
     return [self.internalDictionary objectForKey:kRNFConfigurationEndpointDefaultHeaders] ?: [super headers];
 }
 
-- (id<RNFResponseDeserializer>) deserializer
+- (Class<RNFResponseDeserializer>) deserializer
 {
-    @synchronized(self)
-    {
-        if(!self.cachedDeserializer)
-        {
-            Class deserializerClass = [self classFromKey:kRNFConfigurationEndpointResponseDeserializer];
-            if(!deserializerClass)
-                self.cachedDeserializer = [super deserializer];
-            else
-                self.cachedDeserializer = [deserializerClass new];
-        }
-        
-        return self.cachedDeserializer;
-    }
+    return [self classFromKey:kRNFConfigurationEndpointResponseDeserializer];
 }
 
 - (NSNumber *) portNumber
@@ -165,21 +153,9 @@
     return [self classFromKey:kRNFConfigurationEndpointCacheClass] ?: [super cacheClass];
 }
 
-- (id<RNFLogger>) logger
+- (Class<RNFLogger>) logger
 {
-    @synchronized(self)
-    {
-        if(!self.cachedLogger)
-        {
-            Class loggerClass = [self classFromKey:kRNFConfigurationEndpointLoggerClass];
-            if(!loggerClass)
-                self.cachedLogger = [super logger];
-            else
-                self.cachedLogger = [loggerClass new];
-        }
-        
-        return self.cachedLogger;
-    }
+    return [self classFromKey:kRNFConfigurationEndpointLoggerClass];
 }
 
 @end

@@ -111,9 +111,9 @@ describe(@"Dictionary configuration", ^{
         });
         
         it(@"should correctly instantiate the logger", ^{
-            id logger = [configuration logger];
+            Class logger = [configuration logger];
             [[logger shouldNot] beNil];
-            [[theValue([logger isKindOfClass:[NSString class]]) should] beTrue];
+            [[theValue([logger isSubclassOfClass:[NSString class]]) should] beTrue];
         });
         
         it(@"should correctly read the endpoint name", ^{
@@ -137,9 +137,9 @@ describe(@"Dictionary configuration", ^{
         });
         
         it(@"should correctly instantiate the response deserializer", ^{
-            id deserializer = [configuration deserializer];
+            Class deserializer = [configuration deserializer];
             [[deserializer shouldNot] beNil];
-            [[theValue([deserializer isKindOfClass:[NSArray class]]) should] beTrue];
+            [[theValue([deserializer isSubclassOfClass:[NSArray class]]) should] beTrue];
         });
         
         it(@"should correctly read whether the endpoint should cache results or not", ^{

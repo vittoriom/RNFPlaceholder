@@ -78,7 +78,7 @@ static const NSString * kRNFConfigurationEndpointPortNumber = @"port";
  *
  *  @return the deserializer to use for responses to the operations for the given endpoint, or nil if no deserialization should be provided. In this case, the completion blocks will get raw NSData objects, if no data deserializer is specified
  */
-- (id<RNFResponseDeserializer>) deserializer;
+- (Class<RNFResponseDeserializer>) deserializer;
 
 /**
  *  This parameter is optional, so the method may return nil or a default class
@@ -115,6 +115,6 @@ static const NSString * kRNFConfigurationEndpointPortNumber = @"port";
  *
  *  @return The logger instance to use as a logging component, or nil if no logger is specified
  */
-- (id<RNFLogger>) logger;
+- (Class<RNFLogger>) logger;
 
 @end
