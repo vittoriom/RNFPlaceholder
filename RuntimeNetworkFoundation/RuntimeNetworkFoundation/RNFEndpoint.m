@@ -13,6 +13,9 @@
 
 #import <objc/runtime.h>
 
+static NSString * const kRNFParsedRuntimeArguments = @"arguments";
+static NSString * const kRNFParsedRuntimeCompletionBlock = @"completion";
+
 @interface RNFEndpoint ()
 
 //Extension points
@@ -126,18 +129,6 @@
 
 #pragma mark - Runtime machinery
 
-- (const char *) methodSignatureForMethodWithArguments:(NSUInteger)argsCount
-{
-	NSMutableString *buildingSignature = [[NSMutableString alloc] initWithString:@"v@:"];
-	
-	for (int i=0; i<argsCount; i++)
-	{
-		[buildingSignature appendString:@"@"];
-	}
-		
-	return [buildingSignature UTF8String];
-}
-
 - (void) forwardInvocation:(NSInvocation *)anInvocation
 {
     [anInvocation invoke];
@@ -172,25 +163,33 @@
 	NSUInteger argsCount = [NSMethodSignature numberOfArgumentsForSelector:aSelector];
     
     class_replaceMethod([self class], aSelector, imp_implementationWithBlock(^id<RNFOperation>(RNFEndpoint *endpointSelf, ...){
-    	va_list args;
-        va_start(args, endpointSelf);
-        
-		NSMutableArray *argsArray = [NSMutableArray new];
-		
-        id arg;
-		RNFCompletionBlockComplete completion;
-		for(int i=0; i<argsCount; i++)
-		{
-            arg = va_arg(args, id);
-			[argsArray addObject:arg];
+    	NSDictionary *parsedRuntimeMethodName = ({
+            NSMutableDictionary *parsedResult = [NSMutableDictionary new];
+            va_list args;
+            va_start(args, endpointSelf);
             
-            if ([arg isKindOfClass:NSClassFromString(@"NSBlock")]) {
-    			completion = arg;
+            NSMutableArray *argsArray = [NSMutableArray new];
+            
+            id arg;
+            RNFCompletionBlockComplete completion;
+            for(int i=0; i<argsCount; i++)
+            {
+                arg = va_arg(args, id);
+                [argsArray addObject:arg];
+                
+                if ([arg isKindOfClass:NSClassFromString(@"NSBlock")]) {
+                    completion = arg;
+                }
             }
-        }
-		
-        va_end(args);
+            
+            va_end(args);
+            
+            parsedResult[kRNFParsedRuntimeArguments] = argsArray;
+            parsedResult[kRNFParsedRuntimeCompletionBlock] = completion;
+            parsedResult;
+        });
         
+        RNFCompletionBlockComplete completion = parsedRuntimeMethodName[kRNFParsedRuntimeCompletionBlock];
     	NSURL *operationURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",
                                                     [self baseURL].absoluteString,
                                                     [operationConfiguration URL].absoluteString]];
@@ -200,7 +199,8 @@
         //2. Serialize the parameters based on the configuration
         //3. If the cacheHandler has a cached response already, start calling the given completion block
         //4. Enqueue the RNFOperation in the RNFOperationQueue
-		[operation startWithCompletionBlock:^(id response, id<RNFOperation> operation, NSUInteger statusCode, BOOL cached) {
+		
+        [operation startWithCompletionBlock:^(id response, id<RNFOperation> operation, NSUInteger statusCode, BOOL cached) {
             id<RNFResponseDeserializer> deserializer = [self.configuration deserializer];
             id deserializedResponse = deserializer ? [deserializer deserializeResponse:response] : response;
             
@@ -209,11 +209,12 @@
 		} errorBlock:^(id response, NSError *error, NSUInteger statusCode) {
 			NSLog(@"Something went wrong: %@",error);
 		}];
+        
         //5 If the RNFOperation has a dataDeserializer, deserialize the response
         //6 Eventually cache the response with the cacheHandler
         
         return operation;
-    }), [self methodSignatureForMethodWithArguments:argsCount]);
+    }), [NSMethodSignature methodSignatureForMethodWithArguments:argsCount]);
     
     return self;
 }

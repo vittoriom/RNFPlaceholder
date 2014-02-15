@@ -18,4 +18,16 @@
     return argsCount;
 }
 
++ (const char *) methodSignatureForMethodWithArguments:(NSUInteger)argsCount
+{
+	NSMutableString *buildingSignature = [[NSMutableString alloc] initWithString:@"@@:"];
+	
+	for (int i=0; i<argsCount; i++)
+	{
+		[buildingSignature appendString:@"@"];
+	}
+    
+	return [buildingSignature UTF8String];
+}
+
 @end

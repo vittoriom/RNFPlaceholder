@@ -17,4 +17,11 @@
  */
 + (NSUInteger) numberOfArgumentsForSelector:(SEL)aSelector;
 
+/**
+ *  @param argsCount the number of arguments for the selector
+ *
+ *  @return a const char * signature with encoded types for a method that returns an object, and takes only object parameters
+ */
++ (const char *) methodSignatureForMethodWithArguments:(NSUInteger)argsCount;
+
 @end
