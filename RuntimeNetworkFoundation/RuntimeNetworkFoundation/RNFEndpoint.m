@@ -9,7 +9,6 @@
 #import "RNFEndpoint.h"
 #import "RNF.h"
 #import "RNFPlistConfigurationLoader.h"
-#import "RNFBaseOperation.h"
 #import "RNFParametersParser.h"
 
 #import <objc/runtime.h>
@@ -193,7 +192,8 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"completion";
                                [operationConfiguration URL]];
         NSURL *operationURL = [NSURL URLWithString:[[RNFParametersParser new] parseString:urlString withArguments:parsedRuntimeMethodName[kRNFParsedRuntimeArguments]]];
        
-        RNFBaseOperation *operation = [[RNFBaseOperation alloc] initWithURL:operationURL method:@"GET"];
+        Class operationClass = [operationConfiguration operationClass];
+        id<RNFOperation> operation = [[operationClass alloc] initWithURL:operationURL method:[operationConfiguration HTTPMethod]];
 		
         //2. Serialize the parameters based on the configuration
         //3. If the cacheHandler has a cached response already, start calling the given completion block
