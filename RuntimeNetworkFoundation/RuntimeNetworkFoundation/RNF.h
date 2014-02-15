@@ -33,3 +33,4 @@
 //Exceptions
 #import "RNFConfigurationNotFound.h"
 #import "RNFMalformedConfiguration.h"
+#import "RNFParametersParserError.h"
