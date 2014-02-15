@@ -53,6 +53,8 @@
 		5285650D18AD6FF800CA9E46 /* RNFBaseOperationConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 5285650C18AD6FF800CA9E46 /* RNFBaseOperationConfiguration.m */; };
 		5285651018AD70CA00CA9E46 /* RNFDictionaryOperationConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 5285650F18AD70CA00CA9E46 /* RNFDictionaryOperationConfiguration.m */; };
 		528AA5B118AE911F00A07294 /* RNFBaseOperationConfigurationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 528AA5B018AE911F00A07294 /* RNFBaseOperationConfigurationTests.m */; };
+		52ABBAFA18AF8C7100446DB2 /* RNFJSONResponseDeserializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 52ABBAF918AF8C7100446DB2 /* RNFJSONResponseDeserializer.m */; };
+		52ABBAFD18AF8CD600446DB2 /* RNFJSONResponseDeserializerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 52ABBAFC18AF8CD600446DB2 /* RNFJSONResponseDeserializerTests.m */; };
 		52B944A118AE99F3006BF402 /* NSMethodSignatureCategoryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 52B944A018AE99F3006BF402 /* NSMethodSignatureCategoryTests.m */; };
 		52C8DF2E18A96A6100DBA94D /* RNFEndpointTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C8DF2D18A96A6100DBA94D /* RNFEndpointTests.m */; };
 		52F7A2A518A8191100378EFA /* RNFEndpointManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 52F7A2A418A8191100378EFA /* RNFEndpointManagerTests.m */; };
@@ -134,6 +136,9 @@
 		5285650E18AD70CA00CA9E46 /* RNFDictionaryOperationConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNFDictionaryOperationConfiguration.h; path = RuntimeNetworkFoundation/Configurations/Operation/RNFDictionaryOperationConfiguration.h; sourceTree = "<group>"; };
 		5285650F18AD70CA00CA9E46 /* RNFDictionaryOperationConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RNFDictionaryOperationConfiguration.m; path = RuntimeNetworkFoundation/Configurations/Operation/RNFDictionaryOperationConfiguration.m; sourceTree = "<group>"; };
 		528AA5B018AE911F00A07294 /* RNFBaseOperationConfigurationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNFBaseOperationConfigurationTests.m; sourceTree = "<group>"; };
+		52ABBAF818AF8C7100446DB2 /* RNFJSONResponseDeserializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNFJSONResponseDeserializer.h; path = RuntimeNetworkFoundation/ResponseDeserializers/RNFJSONResponseDeserializer.h; sourceTree = "<group>"; };
+		52ABBAF918AF8C7100446DB2 /* RNFJSONResponseDeserializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RNFJSONResponseDeserializer.m; path = RuntimeNetworkFoundation/ResponseDeserializers/RNFJSONResponseDeserializer.m; sourceTree = "<group>"; };
+		52ABBAFC18AF8CD600446DB2 /* RNFJSONResponseDeserializerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNFJSONResponseDeserializerTests.m; sourceTree = "<group>"; };
 		52B944A018AE99F3006BF402 /* NSMethodSignatureCategoryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSMethodSignatureCategoryTests.m; sourceTree = "<group>"; };
 		52C8DF2D18A96A6100DBA94D /* RNFEndpointTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNFEndpointTests.m; sourceTree = "<group>"; };
 		52F7A2A418A8191100378EFA /* RNFEndpointManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNFEndpointManagerTests.m; sourceTree = "<group>"; };
@@ -232,6 +237,7 @@
 		5218570B18A7F98100D70786 /* RNF */ = {
 			isa = PBXGroup;
 			children = (
+				52ABBAF718AF8C5800446DB2 /* ResponseDeserializers */,
 				52F8476F18AD65750093A433 /* Categories */,
 				5224681218A97F4900124AE5 /* Configurations */,
 				5224681118A97F4100124AE5 /* Operations */,
@@ -250,6 +256,7 @@
 		5218572F18A8182500D70786 /* RuntimeNetworkFoundationTests */ = {
 			isa = PBXGroup;
 			children = (
+				52ABBAFB18AF8CC600446DB2 /* ResponseDeserializers */,
 				526935B318AC0F3D0082111D /* Configurations */,
 				526935B418AC0F430082111D /* ConfigurationLoaders */,
 				5218573018A8182500D70786 /* Supporting Files */,
@@ -342,6 +349,23 @@
 				5285650F18AD70CA00CA9E46 /* RNFDictionaryOperationConfiguration.m */,
 			);
 			name = Operation;
+			sourceTree = "<group>";
+		};
+		52ABBAF718AF8C5800446DB2 /* ResponseDeserializers */ = {
+			isa = PBXGroup;
+			children = (
+				52ABBAF818AF8C7100446DB2 /* RNFJSONResponseDeserializer.h */,
+				52ABBAF918AF8C7100446DB2 /* RNFJSONResponseDeserializer.m */,
+			);
+			name = ResponseDeserializers;
+			sourceTree = "<group>";
+		};
+		52ABBAFB18AF8CC600446DB2 /* ResponseDeserializers */ = {
+			isa = PBXGroup;
+			children = (
+				52ABBAFC18AF8CD600446DB2 /* RNFJSONResponseDeserializerTests.m */,
+			);
+			name = ResponseDeserializers;
 			sourceTree = "<group>";
 		};
 		52C8DF2C18A9683E00DBA94D /* Protocols */ = {
@@ -566,6 +590,7 @@
 				5285650818AD6FE000CA9E46 /* RNFBaseEndpointConfiguration.m in Sources */,
 				5224681D18A97FA900124AE5 /* RNFConfigurationNotFound.m in Sources */,
 				5285650918AD6FE000CA9E46 /* RNFDictionaryEndpointConfiguration.m in Sources */,
+				52ABBAFA18AF8C7100446DB2 /* RNFJSONResponseDeserializer.m in Sources */,
 				5224681818A97F8B00124AE5 /* RNFBaseOperation.m in Sources */,
 				5218571F18A7FC0E00D70786 /* RNFEndpointManager.m in Sources */,
 				5218572218A7FCD900D70786 /* RNFEndpoint.m in Sources */,
@@ -577,6 +602,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				52B944A118AE99F3006BF402 /* NSMethodSignatureCategoryTests.m in Sources */,
+				52ABBAFD18AF8CD600446DB2 /* RNFJSONResponseDeserializerTests.m in Sources */,
 				528AA5B118AE911F00A07294 /* RNFBaseOperationConfigurationTests.m in Sources */,
 				52F7A2A518A8191100378EFA /* RNFEndpointManagerTests.m in Sources */,
 				5280FC5118ABF9B100835D48 /* RNFDictionaryEndpointConfigurationTests.m in Sources */,
