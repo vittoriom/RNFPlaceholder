@@ -191,11 +191,12 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"completion";
                                [self baseURL].absoluteString,
                                [operationConfiguration URL]];
         NSURL *operationURL = [NSURL URLWithString:[[RNFParametersParser new] parseString:urlString withArguments:parsedRuntimeMethodName[kRNFParsedRuntimeArguments]]];
-       
         Class operationClass = [operationConfiguration operationClass];
         id<RNFOperation> operation = [[operationClass alloc] initWithURL:operationURL method:[operationConfiguration HTTPMethod]];
 		
-        //2. Serialize the parameters based on the configuration
+        [operation setHeaders:[operationConfiguration headers]];
+        [operation setBody:[operationConfiguration HTTPBody]];
+        
         //3. If the cacheHandler has a cached response already, start calling the given completion block
         //4. Enqueue the RNFOperation in the RNFOperationQueue
 		

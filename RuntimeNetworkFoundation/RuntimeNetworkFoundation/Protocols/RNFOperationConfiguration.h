@@ -74,7 +74,7 @@ static const NSString * kRNFConfigurationOperationOperationClass = @"operationCl
  *  @return The HTTP Body that the operation should use (in case of POST requests, for example)
  *
  */
-- (NSDictionary *) HTTPBody;
+- (NSData *) HTTPBody;
 
 //- (id<RNFRequestAuthentication>) authenticationHandler;
 

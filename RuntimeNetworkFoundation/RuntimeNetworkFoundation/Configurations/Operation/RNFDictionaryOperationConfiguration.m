@@ -65,6 +65,12 @@
     }
 }
 
+- (NSData *) dictionaryToData:(NSDictionary *)dictionary
+{
+    //TODO implement
+    return nil;
+}
+
 #pragma mark - Getters
 
 - (NSString *) name
@@ -82,9 +88,14 @@
     return [self.internalDictionary objectForKey:kRNFConfigurationOperationHTTPMethod] ?: [super HTTPMethod];
 }
 
-- (NSDictionary *) HTTPBody
+- (NSData *) HTTPBody
 {
-    return [self.internalDictionary objectForKey:kRNFConfigurationOperationHTTPBody] ?: [super HTTPBody];
+    NSDictionary *bodyDictionary = [self.internalDictionary objectForKey:kRNFConfigurationOperationHTTPBody];
+    
+    if(!bodyDictionary)
+     return [super HTTPBody];
+    
+    return [self dictionaryToData:bodyDictionary];
 }
 
 - (id<RNFDataDeserializer>) dataDeserializer

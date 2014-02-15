@@ -31,7 +31,7 @@
     return @"GET";
 }
 
-- (NSDictionary *) HTTPBody
+- (NSData *) HTTPBody
 {
     return nil;
 }
