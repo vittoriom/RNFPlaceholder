@@ -197,23 +197,20 @@
 		
         RNFBaseOperation *operation = [[RNFBaseOperation alloc] initWithURL:operationURL method:@"GET"];
 		
-        //2. If the cacheHandler has a cached response already, start calling the given completion block
-        //3. Serialize the parameters based on the configuration
+        //2. Serialize the parameters based on the configuration
+        //3. If the cacheHandler has a cached response already, start calling the given completion block
         //4. Enqueue the RNFOperation in the RNFOperationQueue
-        //5.0 Search the completion block
-        
-        //5. Setup the completion block.
 		[operation startWithCompletionBlock:^(id response, id<RNFOperation> operation, NSUInteger statusCode, BOOL cached) {
-			if(completion)
-				completion(response, operation, statusCode, cached);
+            id<RNFResponseDeserializer> deserializer = [self.configuration deserializer];
+            id deserializedResponse = deserializer ? [deserializer deserializeResponse:response] : response;
+            
+            if(completion)
+				completion(deserializedResponse, operation, statusCode, cached);
 		} errorBlock:^(id response, NSError *error, NSUInteger statusCode) {
 			NSLog(@"Something went wrong: %@",error);
 		}];
-        //5.1 If error is not nil, call the given completion block
-        //5.2 If error is nil, deserialize the response with the responseDeserializer
-        //5.3 If the RNFOperation has a dataDeserializer, deserialize the response
-        //5.4 Call the given completion block
-        //5.5 Eventually cache the response with the cacheHandler
+        //5 If the RNFOperation has a dataDeserializer, deserialize the response
+        //6 Eventually cache the response with the cacheHandler
         
         return operation;
     }), [self methodSignatureForMethodWithArguments:argsCount]);
