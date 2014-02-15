@@ -29,6 +29,40 @@ describe(@"Dictionary configuration", ^{
                 [dummy description];
             }) should] raise];
         });
+        
+        it(@"should raise with a nil dictionary", ^{
+            [[theBlock(^{
+                id dummy = [[RNFDictionaryEndpointConfiguration alloc] initWithDictionary:nil];
+                [dummy description];
+            }) should] raise];
+        });
+        
+        it(@"should raise with an empty dictionary", ^{
+            [[theBlock(^{
+                id dummy = [[RNFDictionaryEndpointConfiguration alloc] initWithDictionary:@{}];
+                [dummy description];
+            }) should] raise];
+        });
+        
+        it(@"should raise if operations array contains duplicates", ^{
+            [[theBlock(^{
+                id dummy = [[RNFDictionaryEndpointConfiguration alloc] initWithDictionary:@{
+                                                                                            kRNFConfigurationEndpointBaseURL : @"http://google.it",
+                                                                                            kRNFConfigurationEndpointOperations : @[
+                                                                                                    @{
+                                                                                                        kRNFConfigurationOperationURL : @"test",
+                                                                                                        kRNFConfigurationOperationName : @"test"
+                                                                                                        }, @{
+                                                                                                        kRNFConfigurationOperationName : @"test2",
+                                                                                                        kRNFConfigurationOperationURL : @"test2"
+                                                                                                        }, @{
+                                                                                                        kRNFConfigurationOperationName : @"test",
+                                                                                                        kRNFConfigurationOperationURL : @"test3"
+                                                                                                        }
+                                                                                                    ]}];
+                [dummy description];
+            }) should] raise];
+        });
     });
     
     context(@"when initialized with a proper configuration", ^{

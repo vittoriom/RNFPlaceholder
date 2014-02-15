@@ -54,9 +54,20 @@
     }
     
     NSMutableArray *operationsObjects = [NSMutableArray new];
+    NSMutableSet *operationNamesSet = [NSMutableSet set];
     for (NSDictionary *operationDictionary in operations)
     {
         RNFDictionaryOperationConfiguration *operationConfiguration = [[RNFDictionaryOperationConfiguration alloc] initWithDictionary:operationDictionary];
+        
+        NSString *operationName = operationConfiguration.name;
+        
+        if ([operationNamesSet containsObject:operationName])
+        {
+            errorMessage = [NSString stringWithFormat:@"There is more than one operation named %@", operationName];
+            break;
+        }
+        
+        [operationNamesSet addObject:operationName];
         [operationsObjects addObject:operationConfiguration];
     }
     self.internalDictionary[kRNFConfigurationEndpointOperations] = operationsObjects;
