@@ -208,8 +208,8 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"completion";
 		//[self.networkQueue enqueueOperation:operation];
         
         [operation startWithCompletionBlock:^(id response, id<RNFOperation> operation, NSUInteger statusCode, BOOL cached) {
-            id<RNFResponseDeserializer> deserializer = [self.configuration deserializer];
-            id deserializedResponse = deserializer ? [deserializer deserializeResponse:response] : response;
+            Class deserializer = [self.configuration deserializer];
+            id deserializedResponse = deserializer ? [[deserializer new] deserializeResponse:response] : response;
         
             /*
             //TODO Data deserialization
