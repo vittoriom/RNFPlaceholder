@@ -72,9 +72,9 @@
     return [self.internalDictionary objectForKey:kRNFConfigurationOperationName];
 }
 
-- (NSURL *) URL
+- (NSString *) URL
 {
-    return [NSURL URLWithString:[self.internalDictionary objectForKey:kRNFConfigurationOperationURL]];
+    return [self.internalDictionary objectForKey:kRNFConfigurationOperationURL];
 }
 
 - (NSString *) HTTPMethod

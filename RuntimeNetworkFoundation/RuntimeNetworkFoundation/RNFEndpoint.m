@@ -10,6 +10,7 @@
 #import "RNF.h"
 #import "RNFPlistConfigurationLoader.h"
 #import "RNFBaseOperation.h"
+#import "RNFParametersParser.h"
 
 #import <objc/runtime.h>
 
@@ -186,10 +187,12 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"completion";
         });
         
         RNFCompletionBlockComplete completion = parsedRuntimeMethodName[kRNFParsedRuntimeCompletionBlock];
-    	NSURL *operationURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",
-                                                    [self baseURL].absoluteString,
-                                                    [operationConfiguration URL].absoluteString]];
-		
+    	
+        NSString *urlString = [NSString stringWithFormat:@"%@/%@",
+                               [self baseURL].absoluteString,
+                               [operationConfiguration URL]];
+        NSURL *operationURL = [NSURL URLWithString:[[RNFParametersParser new] parseString:urlString withArguments:parsedRuntimeMethodName[kRNFParsedRuntimeArguments]]];
+       
         RNFBaseOperation *operation = [[RNFBaseOperation alloc] initWithURL:operationURL method:@"GET"];
 		
         //2. Serialize the parameters based on the configuration

@@ -45,7 +45,7 @@ static const NSString * kRNFConfigurationOperationOperationClass = @"operationCl
  *  
  *  @discussion The URL can contain {d} components that will be parsed at runtime
  */
-- (NSURL *) URL;
+- (NSString *) URL;
 
 @optional
 
