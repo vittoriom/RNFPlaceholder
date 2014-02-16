@@ -117,7 +117,7 @@ typedef enum {
 		if(connectionError)
 			error(data, connectionError, [connectionError code]);
 		else
-			completion(data, self, 200, NO);
+			completion(data, self, [(NSHTTPURLResponse *)response statusCode], NO);
 	}];
 }
 
