@@ -55,16 +55,6 @@ typedef enum {
     return nil;
 }
 
-- (void) setHeaders:(NSDictionary *)headers
-{
-    
-}
-
-- (void) setBody:(NSData *)body
-{
-    
-}
-
 - (NSString *) uniqueIdentifier
 {
     return nil;
@@ -112,7 +102,11 @@ typedef enum {
 
 - (void) startWithCompletionBlock:(RNFCompletionBlockComplete)completion errorBlock:(RNFErrorBlock)error
 {
-	NSURLRequest *request = [NSURLRequest requestWithURL:self.url];
+	NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:self.url];
+    [request setHTTPMethod:self.method];
+    [request setHTTPBody:self.body];
+    [request setAllHTTPHeaderFields:self.headers];
+    
 	[NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue new] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
 		if(connectionError)
 			error(data, connectionError, [connectionError code]);
