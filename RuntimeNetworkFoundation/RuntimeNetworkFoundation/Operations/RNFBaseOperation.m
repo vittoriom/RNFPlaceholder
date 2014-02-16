@@ -57,7 +57,8 @@ typedef enum {
 
 - (NSString *) uniqueIdentifier
 {
-    return nil;
+    //TODO smarter method
+    return [self.url absoluteString];
 }
 
 #pragma mark - NSOperation related methods

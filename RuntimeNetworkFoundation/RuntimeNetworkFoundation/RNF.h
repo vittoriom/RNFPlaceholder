@@ -29,6 +29,7 @@
 //Categories
 #import "NSMethodSignature+OperateOnSelectors.h"
 #import "NSArray+Blocks.h"
+#import "NSCache+RNFCacheHandler.h"
 
 //Exceptions
 #import "RNFConfigurationNotFound.h"

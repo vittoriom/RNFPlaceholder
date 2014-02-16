@@ -99,7 +99,13 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"completion";
         
         Class cacheHandler = [config cacheClass];
         if(cacheHandler)
+        {
             self.cacheHandler = [cacheHandler new];
+            if ([[self.cacheHandler class] respondsToSelector:@selector(cacheHandlerForEndpoint:)])
+            {
+                self.cacheHandler = [[self.cacheHandler class] cacheHandlerForEndpoint:self];
+            }
+        }
         
         Class loggerClass = [config logger];
         if (loggerClass)
@@ -126,6 +132,31 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"completion";
     return [self.operations objectPassingTest:^BOOL(id<RNFOperation> operation) {
         return [[operation name] isEqualToString:name];
     }];
+}
+
+- (void) handleResponse:(NSData *)response
+           forOperation:(id<RNFOperation>)operation
+         withStatusCode:(NSInteger)statusCode
+                 cached:(BOOL)cached
+    withCompletionBlock:(RNFCompletionBlockComplete)completion
+{
+    Class deserializer = [self.configuration deserializer];
+    id deserializedResponse = deserializer ? [[deserializer new] deserializeResponse:response] : response;
+    
+    /*
+     //TODO Data deserialization
+     id<RNFDataDeserializer> dataDeserializer = [operationConfiguration dataDeserializer];
+     id deserializedObject = dataDeserializer ? [dataDeserializer deserializeData:deserializedResponse
+     usingMapping:nil
+     transforms:nil
+     intoClass:nil];
+     */
+    
+    if(completion)
+        completion(deserializedResponse, operation, statusCode, cached);
+    
+    if(!cached && [self.configuration cacheResults])
+        [self.cacheHandler cacheObject:response withKey:[operation uniqueIdentifier] withCost:[response length]];
 }
 
 #pragma mark - Runtime machinery
@@ -202,38 +233,29 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"completion";
         [operation setHeaders:[operationConfiguration headers]];
         [operation setBody:[operationConfiguration HTTPBody]];
         
-        /*TODO id cachedData = [self.cacheHandler cachedObjectWithKey:[operation uniqueIdentifier]];
+        id cachedData = [self.cacheHandler cachedObjectWithKey:[operation uniqueIdentifier]];
         if (cachedData)
         {
-            if(completion)
-                completion(cachedData, operation, 200, YES);
+            [self handleResponse:cachedData
+                    forOperation:operation
+                  withStatusCode:200
+                          cached:YES
+             withCompletionBlock:completion];
             
             return operation;
-        }*/
+        }
         
         //TODO [self.networkQueue enqueueOperation:operation];
         
         [operation startWithCompletionBlock:^(id response, id<RNFOperation> operation, NSUInteger statusCode, BOOL cached) {
-            Class deserializer = [self.configuration deserializer];
-            id deserializedResponse = deserializer ? [[deserializer new] deserializeResponse:response] : response;
-        
-            /*
-            //TODO Data deserialization
-            id<RNFDataDeserializer> dataDeserializer = [operationConfiguration dataDeserializer];
-            id deserializedObject = dataDeserializer ? [dataDeserializer deserializeData:deserializedResponse
-                                                                            usingMapping:nil
-                                                                              transforms:nil
-                                                                               intoClass:nil];
-            */
-            
-            if(completion)
-				completion(deserializedResponse, operation, statusCode, cached);
+            [self handleResponse:response
+                    forOperation:operation
+                  withStatusCode:statusCode
+                          cached:NO
+             withCompletionBlock:completion];
 		} errorBlock:^(id response, NSError *error, NSUInteger statusCode) {
 			NSLog(@"Something went wrong: %@",error);
 		}];
-        
-        if([operationConfiguration cacheResults])
-            ; //TODO cache the response with the cacheHandler
         
         return operation;
     }), [NSMethodSignature methodSignatureForMethodWithArguments:argsCount]);
