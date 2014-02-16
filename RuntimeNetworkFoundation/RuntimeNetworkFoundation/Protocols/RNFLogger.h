@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class RNFEndpoint;
+
 typedef enum {
     RNFLoggerLevelAll,
     RNFLoggerLevelInfo,
@@ -17,10 +19,27 @@ typedef enum {
     RNFLoggerLevelNone
 } RNFLoggerLevel;
 
+typedef enum {
+    RNFLoggerEventCacheMiss,
+    RNFLoggerEventCacheHit,
+    RNFLoggerEventOperationFailed,
+    RNFLoggerEventOperationFinished,
+    RNFLoggerEventOperationCanceled,
+    RNFLoggerEventConfigurationLoaded,
+    RNFLoggerEventOperationEnqueued,
+    RNFLoggerEventAuthenticationSucceeded
+} RNFLoggerEvent;
+
 @protocol RNFLogger <NSObject>
 
 - (void) log:(NSString *)fmt, ...;
 
 - (void) logWithLevel:(RNFLoggerLevel)level message:(NSString *)fmt, ...;
+
+- (BOOL) shouldLogEvent:(RNFLoggerEvent)event;
+
+@optional
+
++ (id<RNFLogger>) loggerForEndpoint:(RNFEndpoint *)endpoint;
 
 @end
