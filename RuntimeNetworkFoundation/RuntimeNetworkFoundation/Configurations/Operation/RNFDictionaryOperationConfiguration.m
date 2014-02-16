@@ -67,8 +67,17 @@
 
 - (NSData *) dictionaryToData:(NSDictionary *)dictionary
 {
-    //TODO implement
-    return nil;
+    NSArray *keys = [dictionary allKeys];
+    NSMutableArray *keysAndValues = [NSMutableArray new];
+    
+    for (NSString *key in keys)
+    {
+        [keysAndValues addObject:[NSString stringWithFormat:@"%@=%@",key, dictionary[key]]];
+    }
+    
+    NSString *finalString = [keysAndValues componentsJoinedByString:@"&"];
+    
+    return [finalString dataUsingEncoding:NSUTF8StringEncoding];
 }
 
 #pragma mark - Getters
@@ -93,7 +102,7 @@
     NSDictionary *bodyDictionary = [self.internalDictionary objectForKey:kRNFConfigurationOperationHTTPBody];
     
     if(!bodyDictionary)
-     return [super HTTPBody];
+        return [super HTTPBody];
     
     return [self dictionaryToData:bodyDictionary];
 }

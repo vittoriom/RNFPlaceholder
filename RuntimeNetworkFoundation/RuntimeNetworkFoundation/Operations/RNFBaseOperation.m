@@ -67,7 +67,6 @@ typedef enum {
 
 - (NSString *) uniqueIdentifier
 {
-    //TODO make smarter method here
     return nil;
 }
 

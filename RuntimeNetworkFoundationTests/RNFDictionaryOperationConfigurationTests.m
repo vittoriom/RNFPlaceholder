@@ -77,8 +77,9 @@ describe(@"Dictionary operation configurations", ^{
         it(@"should parse the body", ^{
             NSData *body = [configuration HTTPBody];
             [[body shouldNot] beNil];
-            //TODO [[body[@"param1"] should] equal:@"value1"];
-            //TODO [[body[@"param2"] should] equal:@2];
+            NSString *bodyString = [[NSString alloc] initWithData:body encoding:NSUTF8StringEncoding];
+            
+            [[bodyString should] equal:@"param1=value1&param2=2"];
         });
         
         it(@"should parse the method", ^{
