@@ -233,7 +233,13 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"completion";
         [operation setHeaders:[operationConfiguration headers]];
         [operation setBody:[operationConfiguration HTTPBody]];
         
-        id cachedData = [self.cacheHandler cachedObjectWithKey:[operation uniqueIdentifier]];
+        id cachedData = nil;
+        
+        if ([[operationConfiguration HTTPMethod] isEqualToString:@"GET"])
+        {
+            cachedData = [self.cacheHandler cachedObjectWithKey:[operation uniqueIdentifier]];
+        }
+        
         if (cachedData)
         {
             [self handleResponse:cachedData
