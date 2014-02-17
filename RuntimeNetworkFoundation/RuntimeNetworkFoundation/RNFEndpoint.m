@@ -247,8 +247,6 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"completion";
                   withStatusCode:200
                           cached:YES
              withCompletionBlock:completion];
-            
-            return operation;
         }
         
         //TODO [self.networkQueue enqueueOperation:operation];
