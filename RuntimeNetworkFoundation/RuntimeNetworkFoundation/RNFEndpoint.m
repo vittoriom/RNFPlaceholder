@@ -67,11 +67,6 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"completion";
     return self;
 }
 
-- (id) init
-{
-    return [super init];
-}
-
 #pragma mark - Configuration loading
 
 - (void) loadConfigurationForConfigurator:(id<RNFConfigurationLoader>)configurator
@@ -100,17 +95,21 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"completion";
         Class cacheHandler = [config cacheClass];
         if(cacheHandler)
         {
-            self.cacheHandler = [cacheHandler new];
-            if ([[self.cacheHandler class] respondsToSelector:@selector(cacheHandlerForEndpoint:)])
-            {
-                self.cacheHandler = [[self.cacheHandler class] cacheHandlerForEndpoint:self];
-            }
+            if ([cacheHandler respondsToSelector:@selector(cacheHandlerForEndpoint:)])
+                self.cacheHandler = [cacheHandler cacheHandlerForEndpoint:self];
+            else
+                self.cacheHandler = [cacheHandler new];
         }
         
         Class loggerClass = [config logger];
         if (loggerClass)
-            self.logger = [loggerClass new];
-        
+        {
+            if([loggerClass respondsToSelector:@selector(loggerForEndpoint:)])
+               self.logger = [loggerClass loggerForEndpoint:self];
+            else
+               self.logger = [loggerClass new];
+        }
+
         self.configuration = config;
     }
 }
@@ -129,7 +128,14 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"completion";
 
 - (id<RNFOperation>) operationWithName:(NSString *)name
 {
-    return [self.operations objectPassingTest:^BOOL(id<RNFOperation> operation) {
+    return [self.operations objectPassingTest:^BOOL(id<RNFOperationConfiguration> operation) {
+        return [[operation name] isEqualToString:name];
+    }];
+}
+
+- (NSInteger) indexOfOperationWithName:(NSString *)name
+{
+    return [self.operations indexOfObjectPassingTest:^BOOL(id<RNFOperationConfiguration> operation, NSUInteger idx, BOOL *stop) {
         return [[operation name] isEqualToString:name];
     }];
 }
@@ -177,21 +183,12 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"completion";
     
     NSArray *operations = [self.configuration operations];
     
-	int i=0;
-	BOOL found = NO;
-	for (id<RNFOperationConfiguration> operation in operations)
-    {
-		if ([[operation name] isEqualToString:selectorAsString]) {
-			found = YES;
-			break;
-		} else
-			i++;
-	}
-	
-	if(!found)
+	NSInteger indexOfOperation = [self indexOfOperationWithName:selectorAsString];
+    
+	if(indexOfOperation == NSNotFound)
 		return self;
 
-	id<RNFOperationConfiguration> operationConfiguration = [operations objectAtIndex:i];
+	id<RNFOperationConfiguration> operationConfiguration = [operations objectAtIndex:indexOfOperation];
 	NSUInteger argsCount = [NSMethodSignature numberOfArgumentsForSelector:aSelector];
     
     class_replaceMethod([self class], aSelector, imp_implementationWithBlock(^id<RNFOperation>(RNFEndpoint *endpointSelf, ...){
@@ -227,6 +224,7 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"completion";
                                [self baseURL].absoluteString,
                                [operationConfiguration URL]];
         NSURL *operationURL = [NSURL URLWithString:[[RNFParametersParser new] parseString:urlString withArguments:parsedRuntimeMethodName[kRNFParsedRuntimeArguments]]];
+        
         Class operationClass = [operationConfiguration operationClass];
         id<RNFOperation> operation = [[operationClass alloc] initWithURL:operationURL method:[operationConfiguration HTTPMethod]];
 		
@@ -234,11 +232,8 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"completion";
         [operation setBody:[operationConfiguration HTTPBody]];
         
         id cachedData = nil;
-        
         if ([[operationConfiguration HTTPMethod] isEqualToString:@"GET"])
-        {
             cachedData = [self.cacheHandler cachedObjectWithKey:[operation uniqueIdentifier]];
-        }
         
         if (cachedData)
         {
