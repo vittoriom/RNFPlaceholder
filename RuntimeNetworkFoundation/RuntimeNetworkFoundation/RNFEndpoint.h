@@ -21,7 +21,7 @@
 /**
  *  A descriptive name for this endpoint instance
  */
-@property (nonatomic, readonly) NSString *name;
+- (NSString *) endpointName;
 
 /**
  *  Creates a new RNFEndpoint instance with a given RNFConfigurationLoader

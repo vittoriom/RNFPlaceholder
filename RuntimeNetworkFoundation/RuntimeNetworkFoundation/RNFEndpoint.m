@@ -30,6 +30,7 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"completion";
 //Attributes
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSURL *baseURL;
+
 @property (nonatomic, strong) id<RNFEndpointConfiguration> configuration;
 
 //Attached behaviors
@@ -62,7 +63,7 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"completion";
     //Eagerly load the configuration
     [self loadConfigurationForConfigurator:configurationLoader];
     
-    _name = name;
+    self.name = name;
     
     return self;
 }
@@ -124,18 +125,24 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"completion";
     return _baseURL;
 }
 
+- (NSString *) endpointName
+{
+    return self.name;
+}
+
 #pragma mark - Convenience methods
 
 - (id<RNFOperation>) operationWithName:(NSString *)name
 {
-    return [self.operations objectPassingTest:^BOOL(id<RNFOperationConfiguration> operation) {
+    NSArray *operationsArray = [self operations];
+    return [operationsArray objectPassingTest:^BOOL(id<RNFOperationConfiguration> operation) {
         return [[operation name] isEqualToString:name];
     }];
 }
 
 - (NSInteger) indexOfOperationWithName:(NSString *)name
 {
-    return [self.operations indexOfObjectPassingTest:^BOOL(id<RNFOperationConfiguration> operation, NSUInteger idx, BOOL *stop) {
+    return [_operations indexOfObjectPassingTest:^BOOL(id<RNFOperationConfiguration> operation, NSUInteger idx, BOOL *stop) {
         return [[operation name] isEqualToString:name];
     }];
 }
@@ -214,7 +221,9 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"completion";
             va_end(args);
             
             parsedResult[kRNFParsedRuntimeArguments] = argsArray;
-            parsedResult[kRNFParsedRuntimeCompletionBlock] = completion;
+            
+            if(completion)
+                parsedResult[kRNFParsedRuntimeCompletionBlock] = completion;
             parsedResult;
         });
         

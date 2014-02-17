@@ -50,12 +50,6 @@
 - (void) setBody:(NSData *)body;
 
 /**
- *  The name of the operation
- *  This can be used as a convenience hook for getting a specific operation from a RNFEndpoint
- */
-@property (nonatomic, readonly) NSString *name;
-
-/**
  *  The uniqueIdentifier of the operation
  *  This can be overriden in your implementation if you have special needs
  */

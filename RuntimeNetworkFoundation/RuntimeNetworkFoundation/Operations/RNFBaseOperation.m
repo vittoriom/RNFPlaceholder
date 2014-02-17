@@ -18,7 +18,6 @@ typedef enum {
 
 @interface RNFBaseOperation ()
 
-@property (nonatomic, strong, readwrite) NSString *name;
 @property (nonatomic, strong) NSURL *url;
 @property (nonatomic, strong) NSString *method;
 @property (nonatomic, strong) NSDictionary *headers;
@@ -49,11 +48,6 @@ typedef enum {
 }
 
 #pragma mark - Properties
-
-- (NSString *) name
-{
-    return nil;
-}
 
 - (NSString *) uniqueIdentifier
 {

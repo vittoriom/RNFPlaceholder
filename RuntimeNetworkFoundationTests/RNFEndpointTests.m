@@ -1,6 +1,7 @@
 #import "RNFBaseOperation.h"
 #import "RNFEndpoint.h"
 #import "RNFOperation.h"
+#import "RNFDictionaryOperationConfiguration.h"
 #import "RNFConfigurationLoader.h"
 #import "RNFPlistConfigurationLoader.h"
 #import "RNFConfigurationNotFound.h"
@@ -26,7 +27,7 @@ describe(@"Endpoints", ^{
         });
         
         it(@"should return the correct operation if any", ^{
-            id operation = [RNFBaseOperation new];
+            id operation = [RNFDictionaryOperationConfiguration new];
             [[operation should] receive:@selector(name) andReturn:@"operation1"];
             
             [[endpoint should] receive:@selector(operations) andReturn:@[operation]];
@@ -36,7 +37,7 @@ describe(@"Endpoints", ^{
         });
         
         it(@"should return the correct operation even in a set of more than one", ^{
-            id operation = [RNFBaseOperation new], operation2 = [RNFBaseOperation new];
+            id operation = [RNFDictionaryOperationConfiguration new], operation2 = [RNFDictionaryOperationConfiguration new];
             [[operation should] receive:@selector(name) andReturn:@"operation1"];
             [[operation2 should] receive:@selector(name) andReturn:@"operation2"];
             
@@ -47,7 +48,7 @@ describe(@"Endpoints", ^{
         });
         
         it(@"should return immediately without scanning subsequent operations after finding one", ^{
-            id operation = [RNFBaseOperation new], operation2 = [RNFBaseOperation new];
+            id operation = [RNFDictionaryOperationConfiguration new], operation2 = [RNFDictionaryOperationConfiguration new];
             [[operation should] receive:@selector(name) andReturn:@"operation1"];
             [[operation2 shouldNot] receive:@selector(name) andReturn:@"operation2"];
             
@@ -70,7 +71,7 @@ describe(@"Endpoints", ^{
         });
         
         it(@"should return the correct name if asked", ^{
-            [[[endpoint name] should] equal:@"sampleConfiguration"];
+            [[[endpoint endpointName] should] equal:@"sampleConfiguration"];
         });
         
         it(@"should load a plist configuration with that name", ^{

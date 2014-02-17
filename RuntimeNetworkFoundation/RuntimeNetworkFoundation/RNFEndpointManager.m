@@ -35,7 +35,7 @@
 
 - (BOOL) addEndpoint:(RNFEndpoint *)endpoint
 {
-    NSString *endpointName = endpoint.name;
+    NSString *endpointName = endpoint.endpointName;
     if(!endpointName || [self.endpoints objectForKey:endpointName])
     {
         return NO;
