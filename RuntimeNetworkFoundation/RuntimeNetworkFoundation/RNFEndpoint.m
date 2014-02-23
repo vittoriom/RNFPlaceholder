@@ -125,6 +125,17 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"completion";
     return _baseURL;
 }
 
+- (NSArray *) operations
+{
+    if(!_configuration)
+        [self loadConfigurationForConfigurator:self.configurator];
+    
+    if(!_operations)
+        _operations = [[self configuration] operations];
+    
+    return _operations;
+}
+
 - (NSString *) endpointName
 {
     return self.name;
@@ -142,7 +153,7 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"completion";
 
 - (NSInteger) indexOfOperationWithName:(NSString *)name
 {
-    return [_operations indexOfObjectPassingTest:^BOOL(id<RNFOperationConfiguration> operation, NSUInteger idx, BOOL *stop) {
+    return [[self operations] indexOfObjectPassingTest:^BOOL(id<RNFOperationConfiguration> operation, NSUInteger idx, BOOL *stop) {
         return [[operation name] isEqualToString:name];
     }];
 }

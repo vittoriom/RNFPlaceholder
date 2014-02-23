@@ -36,10 +36,6 @@
     
     NSLog(@"Operation is: %@",createdOperation);
     
-    [endpoint getAnswersWithCompletionBlock:^(id response) {
-        NSLog(@"Test: %@",response);
-    }];
-    
     return YES;
 }
 
