@@ -15,39 +15,27 @@
  *
  *  @param url    The complete URL that this RNFOperation should call
  *  @param method The HTTP method (GET, POST, PUT, DELETE, TRACE, HEAD, CONNECT, OPTIONS) to use
+ *  @param headers The NSDictionary containing the key-value pairs headers of the operation
+ *  @param body The NSData instance representing the body of the operation
  *
  *  @return a initialized RNFOperation
  */
 - (instancetype) initWithURL:(NSURL *)url
-                      method:(NSString *)method;
+                      method:(NSString *)method
+                     headers:(NSDictionary *)headers
+                        body:(NSData *)body;
 
 /**
- *  Starts the RNFOperation instance
+ *  Sets completion and error blocks for the RNFOperation
  *  When the operation is completed, RNFCompletionBlockGeneric is called
  *  If the operation failed, RNFErrorBlock is called instead
  *
  *  @param completion the completion block to call if the operation succeeds
  *  @param error      the completion block to call if the operation fails
  *
- *  @discussion If the operation is cached and there is no network connection, the completion block is immediately called with the cached data.
- *              If the operation is cached, network connection is present but connection timeout occurs, the completion block is called with the cached data instead.
  */
-- (void) startWithCompletionBlock:(RNFCompletionBlockComplete)completion
+- (void) setCompletionBlock:(RNFCompletionBlockComplete)completion
                        errorBlock:(RNFErrorBlock)error;
-
-/**
- *  Sets the headers of the operation
- *
- *  @param headers The NSDictionary containing the key-value pairs headers of the operation
- */
-- (void) setHeaders:(NSDictionary *)headers;
-
-/**
- *  Sets the body of the operation
- *
- *  @param body The NSData instance representing the body of the operation
- */
-- (void) setBody:(NSData *)body;
 
 /**
  *  The uniqueIdentifier of the operation

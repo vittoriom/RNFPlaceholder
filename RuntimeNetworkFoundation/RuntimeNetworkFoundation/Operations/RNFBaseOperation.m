@@ -36,13 +36,15 @@ typedef enum {
 
 #pragma mark - Initializers
 
-- (instancetype) initWithURL:(NSURL *)url method:(NSString *)method
+- (instancetype) initWithURL:(NSURL *)url method:(NSString *)method headers:(NSDictionary *)headers body:(NSData *)body
 {
     self = [self init];
     
     _operationState = RNFOperationStateIdle;
 	_url = url;
 	_method = method;
+    _headers = headers;
+    _body = body;
     
     return self;
 }
@@ -95,7 +97,7 @@ typedef enum {
 
 #pragma mark - RNFOperation
 
-- (void) startWithCompletionBlock:(RNFCompletionBlockComplete)completion errorBlock:(RNFErrorBlock)error
+- (void) setCompletionBlock:(RNFCompletionBlockComplete)completion errorBlock:(RNFErrorBlock)error
 {
 	NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:self.url];
     [request setHTTPMethod:self.method];

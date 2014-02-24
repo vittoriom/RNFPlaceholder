@@ -110,6 +110,9 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"completion";
             else
                self.logger = [loggerClass new];
         }
+        
+        _operations = [[self configuration] operations];
+        
 
         self.configuration = config;
     }
@@ -123,17 +126,6 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"completion";
         [self loadConfigurationForConfigurator:self.configurator];
     
     return _baseURL;
-}
-
-- (NSArray *) operations
-{
-    if(!_configuration)
-        [self loadConfigurationForConfigurator:self.configurator];
-    
-    if(!_operations)
-        _operations = [[self configuration] operations];
-    
-    return _operations;
 }
 
 - (NSString *) endpointName
@@ -153,7 +145,7 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"completion";
 
 - (NSInteger) indexOfOperationWithName:(NSString *)name
 {
-    return [[self operations] indexOfObjectPassingTest:^BOOL(id<RNFOperationConfiguration> operation, NSUInteger idx, BOOL *stop) {
+    return [_operations indexOfObjectPassingTest:^BOOL(id<RNFOperationConfiguration> operation, NSUInteger idx, BOOL *stop) {
         return [[operation name] isEqualToString:name];
     }];
 }
@@ -201,6 +193,9 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"completion";
     
     NSArray *operations = [self.configuration operations];
     
+    if(!_operations)
+        _operations = operations;
+    
 	NSInteger indexOfOperation = [self indexOfOperationWithName:selectorAsString];
     
 	if(indexOfOperation == NSNotFound)
@@ -246,10 +241,10 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"completion";
         NSURL *operationURL = [NSURL URLWithString:[[RNFParametersParser new] parseString:urlString withArguments:parsedRuntimeMethodName[kRNFParsedRuntimeArguments]]];
         
         Class operationClass = [operationConfiguration operationClass];
-        id<RNFOperation> operation = [[operationClass alloc] initWithURL:operationURL method:[operationConfiguration HTTPMethod]];
-		
-        [operation setHeaders:[operationConfiguration headers]];
-        [operation setBody:[operationConfiguration HTTPBody]];
+        id<RNFOperation> operation = [[operationClass alloc] initWithURL:operationURL
+                                                                  method:[operationConfiguration HTTPMethod]
+                                                                 headers:[operationConfiguration headers]
+                                                                    body:[operationConfiguration HTTPBody]];
         
         id cachedData = nil;
         if ([[operationConfiguration HTTPMethod] isEqualToString:@"GET"])
@@ -264,9 +259,7 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"completion";
              withCompletionBlock:completion];
         }
         
-        //TODO [self.networkQueue enqueueOperation:operation];
-        
-        [operation startWithCompletionBlock:^(id response, id<RNFOperation> operation, NSUInteger statusCode, BOOL cached) {
+        [operation setCompletionBlock:^(id response, id<RNFOperation> operation, NSUInteger statusCode, BOOL cached) {
             [self handleResponse:response
                     forOperation:operation
                   withStatusCode:statusCode
@@ -275,6 +268,8 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"completion";
 		} errorBlock:^(id response, NSError *error, NSUInteger statusCode) {
 			NSLog(@"Something went wrong: %@",error);
 		}];
+        
+        [self.networkQueue enqueueOperation:operation];
         
         return operation;
     }), [NSMethodSignature methodSignatureForMethodWithArguments:argsCount]);

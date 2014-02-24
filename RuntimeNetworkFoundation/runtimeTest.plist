@@ -11,6 +11,10 @@
 			<string>questions?pagesize=5&amp;order=desc&amp;sort=activity&amp;site=stackoverflow</string>
 		</dict>
 		<dict>
+			<key>responseDeserializer</key>
+			<string>RNFJSONResponseDeserializer</string>
+			<key>operationClass</key>
+			<string>AFHTTPRequestOperation</string>
 			<key>name</key>
 			<string>getAnswersWithMaxResults:completionBlock:</string>
 			<key>URL</key>
