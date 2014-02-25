@@ -238,6 +238,8 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"completion";
         NSString *urlString = [NSString stringWithFormat:@"%@/%@",
                                [self baseURL].absoluteString,
                                [operationConfiguration URL]];
+        urlString = [urlString URLStringByAppendingQueryStringParameters:[self.configuration queryStringParameters]];
+        
         NSURL *operationURL = [NSURL URLWithString:[[RNFParametersParser new] parseString:urlString withArguments:parsedRuntimeMethodName[kRNFParsedRuntimeArguments]]];
         
         Class operationClass = [operationConfiguration operationClass];

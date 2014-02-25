@@ -30,6 +30,8 @@
 #import "NSMethodSignature+OperateOnSelectors.h"
 #import "NSArray+Blocks.h"
 #import "NSCache+RNFCacheHandler.h"
+#import "NSString+Additions.h"
+#import "NSURL+Additions.h"
 
 //Exceptions
 #import "RNFConfigurationNotFound.h"
