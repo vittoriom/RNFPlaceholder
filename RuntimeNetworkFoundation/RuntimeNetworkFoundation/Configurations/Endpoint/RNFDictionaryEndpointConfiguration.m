@@ -105,6 +105,11 @@
     return [NSURL URLWithString:self.internalDictionary[kRNFConfigurationEndpointBaseURL]];
 }
 
+- (NSDictionary *) queryStringParameters
+{
+    return self.internalDictionary[kRNFConfigurationEndpointDefaultQueryStringParameters] ?: [super queryStringParameters];
+}
+
 - (NSArray *) operations
 {
     return self.internalDictionary[kRNFConfigurationEndpointOperations];

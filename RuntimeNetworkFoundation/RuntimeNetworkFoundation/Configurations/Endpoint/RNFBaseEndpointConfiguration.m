@@ -26,6 +26,11 @@
                                                   userInfo:nil];
 }
 
+- (NSDictionary *) queryStringParameters
+{
+    return @{};
+}
+
 - (NSString *) name
 {
     return nil;

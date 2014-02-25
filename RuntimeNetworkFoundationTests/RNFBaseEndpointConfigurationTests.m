@@ -52,6 +52,10 @@ describe(@"Base configuration",^{
             [[theValue([dummyObject isKindOfClass:[NSOperationQueue class]]) should] beTrue];
         });
         
+        it(@"should return empty query string parameters dictionary", ^{
+            [[[_configuration queryStringParameters] should] equal:@{}];
+        });
+        
         it(@"should cache results", ^{
             [[theValue([_configuration cacheResults]) should] beTrue];
         });

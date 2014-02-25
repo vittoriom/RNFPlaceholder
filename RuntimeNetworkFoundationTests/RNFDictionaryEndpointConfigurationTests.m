@@ -91,7 +91,10 @@ describe(@"Dictionary configuration", ^{
                                                                                                      ],
                                                                                              kRNFConfigurationEndpointResponseDeserializer : @"NSArray",
                                                                                              kRNFConfigurationEndpointShouldCacheResults : @NO,
-                                                                                             kRNFConfigurationEndpointPortNumber : @443
+                                                                                             kRNFConfigurationEndpointPortNumber : @443,
+                                                                                             kRNFConfigurationEndpointDefaultQueryStringParameters : @{
+                                                                                                     @"customP" : @"customV"
+                                                                                                     }
                                                                                              }];
         });
         
@@ -148,6 +151,10 @@ describe(@"Dictionary configuration", ^{
         
         it(@"should correctly read the port number", ^{
             [[[configuration portNumber] should] equal:@443];
+        });
+        
+        it(@"should correctly read query string parameters", ^{
+            [[[configuration queryStringParameters] should] equal:@{ @"customP" : @"customV" }];
         });
     });
 });

@@ -25,6 +25,7 @@ static const NSString * kRNFConfigurationEndpointShouldCacheResults = @"cacheRes
 static const NSString * kRNFConfigurationEndpointCacheClass = @"cacheClass";
 static const NSString * kRNFConfigurationEndpointLoggerClass = @"loggerClass";
 static const NSString * kRNFConfigurationEndpointPortNumber = @"port";
+static const NSString * kRNFConfigurationEndpointDefaultQueryStringParameters = @"queryString";
 
 @protocol RNFEndpointConfiguration <NSObject>
 
@@ -56,6 +57,15 @@ static const NSString * kRNFConfigurationEndpointPortNumber = @"port";
  *  @return the port number to reach the endpoint, or nil if not configured
  */
 - (NSNumber *) portNumber;
+
+/**
+ *  The default query string parameters to add to all the operations on this endpoint
+ *
+ *  @discussion this parameter is optional, so it may return nil or a default value
+ *
+ *  @return the dictionary containing the query string parameters
+ */
+- (NSDictionary *) queryStringParameters;
 
 /**
  *  This parameter is optional, so the method may return nil
