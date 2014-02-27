@@ -116,6 +116,14 @@
         return [super dataDeserializer];
 }
 
+- (Class<RNFResponseValidator>) responseValidator
+{
+    if ([self.internalDictionary objectForKey:kRNFConfigurationOperationResponseValidator])
+        return [self classFromKey:kRNFConfigurationOperationResponseValidator];
+    else
+        return [super responseValidator];
+}
+
 - (id<RNFDataSerializer>) dataSerializer
 {
     Class serializerClass = [self classFromKey:kRNFConfigurationOperationDataSerializer];

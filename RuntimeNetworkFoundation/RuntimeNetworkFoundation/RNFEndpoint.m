@@ -11,6 +11,7 @@
 #import "RNFPlistConfigurationLoader.h"
 #import "RNFParametersParser.h"
 #import "RNFUnifiedConfiguration.h"
+#import "RNFResponseValidator.h"
 
 #import <objc/runtime.h>
 
@@ -157,14 +158,25 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"completion";
            forOperation:(id<RNFOperation>)operation
          withStatusCode:(NSInteger)statusCode
                  cached:(BOOL)cached
-      usingDeserializer:(id<RNFDataDeserializer>)dataDeserializer
+     usingConfiguration:(RNFUnifiedConfiguration *)unifiedConfiguration
     withCompletionBlock:(RNFCompletionBlockComplete)completion
+           failureBlock:(RNFErrorBlock)errorBlock
 {
-    //TODO here ask the unified configuration
-    
-    Class deserializer = [self.configuration responseDeserializer];
+    Class deserializer = [unifiedConfiguration responseDeserializer];
     id deserializedResponse = deserializer ? [[deserializer new] deserializeResponse:response] : response;
     
+    //Response is valid?
+    Class validatorClass = [unifiedConfiguration responseValidator];
+    id<RNFResponseValidator> validator = validatorClass ? [validatorClass new] : nil;
+    BOOL responseIsValid = validator ? [validator responseIsValid:deserializedResponse forOperation:operation withStatusCode:statusCode] : YES;
+    
+    if(!responseIsValid)
+    {
+        errorBlock(deserializedResponse, nil,statusCode); //TODO create a NSError here
+        return;
+    }
+    
+    id<RNFDataDeserializer> dataDeserializer = [unifiedConfiguration dataDeserializer];
     deserializedResponse = dataDeserializer ? [dataDeserializer deserializeData:deserializedResponse
                                                                    usingMapping:[dataDeserializer mappings]
                                                                      transforms:[dataDeserializer transforms]
@@ -173,7 +185,7 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"completion";
     if(completion)
         completion(deserializedResponse, operation, statusCode, cached);
     
-    if(!cached && [self.configuration cacheResults])
+    if(!cached && [unifiedConfiguration cacheResults])
         [self.cacheHandler cacheObject:response withKey:[operation uniqueIdentifier] withCost:[response length]];
 }
 
@@ -256,8 +268,9 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"completion";
                     forOperation:operation
                   withStatusCode:200
                           cached:YES
-               usingDeserializer:[unifiedConfiguration dataDeserializer]
-             withCompletionBlock:completion];
+              usingConfiguration:unifiedConfiguration
+             withCompletionBlock:completion
+                    failureBlock:nil];
         }
         
         [operation setCompletionBlock:^(id response, id<RNFOperation> operation, NSUInteger statusCode, BOOL cached) {
@@ -265,8 +278,9 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"completion";
                     forOperation:operation
                   withStatusCode:statusCode
                           cached:NO
-               usingDeserializer:[unifiedConfiguration dataDeserializer]
-             withCompletionBlock:completion];
+              usingConfiguration:unifiedConfiguration
+             withCompletionBlock:completion
+                    failureBlock:nil];
 		} errorBlock:^(id response, NSError *error, NSUInteger statusCode) {
 			NSLog(@"Something went wrong: %@",error);
 		}];

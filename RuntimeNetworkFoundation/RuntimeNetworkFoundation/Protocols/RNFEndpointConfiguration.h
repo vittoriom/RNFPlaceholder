@@ -13,6 +13,7 @@
 @protocol RNFOperationQueue;
 @protocol RNFCacheHandler;
 @protocol RNFLogger;
+@protocol RNFResponseValidator;
 
 static const NSString * kRNFConfigurationEndpointBaseURL = @"baseURL";
 static const NSString * kRNFConfigurationEndpointOperations = @"operations";
@@ -26,6 +27,7 @@ static const NSString * kRNFConfigurationEndpointCacheClass = @"cacheClass";
 static const NSString * kRNFConfigurationEndpointLoggerClass = @"loggerClass";
 static const NSString * kRNFConfigurationEndpointPortNumber = @"port";
 static const NSString * kRNFConfigurationEndpointDefaultQueryStringParameters = @"queryString";
+static const NSString * kRNFConfigurationEndpointResponseValidator = @"responseValidator";
 
 @protocol RNFEndpointConfiguration <NSObject>
 
@@ -48,6 +50,13 @@ static const NSString * kRNFConfigurationEndpointDefaultQueryStringParameters = 
 - (NSArray *) operations;
 
 @optional
+
+/**
+ *  The validator to use for the deserialized responses
+ *
+ *  @return a validator or nil, if none is needed
+ */
+- (Class<RNFResponseValidator>) responseValidator;
 
 /**
  *  The port number to reach the endpoint

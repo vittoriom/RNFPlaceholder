@@ -11,6 +11,7 @@
 #import "RNFDataSerializer.h"
 #import "RNFDataDeserializer.h"
 #import "RNFOperation.h"
+#import "RNFResponseValidator.h"
 
 static const NSString * kRNFConfigurationOperationURL = @"URL";
 static const NSString * kRNFConfigurationOperationName = @"name";
@@ -23,6 +24,7 @@ static const NSString * kRNFConfigurationOperationAuthenticationHandler = @"auth
 static const NSString * kRNFConfigurationOperationHeaders = @"headers";
 static const NSString * kRNFConfigurationOperationShouldCacheResults = @"cacheResults";
 static const NSString * kRNFConfigurationOperationOperationClass = @"operationClass";
+static const NSString * kRNFConfigurationOperationResponseValidator = @"responseValidator";
 
 @protocol RNFOperationConfiguration <NSObject>
 
@@ -48,6 +50,13 @@ static const NSString * kRNFConfigurationOperationOperationClass = @"operationCl
 - (NSString *) URL;
 
 @optional
+
+/**
+ *  The validator to use for the deserialized response
+ *
+ *  @return a validator or nil, if none is needed
+ */
+- (Class<RNFResponseValidator>) responseValidator;
 
 /**
  *  @return The headers to use for this operation

@@ -24,6 +24,8 @@
 #import "RNFValueTransformer.h"
 #import "RNFOperationSerializer.h"
 #import "RNFOperationConfiguration.h"
+#import "RNFResponseValidator.h"
+#import "RNFInitializableWithDictionary.h"
 #import "RNFTypes.h"
 
 //Categories

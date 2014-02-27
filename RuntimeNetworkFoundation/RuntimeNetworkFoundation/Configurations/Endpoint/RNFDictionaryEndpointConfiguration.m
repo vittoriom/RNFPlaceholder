@@ -120,6 +120,14 @@
     return [self.internalDictionary objectForKey:kRNFConfigurationEndpointName] ?: [super name];
 }
 
+- (Class<RNFResponseValidator>) responseValidator
+{
+    if ([self.internalDictionary objectForKey:kRNFConfigurationEndpointResponseValidator])
+        return [self classFromKey:kRNFConfigurationEndpointResponseValidator];
+    else
+        return [super responseValidator];
+}
+
 - (BOOL) cacheResults
 {
     if([self.internalDictionary objectForKey:kRNFConfigurationEndpointShouldCacheResults])

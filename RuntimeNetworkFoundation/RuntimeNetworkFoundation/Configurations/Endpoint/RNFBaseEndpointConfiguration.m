@@ -26,6 +26,11 @@
                                                   userInfo:nil];
 }
 
+- (Class<RNFResponseValidator>) responseValidator
+{
+    return nil;
+}
+
 - (NSDictionary *) queryStringParameters
 {
     return @{};

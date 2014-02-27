@@ -36,6 +36,11 @@
     return nil;
 }
 
+- (Class<RNFResponseValidator>) responseValidator
+{
+    return nil;
+}
+
 - (Class<RNFResponseDeserializer>) responseDeserializer
 {
     return nil;

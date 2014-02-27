@@ -42,6 +42,18 @@
     return [self.endpointConfiguration operations];
 }
 
+- (Class<RNFResponseValidator>) responseValidator
+{
+    if ([self.operationConfiguration respondsToSelector:@selector(responseValidator)])
+    {
+        return [self.operationConfiguration responseValidator];
+    } else if ([self.endpointConfiguration respondsToSelector:@selector(responseValidator)])
+    {
+        return [self.endpointConfiguration responseValidator];
+    } else
+        return nil;
+}
+
 - (NSString *) URL
 {
     NSString *component1 = [self baseURL] ? [self baseURL].absoluteString : nil;
