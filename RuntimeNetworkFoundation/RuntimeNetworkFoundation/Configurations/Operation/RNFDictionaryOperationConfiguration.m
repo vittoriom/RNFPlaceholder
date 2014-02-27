@@ -125,13 +125,10 @@
         return [super dataSerializer];
 }
 
-- (id<RNFResponseDeserializer>) responseDeserializer
+- (Class<RNFResponseDeserializer>) responseDeserializer
 {
     Class deserializerClass = [self classFromKey:kRNFConfigurationOperationResponseDeserializer];
-    if(deserializerClass)
-        return [deserializerClass new];
-    else
-        return [super responseDeserializer];
+    return deserializerClass ?: [super responseDeserializer];
 }
 
 - (Class<RNFOperation>) operationClass

@@ -36,7 +36,7 @@
     return nil;
 }
 
-- (id<RNFResponseDeserializer>) responseDeserializer
+- (Class<RNFResponseDeserializer>) responseDeserializer
 {
     return nil;
 }

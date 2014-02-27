@@ -81,7 +81,7 @@ static const NSString * kRNFConfigurationOperationOperationClass = @"operationCl
 /**
  *  @return The response deserializer to use after NSData comes from the network
  */
-- (id<RNFResponseDeserializer>) responseDeserializer;
+- (Class<RNFResponseDeserializer>) responseDeserializer;
 
 /**
  *  @return The data deserializer to use after the response has been eventually deserialized

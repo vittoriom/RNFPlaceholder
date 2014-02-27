@@ -88,7 +88,7 @@ static const NSString * kRNFConfigurationEndpointDefaultQueryStringParameters = 
  *
  *  @return the deserializer to use for responses to the operations for the given endpoint, or nil if no deserialization should be provided. In this case, the completion blocks will get raw NSData objects, if no data deserializer is specified
  */
-- (Class<RNFResponseDeserializer>) deserializer;
+- (Class<RNFResponseDeserializer>) responseDeserializer;
 
 /**
  *  This parameter is optional, so the method may return nil or a default class

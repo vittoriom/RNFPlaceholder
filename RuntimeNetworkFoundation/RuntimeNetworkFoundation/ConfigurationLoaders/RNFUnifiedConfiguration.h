@@ -10,6 +10,8 @@
 #import "RNFOperationConfiguration.h"
 #import "RNFEndpointConfiguration.h"
 
-@interface RNFParameterMerger : NSObject
+@interface RNFUnifiedConfiguration : NSObject <RNFOperationConfiguration, RNFEndpointConfiguration>
+
+- (instancetype) initWithEndpointConfiguration:(id<RNFEndpointConfiguration>)endpoint operationConfiguration:(id<RNFOperationConfiguration>)operation;
 
 @end

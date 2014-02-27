@@ -16,7 +16,7 @@
 /**
  *  The base URL of this endpoint instance
  */
-@property (nonatomic, readonly) NSURL *baseURL;
+- (NSURL *) baseURL;
 
 /**
  *  A descriptive name for this endpoint instance

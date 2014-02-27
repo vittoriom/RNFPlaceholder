@@ -31,7 +31,7 @@ describe(@"Base configuration",^{
         });
         
         it(@"should return nil for deserializer", ^{
-            id deserializer = [_configuration deserializer];
+            id deserializer = [_configuration responseDeserializer];
             [[deserializer should] beNil];
         });
         

@@ -7,7 +7,17 @@
 
 @protocol RNFDataDeserializer <NSObject>
 
-- (id) deserializeData:(NSDictionary *)sourceData
+@optional
+
+- (NSDictionary *) mappings;
+
+- (NSDictionary *) transforms;
+
+- (Class) targetClass;
+
+- (id) deserializeData:(id)sourceData;
+
+- (id) deserializeData:(id)sourceData
           usingMapping:(NSDictionary *)mapping
             transforms:(NSDictionary *)transforms
              intoClass:(Class)targetClass;

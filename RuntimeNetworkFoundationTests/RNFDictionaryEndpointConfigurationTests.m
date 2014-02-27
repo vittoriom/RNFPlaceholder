@@ -140,7 +140,7 @@ describe(@"Dictionary configuration", ^{
         });
         
         it(@"should correctly instantiate the response deserializer", ^{
-            Class deserializer = [configuration deserializer];
+            Class deserializer = [configuration responseDeserializer];
             [[deserializer shouldNot] beNil];
             [[theValue([deserializer isSubclassOfClass:[NSArray class]]) should] beTrue];
         });

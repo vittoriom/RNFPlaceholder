@@ -133,7 +133,7 @@
     return [self.internalDictionary objectForKey:kRNFConfigurationEndpointDefaultHeaders] ?: [super headers];
 }
 
-- (Class<RNFResponseDeserializer>) deserializer
+- (Class<RNFResponseDeserializer>) responseDeserializer
 {
     return [self classFromKey:kRNFConfigurationEndpointResponseDeserializer];
 }
