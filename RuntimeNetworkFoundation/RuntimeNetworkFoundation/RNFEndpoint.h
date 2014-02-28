@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol RNFEndpointConfiguration;
 @protocol RNFOperation;
 @protocol RNFConfigurationLoader;
 
@@ -22,6 +23,12 @@
  *  A descriptive name for this endpoint instance
  */
 - (NSString *) endpointName;
+
+/**
+ *
+ *  @return The configuration of the endpoint
+ */
+- (id<RNFEndpointConfiguration>) configuration;
 
 /**
  *  Creates a new RNFEndpoint instance with a given RNFConfigurationLoader

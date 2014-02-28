@@ -2,6 +2,7 @@
 #import "RNFBaseOperation.h"
 #import "RNFOperationConfiguration.h"
 #import "RNFBaseOperationConfiguration.h"
+#import "RNFUserDefinedConfigurationParameters.h"
 
 SPEC_BEGIN(RNFDictionaryEndpointConfigurationTests)
 
@@ -70,32 +71,40 @@ describe(@"Dictionary configuration", ^{
         
         beforeAll(^{
             configuration = [[RNFDictionaryEndpointConfiguration alloc] initWithDictionary:@{
-                                                                                             kRNFConfigurationEndpointBaseURL : @"http://vittoriomonaco.it",
-                                                                                             kRNFConfigurationEndpointCacheClass : @"NSCache",
-                                                                                             kRNFConfigurationEndpointDefaultHeaders : @{
-                                                                                                     @"Accept" : @"gzip",
-                                                                                                     @"Encoding" : @"UTF8"
-                                                                                                     },
-                                                                                             kRNFConfigurationEndpointLoggerClass : @"NSString",
-                                                                                             kRNFConfigurationEndpointName : @"test",
-                                                                                             kRNFConfigurationEndpointOperationClass : @"RNFBaseOperation",
-                                                                                             kRNFConfigurationEndpointOperationQueueClass : @"NSOperationQueue",
-                                                                                             kRNFConfigurationEndpointOperations : @[
-                                                                                                     @{
-                                                                                                         kRNFConfigurationOperationURL : @"test",
-                                                                                                         kRNFConfigurationOperationName : @"test"
-                                                                                                         }, @{
-                                                                                                         kRNFConfigurationOperationName : @"test2",
-                                                                                                         kRNFConfigurationOperationURL : @"test2"
-                                                                                                         }
-                                                                                                     ],
-                                                                                             kRNFConfigurationEndpointResponseDeserializer : @"NSArray",
-                                                                                             kRNFConfigurationEndpointShouldCacheResults : @NO,
-                                                                                             kRNFConfigurationEndpointPortNumber : @443,
-                                                                                             kRNFConfigurationEndpointDefaultQueryStringParameters : @{
-                                                                                                     @"customP" : @"customV"
-                                                                                                     }
-                                                                                             }];
+                                                                     kRNFConfigurationEndpointBaseURL : @"http://vittoriomonaco.it",
+                                                                     kRNFConfigurationEndpointCacheClass : @"NSCache",
+                                                                     kRNFConfigurationEndpointDefaultHeaders : @{
+                                                                             @"Accept" : @"gzip",
+                                                                             @"Encoding" : @"UTF8"
+                                                                             },
+                                                                     kRNFConfigurationEndpointLoggerClass : @"NSString",
+                                                                     kRNFConfigurationEndpointName : @"test",
+                                                                     kRNFConfigurationEndpointOperationClass : @"RNFBaseOperation",
+                                                                     kRNFConfigurationEndpointOperationQueueClass : @"NSOperationQueue",
+                                                                     kRNFConfigurationEndpointOperations : @[
+                                                                             @{
+                                                                                 kRNFConfigurationOperationURL : @"test",
+                                                                                 kRNFConfigurationOperationName : @"test"
+                                                                                 }, @{
+                                                                                 kRNFConfigurationOperationName : @"test2",
+                                                                                 kRNFConfigurationOperationURL : @"test2"
+                                                                                 }
+                                                                             ],
+                                                                     kRNFConfigurationEndpointResponseDeserializer : @"NSArray",
+                                                                     kRNFConfigurationEndpointShouldCacheResults : @NO,
+                                                                     kRNFConfigurationEndpointPortNumber : @443,
+                                                                     kRNFConfigurationEndpointDefaultQueryStringParameters : @{
+                                                                             @"customP" : @"customV"
+                                                                             },
+                                                                     kRNFConfigurationEndpointUserDefinedParameters : @{
+                                                                                                                        @"runtime:" : @2,
+                                                                                                                        @"runtime2:" : @"TEST"}}
+                             ];
+        });
+        
+        it(@"should correctly read user-defined parameters", ^{
+            id<RNFUserDefinedConfigurationParameters> userDefined = [configuration userDefinedConfiguration];
+            [[[userDefined valueForUserDefinedParameter:@"runtime:"] should] equal:@2];
         });
         
         it(@"should correctly read the base url", ^{

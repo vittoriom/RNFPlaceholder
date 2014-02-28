@@ -1,4 +1,5 @@
 #import "RNFBaseEndpointConfiguration.h"
+#import "RNFUserDefinedConfigurationParameters.h"
 
 SPEC_BEGIN(RNFBaseEndpointConfigurationTests)
 
@@ -67,6 +68,11 @@ describe(@"Base configuration",^{
         
         it(@"should return a port number", ^{
             [[[_configuration portNumber] should] beNil];
+        });
+        
+        it(@"should return nil user defined configuration", ^{
+            id obj = [_configuration userDefinedConfiguration];
+            [[obj should] beNil];
         });
     });
 });

@@ -182,6 +182,7 @@
 		52BC480618B1644900178A2F /* NSCache+RNFCacheHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSCache+RNFCacheHandler.h"; path = "RuntimeNetworkFoundation/Caches/NSCache+RNFCacheHandler.h"; sourceTree = "<group>"; };
 		52BC480718B1644900178A2F /* NSCache+RNFCacheHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSCache+RNFCacheHandler.m"; path = "RuntimeNetworkFoundation/Caches/NSCache+RNFCacheHandler.m"; sourceTree = "<group>"; };
 		52BC485518B1689800178A2F /* NSCacheHandlerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSCacheHandlerTests.m; sourceTree = "<group>"; };
+		52C4CAA018C070D1003A614B /* RNFUserDefinedConfigurationParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNFUserDefinedConfigurationParameters.h; path = RuntimeNetworkFoundation/Protocols/RNFUserDefinedConfigurationParameters.h; sourceTree = "<group>"; };
 		52C8DF2D18A96A6100DBA94D /* RNFEndpointTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNFEndpointTests.m; sourceTree = "<group>"; };
 		52D681E718BD443A00866B07 /* NSURL+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSURL+Additions.h"; path = "RuntimeNetworkFoundation/Categories/NSURL+Additions.h"; sourceTree = "<group>"; };
 		52D681E818BD443A00866B07 /* NSURL+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSURL+Additions.m"; path = "RuntimeNetworkFoundation/Categories/NSURL+Additions.m"; sourceTree = "<group>"; };
@@ -512,6 +513,7 @@
 				526B53CF18AD6EAB00CAC6EC /* RNFOperationConfiguration.h */,
 				5259C3C918BE52620045AEF3 /* RNFInitializableWithDictionary.h */,
 				52D7308B18BFE80A004EFE3C /* RNFResponseValidator.h */,
+				52C4CAA018C070D1003A614B /* RNFUserDefinedConfigurationParameters.h */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";

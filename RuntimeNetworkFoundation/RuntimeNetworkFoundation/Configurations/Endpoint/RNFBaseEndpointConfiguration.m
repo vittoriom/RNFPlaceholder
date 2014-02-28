@@ -26,6 +26,11 @@
                                                   userInfo:nil];
 }
 
+- (id<RNFUserDefinedConfigurationParameters>) userDefinedConfiguration
+{
+    return nil;
+}
+
 - (Class<RNFResponseValidator>) responseValidator
 {
     return nil;

@@ -26,6 +26,7 @@
 #import "RNFOperationConfiguration.h"
 #import "RNFResponseValidator.h"
 #import "RNFInitializableWithDictionary.h"
+#import "RNFUserDefinedConfigurationParameters.h"
 #import "RNFTypes.h"
 
 //Categories

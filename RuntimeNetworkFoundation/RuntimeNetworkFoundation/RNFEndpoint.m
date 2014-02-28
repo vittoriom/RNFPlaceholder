@@ -53,13 +53,13 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"completion";
     self = [self init];
     
     _configurator = configurator;
-    
+
     return self;
 }
 
 - (id) initWithName:(NSString *)name
 {
-    id<RNFConfigurationLoader> configurationLoader = [[RNFPlistConfigurationLoader alloc] initWithPlistName:name];
+    id<RNFConfigurationLoader> configurationLoader = [RNFPlistConfigurationLoader RNFConfigurationLoaderForEndpointWithName:name];
     
     self = [self initWithConfigurator:configurationLoader];
     
@@ -72,6 +72,14 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"completion";
 }
 
 #pragma mark - Configuration loading
+
+- (id<RNFEndpointConfiguration>) configuration
+{
+    if(!_configuration)
+        [self loadConfigurationForConfigurator:self.configurator];
+    
+    return _configuration;
+}
 
 - (void) loadConfigurationForConfigurator:(id<RNFConfigurationLoader>)configurator
 {
@@ -250,7 +258,8 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"completion";
         NSString *urlString = [unifiedConfiguration URL];
         urlString = [urlString URLStringByAppendingQueryStringParameters:[unifiedConfiguration queryStringParameters]];
         
-        NSURL *operationURL = [NSURL URLWithString:[[RNFParametersParser new] parseString:urlString withArguments:parsedRuntimeMethodName[kRNFParsedRuntimeArguments]]];
+        RNFParametersParser *parser = [RNFParametersParser new];
+        NSURL *operationURL = [NSURL URLWithString:[parser parseString:urlString withArguments:parsedRuntimeMethodName[kRNFParsedRuntimeArguments] userDefinedParametersProvider:[self.configuration userDefinedConfiguration]]];
         
         Class operationClass = [unifiedConfiguration operationClass];
         id<RNFOperation> operation = [[operationClass alloc] initWithURL:operationURL

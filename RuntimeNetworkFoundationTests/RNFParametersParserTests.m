@@ -13,44 +13,44 @@ describe(@"RNFParametersParser",^{
     context(@"when passing a string with no placeholders", ^{
         it(@"should correctly return the input string if arguments array is nil", ^{
             NSString *inputString = @"questions?tag=0&format=json";
-            [[[parser parseString:inputString withArguments:nil] should] equal:inputString];
+            [[[parser parseString:inputString withArguments:nil userDefinedParametersProvider:nil] should] equal:inputString];
         });
         
         it(@"should correctly return the input string if arguments array is empty", ^{
             NSString *inputString = @"questions?tag=0&format=json";
-            [[[parser parseString:inputString withArguments:@[]] should] equal:inputString];
+            [[[parser parseString:inputString withArguments:@[] userDefinedParametersProvider:nil] should] equal:inputString];
         });
         
         it(@"should correctly return the input string if arguments array contains values", ^{
             NSString *inputString = @"questions?tag=0&format=json";
-            [[[parser parseString:inputString withArguments:@[@1, @"test"]] should] equal:inputString];
+            [[[parser parseString:inputString withArguments:@[@1, @"test"] userDefinedParametersProvider:nil] should] equal:inputString];
         });
     });
     
     context(@"when passing a string with placeholders", ^{
-        it(@"should return nil if the arguments array is nil", ^{
+        it(@"should raise if the arguments array is nil and there is a reference to arguments", ^{
             [[theBlock(^{
                 NSString *inputString = @"questions?tag={{{0}}}&format={{{1}}}";
-                [parser parseString:inputString withArguments:nil];
+                [parser parseString:inputString withArguments:nil userDefinedParametersProvider:nil];
             }) should] raise];
         });
         
-        it(@"should raise if the arguments array is empty", ^{
+        it(@"should raise if the arguments array is empty and there is a reference to arguments", ^{
             [[theBlock(^{
                 NSString *inputString = @"questions?tag={{0}}&format={{1}}";
-                [parser parseString:inputString withArguments:@[]];
+                [parser parseString:inputString withArguments:@[] userDefinedParametersProvider:nil];
             }) should] raise];
         });
               
-        it(@"should replace the placeholders for the indexes contained in the array", ^{
+        it(@"should replace the placeholders for the indexes contained in the arguments array", ^{
             NSString *inputString = @"questions?tag={{0}}&format={{1}}";
-            [[[parser parseString:inputString withArguments:@[@"tech",@"json"]] should] equal:@"questions?tag=tech&format=json"];
+            [[[parser parseString:inputString withArguments:@[@"tech",@"json"] userDefinedParametersProvider:nil] should] equal:@"questions?tag=tech&format=json"];
         });
         
-        it(@"should raise if the arguments array is shorter than the number of placeholders", ^{
+        it(@"should raise if the arguments array is shorter than the number of placeholders referencing arguments", ^{
             [[theBlock(^{
                 NSString *inputString = @"questions?tag={{0}}&format={{1}}";
-                [parser parseString:inputString withArguments:@[@"tech"]];
+                [parser parseString:inputString withArguments:@[@"tech"] userDefinedParametersProvider:nil];
             }) should] raise];
         });
         
@@ -63,8 +63,31 @@ describe(@"RNFParametersParser",^{
                 [parser parseString:inputString withArguments:@[
                                                                 @"tech",
                                                                 completion
-                                                                ]];
+                                                                ] userDefinedParametersProvider:nil];
             }) should] raise];
+        });
+        
+        it(@"should raise if the provider is nil and there is a reference to a user-defined constant", ^{
+            [[theBlock(^{
+                NSString *inputString = @"questions?token={ACCESS_TOKEN}&format={{0}}";
+                [parser parseString:inputString withArguments:@[@"json"] userDefinedParametersProvider:nil];
+            }) should] raise];
+        });
+        
+        it(@"should raise if the provider doesn't return a valid object for a user-defined constant", ^{
+            [[theBlock(^{
+                id provider = [KWMock mockForProtocol:@protocol(RNFUserDefinedConfigurationParameters)];
+                [provider stub:@selector(valueForUserDefinedParameter:) andReturn:nil];
+                NSString *inputString = @"questions?token={ACCESS_TOKEN}&format={{0}}";
+                [parser parseString:inputString withArguments:@[@"json"] userDefinedParametersProvider:provider];
+            }) should] raise];
+        });
+        
+        it(@"should replace the placeholders for the constants", ^{
+            id provider = [KWMock mockForProtocol:@protocol(RNFUserDefinedConfigurationParameters)];
+            [provider stub:@selector(valueForUserDefinedParameter:) andReturn:@"myToken"];
+            NSString *inputString = @"questions?token={ACCESS_TOKEN}&format={{0}}";
+            [[[parser parseString:inputString withArguments:@[@"json"] userDefinedParametersProvider:provider] should] equal:@"questions?token=myToken&format=json"];
         });
     });
 });

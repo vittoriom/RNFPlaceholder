@@ -19,7 +19,7 @@
             [argObject conformsToProtocol:@protocol(RNFSerializable)]);
 }
 
-- (NSString *) parseString:(NSString *)source withArguments:(NSArray *)arguments
+- (NSMutableString *) parseString:(NSMutableString *)source withArguments:(NSArray *)arguments
 {
     NSRegularExpression *curlyBraces = [NSRegularExpression regularExpressionWithPattern:@"\\{\\{([^}])\\}\\}"
                                                                                  options:0
@@ -29,7 +29,7 @@
                                             options:0
                                               range:NSMakeRange(0, [source length])];
     
-    NSMutableString *result = [[NSMutableString alloc] initWithString:source];
+    NSMutableString *result = source;
     
     for (NSTextCheckingResult *match in [[matches reverseObjectEnumerator] allObjects])
     {
@@ -40,8 +40,8 @@
         
         if(argIndex >= [arguments count])
             @throw [RNFParametersParserError exceptionWithName:NSStringFromClass([RNFParametersParserError class])
-                                           reason:[NSString stringWithFormat:@"Placeholder %@ references an object out of the arguments array bounds",NSStringFromRange(completePlaceholderRange)]
-                                         userInfo:nil];
+                                                        reason:[NSString stringWithFormat:@"Placeholder %@ references an object out of the arguments array bounds",NSStringFromRange(completePlaceholderRange)]
+                                                      userInfo:nil];
         
         id argObject = arguments[argIndex];
         
@@ -49,12 +49,60 @@
         
         if(![self objectIsSerializable:argObject])
             @throw [RNFParametersParserError exceptionWithName:NSStringFromClass([RNFParametersParserError class])
-                                           reason:[NSString stringWithFormat:@"Object %@ is not serializable",argObject]
-                                         userInfo:nil];
+                                                        reason:[NSString stringWithFormat:@"Object %@ is not serializable",argObject]
+                                                      userInfo:nil];
         
         [result replaceCharactersInRange:completePlaceholderRange
                               withString:serializedObject];
     }
+    
+    return result;
+}
+
+- (NSMutableString *) parseString:(NSMutableString *)source withUserDefinedParametersProvider:(id)provider
+{
+    NSRegularExpression *curlyBraces = [NSRegularExpression regularExpressionWithPattern:@"\\{([^}]+)\\}"
+                                                                                 options:0
+                                                                                   error:nil];
+    
+    NSArray *matches = [curlyBraces matchesInString:source
+                                            options:0
+                                              range:NSMakeRange(0, [source length])];
+    
+    NSMutableString *result = source;
+    
+    for (NSTextCheckingResult *match in [[matches reverseObjectEnumerator] allObjects])
+    {
+        NSRange completePlaceholderRange = [match rangeAtIndex:0];
+        NSRange placeholderValueRange = [match rangeAtIndex:1];
+        
+        NSString *serializedObject;
+        NSString *key = [source substringWithRange:placeholderValueRange];
+        id providedValue = [provider valueForUserDefinedParameter:key];
+        
+        if (providedValue && [self objectIsSerializable:providedValue])
+        {
+            serializedObject = [providedValue conformsToProtocol:@protocol(RNFSerializable)] ? [(id<RNFSerializable>)providedValue serialize] : [providedValue description];
+            
+            [result replaceCharactersInRange:completePlaceholderRange
+                                  withString:serializedObject];
+        } else {
+            @throw [RNFParametersParserError exceptionWithName:NSStringFromClass([RNFParametersParserError class])
+                                                        reason:[NSString stringWithFormat:@"Provider %@ did not provide a valid value for key %@, returned %@",provider, key, providedValue]
+                                                      userInfo:nil];
+        }
+    }
+    
+    return result;
+}
+
+- (NSString *) parseString:(NSString *)source withArguments:(NSArray *)arguments userDefinedParametersProvider:(id)provider
+{
+    NSMutableString *result = [[NSMutableString alloc] initWithString:source];
+    
+    result = [self parseString:result withArguments:arguments];
+    
+    result = [self parseString:result withUserDefinedParametersProvider:provider];
     
     return [result copy];
 }

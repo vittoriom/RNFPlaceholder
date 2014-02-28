@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol RNFUserDefinedConfigurationParameters;
 @protocol RNFOperation;
 @protocol RNFResponseDeserializer;
 @protocol RNFOperationQueue;
@@ -28,6 +29,7 @@ static const NSString * kRNFConfigurationEndpointLoggerClass = @"loggerClass";
 static const NSString * kRNFConfigurationEndpointPortNumber = @"port";
 static const NSString * kRNFConfigurationEndpointDefaultQueryStringParameters = @"queryString";
 static const NSString * kRNFConfigurationEndpointResponseValidator = @"responseValidator";
+static const NSString * kRNFConfigurationEndpointUserDefinedParameters = @"userDefined";
 
 @protocol RNFEndpointConfiguration <NSObject>
 
@@ -50,6 +52,13 @@ static const NSString * kRNFConfigurationEndpointResponseValidator = @"responseV
 - (NSArray *) operations;
 
 @optional
+
+/**
+ *  @discussion You should implement this method if you want to provide runtime-values or constants in the endpoint configuration
+ *
+ *  @return The user-defined parameters loader specified by the endpoint configuration
+ */
+- (id<RNFUserDefinedConfigurationParameters>) userDefinedConfiguration;
 
 /**
  *  The validator to use for the deserialized responses

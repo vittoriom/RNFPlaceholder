@@ -22,6 +22,8 @@
     RNFEndpointManager *manager = [RNFEndpointManager new];
     RNFEndpoint *endpoint = [[RNFEndpoint alloc] initWithName:@"runtimeTest"];
     
+    [[endpoint.configuration userDefinedConfiguration] setValue:@"MyToken" forUserDefinedParameter:@"ACCESS_TOKEN"];
+    
     [manager addEndpoint:endpoint];
     
     id<RNFOperation> createdOperation = [endpoint getAnswersWithMaxResults:@2

@@ -15,6 +15,7 @@
 @property (nonatomic, strong) NSMutableDictionary *internalDictionary;
 @property (nonatomic, strong) id<RNFResponseDeserializer> cachedDeserializer;
 @property (nonatomic, strong) id<RNFLogger> cachedLogger;
+@property (nonatomic, strong) NSMutableDictionary *userDefinedParameters;
 
 @end
 
@@ -29,6 +30,9 @@
     _internalDictionary = [dictionary mutableCopy];
     
     [self performSanityCheckOnDictionary:dictionary];
+    
+    _userDefinedParameters = [NSMutableDictionary new];
+    [_userDefinedParameters addEntriesFromDictionary:[self.internalDictionary objectForKey:kRNFConfigurationEndpointUserDefinedParameters]];
     
     return self;
 }
@@ -115,6 +119,11 @@
     return self.internalDictionary[kRNFConfigurationEndpointOperations];
 }
 
+- (id<RNFUserDefinedConfigurationParameters>) userDefinedConfiguration
+{
+    return [self.internalDictionary objectForKey:kRNFConfigurationEndpointUserDefinedParameters] ? self : [super userDefinedConfiguration];
+}
+
 - (NSString *) name
 {
     return [self.internalDictionary objectForKey:kRNFConfigurationEndpointName] ?: [super name];
@@ -169,6 +178,18 @@
 - (Class<RNFLogger>) logger
 {
     return [self classFromKey:kRNFConfigurationEndpointLoggerClass];
+}
+
+#pragma mark - UserDefined parameters
+
+- (id) valueForUserDefinedParameter:(NSString *)key
+{
+    return [self.userDefinedParameters objectForKey:key];
+}
+
+- (void) setValue:(id)value forUserDefinedParameter:(NSString *)key
+{
+    [self.userDefinedParameters setObject:value forKey:key];
 }
 
 @end

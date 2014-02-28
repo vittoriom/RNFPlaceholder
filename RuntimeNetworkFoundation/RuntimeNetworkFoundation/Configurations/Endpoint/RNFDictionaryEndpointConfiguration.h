@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "RNFBaseEndpointConfiguration.h"
+#import "RNFUserDefinedConfigurationParameters.h"
 
-@interface RNFDictionaryEndpointConfiguration : RNFBaseEndpointConfiguration
+@interface RNFDictionaryEndpointConfiguration : RNFBaseEndpointConfiguration <RNFUserDefinedConfigurationParameters>
 
 /**
  *  Initializes an instance of RNFConfiguration based on a backing NSDictionary with the given dictionary values
