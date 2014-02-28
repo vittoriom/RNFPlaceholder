@@ -176,7 +176,10 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"completionBlock";
     
     if(responseError)
     {
-        errorBlock(deserializedResponse, responseError,statusCode);
+        if(errorBlock)
+            errorBlock(deserializedResponse, responseError,statusCode);
+        else
+            completion(deserializedResponse, operation, statusCode, cached);
         return;
     }
     
