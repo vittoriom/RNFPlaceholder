@@ -4,6 +4,7 @@
 #import "RNFDictionaryOperationConfiguration.h"
 #import "RNFConfigurationLoader.h"
 #import "RNFPlistConfigurationLoader.h"
+#import "RNFDictionaryEndpointConfiguration.h"
 #import "RNFConfigurationNotFound.h"
 
 SPEC_BEGIN(RNFEndpointTests)
@@ -63,6 +64,12 @@ describe(@"Endpoints", ^{
         it(@"should not return nil even if there will be no configuration", ^{
             [[[RNFEndpoint new] shouldNot] beNil];
         });
+        
+        it(@"should return a nil configuration object", ^{
+            RNFEndpoint *endpoint = [RNFEndpoint new];
+            id configuration = [endpoint configuration];
+            [[configuration should] beNil];
+        });
     });
     
     context(@"when initialized with a name", ^{
@@ -85,6 +92,11 @@ describe(@"Endpoints", ^{
                 [dummy description];
             }) should] raise];
         });
+        
+        it(@"should return the configuration object", ^{
+            id configuration = [endpoint configuration];
+            [[theValue([configuration isKindOfClass:[RNFDictionaryEndpointConfiguration class]]) should] beTrue];
+        });
     });
     
     context(@"when initialized with a configurator", ^{
@@ -99,6 +111,13 @@ describe(@"Endpoints", ^{
             RNFPlistConfigurationLoader *configurationLoader = [[RNFPlistConfigurationLoader alloc] initWithPlistName:@"sampleConfiguration"];
             RNFEndpoint *endpoint = [[RNFEndpoint alloc] initWithConfigurator:configurationLoader];
             [[[endpoint baseURL] should] equal:[NSURL URLWithString:@"http://vittoriomonaco.it/api"]];
+        });
+        
+        it(@"should return the configuration object", ^{
+            RNFPlistConfigurationLoader *configurationLoader = [[RNFPlistConfigurationLoader alloc] initWithPlistName:@"sampleConfiguration"];
+            RNFEndpoint *endpoint = [[RNFEndpoint alloc] initWithConfigurator:configurationLoader];
+            id configuration = [endpoint configuration];
+            [[theValue([configuration isKindOfClass:[RNFDictionaryEndpointConfiguration class]]) should] beTrue];
         });
     });
 });
