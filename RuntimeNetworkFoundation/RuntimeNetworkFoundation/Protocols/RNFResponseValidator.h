@@ -18,8 +18,8 @@
  *  @param operation            The operation
  *  @param statusCode           The HTTP status code
  *
- *  @return YES if the response is valid and should be further processed, NO if the call should fallback to the failing block
+ *  @return nil if the response is valid and should be further processed, a valid NSError object if the call should fallback to the failing block
  */
-- (BOOL) responseIsValid:(id)deserializedResponse forOperation:(id<RNFOperation>)operation withStatusCode:(NSInteger)statusCode;
+- (NSError *) responseIsValid:(id)deserializedResponse forOperation:(id<RNFOperation>)operation withStatusCode:(NSInteger)statusCode;
 
 @end

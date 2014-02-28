@@ -168,11 +168,11 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"completion";
     //Response is valid?
     Class validatorClass = [unifiedConfiguration responseValidator];
     id<RNFResponseValidator> validator = validatorClass ? [validatorClass new] : nil;
-    BOOL responseIsValid = validator ? [validator responseIsValid:deserializedResponse forOperation:operation withStatusCode:statusCode] : YES;
+    NSError *responseError = validator ? [validator responseIsValid:deserializedResponse forOperation:operation withStatusCode:statusCode] : nil;
     
-    if(!responseIsValid)
+    if(responseError)
     {
-        errorBlock(deserializedResponse, nil,statusCode); //TODO create a NSError here
+        errorBlock(deserializedResponse, responseError,statusCode);
         return;
     }
     
