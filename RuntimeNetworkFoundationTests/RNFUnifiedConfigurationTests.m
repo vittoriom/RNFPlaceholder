@@ -53,6 +53,11 @@ describe(@"Unified configuration", ^{
             [[[sut URL] should] beNil];
         });
         
+        it(@"should return a nil operationClass", ^{
+            id operationClass = [sut operationClass];
+            [[operationClass should] beNil];
+        });
+        
         it(@"should return GET as HTTPMethod", ^{
             [[[sut HTTPMethod] should] equal:@"GET"];
         });

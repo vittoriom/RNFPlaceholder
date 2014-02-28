@@ -98,8 +98,14 @@ describe(@"Dictionary configuration", ^{
                                                                              },
                                                                      kRNFConfigurationEndpointUserDefinedParameters : @{
                                                                                                                         @"runtime:" : @2,
-                                                                                                                        @"runtime2:" : @"TEST"}}
+                                                                                                                        @"runtime2:" : @"TEST"},
+                                                                     kRNFConfigurationOperationResponseValidator : @"NSDictionary"}
                              ];
+        });
+        
+        it(@"should correctly read the response validator", ^{
+            Class validator = [configuration responseValidator];
+            [[theValue([validator isSubclassOfClass:[NSDictionary class]]) should] beTrue];
         });
         
         it(@"should correctly read user-defined parameters", ^{

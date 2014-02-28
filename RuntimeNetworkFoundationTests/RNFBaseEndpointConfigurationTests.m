@@ -31,6 +31,11 @@ describe(@"Base configuration",^{
             [[[_configuration headers] should] beNil];
         });
         
+        it(@"should return a nil response validator", ^{
+            id validator = [_configuration responseValidator];
+            [[validator should] beNil];
+        });
+        
         it(@"should return nil for deserializer", ^{
             id deserializer = [_configuration responseDeserializer];
             [[deserializer should] beNil];

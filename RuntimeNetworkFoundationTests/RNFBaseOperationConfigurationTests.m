@@ -43,6 +43,11 @@ describe(@"Base operation configuration",^{
         [[[configuration HTTPBody] should] beNil];
     });
     
+    it(@"should return a nil response validator", ^{
+        id validator = [configuration responseValidator];
+        [[validator should] beNil];
+    });
+    
     it(@"should return a nil response deserializer", ^{
         id deserializer = [configuration responseDeserializer];
         [[deserializer should] beNil];

@@ -62,7 +62,7 @@ describe(@"RNFParametersParser",^{
     
     context(@"when passing a string with placeholders", ^{
         beforeAll(^{
-            inputString = @"questions?tag={{{0}}}&format={{{1}}}";
+            inputString = @"questions?tag={{0}}&format={{1}}";
         });
         
         it(@"should raise if the arguments array is nil and there is a reference to arguments", ^{

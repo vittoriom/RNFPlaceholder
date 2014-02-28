@@ -54,8 +54,14 @@ describe(@"Dictionary operation configurations", ^{
                                                                                               kRNFConfigurationOperationOperationClass : @"RNFBaseOperation",
                                                                                               kRNFConfigurationOperationResponseDeserializer : @"NSDictionary",
                                                                                               kRNFConfigurationOperationShouldCacheResults : @NO,
-                                                                                              kRNFConfigurationOperationURL : @"testURL"
+                                                                                              kRNFConfigurationOperationURL : @"testURL",
+                                                                                              kRNFConfigurationOperationResponseValidator : @"NSDictionary"
                                                                                               }];
+        });
+        
+        it(@"should parse the response validator", ^{
+            Class validator = [configuration responseValidator];
+            [[theValue([validator isSubclassOfClass:[NSDictionary class]]) should] beTrue];
         });
         
         it(@"should parse the data deserializer", ^{
