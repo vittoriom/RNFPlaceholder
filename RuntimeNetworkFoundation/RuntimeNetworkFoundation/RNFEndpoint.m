@@ -135,11 +135,6 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"completion";
     return [self.configuration baseURL];
 }
 
-- (NSString *) endpointName
-{
-    return self.name;
-}
-
 - (NSArray *) operations
 {
     return [self.configuration operations];

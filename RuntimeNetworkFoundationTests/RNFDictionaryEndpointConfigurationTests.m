@@ -113,6 +113,12 @@ describe(@"Dictionary configuration", ^{
             [[[userDefined valueForUserDefinedParameter:@"runtime:"] should] equal:@2];
         });
         
+        it(@"should correctly write user-defined parameters", ^{
+            id<RNFUserDefinedConfigurationParameters> userDefined = [configuration userDefinedConfiguration];
+            [userDefined setValue:@"test" forUserDefinedParameter:@"TEST_SERVER_KEY"];
+            [[[userDefined valueForUserDefinedParameter:@"TEST_SERVER_KEY"] should] equal:@"test"];
+        });
+        
         it(@"should correctly read the base url", ^{
             [[[configuration baseURL] should] equal:[NSURL URLWithString:@"http://vittoriomonaco.it"]];
         });

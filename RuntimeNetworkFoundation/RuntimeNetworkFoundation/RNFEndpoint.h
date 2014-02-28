@@ -22,7 +22,7 @@
 /**
  *  A descriptive name for this endpoint instance
  */
-- (NSString *) endpointName;
+- (NSString *) name;
 
 /**
  *
