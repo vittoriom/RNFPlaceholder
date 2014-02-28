@@ -22,4 +22,16 @@
  */
 - (NSString *) parseString:(NSString *)source withArguments:(NSArray *)arguments userDefinedParametersProvider:(id<RNFUserDefinedConfigurationParameters>)provider;
 
+
+/**
+ *  Parses a dictionary containing values with placeholders
+ *
+ *  @param source    the dictionary to parse
+ *  @param arguments the arguments to use to replace the placeholders
+ *  @param provider  the provider for user-defined parameters
+ *
+ *  @return The parsed dictionary, containing the right values instead of the placeholders
+ */
+- (NSDictionary *) parseDictionary:(NSDictionary *)source withArguments:(NSArray *)arguments userDefinedParametersProvider:(id<RNFUserDefinedConfigurationParameters>)provider;
+
 @end

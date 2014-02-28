@@ -261,10 +261,12 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"completion";
         RNFParametersParser *parser = [RNFParametersParser new];
         NSURL *operationURL = [NSURL URLWithString:[parser parseString:urlString withArguments:parsedRuntimeMethodName[kRNFParsedRuntimeArguments] userDefinedParametersProvider:[self.configuration userDefinedConfiguration]]];
         
+        NSDictionary *headersToUse = [parser parseDictionary:[unifiedConfiguration headers] withArguments:parsedRuntimeMethodName[kRNFParsedRuntimeArguments] userDefinedParametersProvider:[self.configuration userDefinedConfiguration]];
+        
         Class operationClass = [unifiedConfiguration operationClass];
         id<RNFOperation> operation = [[operationClass alloc] initWithURL:operationURL
                                                                   method:[unifiedConfiguration HTTPMethod]
-                                                                 headers:[unifiedConfiguration headers]
+                                                                 headers:headersToUse
                                                                     body:[unifiedConfiguration HTTPBody]];
         
         id cachedData = nil;

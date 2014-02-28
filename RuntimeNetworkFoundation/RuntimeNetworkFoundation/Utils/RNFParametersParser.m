@@ -107,4 +107,19 @@
     return [result copy];
 }
 
+- (NSDictionary *) parseDictionary:(NSDictionary *)source withArguments:(NSArray *)arguments userDefinedParametersProvider:(id<RNFUserDefinedConfigurationParameters>)provider
+{
+    NSMutableDictionary *result = [source mutableCopy];
+    
+    for (NSString *key in result.allKeys)
+    {
+        NSMutableString *parsedValue = [result[key] mutableCopy];
+        parsedValue = [self parseString:parsedValue withArguments:arguments];
+        parsedValue = [self parseString:parsedValue withUserDefinedParametersProvider:provider];
+        [result setObject:parsedValue forKey:key];
+    }
+    
+    return result;
+}
+
 @end
