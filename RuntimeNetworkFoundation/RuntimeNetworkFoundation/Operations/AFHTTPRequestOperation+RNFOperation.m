@@ -31,7 +31,8 @@
     [self setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         completionBlock(responseObject, weakOperation, operation.response.statusCode, NO);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        errorBlock(operation.responseData, error, operation.response.statusCode);
+        if (errorBlock)
+            errorBlock(operation.responseData, error, operation.response.statusCode);
     }];
 }
 

@@ -13,7 +13,7 @@
 			<string>questions?pagesize=5&amp;order=desc&amp;sort=activity&amp;site=stackoverflow</string>
 		</dict>
 		<dict>
-			<key>dataDeserializer</key>
+			<key>dataDeserializerTEST</key>
 			<dict>
 				<key>transforms</key>
 				<dict/>
@@ -30,7 +30,7 @@
 			<key>operationClass</key>
 			<string>AFHTTPRequestOperation</string>
 			<key>name</key>
-			<string>getAnswersWithMaxResults:completionBlock:</string>
+			<string>getAnswersWithMaxResults:completionBlock:errorBlock:</string>
 			<key>URL</key>
 			<string>questions?pagesize=2&amp;order=desc&amp;sort=activity&amp;site=stackoverflow</string>
 		</dict>

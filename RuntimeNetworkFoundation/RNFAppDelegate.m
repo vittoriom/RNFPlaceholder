@@ -15,7 +15,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
+    
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
@@ -34,6 +34,8 @@
                            NSLog(@"Operation was: %@",operation);
                            NSLog(@"Cached: %d",cached);
                            NSLog(@"Status code: %d",statusCode);
+                       } errorBlock:^(id response, NSError *error, NSUInteger statusCode) {
+                           NSLog(@"Oops: %@",error);
                        }];
     
     NSLog(@"Operation is: %@",createdOperation);

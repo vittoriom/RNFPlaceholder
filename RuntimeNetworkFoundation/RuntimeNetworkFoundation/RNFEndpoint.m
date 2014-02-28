@@ -16,7 +16,8 @@
 #import <objc/runtime.h>
 
 static NSString * const kRNFParsedRuntimeArguments = @"arguments";
-static NSString * const kRNFParsedRuntimeCompletionBlock = @"completion";
+static NSString * const kRNFParsedRuntimeErrorBlock = @"errorBlock";
+static NSString * const kRNFParsedRuntimeCompletionBlock = @"completionBlock";
 
 @interface RNFEndpoint ()
 
@@ -227,14 +228,18 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"completion";
             NSMutableArray *argsArray = [NSMutableArray new];
             
             id arg;
-            RNFCompletionBlockComplete completion;
+            RNFErrorBlock errorBlock = nil;
+            RNFCompletionBlockComplete completion = nil;
             for(int i=0; i<argsCount; i++)
             {
                 arg = va_arg(args, id);
                 [argsArray addObject:arg];
                 
                 if ([arg isKindOfClass:NSClassFromString(@"NSBlock")]) {
-                    completion = arg;
+                    if(!completion)
+                        completion = arg;
+                    else
+                        errorBlock = arg;
                 }
             }
             
@@ -244,9 +249,13 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"completion";
             
             if(completion)
                 parsedResult[kRNFParsedRuntimeCompletionBlock] = completion;
+            if(errorBlock)
+                parsedResult[kRNFParsedRuntimeErrorBlock] = errorBlock;
+            
             parsedResult;
         });
         
+        RNFErrorBlock errorBlock = parsedRuntimeMethodName[kRNFParsedRuntimeErrorBlock];
         RNFCompletionBlockComplete completion = parsedRuntimeMethodName[kRNFParsedRuntimeCompletionBlock];
     	RNFUnifiedConfiguration *unifiedConfiguration = [[RNFUnifiedConfiguration alloc] initWithEndpointConfiguration:self.configuration operationConfiguration:operationConfiguration];
         
@@ -276,7 +285,7 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"completion";
                           cached:YES
               usingConfiguration:unifiedConfiguration
              withCompletionBlock:completion
-                    failureBlock:nil];
+                    failureBlock:errorBlock];
         }
         
         [operation setCompletionBlock:^(id response, id<RNFOperation> operation, NSUInteger statusCode, BOOL cached) {
@@ -286,10 +295,8 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"completion";
                           cached:NO
               usingConfiguration:unifiedConfiguration
              withCompletionBlock:completion
-                    failureBlock:nil];
-		} errorBlock:^(id response, NSError *error, NSUInteger statusCode) {
-			NSLog(@"Something went wrong: %@",error);
-		}];
+                    failureBlock:errorBlock];
+		} errorBlock:errorBlock];
         
         [self.networkQueue enqueueOperation:operation];
         
