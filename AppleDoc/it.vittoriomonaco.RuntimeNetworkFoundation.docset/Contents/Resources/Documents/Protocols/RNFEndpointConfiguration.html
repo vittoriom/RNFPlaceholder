@@ -1,0 +1,1033 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>RNFEndpointConfiguration Protocol Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.2 (build 963)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">RuntimeNetworkFoundation </a></h1>
+				<a id="developerHome" href="../index.html">Vittorio Monaco</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">RNFEndpointConfiguration Protocol Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/baseURL">&nbsp;&nbsp;&nbsp;&nbsp;- baseURL</option>
+	
+	<option value="//api/name/cacheClass">&nbsp;&nbsp;&nbsp;&nbsp;- cacheClass</option>
+	
+	<option value="//api/name/cacheResults">&nbsp;&nbsp;&nbsp;&nbsp;- cacheResults</option>
+	
+	<option value="//api/name/headers">&nbsp;&nbsp;&nbsp;&nbsp;- headers</option>
+	
+	<option value="//api/name/logger">&nbsp;&nbsp;&nbsp;&nbsp;- logger</option>
+	
+	<option value="//api/name/name">&nbsp;&nbsp;&nbsp;&nbsp;- name</option>
+	
+	<option value="//api/name/operationClass">&nbsp;&nbsp;&nbsp;&nbsp;- operationClass</option>
+	
+	<option value="//api/name/operationQueueClass">&nbsp;&nbsp;&nbsp;&nbsp;- operationQueueClass</option>
+	
+	<option value="//api/name/operations">&nbsp;&nbsp;&nbsp;&nbsp;- operations</option>
+	
+	<option value="//api/name/portNumber">&nbsp;&nbsp;&nbsp;&nbsp;- portNumber</option>
+	
+	<option value="//api/name/queryStringParameters">&nbsp;&nbsp;&nbsp;&nbsp;- queryStringParameters</option>
+	
+	<option value="//api/name/responseDeserializer">&nbsp;&nbsp;&nbsp;&nbsp;- responseDeserializer</option>
+	
+	<option value="//api/name/responseValidator">&nbsp;&nbsp;&nbsp;&nbsp;- responseValidator</option>
+	
+	<option value="//api/name/userDefinedConfiguration">&nbsp;&nbsp;&nbsp;&nbsp;- userDefinedConfiguration</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+</ul></li>
+
+
+
+
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/baseURL">baseURL</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/cacheClass">cacheClass</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/cacheResults">cacheResults</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/headers">headers</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/logger">logger</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/name">name</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/operationClass">operationClass</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/operationQueueClass">operationQueueClass</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/operations">operations</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/portNumber">portNumber</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/queryStringParameters">queryStringParameters</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/responseDeserializer">responseDeserializer</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/responseValidator">responseValidator</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/userDefinedConfiguration">userDefinedConfiguration</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="RNFEndpointConfiguration Protocol Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">RNFEndpointConfiguration Protocol Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Conforms to</td>
+	<td class="specification-value">NSObject</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">RNFEndpointConfiguration.h</td>
+</tr>
+						</tbody></table></div>
+					
+                    
+                    
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						
+						
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/baseURL">&ndash;&nbsp;baseURL</a></code>
+	</span>
+	
+	<span class="task-item-suffix">required method</span>
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/operations">&ndash;&nbsp;operations</a></code>
+	</span>
+	
+	<span class="task-item-suffix">required method</span>
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/userDefinedConfiguration">&ndash;&nbsp;userDefinedConfiguration</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/responseValidator">&ndash;&nbsp;responseValidator</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/portNumber">&ndash;&nbsp;portNumber</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/queryStringParameters">&ndash;&nbsp;queryStringParameters</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/name">&ndash;&nbsp;name</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/headers">&ndash;&nbsp;headers</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/responseDeserializer">&ndash;&nbsp;responseDeserializer</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/operationClass">&ndash;&nbsp;operationClass</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/operationQueueClass">&ndash;&nbsp;operationQueueClass</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/cacheResults">&ndash;&nbsp;cacheResults</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/cacheClass">&ndash;&nbsp;cacheClass</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/logger">&ndash;&nbsp;logger</a></code>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/baseURL" title="baseURL"></a>
+	<h3 class="subsubtitle method-title">baseURL</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The baseURL of the configured endpoint</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSURL *)baseURL</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>the baseURL of the endpoint</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The baseURL of the configured endpoint</p><p>this parameter is mandatory, so the method will NEVER return nil</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">RNFEndpointConfiguration.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/cacheClass" title="cacheClass"></a>
+	<h3 class="subsubtitle method-title">cacheClass</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>This parameter is optional, so the method may return nil or a default class</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (Class&lt;RNFCacheHandler&gt;)cacheClass</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>If <a href="#//api/name/cacheResults">cacheResults</a> is YES, the class to use as a cache handler. By default the value is NSCache</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>This parameter is optional, so the method may return nil or a default class</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">RNFEndpointConfiguration.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/cacheResults" title="cacheResults"></a>
+	<h3 class="subsubtitle method-title">cacheResults</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>This parameter is optional, so the method may return a default value</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (BOOL)cacheResults</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>Whether the endpoint should cache results or not. By default the value is YES</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>This parameter is optional, so the method may return a default value</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">RNFEndpointConfiguration.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/headers" title="headers"></a>
+	<h3 class="subsubtitle method-title">headers</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>This parameter is optional, so the method may return nil</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSDictionary *)headers</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>the default headers to use for all the <a href="#//api/name/operations">operations</a> on the given endpoint, or nil if no default headers are specified</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>This parameter is optional, so the method may return nil</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">RNFEndpointConfiguration.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/logger" title="logger"></a>
+	<h3 class="subsubtitle method-title">logger</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>This parameter is optional, so the method may return nil or a default class</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (Class&lt;RNFLogger&gt;)logger</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The logger instance to use as a logging component, or nil if no logger is specified</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>This parameter is optional, so the method may return nil or a default class</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">RNFEndpointConfiguration.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/name" title="name"></a>
+	<h3 class="subsubtitle method-title">name</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>This parameter is optional, so the method may return nil</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSString *)name</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>the name of the endpoint, or nil if no name is configured</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>This parameter is optional, so the method may return nil</p><p>please note that if no name is configured for a given endpoint, it could not be used through a <a href="../Classes/RNFEndpointManager.html">RNFEndpointManager</a></p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">RNFEndpointConfiguration.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/operationClass" title="operationClass"></a>
+	<h3 class="subsubtitle method-title">operationClass</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>This parameter is optional, so the method may return nil or a default class</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (Class&lt;RNFOperation&gt;)operationClass</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The class to use for the <a href="#//api/name/operations">operations</a> on the given endpoint, or nil if no specific class is configured.
+The method may also return a default class used when no configuration is provided</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>This parameter is optional, so the method may return nil or a default class</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">RNFEndpointConfiguration.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/operationQueueClass" title="operationQueueClass"></a>
+	<h3 class="subsubtitle method-title">operationQueueClass</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>This parameter is optional, so the method may return nil or a default class</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (Class&lt;RNFOperationQueue&gt;)operationQueueClass</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The class to use for queueing <a href="#//api/name/operations">operations</a> on the given endpoint, or nil if no specific class is configured.
+The method may also return a default class (such as NSOperationQueue) when no configuration is provided</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>This parameter is optional, so the method may return nil or a default class</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">RNFEndpointConfiguration.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/operations" title="operations"></a>
+	<h3 class="subsubtitle method-title">operations</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The operations array of the configured endpoint</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSArray *)operations</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>the operations of the endpoint</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The operations array of the configured endpoint</p><p>this parameter is mandatory, so the method will NEVER return nil or an empty array</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">RNFEndpointConfiguration.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/portNumber" title="portNumber"></a>
+	<h3 class="subsubtitle method-title">portNumber</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The port number to reach the endpoint</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSNumber *)portNumber</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>the port number to reach the endpoint, or nil if not configured</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The port number to reach the endpoint</p><p>this parameter is optional, so it may return nil or a default number</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">RNFEndpointConfiguration.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/queryStringParameters" title="queryStringParameters"></a>
+	<h3 class="subsubtitle method-title">queryStringParameters</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The default query string parameters to add to all the <a href="#//api/name/operations">operations</a> on this endpoint</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSDictionary *)queryStringParameters</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>the dictionary containing the query string parameters</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The default query string parameters to add to all the <a href="#//api/name/operations">operations</a> on this endpoint</p><p>this parameter is optional, so it may return nil or a default value</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">RNFEndpointConfiguration.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/responseDeserializer" title="responseDeserializer"></a>
+	<h3 class="subsubtitle method-title">responseDeserializer</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>This parameter is optional, so the method may return nil</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (Class&lt;RNFResponseDeserializer&gt;)responseDeserializer</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>the deserializer to use for responses to the <a href="#//api/name/operations">operations</a> for the given endpoint, or nil if no deserialization should be provided. In this case, the completion blocks will get raw NSData objects, if no data deserializer is specified</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>This parameter is optional, so the method may return nil</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">RNFEndpointConfiguration.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/responseValidator" title="responseValidator"></a>
+	<h3 class="subsubtitle method-title">responseValidator</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The validator to use for the deserialized responses</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (Class&lt;RNFResponseValidator&gt;)responseValidator</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>a validator or nil, if none is needed</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The validator to use for the deserialized responses</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">RNFEndpointConfiguration.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/userDefinedConfiguration" title="userDefinedConfiguration"></a>
+	<h3 class="subsubtitle method-title">userDefinedConfiguration</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>You should implement this method if you want to provide runtime-values or constants in the endpoint configuration</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id&lt;RNFUserDefinedConfigurationParameters&gt;)userDefinedConfiguration</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The user-defined parameters loader specified by the endpoint configuration</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>You should implement this method if you want to provide runtime-values or constants in the endpoint configuration</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">RNFEndpointConfiguration.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+                    
+                    
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2014 Vittorio Monaco. All rights reserved. (Last updated: 2014-02-28)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 963)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
+		</script>
+	</body>
+</html>
