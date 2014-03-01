@@ -49,6 +49,7 @@
 		52356CB818AFDC6600587086 /* NSArrayCategoryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 52356CB718AFDC6600587086 /* NSArrayCategoryTests.m */; };
 		52380D8618C22A6100771005 /* RNFDictionaryUserDefinedParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 52380D8518C22A6100771005 /* RNFDictionaryUserDefinedParameters.m */; };
 		52380D8918C2370300771005 /* RNFDictionaryConfigurationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 52380D8818C2370300771005 /* RNFDictionaryConfigurationHelper.m */; };
+		52380D8E18C297C000771005 /* RNFDictionaryUserDefinedParameterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 52380D8D18C297C000771005 /* RNFDictionaryUserDefinedParameterTests.m */; };
 		5241F87B18AE95A500F7DDB9 /* RNFDictionaryOperationConfigurationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5241F87A18AE95A500F7DDB9 /* RNFDictionaryOperationConfigurationTests.m */; };
 		5259C3C818BE521B0045AEF3 /* TestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5259C3C718BE521B0045AEF3 /* TestModel.m */; };
 		526935B618AC0F620082111D /* RNFPlistConfigurationLoaderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 526935B518AC0F620082111D /* RNFPlistConfigurationLoaderTests.m */; };
@@ -160,6 +161,7 @@
 		52380D8518C22A6100771005 /* RNFDictionaryUserDefinedParameters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RNFDictionaryUserDefinedParameters.m; path = RuntimeNetworkFoundation/Configurations/RNFDictionaryUserDefinedParameters.m; sourceTree = "<group>"; };
 		52380D8718C2370300771005 /* RNFDictionaryConfigurationHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNFDictionaryConfigurationHelper.h; path = RuntimeNetworkFoundation/Configurations/RNFDictionaryConfigurationHelper.h; sourceTree = "<group>"; };
 		52380D8818C2370300771005 /* RNFDictionaryConfigurationHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RNFDictionaryConfigurationHelper.m; path = RuntimeNetworkFoundation/Configurations/RNFDictionaryConfigurationHelper.m; sourceTree = "<group>"; };
+		52380D8D18C297C000771005 /* RNFDictionaryUserDefinedParameterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNFDictionaryUserDefinedParameterTests.m; sourceTree = "<group>"; };
 		5241F87A18AE95A500F7DDB9 /* RNFDictionaryOperationConfigurationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNFDictionaryOperationConfigurationTests.m; sourceTree = "<group>"; };
 		5259C3C618BE521B0045AEF3 /* TestModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestModel.h; sourceTree = "<group>"; };
 		5259C3C718BE521B0045AEF3 /* TestModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestModel.m; sourceTree = "<group>"; };
@@ -548,6 +550,7 @@
 			isa = PBXGroup;
 			children = (
 				52D3761118C13D1300A4C243 /* RNFYesResponseValidatorTests.m */,
+				52380D8D18C297C000771005 /* RNFDictionaryUserDefinedParameterTests.m */,
 			);
 			name = ResponseValidators;
 			sourceTree = "<group>";
@@ -840,6 +843,7 @@
 				52356CB818AFDC6600587086 /* NSArrayCategoryTests.m in Sources */,
 				526B789318BDD1BF0010CFDC /* NSURLAdditionsTests.m in Sources */,
 				5280D67618BFDADF00CCD520 /* RNFUnifiedConfigurationTests.m in Sources */,
+				52380D8E18C297C000771005 /* RNFDictionaryUserDefinedParameterTests.m in Sources */,
 				52C8DF2E18A96A6100DBA94D /* RNFEndpointTests.m in Sources */,
 				5241F87B18AE95A500F7DDB9 /* RNFDictionaryOperationConfigurationTests.m in Sources */,
 				5280FC4F18ABF71900835D48 /* RNFBaseEndpointConfigurationTests.m in Sources */,

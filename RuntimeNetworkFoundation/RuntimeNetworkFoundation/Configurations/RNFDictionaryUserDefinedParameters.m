@@ -18,9 +18,9 @@
 
 - (instancetype) initWithDictionary:(NSDictionary *)startingDictionary
 {
-    self = [super init];
+    self = [self init];
     
-    _internalDictionary = [startingDictionary mutableCopy];
+    [_internalDictionary addEntriesFromDictionary:startingDictionary];
     
     return self;
 }
