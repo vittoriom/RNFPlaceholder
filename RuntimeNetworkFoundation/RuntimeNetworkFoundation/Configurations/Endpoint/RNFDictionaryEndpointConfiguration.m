@@ -8,6 +8,7 @@
 
 #import "RNFDictionaryEndpointConfiguration.h"
 #import "RNFMalformedConfiguration.h"
+#import "RNFDictionaryUserDefinedParameters.h"
 #import "RNFDictionaryOperationConfiguration.h"
 
 @interface RNFDictionaryEndpointConfiguration ()
@@ -15,7 +16,7 @@
 @property (nonatomic, strong) NSMutableDictionary *internalDictionary;
 @property (nonatomic, strong) id<RNFResponseDeserializer> cachedDeserializer;
 @property (nonatomic, strong) id<RNFLogger> cachedLogger;
-@property (nonatomic, strong) NSMutableDictionary *userDefinedParameters;
+@property (nonatomic, strong) RNFDictionaryUserDefinedParameters *userDefinedParameters;
 
 @end
 
@@ -31,8 +32,7 @@
     
     [self performSanityCheckOnDictionary:dictionary];
     
-    _userDefinedParameters = [NSMutableDictionary new];
-    [_userDefinedParameters addEntriesFromDictionary:[self.internalDictionary objectForKey:kRNFConfigurationEndpointUserDefinedParameters]];
+    _userDefinedParameters = [[RNFDictionaryUserDefinedParameters alloc] initWithDictionary:[self.internalDictionary objectForKey:kRNFConfigurationEndpointUserDefinedParameters]];
     
     return self;
 }
@@ -184,12 +184,12 @@
 
 - (id) valueForUserDefinedParameter:(NSString *)key
 {
-    return [self.userDefinedParameters objectForKey:key];
+    return [self.userDefinedParameters valueForUserDefinedParameter:key];
 }
 
 - (void) setValue:(id)value forUserDefinedParameter:(NSString *)key
 {
-    [self.userDefinedParameters setObject:value forKey:key];
+    [self.userDefinedParameters setValue:value forUserDefinedParameter:key];
 }
 
 @end

@@ -195,7 +195,7 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"completionBlock";
     if(completion)
         completion(deserializedResponse, operation, statusCode, cached);
     
-    if(!cached && [unifiedConfiguration cacheResults])
+    if(!cached && [unifiedConfiguration cacheResults] && [self.cacheHandler operationConfigurationCanBeCached:unifiedConfiguration])
         [self.cacheHandler cacheObject:response withKey:[operation uniqueIdentifier] withCost:[response length]];
 }
 
@@ -280,7 +280,7 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"completionBlock";
                                                                     body:[unifiedConfiguration HTTPBody]];
         
         id cachedData = nil;
-        if ([[unifiedConfiguration HTTPMethod] isEqualToString:@"GET"])
+        if ([self.cacheHandler operationConfigurationCanBeCached:unifiedConfiguration])
             cachedData = [self.cacheHandler cachedObjectWithKey:[operation uniqueIdentifier]];
         
         if (cachedData)

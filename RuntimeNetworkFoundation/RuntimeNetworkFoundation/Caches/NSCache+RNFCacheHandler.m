@@ -8,8 +8,14 @@
 //
 
 #import "NSCache+RNFCacheHandler.h"
+#import "RNFUnifiedConfiguration.h"
 
 @implementation NSCache (RNFCacheHandler)
+
+- (BOOL) operationConfigurationCanBeCached:(RNFUnifiedConfiguration *)operationConfiguration
+{
+    return  [[operationConfiguration HTTPMethod] isEqualToString:@"GET"];
+}
 
 - (id) cachedObjectWithKey:(NSString *)key
 {

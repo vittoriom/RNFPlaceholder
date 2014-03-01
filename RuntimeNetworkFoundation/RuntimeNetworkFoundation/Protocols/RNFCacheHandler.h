@@ -6,6 +6,7 @@
 #import <Foundation/Foundation.h>
 
 @class RNFEndpoint;
+@class RNFUnifiedConfiguration;
 
 @protocol RNFCacheHandler <NSObject>
 
@@ -35,6 +36,15 @@
  *  @return The initialized RNFCacheHandler instance
  */
 - (id) initWithCapacity:(NSUInteger)maxCost;
+
+/**
+ *  The CacheHandler is sent this method before accessing the cache to read a previously cached response, and after a network response to eventually write the data to the cache.
+ *
+ *  @param operationConfiguration The unified configuration of the operation
+ *
+ *  @return YES if the operation response should be cached, NO otherwise
+ */
+- (BOOL) operationConfigurationCanBeCached:(RNFUnifiedConfiguration *)operationConfiguration;
 
 @optional
 
