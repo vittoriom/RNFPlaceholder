@@ -56,7 +56,7 @@ static const NSString * kRNFConfigurationOperationResponseValidator = @"response
  *
  *  @return a validator or nil, if none is needed
  */
-- (Class<RNFResponseValidator>) responseValidator;
+- (id<RNFResponseValidator>) responseValidator;
 
 /**
  *  @return The headers to use for this operation
@@ -90,7 +90,7 @@ static const NSString * kRNFConfigurationOperationResponseValidator = @"response
 /**
  *  @return The response deserializer to use after NSData comes from the network
  */
-- (Class<RNFResponseDeserializer>) responseDeserializer;
+- (id<RNFResponseDeserializer>) responseDeserializer;
 
 /**
  *  @return The data deserializer to use after the response has been eventually deserialized

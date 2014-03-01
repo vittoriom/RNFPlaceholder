@@ -42,7 +42,7 @@
     return [self.endpointConfiguration operations];
 }
 
-- (Class<RNFResponseValidator>) responseValidator
+- (id<RNFResponseValidator>) responseValidator
 {
     if ([self.operationConfiguration respondsToSelector:@selector(responseValidator)])
     {
@@ -151,7 +151,7 @@
     return parameters;
 }
 
-- (Class<RNFResponseDeserializer>) responseDeserializer
+- (id<RNFResponseDeserializer>) responseDeserializer
 {
     if ([self.operationConfiguration respondsToSelector:@selector(responseDeserializer)])
     {

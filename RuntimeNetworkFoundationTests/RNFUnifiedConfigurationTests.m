@@ -201,7 +201,7 @@ describe(@"Unified configuration", ^{
         
         it(@"should return a valid response deserializer", ^{
             id obj = [sut responseDeserializer];
-            [[theValue(obj == [NSArray class]) should] beTrue];
+            [[theValue([obj isKindOfClass:[NSArray class]]) should] beTrue];
         });
         
         it(@"should return a valid operation queue class", ^{
@@ -305,7 +305,7 @@ describe(@"Unified configuration", ^{
         
         it(@"should return a valid response deserializer", ^{
             id obj = [sut responseDeserializer];
-            [[theValue(obj == [NSDictionary class]) should] beTrue];
+            [[theValue([obj isKindOfClass:[NSDictionary class]]) should] beTrue];
         });
         
         it(@"should return a nil operation queue class", ^{
@@ -414,7 +414,7 @@ describe(@"Unified configuration", ^{
         
         it(@"should return a valid response deserializer", ^{
             id obj = [sut responseDeserializer];
-            [[theValue(obj == [NSDictionary class]) should] beTrue];
+            [[theValue([obj isKindOfClass:[NSDictionary class]]) should] beTrue];
         });
         
         it(@"should not cache results", ^{

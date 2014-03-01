@@ -107,6 +107,7 @@
     return [self dictionaryToData:bodyDictionary];
 }
 
+//TODO handle dictionary-based deserializer here
 - (id<RNFDataDeserializer>) dataDeserializer
 {
     Class deserializerClass = [self classFromKey:kRNFConfigurationOperationDataDeserializer];
@@ -116,14 +117,16 @@
         return [super dataDeserializer];
 }
 
-- (Class<RNFResponseValidator>) responseValidator
+//TODO handle dictionary-based validator here
+- (id<RNFResponseValidator>) responseValidator
 {
     if ([self.internalDictionary objectForKey:kRNFConfigurationOperationResponseValidator])
-        return [self classFromKey:kRNFConfigurationOperationResponseValidator];
+        return [[self classFromKey:kRNFConfigurationOperationResponseValidator] new];
     else
         return [super responseValidator];
 }
 
+//TODO handle dictionary-based serializer here
 - (id<RNFDataSerializer>) dataSerializer
 {
     Class serializerClass = [self classFromKey:kRNFConfigurationOperationDataSerializer];
@@ -133,10 +136,11 @@
         return [super dataSerializer];
 }
 
-- (Class<RNFResponseDeserializer>) responseDeserializer
+//TODO handle dictionary-based deserializer here
+- (id<RNFResponseDeserializer>) responseDeserializer
 {
     Class deserializerClass = [self classFromKey:kRNFConfigurationOperationResponseDeserializer];
-    return deserializerClass ?: [super responseDeserializer];
+    return deserializerClass ? [deserializerClass new] : [super responseDeserializer];
 }
 
 - (Class<RNFOperation>) operationClass

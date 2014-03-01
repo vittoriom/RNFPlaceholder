@@ -60,8 +60,8 @@ describe(@"Dictionary operation configurations", ^{
         });
         
         it(@"should parse the response validator", ^{
-            Class validator = [configuration responseValidator];
-            [[theValue([validator isSubclassOfClass:[NSDictionary class]]) should] beTrue];
+            id validator = [configuration responseValidator];
+            [[theValue([validator isKindOfClass:[NSDictionary class]]) should] beTrue];
         });
         
         it(@"should parse the data deserializer", ^{

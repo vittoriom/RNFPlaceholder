@@ -129,10 +129,10 @@
     return [self.internalDictionary objectForKey:kRNFConfigurationEndpointName] ?: [super name];
 }
 
-- (Class<RNFResponseValidator>) responseValidator
+- (id<RNFResponseValidator>) responseValidator
 {
     if ([self.internalDictionary objectForKey:kRNFConfigurationEndpointResponseValidator])
-        return [self classFromKey:kRNFConfigurationEndpointResponseValidator];
+        return [[self classFromKey:kRNFConfigurationEndpointResponseValidator] new];
     else
         return [super responseValidator];
 }
@@ -150,9 +150,9 @@
     return [self.internalDictionary objectForKey:kRNFConfigurationEndpointDefaultHeaders] ?: [super headers];
 }
 
-- (Class<RNFResponseDeserializer>) responseDeserializer
+- (id<RNFResponseDeserializer>) responseDeserializer
 {
-    return [self classFromKey:kRNFConfigurationEndpointResponseDeserializer];
+    return [[self classFromKey:kRNFConfigurationEndpointResponseDeserializer] new];
 }
 
 - (NSNumber *) portNumber

@@ -166,12 +166,11 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"completionBlock";
     withCompletionBlock:(RNFCompletionBlockComplete)completion
            failureBlock:(RNFErrorBlock)errorBlock
 {
-    Class deserializer = [unifiedConfiguration responseDeserializer];
-    id deserializedResponse = deserializer ? [[deserializer new] deserializeResponse:response] : response;
+    id<RNFResponseDeserializer> deserializer = [unifiedConfiguration responseDeserializer];
+    id deserializedResponse = deserializer ? [deserializer deserializeResponse:response] : response;
     
     //Response is valid?
-    Class validatorClass = [unifiedConfiguration responseValidator];
-    id<RNFResponseValidator> validator = validatorClass ? [validatorClass new] : nil;
+    id<RNFResponseValidator> validator = [unifiedConfiguration responseValidator];
     NSError *responseError = validator ? [validator responseIsValid:deserializedResponse forOperation:operation withStatusCode:statusCode] : nil;
     
     if(responseError)

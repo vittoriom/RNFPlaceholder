@@ -104,8 +104,8 @@ describe(@"Dictionary configuration", ^{
         });
         
         it(@"should correctly read the response validator", ^{
-            Class validator = [configuration responseValidator];
-            [[theValue([validator isSubclassOfClass:[NSDictionary class]]) should] beTrue];
+            id validator = [configuration responseValidator];
+            [[theValue([validator isKindOfClass:[NSDictionary class]]) should] beTrue];
         });
         
         it(@"should correctly read user-defined parameters", ^{
@@ -161,9 +161,9 @@ describe(@"Dictionary configuration", ^{
         });
         
         it(@"should correctly instantiate the response deserializer", ^{
-            Class deserializer = [configuration responseDeserializer];
+            id deserializer = [configuration responseDeserializer];
             [[deserializer shouldNot] beNil];
-            [[theValue([deserializer isSubclassOfClass:[NSArray class]]) should] beTrue];
+            [[theValue([deserializer isKindOfClass:[NSArray class]]) should] beTrue];
         });
         
         it(@"should correctly read whether the endpoint should cache results or not", ^{
