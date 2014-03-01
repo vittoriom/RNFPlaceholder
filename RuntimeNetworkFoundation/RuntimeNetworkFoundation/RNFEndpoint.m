@@ -176,6 +176,9 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"completionBlock";
     
     if(responseError)
     {
+        if(cached) //Not handling errors for a cached response
+            return;
+        
         if(errorBlock)
             errorBlock(deserializedResponse, responseError,statusCode);
         else
