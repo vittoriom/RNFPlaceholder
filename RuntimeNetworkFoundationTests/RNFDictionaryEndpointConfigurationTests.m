@@ -3,6 +3,8 @@
 #import "RNFOperationConfiguration.h"
 #import "RNFBaseOperationConfiguration.h"
 #import "RNFUserDefinedConfigurationParameters.h"
+#import "RNFJSONResponseDeserializer.h"
+#import "RNFYesResponseValidator.h"
 
 SPEC_BEGIN(RNFDictionaryEndpointConfigurationTests)
 
@@ -90,7 +92,7 @@ describe(@"Dictionary configuration", ^{
                                                                                  kRNFConfigurationOperationURL : @"test2"
                                                                                  }
                                                                              ],
-                                                                     kRNFConfigurationEndpointResponseDeserializer : @"NSArray",
+                                                                     kRNFConfigurationEndpointResponseDeserializer : @"RNFJSONResponseDeserializer",
                                                                      kRNFConfigurationEndpointShouldCacheResults : @NO,
                                                                      kRNFConfigurationEndpointPortNumber : @443,
                                                                      kRNFConfigurationEndpointDefaultQueryStringParameters : @{
@@ -99,13 +101,13 @@ describe(@"Dictionary configuration", ^{
                                                                      kRNFConfigurationEndpointUserDefinedParameters : @{
                                                                                                                         @"runtime:" : @2,
                                                                                                                         @"runtime2:" : @"TEST"},
-                                                                     kRNFConfigurationOperationResponseValidator : @"NSDictionary"}
+                                                                     kRNFConfigurationOperationResponseValidator : @"RNFYesResponseValidator"}
                              ];
         });
         
         it(@"should correctly read the response validator", ^{
             id validator = [configuration responseValidator];
-            [[theValue([validator isKindOfClass:[NSDictionary class]]) should] beTrue];
+            [[theValue([validator isKindOfClass:[RNFYesResponseValidator class]]) should] beTrue];
         });
         
         it(@"should correctly read user-defined parameters", ^{
@@ -163,7 +165,7 @@ describe(@"Dictionary configuration", ^{
         it(@"should correctly instantiate the response deserializer", ^{
             id deserializer = [configuration responseDeserializer];
             [[deserializer shouldNot] beNil];
-            [[theValue([deserializer isKindOfClass:[NSArray class]]) should] beTrue];
+            [[theValue([deserializer isKindOfClass:[RNFJSONResponseDeserializer class]]) should] beTrue];
         });
         
         it(@"should correctly read whether the endpoint should cache results or not", ^{

@@ -1,4 +1,6 @@
 #import "RNFDictionaryOperationConfiguration.h"
+#import "RNFJSONResponseDeserializer.h"
+#import "RNFYesResponseValidator.h"
 
 SPEC_BEGIN(RNFDictionaryOperationConfigurationTests)
 
@@ -52,27 +54,27 @@ describe(@"Dictionary operation configurations", ^{
                                                                                               kRNFConfigurationOperationHTTPMethod : @"POST",
                                                                                               kRNFConfigurationOperationName : @"test",
                                                                                               kRNFConfigurationOperationOperationClass : @"RNFBaseOperation",
-                                                                                              kRNFConfigurationOperationResponseDeserializer : @"NSDictionary",
+                                                                                              kRNFConfigurationOperationResponseDeserializer : @"RNFJSONResponseDeserializer",
                                                                                               kRNFConfigurationOperationShouldCacheResults : @NO,
                                                                                               kRNFConfigurationOperationURL : @"testURL",
-                                                                                              kRNFConfigurationOperationResponseValidator : @"NSDictionary"
+                                                                                              kRNFConfigurationOperationResponseValidator : @"RNFYesResponseValidator"
                                                                                               }];
         });
         
         it(@"should parse the response validator", ^{
             id validator = [configuration responseValidator];
-            [[theValue([validator isKindOfClass:[NSDictionary class]]) should] beTrue];
+            [[theValue([validator isKindOfClass:[RNFYesResponseValidator class]]) should] beTrue];
         });
         
-        it(@"should parse the data deserializer", ^{
-            id dataDeserializer = [configuration dataDeserializer];
-            [[dataDeserializer shouldNot] beNil];
-        });
+//        it(@"should parse the data deserializer", ^{
+//            id dataDeserializer = [configuration dataDeserializer];
+//            [[dataDeserializer shouldNot] beNil];
+//        });
         
-        it(@"should parse the data serializer", ^{
-            id dataSerializer = [configuration dataSerializer];
-            [[dataSerializer shouldNot] beNil];
-        });
+//        it(@"should parse the data serializer", ^{
+//            id dataSerializer = [configuration dataSerializer];
+//            [[dataSerializer shouldNot] beNil];
+//        });
         
         it(@"should parse the headers", ^{
             NSDictionary *headers = [configuration headers];
@@ -114,6 +116,7 @@ describe(@"Dictionary operation configurations", ^{
         
         it(@"should parse the response deserializer", ^{
             id responseDeserializer = [configuration responseDeserializer];
+            [[theValue([responseDeserializer isKindOfClass:[RNFJSONResponseDeserializer class]]) should] beTrue];
             [[theValue(responseDeserializer) shouldNot] beNil];
         });
     });

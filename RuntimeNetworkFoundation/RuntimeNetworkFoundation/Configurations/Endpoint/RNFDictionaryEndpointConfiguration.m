@@ -10,6 +10,7 @@
 #import "RNFMalformedConfiguration.h"
 #import "RNFDictionaryUserDefinedParameters.h"
 #import "RNFDictionaryOperationConfiguration.h"
+#import "RNFDictionaryConfigurationHelper.h"
 
 @interface RNFDictionaryEndpointConfiguration ()
 
@@ -88,20 +89,6 @@
                                                   userInfo:nil];
 }
 
-#pragma mark - Helpers
-
-- (Class) classFromKey:(const NSString *)key
-{
-    NSString *className = [self.internalDictionary objectForKey:key];
-    if (className)
-    {
-        Class result = NSClassFromString(className);
-        return result;
-    } else {
-        return nil;
-    }
-}
-
 #pragma mark - Getters
 
 - (NSURL *) baseURL
@@ -131,10 +118,10 @@
 
 - (id<RNFResponseValidator>) responseValidator
 {
-    if ([self.internalDictionary objectForKey:kRNFConfigurationEndpointResponseValidator])
-        return [[self classFromKey:kRNFConfigurationEndpointResponseValidator] new];
-    else
-        return [super responseValidator];
+    id responseValidator = [RNFDictionaryConfigurationHelper objectConformToProtocol:@protocol(RNFResponseValidator)
+                                                                              forKey:kRNFConfigurationEndpointResponseValidator
+                                                                        inDictionary:self.internalDictionary];
+    return responseValidator ?: [super responseValidator];
 }
 
 - (BOOL) cacheResults
@@ -152,7 +139,10 @@
 
 - (id<RNFResponseDeserializer>) responseDeserializer
 {
-    return [[self classFromKey:kRNFConfigurationEndpointResponseDeserializer] new];
+    id responseDeserializer = [RNFDictionaryConfigurationHelper objectConformToProtocol:@protocol(RNFResponseDeserializer)
+                                                                                 forKey:kRNFConfigurationEndpointResponseDeserializer
+                                                                           inDictionary:self.internalDictionary];
+    return responseDeserializer ?: [super responseDeserializer];
 }
 
 - (NSNumber *) portNumber
@@ -162,22 +152,22 @@
 
 - (Class<RNFOperation>) operationClass
 {
-    return [self classFromKey:kRNFConfigurationEndpointOperationClass] ?: [super operationClass];
+    return [RNFDictionaryConfigurationHelper classFromKey:kRNFConfigurationEndpointOperationClass inDictionary:self.internalDictionary] ?: [super operationClass];
 }
 
 - (Class<RNFOperationQueue>) operationQueueClass
 {
-    return [self classFromKey:kRNFConfigurationEndpointOperationQueueClass] ?: [super operationQueueClass];
+    return [RNFDictionaryConfigurationHelper classFromKey:kRNFConfigurationEndpointOperationQueueClass inDictionary:self.internalDictionary] ?: [super operationQueueClass];
 }
 
 - (Class<RNFCacheHandler>) cacheClass
 {
-    return [self classFromKey:kRNFConfigurationEndpointCacheClass] ?: [super cacheClass];
+    return [RNFDictionaryConfigurationHelper classFromKey:kRNFConfigurationEndpointCacheClass inDictionary:self.internalDictionary] ?: [super cacheClass];
 }
 
 - (Class<RNFLogger>) logger
 {
-    return [self classFromKey:kRNFConfigurationEndpointLoggerClass];
+    return [RNFDictionaryConfigurationHelper classFromKey:kRNFConfigurationEndpointLoggerClass inDictionary:self.internalDictionary];
 }
 
 #pragma mark - UserDefined parameters

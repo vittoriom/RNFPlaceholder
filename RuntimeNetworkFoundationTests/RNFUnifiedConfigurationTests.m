@@ -4,28 +4,10 @@
 #import "RNFDictionaryEndpointConfiguration.h"
 #import "RNFDictionaryOperationConfiguration.h"
 #import "RNFBaseOperation.h"
+#import "RNFYesResponseValidator.h"
+#import "RNFJSONResponseDeserializer.h"
 
 SPEC_BEGIN(RNFUnifiedConfigurationTests)
-
-/*
- - (NSString *) name
- - (NSURL *) baseURL
- - (NSArray *) operations
- - (NSString *) URL
- - (Class<RNFOperation>) operationClass
- - (NSString *) HTTPMethod
- - (NSData *) HTTPBody
- - (id<RNFDataDeserializer>) dataDeserializer
- - (id<RNFDataSerializer>) dataSerializer
- - (NSNumber *) portNumber
- - (NSDictionary *) queryStringParameters
- - (NSDictionary *) headers
- - (Class<RNFResponseDeserializer>) responseDeserializer
- - (Class<RNFOperationQueue>) operationQueueClass
- - (BOOL) cacheResults
- - (Class<RNFCacheHandler>) cacheClass
- - (Class<RNFLogger>) logger
-*/
 
 describe(@"Unified configuration", ^{
     __block RNFUnifiedConfiguration *sut;
@@ -135,18 +117,24 @@ describe(@"Unified configuration", ^{
                                                                              kRNFConfigurationOperationURL : @"test2"
                                                                              }
                                                                          ],
-                                                                     kRNFConfigurationEndpointResponseDeserializer : @"NSArray",
+                                                                     kRNFConfigurationEndpointResponseDeserializer : @"RNFJSONResponseDeserializer",
                                                                      kRNFConfigurationEndpointShouldCacheResults : @NO,
                                                                      kRNFConfigurationEndpointPortNumber : @443,
                                                                      kRNFConfigurationEndpointDefaultQueryStringParameters : @{
                                                                          @"customP" : @"customV"
-                                                                         }
+                                                                         },
+                                                                     kRNFConfigurationEndpointResponseValidator : @"RNFYesResponseValidator"
                                                                     }];
             sut = [[RNFUnifiedConfiguration alloc] initWithEndpointConfiguration:endpoint operationConfiguration:nil];
         });
         
         it(@"should return a nil name", ^{
             [[[sut name] should] beNil];
+        });
+        
+        it(@"should return a valid response validator", ^{
+            id validator = [sut responseValidator];
+            [[theValue([validator isKindOfClass:[RNFYesResponseValidator class]]) should] beTrue];
         });
         
         it(@"should return a valid baseURL", ^{
@@ -174,15 +162,15 @@ describe(@"Unified configuration", ^{
             [[[sut HTTPBody] should] beNil];
         });
         
-        it(@"should return a nil data deserializer", ^{
-            id obj = [sut dataDeserializer];
-            [[obj should] beNil];
-        });
-        
-        it(@"should return a nil data serializer", ^{
-            id obj = [sut dataSerializer];
-            [[obj should] beNil];
-        });
+//        it(@"should return a nil data deserializer", ^{
+//            id obj = [sut dataDeserializer];
+//            [[obj should] beNil];
+//        });
+//        
+//        it(@"should return a nil data serializer", ^{
+//            id obj = [sut dataSerializer];
+//            [[obj should] beNil];
+//        });
         
         it(@"should return a valid port number", ^{
             [[[sut portNumber] should] equal:theValue(443)];
@@ -201,7 +189,7 @@ describe(@"Unified configuration", ^{
         
         it(@"should return a valid response deserializer", ^{
             id obj = [sut responseDeserializer];
-            [[theValue([obj isKindOfClass:[NSArray class]]) should] beTrue];
+            [[theValue([obj isKindOfClass:[RNFJSONResponseDeserializer class]]) should] beTrue];
         });
         
         it(@"should return a valid operation queue class", ^{
@@ -239,8 +227,9 @@ describe(@"Unified configuration", ^{
                                                                           kRNFConfigurationOperationHTTPMethod : @"POST",
                                                                           kRNFConfigurationOperationName : @"test",
                                                                           kRNFConfigurationOperationOperationClass : @"RNFBaseOperation",
-                                                                          kRNFConfigurationOperationResponseDeserializer : @"NSDictionary",
+                                                                          kRNFConfigurationOperationResponseDeserializer : @"RNFJSONResponseDeserializer",
                                                                           kRNFConfigurationOperationShouldCacheResults : @NO,
+                                                                          kRNFConfigurationEndpointResponseValidator : @"RNFYesResponseValidator",
                                                                           kRNFConfigurationOperationURL : @"testURL"
                                                                     }];
             
@@ -253,6 +242,11 @@ describe(@"Unified configuration", ^{
         
         it(@"should return a nil baseURL", ^{
             [[[sut baseURL] should] beNil];
+        });
+        
+        it(@"should return a valid responseValidator", ^{
+            id validator = [sut responseValidator];
+            [[theValue([validator isKindOfClass:[RNFYesResponseValidator class]]) should] beTrue];
         });
         
         it(@"should return nil operations", ^{
@@ -279,15 +273,15 @@ describe(@"Unified configuration", ^{
             [[bodyString should] equal:@"param1=value1&param2=2"];
         });
         
-        it(@"should return a valid data deserializer", ^{
-            id obj = [sut dataDeserializer];
-            [[obj shouldNot] beNil];
-        });
-        
-        it(@"should return a valid data serializer", ^{
-            id obj = [sut dataSerializer];
-            [[obj shouldNot] beNil];
-        });
+//        it(@"should return a valid data deserializer", ^{
+//            id obj = [sut dataDeserializer];
+//            [[obj shouldNot] beNil];
+//        });
+//        
+//        it(@"should return a valid data serializer", ^{
+//            id obj = [sut dataSerializer];
+//            [[obj shouldNot] beNil];
+//        });
         
         it(@"should return a nil port number", ^{
             [[[sut portNumber] should] beNil];
@@ -305,7 +299,7 @@ describe(@"Unified configuration", ^{
         
         it(@"should return a valid response deserializer", ^{
             id obj = [sut responseDeserializer];
-            [[theValue([obj isKindOfClass:[NSDictionary class]]) should] beTrue];
+            [[theValue([obj isKindOfClass:[RNFJSONResponseDeserializer class]]) should] beTrue];
         });
         
         it(@"should return a nil operation queue class", ^{
@@ -332,7 +326,7 @@ describe(@"Unified configuration", ^{
         beforeAll(^{
             operation = [[RNFDictionaryOperationConfiguration alloc] initWithDictionary:@{
                                                                                           kRNFConfigurationOperationDataDeserializer : @"NSDictionary",
-                                                                                          kRNFConfigurationOperationDataSerializer : @"NSDictionary",
+                                                                                        kRNFConfigurationOperationDataSerializer : @"NSDictionary",
                                                                                           kRNFConfigurationOperationHeaders : @{
                                                                                                   @"Accept" : @"gzip, tar"
                                                                                                   },
@@ -343,7 +337,7 @@ describe(@"Unified configuration", ^{
                                                                                           kRNFConfigurationOperationHTTPMethod : @"POST",
                                                                                           kRNFConfigurationOperationName : @"test",
                                                                                           kRNFConfigurationOperationOperationClass : @"RNFBaseOperation",
-                                                                                          kRNFConfigurationOperationResponseDeserializer : @"NSDictionary",
+                                                                                          kRNFConfigurationOperationResponseDeserializer : @"RNFJSONResponseDeserializer",
                                                                                           kRNFConfigurationOperationShouldCacheResults : @NO,
                                                                                           kRNFConfigurationOperationURL : @"testURL"
                                                                                           }];
@@ -368,10 +362,11 @@ describe(@"Unified configuration", ^{
                                                                                                     kRNFConfigurationOperationURL : @"test2"
                                                                                                     }
                                                                                                 ],
-                                                                                        kRNFConfigurationEndpointResponseDeserializer : @"NSArray",
+                                                                                        kRNFConfigurationEndpointResponseDeserializer : @"RNFJSONResponseDeserializer",
                                                                                         kRNFConfigurationEndpointShouldCacheResults : @NO,
+                                                                                        kRNFConfigurationEndpointResponseValidator : @"RNFYesResponseValidator",
                                                                                         kRNFConfigurationEndpointPortNumber : @443,
-                                                                                        kRNFConfigurationEndpointDefaultQueryStringParameters : @{
+                                                                                             kRNFConfigurationEndpointDefaultQueryStringParameters : @{
                                                                                                 @"customP" : @"customV"
                                                                                                 }
                                                                                         }];
@@ -384,6 +379,11 @@ describe(@"Unified configuration", ^{
         
         it(@"should return a valid baseURL", ^{
             [[[sut baseURL] should] equal:[NSURL URLWithString:@"http://vittoriomonaco.it"]];
+        });
+        
+        it(@"should return a valid response validator", ^{
+            id validator = [sut responseValidator];
+            [[theValue([validator isKindOfClass:[RNFYesResponseValidator class]]) should] beTrue];
         });
         
         it(@"should return a valid URL", ^{
@@ -402,19 +402,19 @@ describe(@"Unified configuration", ^{
             [[bodyString should] equal:@"param1=value1&param2=2"];
         });
         
-        it(@"should return a valid data deserializer", ^{
-            id obj = [sut dataDeserializer];
-            [[obj shouldNot] beNil];
-        });
-        
-        it(@"should return a valid data serializer", ^{
-            id obj = [sut dataSerializer];
-            [[obj shouldNot] beNil];
-        });
+//        it(@"should return a valid data deserializer", ^{
+//            id obj = [sut dataDeserializer];
+//            [[obj shouldNot] beNil];
+//        });
+//        
+//        it(@"should return a valid data serializer", ^{
+//            id obj = [sut dataSerializer];
+//            [[obj shouldNot] beNil];
+//        });
         
         it(@"should return a valid response deserializer", ^{
             id obj = [sut responseDeserializer];
-            [[theValue([obj isKindOfClass:[NSDictionary class]]) should] beTrue];
+            [[theValue([obj isKindOfClass:[RNFJSONResponseDeserializer class]]) should] beTrue];
         });
         
         it(@"should not cache results", ^{

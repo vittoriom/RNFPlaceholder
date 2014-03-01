@@ -8,6 +8,8 @@
 
 #import "RNFDictionaryOperationConfiguration.h"
 #import "RNFMalformedConfiguration.h"
+#import "RNFInitializableWithDictionary.h"
+#import "RNFDictionaryConfigurationHelper.h"
 
 @interface RNFDictionaryOperationConfiguration ()
 
@@ -51,35 +53,6 @@
                                                       userInfo:nil];
 }
 
-#pragma mark - Helpers
-
-- (Class) classFromKey:(const NSString *)key
-{
-    NSString *className = [self.internalDictionary objectForKey:key];
-    if (className)
-    {
-        Class result = NSClassFromString(className);
-        return result;
-    } else {
-        return nil;
-    }
-}
-
-- (NSData *) dictionaryToData:(NSDictionary *)dictionary
-{
-    NSArray *keys = [dictionary allKeys];
-    NSMutableArray *keysAndValues = [NSMutableArray new];
-    
-    for (NSString *key in keys)
-    {
-        [keysAndValues addObject:[NSString stringWithFormat:@"%@=%@",key, dictionary[key]]];
-    }
-    
-    NSString *finalString = [keysAndValues componentsJoinedByString:@"&"];
-    
-    return [finalString dataUsingEncoding:NSUTF8StringEncoding];
-}
-
 #pragma mark - Getters
 
 - (NSString *) name
@@ -104,48 +77,45 @@
     if(!bodyDictionary)
         return [super HTTPBody];
     
-    return [self dictionaryToData:bodyDictionary];
+    return [RNFDictionaryConfigurationHelper dictionaryToData:bodyDictionary];
 }
 
-//TODO handle dictionary-based deserializer here
 - (id<RNFDataDeserializer>) dataDeserializer
 {
-    Class deserializerClass = [self classFromKey:kRNFConfigurationOperationDataDeserializer];
-    if(deserializerClass)
-        return [deserializerClass new];
-    else
-        return [super dataDeserializer];
+    id dataDeserializer = [RNFDictionaryConfigurationHelper objectConformToProtocol:@protocol(RNFDataDeserializer)
+                                                                             forKey:kRNFConfigurationOperationDataDeserializer
+                                                                       inDictionary:self.internalDictionary];
+    return dataDeserializer ?: [super dataDeserializer];
 }
 
-//TODO handle dictionary-based validator here
 - (id<RNFResponseValidator>) responseValidator
 {
-    if ([self.internalDictionary objectForKey:kRNFConfigurationOperationResponseValidator])
-        return [[self classFromKey:kRNFConfigurationOperationResponseValidator] new];
-    else
-        return [super responseValidator];
+    id responseValidator = [RNFDictionaryConfigurationHelper objectConformToProtocol:@protocol(RNFResponseValidator)
+                                                                              forKey:kRNFConfigurationOperationResponseValidator
+                                                                        inDictionary:self.internalDictionary];
+    return responseValidator ?: [super responseValidator];
 }
 
-//TODO handle dictionary-based serializer here
 - (id<RNFDataSerializer>) dataSerializer
 {
-    Class serializerClass = [self classFromKey:kRNFConfigurationOperationDataSerializer];
-    if(serializerClass)
-        return [serializerClass new];
-    else
-        return [super dataSerializer];
+    id dataSerializer = [RNFDictionaryConfigurationHelper objectConformToProtocol:@protocol(RNFDataSerializer)
+                                                                           forKey:kRNFConfigurationOperationDataSerializer
+                                                                     inDictionary:self.internalDictionary];
+    return dataSerializer ?: [super dataSerializer];
 }
 
-//TODO handle dictionary-based deserializer here
 - (id<RNFResponseDeserializer>) responseDeserializer
 {
-    Class deserializerClass = [self classFromKey:kRNFConfigurationOperationResponseDeserializer];
-    return deserializerClass ? [deserializerClass new] : [super responseDeserializer];
+    id responseDeserializer = [RNFDictionaryConfigurationHelper objectConformToProtocol:@protocol(RNFResponseDeserializer)
+                                                                                 forKey:kRNFConfigurationOperationResponseDeserializer
+                                                                           inDictionary:self.internalDictionary];
+    return responseDeserializer ?: [super responseDeserializer];
 }
 
 - (Class<RNFOperation>) operationClass
 {
-    Class operationClass = [self classFromKey:kRNFConfigurationOperationOperationClass];
+    Class operationClass = [RNFDictionaryConfigurationHelper classFromKey:kRNFConfigurationOperationOperationClass
+                                                             inDictionary:self.internalDictionary];
     return operationClass ?: [super operationClass];
 }
 

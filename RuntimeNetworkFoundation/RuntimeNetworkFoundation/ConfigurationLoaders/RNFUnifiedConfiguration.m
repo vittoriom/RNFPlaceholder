@@ -46,8 +46,13 @@
 {
     if ([self.operationConfiguration respondsToSelector:@selector(responseValidator)])
     {
-        return [self.operationConfiguration responseValidator];
-    } else if ([self.endpointConfiguration respondsToSelector:@selector(responseValidator)])
+        id validator = [self.operationConfiguration responseValidator];
+        if (validator)
+        {
+            return validator;
+        }
+    }
+    if ([self.endpointConfiguration respondsToSelector:@selector(responseValidator)])
     {
         return [self.endpointConfiguration responseValidator];
     } else
@@ -73,11 +78,14 @@
 {
     if ([self.operationConfiguration respondsToSelector:@selector(operationClass)])
     {
-        return [self.operationConfiguration operationClass];
-    } else
-    {
-        return [self.endpointConfiguration operationClass];
+        id operationClass = [self.operationConfiguration operationClass];
+        if (operationClass)
+        {
+            return operationClass;
+        }
     }
+    
+    return [self.endpointConfiguration operationClass];
 }
 
 - (NSString *) HTTPMethod
@@ -155,8 +163,13 @@
 {
     if ([self.operationConfiguration respondsToSelector:@selector(responseDeserializer)])
     {
-        return [self.operationConfiguration responseDeserializer];
-    } else if([self.endpointConfiguration respondsToSelector:@selector(responseDeserializer)])
+        id deserializer = [self.operationConfiguration responseDeserializer];
+        if (deserializer)
+        {
+            return deserializer;
+        }
+    }
+    if([self.endpointConfiguration respondsToSelector:@selector(responseDeserializer)])
     {
         return [self.endpointConfiguration responseDeserializer];
     } else
