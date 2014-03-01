@@ -11,7 +11,7 @@
 #import <objc/runtime.h>
 #import "RNFInitializableWithDictionary.h"
 
-static const NSString * kRNFDictionaryOperationConfigurationCustomObjectClass = @"class";
+static const NSString * kRNFDictionaryOperationConfigurationCustomObjectClass = @"objectClass";
 
 @implementation RNFDictionaryConfigurationHelper
 
@@ -79,6 +79,9 @@ static const NSString * kRNFDictionaryOperationConfigurationCustomObjectClass = 
 
 + (NSData *) dictionaryToData:(NSDictionary *)dictionary
 {
+    if(!dictionary)
+        return nil;
+    
     NSArray *keys = [dictionary allKeys];
     NSMutableArray *keysAndValues = [NSMutableArray new];
     
