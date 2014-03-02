@@ -14,7 +14,7 @@
  *  Initializes a new instance of the object with the given NSDictionary
  *
  *  @param dict The dictionary containing the data needed to initialize the object. 
- *  for example, this could be fed by a RNFDataDeserializer, if the targetClass conforms to the protocol
+ *  for example, this could be used by a RNFDataDeserializer, if the targetClass conforms to the protocol
  *
  *  @return A initialized instance of the object
  */

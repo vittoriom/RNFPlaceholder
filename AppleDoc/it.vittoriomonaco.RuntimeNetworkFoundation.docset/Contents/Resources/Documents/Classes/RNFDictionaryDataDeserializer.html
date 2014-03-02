@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
-		<title>RNFInitializableWithDictionary Protocol Reference</title>
+		<title>RNFDictionaryDataDeserializer Class Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
@@ -16,7 +16,7 @@
 			</div>
 			
 			<div id="title" role="banner">
-				<h1 class="hideInXcode">RNFInitializableWithDictionary Protocol Reference</h1>
+				<h1 class="hideInXcode">RNFDictionaryDataDeserializer Class Reference</h1>
 			</div>
 			<ul id="headerButtons" role="toolbar">
 				<li id="toc_button">
@@ -29,19 +29,12 @@
 	
 	
 	
-	<option value="tasks">Tasks</option>
 	
 	
 	
 	
 	
 	
-	
-	
-	
-	<option value="instance_methods">Instance Methods</option>
-	
-	<option value="//api/name/initWithDictionary:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithDictionary:</option>
 	
 	
 	
@@ -55,9 +48,6 @@
 
 
 
-<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
-	
-</ul></li>
 
 
 
@@ -65,20 +55,13 @@
 
 
 
-
-
-<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithDictionary:">initWithDictionary:</a></span></li>
-	
-</ul></li>
 
 
 			</ul>
 		</nav>
 		<article>
 			<div id="contents" class="isShowingTOC" role="main">
-				<a title="RNFInitializableWithDictionary Protocol Reference" name="top"></a>
+				<a title="RNFDictionaryDataDeserializer Class Reference" name="top"></a>
 				<div class="main-navigation navigation-top">
 					<ul>
 	<li><a href="../index.html">Index</a></li>
@@ -87,18 +70,21 @@
 				</div>
 				<div id="header">
 					<div class="section-header">
-						<h1 class="title title-header">RNFInitializableWithDictionary Protocol Reference</h1>
+						<h1 class="title title-header">RNFDictionaryDataDeserializer Class Reference</h1>
 					</div>		
 				</div>
 				<div id="container">	
 					
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
-	<td class="specification-title">Conforms to</td>
+	<td class="specification-title">Inherits from</td>
 	<td class="specification-value">NSObject</td>
 </tr><tr>
+	<td class="specification-title">Conforms to</td>
+	<td class="specification-value"><a href="../Protocols/RNFDataDeserializer.html">RNFDataDeserializer</a><br /><a href="../Protocols/RNFInitializableWithDictionary.html">RNFInitializableWithDictionary</a></td>
+</tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">RNFInitializableWithDictionary.h</td>
+	<td class="specification-value">RNFDictionaryDataDeserializer.h</td>
 </tr>
 						</tbody></table></div>
 					
@@ -107,25 +93,6 @@
 					
 					
 					
-					<div class="section section-tasks">
-						<a title="Tasks" name="tasks"></a>
-						<h2 class="subtitle subtitle-tasks">Tasks</h2>
-						
-						
-						
-						
-
-						<ul class="task-list">
-							<li>
-	<span class="tooltip">
-		<code><a href="#//api/name/initWithDictionary:">&ndash;&nbsp;initWithDictionary:</a></code>
-	</span>
-	
-	<span class="task-item-suffix">required method</span>
-</li>
-						</ul>
-						
-					</div>
 					
 					
 					
@@ -133,70 +100,6 @@
 					
 					
 					
-					
-					
-					<div class="section section-methods">
-						<a title="Instance Methods" name="instance_methods"></a>
-						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
-						
-						<div class="section-method">
-	<a name="//api/name/initWithDictionary:" title="initWithDictionary:"></a>
-	<h3 class="subsubtitle method-title">initWithDictionary:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Initializes a new instance of the object with the given NSDictionary</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (instancetype)initWithDictionary:(NSDictionary *)<em>dict</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>dict</em></dt>
-			<dd><p>The dictionary containing the data needed to initialize the object.
-for example, this could be used by a <a href="../Protocols/RNFDataDeserializer.html">RNFDataDeserializer</a>, if the targetClass conforms to the protocol</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	<div class="method-subsection return">
-		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>A initialized instance of the object</p>
-	</div>
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Initializes a new instance of the object with the given NSDictionary</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">RNFInitializableWithDictionary.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-					</div>
 					
 					
                     
