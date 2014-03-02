@@ -201,7 +201,7 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"completionBlock";
     NSArray *operations = [self.configuration operations];
 
 	NSInteger indexOfOperation = [operations indexOfObjectPassingTest:^BOOL(id<RNFOperationConfiguration> operation, NSUInteger idx, BOOL *stop) {
-        return [[operation name] isEqualToString:name];
+        return [[operation name] isEqualToString:selectorAsString];
     }];
     
 	if(indexOfOperation == NSNotFound)

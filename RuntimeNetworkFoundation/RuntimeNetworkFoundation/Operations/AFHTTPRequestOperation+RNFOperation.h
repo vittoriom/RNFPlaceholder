@@ -6,9 +6,13 @@
 //  Copyright (c) 2014 Vittorio Monaco. All rights reserved.
 //
 
+#ifdef _AFNETWORKING_
+
 #import "AFHTTPRequestOperation.h"
 #import "RNFOperation.h"
 
 @interface AFHTTPRequestOperation (RNFOperation) <RNFOperation>
 
 @end
+
+#endif

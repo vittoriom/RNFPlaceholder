@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Vittorio Monaco. All rights reserved.
 //
 
+#ifdef _AFNETWORKING_
+
 #import "AFHTTPRequestOperation+RNFOperation.h"
 #import <objc/runtime.h>
 
@@ -46,3 +48,5 @@
 }
 
 @end
+
+#endif
