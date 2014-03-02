@@ -10,6 +10,12 @@
 
 @protocol RNFValueTransformer <NSObject>
 
-- (id) transformedValueForOriginalValue:(id)originalValue;
+/**
+ *
+ *  @param originalValue The original value, usually a String, Number, Date, Array or Dictionary
+ *
+ *  @return The processed value as it should be used for data deserialization or for further processing
+ */
+- (id) transformedValueFromOriginalValue:(id)originalValue;
 
 @end

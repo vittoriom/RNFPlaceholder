@@ -28,9 +28,7 @@
     
     id<RNFOperation> createdOperation = [endpoint getAnswersWithMaxResults:@2
                        completionBlock:^(id response, id<RNFOperation> operation, NSUInteger statusCode, BOOL cached) {
-                           NSLog(@"JSON Response: %@",[NSJSONSerialization JSONObjectWithData:response
-																					  options:NSJSONReadingAllowFragments
-																						error:nil]);
+                           NSLog(@"JSON Response: %@",response);
                            NSLog(@"Operation was: %@",operation);
                            NSLog(@"Cached: %d",cached);
                            NSLog(@"Status code: %d",statusCode);

@@ -186,10 +186,7 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"completionBlock";
     }
     
     id<RNFDataDeserializer> dataDeserializer = [unifiedConfiguration dataDeserializer];
-    deserializedResponse = dataDeserializer ? [dataDeserializer deserializeData:deserializedResponse
-                                                                   usingMapping:[dataDeserializer mappings]
-                                                                     transforms:[dataDeserializer transforms]
-                                                                      intoClass:[dataDeserializer targetClass]] : deserializedResponse;
+    deserializedResponse = dataDeserializer ? [dataDeserializer deserializeData:deserializedResponse] : deserializedResponse;
     
     if(completion)
         completion(deserializedResponse, operation, statusCode, cached);

@@ -29,7 +29,8 @@
 {
     __weak id<RNFOperation> weakOperation = self;
     [self setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        completionBlock(responseObject, weakOperation, operation.response.statusCode, NO);
+        if (completionBlock)
+            completionBlock(responseObject, weakOperation, operation.response.statusCode, NO);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         if (errorBlock)
             errorBlock(operation.responseData, error, operation.response.statusCode);
