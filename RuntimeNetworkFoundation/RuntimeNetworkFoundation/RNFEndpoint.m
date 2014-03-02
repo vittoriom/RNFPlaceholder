@@ -21,24 +21,16 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"completionBlock";
 
 @interface RNFEndpoint ()
 
-@property (nonatomic, strong) id<RNFConfigurationLoader> configurator;
-
-//Operation handling
-
-- (NSArray *) operations;
-
-@property (nonatomic, strong) id<RNFOperationQueue> networkQueue;
-
-//Caching module
-@property (nonatomic, strong) id<RNFCacheHandler> cacheHandler;
-
-//Attributes
 @property (nonatomic, strong) NSString *name;
-
+@property (nonatomic, strong) id<RNFConfigurationLoader> configurator;
 @property (nonatomic, strong) id<RNFEndpointConfiguration> configuration;
 
-//Attached behaviors
+//TODO: remove these as soon as the configuration returns them already
+@property (nonatomic, strong) id<RNFOperationQueue> networkQueue;
+@property (nonatomic, strong) id<RNFCacheHandler> cacheHandler;
 @property (nonatomic, strong) id<RNFLogger> logger;
+
+- (NSArray *) operations;
 
 @end
 
@@ -138,6 +130,9 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"completionBlock";
 
 - (NSArray *) operations
 {
+    if(!_configuration)
+        [self loadConfigurationForConfigurator:self.configurator];
+    
     return [self.configuration operations];
 }
 
@@ -147,13 +142,6 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"completionBlock";
 {
     NSArray *operationsArray = [self operations];
     return [operationsArray objectPassingTest:^BOOL(id<RNFOperationConfiguration> operation) {
-        return [[operation name] isEqualToString:name];
-    }];
-}
-
-- (NSInteger) indexOfOperationWithName:(NSString *)name inArray:(NSArray *)operations
-{
-    return [operations indexOfObjectPassingTest:^BOOL(id<RNFOperationConfiguration> operation, NSUInteger idx, BOOL *stop) {
         return [[operation name] isEqualToString:name];
     }];
 }
@@ -169,7 +157,6 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"completionBlock";
     id<RNFResponseDeserializer> deserializer = [unifiedConfiguration responseDeserializer];
     id deserializedResponse = deserializer ? [deserializer deserializeResponse:response] : response;
     
-    //Response is valid?
     id<RNFResponseValidator> validator = [unifiedConfiguration responseValidator];
     NSError *responseError = validator ? [validator responseIsValid:deserializedResponse forOperation:operation withStatusCode:statusCode] : nil;
     
@@ -213,7 +200,9 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"completionBlock";
     
     NSArray *operations = [self.configuration operations];
 
-	NSInteger indexOfOperation = [self indexOfOperationWithName:selectorAsString inArray:operations];
+	NSInteger indexOfOperation = [operations indexOfObjectPassingTest:^BOOL(id<RNFOperationConfiguration> operation, NSUInteger idx, BOOL *stop) {
+        return [[operation name] isEqualToString:name];
+    }];
     
 	if(indexOfOperation == NSNotFound)
 		return self;
@@ -294,7 +283,7 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"completionBlock";
             [self handleResponse:response
                     forOperation:operation
                   withStatusCode:statusCode
-                          cached:NO
+                          cached:cached
               usingConfiguration:unifiedConfiguration
              withCompletionBlock:completion
                     failureBlock:errorBlock];
