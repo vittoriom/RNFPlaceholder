@@ -28,4 +28,13 @@
             [self rangeOfString:@"?"].location != NSNotFound ? @"&" : @"?", [params componentsJoinedByString:@"&"]];
 }
 
+- (NSString *) URLEncodedString
+{
+	return (NSString *) CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL,
+                                                               (CFStringRef)self,
+                                                               NULL,
+                                                               (CFStringRef)@"!*'\"();:@&=+$,/?%#[]% ",
+                                                               CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding)));
+}
+
 @end

@@ -19,4 +19,10 @@
  */
 - (NSString *) URLStringByAppendingQueryStringParameters:(NSDictionary *)parameters;
 
+/**
+ *
+ *  @return a URL-encoded version of the string
+ */
+- (NSString *) URLEncodedString;
+
 @end

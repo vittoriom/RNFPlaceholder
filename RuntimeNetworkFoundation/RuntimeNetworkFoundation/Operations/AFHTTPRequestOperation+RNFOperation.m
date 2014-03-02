@@ -35,7 +35,7 @@
         if (errorBlock)
             errorBlock(operation.responseData, error, operation.response.statusCode);
         else
-            completionBlock(nil, operation, error.code, NO);
+            completionBlock(nil, operation, operation.response.statusCode, NO);
     }];
 }
 

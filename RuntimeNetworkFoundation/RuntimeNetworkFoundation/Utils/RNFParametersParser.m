@@ -8,6 +8,7 @@
 
 #import "RNFParametersParser.h"
 #import "RNF.h"
+#import "NSString+Additions.h"
 
 @implementation RNFParametersParser
 
@@ -46,6 +47,8 @@
         id argObject = arguments[argIndex];
         
         NSString *serializedObject = [argObject conformsToProtocol:@protocol(RNFSerializable)] ? [(id<RNFSerializable>)argObject serialize] : [argObject description];
+        
+        serializedObject = [serializedObject URLEncodedString];
         
         if(![self objectIsSerializable:argObject])
             @throw [RNFParametersParserError exceptionWithName:NSStringFromClass([RNFParametersParserError class])
