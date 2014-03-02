@@ -341,10 +341,10 @@
 		5214C59F18BFE4F200C3F49E /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				5214C5A318BFE51000C3F49E /* RNFParametersParser.h */,
 				5214C5A018BFE51000C3F49E /* RNFParametersParser.m */,
 				5214C5A118BFE51000C3F49E /* RNFParametersParserError.h */,
 				5214C5A218BFE51000C3F49E /* RNFParametersParserError.m */,
-				5214C5A318BFE51000C3F49E /* RNFParametersParser.h */,
 			);
 			name = Utils;
 			sourceTree = "<group>";

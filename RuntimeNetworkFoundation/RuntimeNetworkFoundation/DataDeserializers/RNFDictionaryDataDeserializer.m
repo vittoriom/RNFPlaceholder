@@ -38,6 +38,8 @@
 
 - (id) deserializeData:(id)sourceData
 {
+    //TODO sourceData can be an array, too. In this case we should deserialize each object of the array
+    
     NSMutableDictionary *toProcess = self.onlyDeserializeMappedKeys ? [NSMutableDictionary new] : [sourceData mutableCopy];
     
     [self.mappings enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {

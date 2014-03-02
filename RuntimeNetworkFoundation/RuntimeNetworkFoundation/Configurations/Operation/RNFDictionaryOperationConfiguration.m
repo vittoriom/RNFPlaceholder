@@ -93,7 +93,7 @@
     id responseValidator = [RNFDictionaryConfigurationHelper objectConformToProtocol:@protocol(RNFResponseValidator)
                                                                               forKey:kRNFConfigurationOperationResponseValidator
                                                                         inDictionary:self.internalDictionary];
-    return responseValidator ?: [super responseValidator];
+    return responseValidator;
 }
 
 - (id<RNFDataSerializer>) dataSerializer
@@ -109,14 +109,13 @@
     id responseDeserializer = [RNFDictionaryConfigurationHelper objectConformToProtocol:@protocol(RNFResponseDeserializer)
                                                                                  forKey:kRNFConfigurationOperationResponseDeserializer
                                                                            inDictionary:self.internalDictionary];
-    return responseDeserializer ?: [super responseDeserializer];
+    return responseDeserializer;
 }
 
 - (Class<RNFOperation>) operationClass
 {
-    Class operationClass = [RNFDictionaryConfigurationHelper classFromKey:kRNFConfigurationOperationOperationClass
-                                                             inDictionary:self.internalDictionary];
-    return operationClass ?: [super operationClass];
+    return [RNFDictionaryConfigurationHelper classFromKey:kRNFConfigurationOperationOperationClass
+                                             inDictionary:self.internalDictionary];
 }
 
 - (BOOL) cacheResults
@@ -124,12 +123,12 @@
     if([self.internalDictionary objectForKey:kRNFConfigurationOperationShouldCacheResults])
         return [[self.internalDictionary objectForKey:kRNFConfigurationOperationShouldCacheResults] boolValue];
     else
-        return [super cacheResults];
+        return YES;
 }
 
 - (NSDictionary *) headers
 {
-    return [self.internalDictionary objectForKey:kRNFConfigurationOperationHeaders] ?: [super headers];
+    return [self.internalDictionary objectForKey:kRNFConfigurationOperationHeaders];
 }
 
 @end

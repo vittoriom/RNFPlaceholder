@@ -36,37 +36,12 @@
     return nil;
 }
 
-- (id<RNFResponseValidator>) responseValidator
-{
-    return nil;
-}
-
-- (id<RNFResponseDeserializer>) responseDeserializer
-{
-    return nil;
-}
-
 - (id<RNFDataSerializer>) dataSerializer
 {
     return nil;
 }
 
 - (id<RNFDataDeserializer>) dataDeserializer
-{
-    return nil;
-}
-
-- (Class<RNFOperation>) operationClass
-{
-    return [RNFBaseOperation class];
-}
-
-- (BOOL) cacheResults
-{
-    return YES;
-}
-
-- (NSDictionary *) headers
 {
     return nil;
 }

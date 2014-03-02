@@ -187,14 +187,17 @@
 
 - (BOOL) cacheResults
 {
+    BOOL operation = YES, endpoint = YES;
     if ([self.operationConfiguration respondsToSelector:@selector(cacheResults)])
     {
-        return [self.operationConfiguration cacheResults];
-    } else if([self.endpointConfiguration respondsToSelector:@selector(cacheResults)])
+        operation = [self.operationConfiguration cacheResults];
+    }
+    if([self.endpointConfiguration respondsToSelector:@selector(cacheResults)])
     {
-        return [self.endpointConfiguration cacheResults];
-    } else
-        return NO;
+        endpoint = [self.endpointConfiguration cacheResults];
+    }
+    
+    return endpoint && operation;
 }
 
 - (Class<RNFCacheHandler>) cacheClass
