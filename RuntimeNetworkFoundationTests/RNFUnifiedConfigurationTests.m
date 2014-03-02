@@ -80,8 +80,8 @@ describe(@"Unified configuration", ^{
             [[obj should] beNil];
         });
         
-        it(@"should not cache results", ^{
-            [[theValue([sut cacheResults]) should] beFalse];
+        it(@"should cache results", ^{
+            [[theValue([sut cacheResults]) should] beTrue];
         });
         
         it(@"should return a nil cache class", ^{
