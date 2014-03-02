@@ -41,7 +41,7 @@ static const NSString * kRNFDictionaryOperationConfigurationCustomObjectClass = 
         {
             if ([customObjectClass conformsToProtocol:@protocol(RNFInitializableWithDictionary)])
             {
-                NSMutableDictionary *configuration = object;
+                NSMutableDictionary *configuration = [object mutableCopy];
                 [configuration removeObjectForKey:kRNFDictionaryOperationConfigurationCustomObjectClass];
                 id result = [[customObjectClass alloc] initWithDictionary:configuration];
                 if (![result conformsToProtocol:protocol])

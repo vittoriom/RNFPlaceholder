@@ -30,6 +30,7 @@
 		3B2CB7EB616E1016DC961DC3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B2CBB510FDDA0628EC4B825 /* Images.xcassets */; };
 		3B2CB800BF850D772357B0D3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2CBF27269CB87C24599AAF /* CoreGraphics.framework */; };
 		3B2CBB1125738BA8B6120E32 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2CB500C66AF8C6D65BF5FA /* Foundation.framework */; };
+		5201CD4118C360500049AACB /* RNFStatusCodeResponseValidatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5201CD4018C360500049AACB /* RNFStatusCodeResponseValidatorTests.m */; };
 		52080C6E18AC10D900EA9C32 /* sampleMisonfiguration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 52080C6D18AC10D900EA9C32 /* sampleMisonfiguration.plist */; };
 		52080C6F18AC10D900EA9C32 /* sampleMisonfiguration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 52080C6D18AC10D900EA9C32 /* sampleMisonfiguration.plist */; };
 		520A273D18AAC198000CF13B /* RNFMalformedConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 520A273C18AAC198000CF13B /* RNFMalformedConfiguration.m */; };
@@ -119,6 +120,7 @@
 		3B2CBF27269CB87C24599AAF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		44F2752C9E6942ADA0B0267B /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		4D2AEE38A65E445A906C7D6B /* Pods-RuntimeNetworkFoundationTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RuntimeNetworkFoundationTests.xcconfig"; path = "Pods/Pods-RuntimeNetworkFoundationTests.xcconfig"; sourceTree = "<group>"; };
+		5201CD4018C360500049AACB /* RNFStatusCodeResponseValidatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNFStatusCodeResponseValidatorTests.m; sourceTree = "<group>"; };
 		52080C6D18AC10D900EA9C32 /* sampleMisonfiguration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = sampleMisonfiguration.plist; sourceTree = "<group>"; };
 		52080C7018AC129400EA9C32 /* RNFTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNFTypes.h; path = RuntimeNetworkFoundation/RNFTypes.h; sourceTree = "<group>"; };
 		52080C7118AC12FD00EA9C32 /* RNFEndpoint+test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RNFEndpoint+test.h"; sourceTree = "<group>"; };
@@ -450,6 +452,7 @@
 				5241F87A18AE95A500F7DDB9 /* RNFDictionaryOperationConfigurationTests.m */,
 				5280D67518BFDADF00CCD520 /* RNFUnifiedConfigurationTests.m */,
 				52380D8F18C2A53700771005 /* RNFDictionaryConfigurationHelperTests.m */,
+				52380D8D18C297C000771005 /* RNFDictionaryUserDefinedParameterTests.m */,
 			);
 			name = Configurations;
 			sourceTree = "<group>";
@@ -558,7 +561,7 @@
 			isa = PBXGroup;
 			children = (
 				52D3761118C13D1300A4C243 /* RNFYesResponseValidatorTests.m */,
-				52380D8D18C297C000771005 /* RNFDictionaryUserDefinedParameterTests.m */,
+				5201CD4018C360500049AACB /* RNFStatusCodeResponseValidatorTests.m */,
 			);
 			name = ResponseValidators;
 			sourceTree = "<group>";
@@ -856,6 +859,7 @@
 				52380D8E18C297C000771005 /* RNFDictionaryUserDefinedParameterTests.m in Sources */,
 				52C8DF2E18A96A6100DBA94D /* RNFEndpointTests.m in Sources */,
 				5241F87B18AE95A500F7DDB9 /* RNFDictionaryOperationConfigurationTests.m in Sources */,
+				5201CD4118C360500049AACB /* RNFStatusCodeResponseValidatorTests.m in Sources */,
 				5280FC4F18ABF71900835D48 /* RNFBaseEndpointConfigurationTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

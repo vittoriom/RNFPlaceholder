@@ -24,7 +24,20 @@
     //Possible values: <number>, <number>-<number>
     NSRange range;
     
+    if ([item isKindOfClass:[NSNumber class]])
+    {
+        range.location = [item integerValue];
+        range.length = 0;
+        return range;
+    }
+    
     NSArray *components = [item componentsSeparatedByString:@"-"];
+    
+    if ([item rangeOfString:@","].location != NSNotFound)
+    {
+        range.location = NSNotFound;
+        return range;
+    }
     
     if (components.count > 2 || components.count == 0)
     {
@@ -41,7 +54,7 @@
             endingValue = [[components objectAtIndex:1] integerValue];
         }
         
-        if(endingValue < startingValue)
+        if(endingValue < startingValue || (startingValue == 0 && endingValue == 0))
         {
             range.location = NSNotFound;
         }
@@ -59,8 +72,8 @@
     
     for (id item in ranges)
     {
-        //Check that item is a string
-        if(![item isKindOfClass:[NSString class]])
+        //Check that item is a string or a number
+        if(![item isKindOfClass:[NSString class]] && ![item isKindOfClass:[NSNumber class]])
         {
             rangesAreSane = NO;
             failingItem = item;
@@ -88,7 +101,7 @@
 {
     NSRange range;
     
-    for (NSString *item in ranges)
+    for (id item in ranges)
     {
         range = [self rangeFromItem:item];
         if (statusCode >= range.location && statusCode <= range.location + range.length)
