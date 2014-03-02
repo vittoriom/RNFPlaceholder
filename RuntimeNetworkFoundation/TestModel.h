@@ -7,10 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "RNFInitializableWithDictionary.h"
+#import "TestKVC.h"
 
-@interface TestModel : NSObject
+@interface TestModel : NSObject <RNFInitializableWithDictionary>
 
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSNumber *ID;
+@property (nonatomic, strong) TestKVC *kvcProperty;
 
 @end

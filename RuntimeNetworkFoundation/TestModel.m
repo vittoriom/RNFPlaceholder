@@ -10,4 +10,15 @@
 
 @implementation TestModel
 
+- (instancetype) initWithDictionary:(NSDictionary *)dict
+{
+    self = [self init];
+    
+    _name = [dict objectForKey:@"name"];
+    _ID = [dict objectForKey:@"uID"];
+    _kvcProperty = [dict objectForKey:@"nested"];
+    
+    return self;
+}
+
 @end

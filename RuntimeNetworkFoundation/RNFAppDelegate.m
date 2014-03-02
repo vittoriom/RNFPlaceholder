@@ -8,6 +8,7 @@
 
 #import "RNFAppDelegate.h"
 #import "RNF.h"
+#import "AFNetworking.h"
 #import "RNFEndpoint+test.h"
 
 @implementation RNFAppDelegate

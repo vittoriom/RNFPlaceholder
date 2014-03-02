@@ -58,6 +58,9 @@
 		526935B618AC0F620082111D /* RNFPlistConfigurationLoaderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 526935B518AC0F620082111D /* RNFPlistConfigurationLoaderTests.m */; };
 		526B789118BDCFE70010CFDC /* NSStringAdditionsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 526B789018BDCFE70010CFDC /* NSStringAdditionsTests.m */; };
 		526B789318BDD1BF0010CFDC /* NSURLAdditionsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 526B789218BDD1BF0010CFDC /* NSURLAdditionsTests.m */; };
+		52733F9418C38C4300DF29F4 /* RNFDictionaryDataDeserializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 52733F9318C38C4300DF29F4 /* RNFDictionaryDataDeserializer.m */; };
+		52733F9818C3949800DF29F4 /* RNFDictionaryDataDeserializerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 52733F9718C3949800DF29F4 /* RNFDictionaryDataDeserializerTests.m */; };
+		52733F9C18C39DDC00DF29F4 /* TestKVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 52733F9A18C39C5700DF29F4 /* TestKVC.m */; };
 		527FBE5A18A97B5E009959E7 /* sampleConfiguration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 521533EB18A976170082ACC9 /* sampleConfiguration.plist */; };
 		5280D67618BFDADF00CCD520 /* RNFUnifiedConfigurationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5280D67518BFDADF00CCD520 /* RNFUnifiedConfigurationTests.m */; };
 		5280FC4F18ABF71900835D48 /* RNFBaseEndpointConfigurationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5280FC4E18ABF71900835D48 /* RNFBaseEndpointConfigurationTests.m */; };
@@ -178,6 +181,11 @@
 		526B53CF18AD6EAB00CAC6EC /* RNFOperationConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNFOperationConfiguration.h; path = RuntimeNetworkFoundation/Protocols/RNFOperationConfiguration.h; sourceTree = "<group>"; };
 		526B789018BDCFE70010CFDC /* NSStringAdditionsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSStringAdditionsTests.m; sourceTree = "<group>"; };
 		526B789218BDD1BF0010CFDC /* NSURLAdditionsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSURLAdditionsTests.m; sourceTree = "<group>"; };
+		52733F9218C38C4300DF29F4 /* RNFDictionaryDataDeserializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNFDictionaryDataDeserializer.h; path = RuntimeNetworkFoundation/DataDeserializers/RNFDictionaryDataDeserializer.h; sourceTree = "<group>"; };
+		52733F9318C38C4300DF29F4 /* RNFDictionaryDataDeserializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RNFDictionaryDataDeserializer.m; path = RuntimeNetworkFoundation/DataDeserializers/RNFDictionaryDataDeserializer.m; sourceTree = "<group>"; };
+		52733F9718C3949800DF29F4 /* RNFDictionaryDataDeserializerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNFDictionaryDataDeserializerTests.m; sourceTree = "<group>"; };
+		52733F9918C39C5700DF29F4 /* TestKVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestKVC.h; sourceTree = "<group>"; };
+		52733F9A18C39C5700DF29F4 /* TestKVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestKVC.m; sourceTree = "<group>"; };
 		5280D67518BFDADF00CCD520 /* RNFUnifiedConfigurationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNFUnifiedConfigurationTests.m; sourceTree = "<group>"; };
 		5280FC4E18ABF71900835D48 /* RNFBaseEndpointConfigurationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNFBaseEndpointConfigurationTests.m; sourceTree = "<group>"; };
 		5280FC5018ABF9B100835D48 /* RNFDictionaryEndpointConfigurationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNFDictionaryEndpointConfigurationTests.m; sourceTree = "<group>"; };
@@ -344,6 +352,7 @@
 		5218570B18A7F98100D70786 /* RNF */ = {
 			isa = PBXGroup;
 			children = (
+				52733F9518C38C4700DF29F4 /* DataDeserializers */,
 				52D3760C18C13CC500A4C243 /* ResponseValidators */,
 				5214C59F18BFE4F200C3F49E /* Utils */,
 				52EBE9E418BA91BE00207CCE /* OperationQueues */,
@@ -367,6 +376,7 @@
 		5218572F18A8182500D70786 /* RuntimeNetworkFoundationTests */ = {
 			isa = PBXGroup;
 			children = (
+				52733F9618C3948A00DF29F4 /* DataDeserializers */,
 				52D3761018C13D0300A4C243 /* ResponseValidators */,
 				52BC485418B1688800178A2F /* Caches */,
 				52356CB618AFDC5500587086 /* Categories */,
@@ -463,6 +473,25 @@
 				526935B518AC0F620082111D /* RNFPlistConfigurationLoaderTests.m */,
 			);
 			name = ConfigurationLoaders;
+			sourceTree = "<group>";
+		};
+		52733F9518C38C4700DF29F4 /* DataDeserializers */ = {
+			isa = PBXGroup;
+			children = (
+				52733F9218C38C4300DF29F4 /* RNFDictionaryDataDeserializer.h */,
+				52733F9318C38C4300DF29F4 /* RNFDictionaryDataDeserializer.m */,
+			);
+			name = DataDeserializers;
+			sourceTree = "<group>";
+		};
+		52733F9618C3948A00DF29F4 /* DataDeserializers */ = {
+			isa = PBXGroup;
+			children = (
+				52733F9718C3949800DF29F4 /* RNFDictionaryDataDeserializerTests.m */,
+				52733F9918C39C5700DF29F4 /* TestKVC.h */,
+				52733F9A18C39C5700DF29F4 /* TestKVC.m */,
+			);
+			name = DataDeserializers;
 			sourceTree = "<group>";
 		};
 		5285650318AD6FC100CA9E46 /* Endpoint */ = {
@@ -744,7 +773,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/appledoc \\\n--project-name \"RuntimeNetworkFoundation\" \\\n--project-company \"Vittorio Monaco\" \\\n--company-id \"it.vittoriomonaco\" \\\n--keep-undocumented-objects \\\n--keep-undocumented-members \\\n--search-undocumented-doc \\\n--exit-threshold 2 \\\n--ignore .m \\\n--ignore Pods \\\n--ignore \"RNFAppDelegate.h\" \\\n--ignore \"TestModel.h\" \\\n--output \"AppleDoc\" .\n\n#cp -R \"/Users/MacBookPro/Library/Developer/Shared/Documentation/DocSets/it.vittoriomonaco.RuntimeNetworkFoundation.docset\" \"${SRCROOT}/AppleDoc/\"";
+			shellScript = "/usr/local/bin/appledoc \\\n--project-name \"RuntimeNetworkFoundation\" \\\n--project-company \"Vittorio Monaco\" \\\n--company-id \"it.vittoriomonaco\" \\\n--keep-undocumented-objects \\\n--keep-undocumented-members \\\n--search-undocumented-doc \\\n--exit-threshold 2 \\\n--ignore .m \\\n--ignore Pods \\\n--ignore \"RNFAppDelegate.h\" \\\n--ignore \"TestModel.h\" \\\n--ignore \"TestKVC.h\" \\\n--output \"AppleDoc\" .\n\n#cp -R \"/Users/MacBookPro/Library/Developer/Shared/Documentation/DocSets/it.vittoriomonaco.RuntimeNetworkFoundation.docset\" \"${SRCROOT}/AppleDoc/\"";
 		};
 		5A45627D428D412EBC157FF6 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -827,12 +856,14 @@
 				5259C3C818BE521B0045AEF3 /* TestModel.m in Sources */,
 				5214C5A418BFE51000C3F49E /* RNFParametersParser.m in Sources */,
 				52EBE9FD18BA92C200207CCE /* AFHTTPRequestOperationManager.m in Sources */,
+				52733F9418C38C4300DF29F4 /* RNFDictionaryDataDeserializer.m in Sources */,
 				5285650918AD6FE000CA9E46 /* RNFDictionaryEndpointConfiguration.m in Sources */,
 				52ABBAFA18AF8C7100446DB2 /* RNFJSONResponseDeserializer.m in Sources */,
 				52D3760F18C13CDA00A4C243 /* RNFYesResponseValidator.m in Sources */,
 				5224681818A97F8B00124AE5 /* RNFBaseOperation.m in Sources */,
 				5218571F18A7FC0E00D70786 /* RNFEndpointManager.m in Sources */,
 				52EBE9FF18BA92C200207CCE /* AFNetworkReachabilityManager.m in Sources */,
+				52733F9C18C39DDC00DF29F4 /* TestKVC.m in Sources */,
 				52EBEA0318BA92C200207CCE /* AFURLResponseSerialization.m in Sources */,
 				5218572218A7FCD900D70786 /* RNFEndpoint.m in Sources */,
 			);
@@ -857,6 +888,7 @@
 				526B789318BDD1BF0010CFDC /* NSURLAdditionsTests.m in Sources */,
 				5280D67618BFDADF00CCD520 /* RNFUnifiedConfigurationTests.m in Sources */,
 				52380D8E18C297C000771005 /* RNFDictionaryUserDefinedParameterTests.m in Sources */,
+				52733F9818C3949800DF29F4 /* RNFDictionaryDataDeserializerTests.m in Sources */,
 				52C8DF2E18A96A6100DBA94D /* RNFEndpointTests.m in Sources */,
 				5241F87B18AE95A500F7DDB9 /* RNFDictionaryOperationConfigurationTests.m in Sources */,
 				5201CD4118C360500049AACB /* RNFStatusCodeResponseValidatorTests.m in Sources */,
