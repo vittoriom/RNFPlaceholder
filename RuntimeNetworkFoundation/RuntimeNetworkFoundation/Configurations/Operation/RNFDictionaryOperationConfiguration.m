@@ -93,7 +93,7 @@
     id responseValidator = [RNFDictionaryConfigurationHelper objectConformToProtocol:@protocol(RNFResponseValidator)
                                                                               forKey:kRNFConfigurationOperationResponseValidator
                                                                         inDictionary:self.internalDictionary];
-    return responseValidator;
+    return responseValidator ?: [super responseValidator];
 }
 
 - (id<RNFDataSerializer>) dataSerializer
@@ -109,13 +109,14 @@
     id responseDeserializer = [RNFDictionaryConfigurationHelper objectConformToProtocol:@protocol(RNFResponseDeserializer)
                                                                                  forKey:kRNFConfigurationOperationResponseDeserializer
                                                                            inDictionary:self.internalDictionary];
-    return responseDeserializer;
+    return responseDeserializer ?: [super responseDeserializer];
 }
 
 - (Class<RNFOperation>) operationClass
 {
-    return [RNFDictionaryConfigurationHelper classFromKey:kRNFConfigurationOperationOperationClass
-                                             inDictionary:self.internalDictionary];
+    Class operationClass = [RNFDictionaryConfigurationHelper classFromKey:kRNFConfigurationOperationOperationClass
+                                                             inDictionary:self.internalDictionary];
+    return operationClass ?: [super operationClass];
 }
 
 - (BOOL) cacheResults
@@ -123,12 +124,12 @@
     if([self.internalDictionary objectForKey:kRNFConfigurationOperationShouldCacheResults])
         return [[self.internalDictionary objectForKey:kRNFConfigurationOperationShouldCacheResults] boolValue];
     else
-        return YES;
+        return [super cacheResults];
 }
 
 - (NSDictionary *) headers
 {
-    return [self.internalDictionary objectForKey:kRNFConfigurationOperationHeaders];
+    return [self.internalDictionary objectForKey:kRNFConfigurationOperationHeaders] ?: [super headers];
 }
 
 @end

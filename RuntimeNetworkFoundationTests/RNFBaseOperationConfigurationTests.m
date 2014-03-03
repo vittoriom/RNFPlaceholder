@@ -15,10 +15,8 @@ describe(@"Base operation configuration",^{
         }) should] raise];
     });
     
-    it(@"should not return headers", ^{
-        [[theBlock(^{
-            [configuration headers];
-        }) should] raise];
+    it(@"should return a nil set of headers", ^{
+        [[[configuration headers] should] beNil];
     });
     
     it(@"should raise if asked for URL", ^{
@@ -27,16 +25,13 @@ describe(@"Base operation configuration",^{
         }) should] raise];
     });
     
-    it(@"should not know whether to cache results", ^{
-        [[theBlock(^{
-            [configuration cacheResults];
-        }) should] raise];
+    it(@"should tell to cache results", ^{
+        [[theValue([configuration cacheResults]) should] beTrue];
     });
     
-    it(@"should not know which operation class to use", ^{
-        [[theBlock(^{
-            [configuration operationClass];
-        }) should] raise];
+    it(@"should return a nil operation class", ^{
+        id result = [configuration operationClass];
+        [[result should] beNil];
     });
     
     it(@"should return GET for HTTP method", ^{
@@ -47,16 +42,14 @@ describe(@"Base operation configuration",^{
         [[[configuration HTTPBody] should] beNil];
     });
     
-    it(@"should not know which response validator to use", ^{
-        [[theBlock(^{
-            [configuration responseValidator];
-        }) should] raise];
+    it(@"should return a nil response validator", ^{
+        id validator = [configuration responseValidator];
+        [[validator should] beNil];
     });
     
-    it(@"should not know which response deserializer to use", ^{
-        [[theBlock(^{
-            [configuration responseDeserializer];
-        }) should] raise];
+    it(@"should return a nil response deserializer", ^{
+        id deserializer = [configuration responseDeserializer];
+        [[deserializer should] beNil];
     });
     
     it(@"should return a nil data deserializer", ^{
