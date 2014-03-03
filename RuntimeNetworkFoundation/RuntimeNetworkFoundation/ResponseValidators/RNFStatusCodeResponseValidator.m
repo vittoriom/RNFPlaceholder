@@ -141,7 +141,22 @@
                                                       userInfo:nil];
     }
     
-    _acceptIfNoneMatches = [[dict objectForKey:kRNFStatusCodeResponseValidatorAcceptIfNoneMatches] boolValue];
+    if ([dict objectForKey:kRNFStatusCodeResponseValidatorAcceptIfNoneMatches])
+    {
+        _acceptIfNoneMatches = [[dict objectForKey:kRNFStatusCodeResponseValidatorAcceptIfNoneMatches] boolValue];
+    } else
+    {
+        if(_acceptedStatusCodes && !_rejectedStatusCodes)
+        {
+            _acceptIfNoneMatches = NO; //If only accepted status codes are specified, everything else is rejected
+        } else if(_rejectedStatusCodes && !_acceptedStatusCodes)
+        {
+            _acceptIfNoneMatches = YES; //If only rejected status codes are specified, everything else is accepted
+        } else
+        {
+            _acceptIfNoneMatches = NO; //We don't know what to do here actually, but take the safe path to NO
+        }
+    }
     
     return self;
 }

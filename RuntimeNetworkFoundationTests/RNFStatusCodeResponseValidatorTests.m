@@ -79,6 +79,39 @@ describe(@"Status-code response validator", ^{
             [[[validator responseIsValid:nil forOperation:nil withStatusCode:100] should] beNil];
         });
     });
+    
+    context(@"when initialized with a partially filled dictionary", ^{
+        it(@"should not return error for a unspecified status code if only rejected values are specified", ^{
+            validator = [[RNFStatusCodeResponseValidator alloc] initWithDictionary:@{
+                                                                                     kRNFStatusCodeResponseValidatorRejectedCodes : @[
+                                                                                             @"400-409"
+                                                                                             ],
+                                                                                     }];
+            [[[validator responseIsValid:nil forOperation:nil withStatusCode:200] should] beNil];
+        });
+        
+        it(@"should return error for a unspecified status code if only accepted values are specified", ^{
+            validator = [[RNFStatusCodeResponseValidator alloc] initWithDictionary:@{
+                                                                                     kRNFStatusCodeResponseValidatorAcceptedCodes : @[
+                                                                                             @"400-409"
+                                                                                             ],
+                                                                                     }];
+            [[[validator responseIsValid:nil forOperation:nil withStatusCode:200] shouldNot] beNil];
+        });
+        
+        it(@"should return error for a unspecified status code if not told otherwise when rejected and accepted status codes are both specified", ^{
+            validator = [[RNFStatusCodeResponseValidator alloc] initWithDictionary:@{
+                                                                                     kRNFStatusCodeResponseValidatorAcceptedCodes : @[
+                                                                                             @"200",
+                                                                                             @205
+                                                                                             ],
+                                                                                     kRNFStatusCodeResponseValidatorRejectedCodes : @[
+                                                                                             @"400-409"
+                                                                                             ],
+                                                                                     }];
+            [[[validator responseIsValid:nil forOperation:nil withStatusCode:100] shouldNot] beNil];
+        });
+    });
 });
 
 SPEC_END
