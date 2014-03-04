@@ -10,13 +10,9 @@
 
 @implementation NSOperationQueue (RNFOperationQueue)
 
-- (void) enqueueOperation:(id<RNFOperation>)op
+- (void) enqueueOperation:(NSOperation<RNFOperation> *)op
 {
-    id operation = op;
-    if ([operation isKindOfClass:[NSOperation class]])
-    {
-        [self addOperation:operation];
-    }
+    [self addOperation:op];
 }
 
 @end

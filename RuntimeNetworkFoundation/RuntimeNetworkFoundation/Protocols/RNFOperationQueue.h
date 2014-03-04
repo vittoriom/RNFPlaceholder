@@ -9,6 +9,6 @@
 
 @protocol RNFOperationQueue <NSObject>
 
-- (void) enqueueOperation:(id<RNFOperation>)operation;
+- (void) enqueueOperation:(NSOperation<RNFOperation> *)operation;
 
 @end

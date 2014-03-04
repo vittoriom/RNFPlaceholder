@@ -7,12 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "RNFOperationQueue.h"
 
 @protocol RNFEndpointConfiguration;
 @protocol RNFOperation;
 @protocol RNFConfigurationLoader;
 
-@interface RNFEndpoint : NSObject
+@interface RNFEndpoint : NSObject <RNFOperationQueue>
 
 /**
  *  The base URL of this endpoint instance
