@@ -15,5 +15,6 @@
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSNumber *ID;
 @property (nonatomic, strong) TestKVC *kvcProperty;
+@property (nonatomic, strong) NSArray *list;
 
 @end

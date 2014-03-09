@@ -1,6 +1,7 @@
 #import "RNFDictionaryDataDeserializer.h"
 #import "TestModel.h"
 #import "TestKVC.h"
+#import "TestArrayModel.h"
 
 SPEC_BEGIN(RNFDictionaryDataDeserializerTests)
 
@@ -162,6 +163,98 @@ describe(@"Dictionary-based data deserializer", ^{
             [[[nested name] should] equal:@"ubernested"];
             [[[nested ID] should] equal:@2];
             [[[nested kvcProperty] should] beNil];
+        });
+        
+        it(@"should correctly deserialize arrays when at the first level and with no mappings", ^{
+            deserializer = [[RNFDictionaryDataDeserializer alloc] initWithDictionary:@{
+                                                                                       kRNFDictionaryDataDeserializerOnlyDeserializedMappedKeys : @YES,
+                                                                                       kRNFDictionaryDataDeserializerMappings : @{
+                                                                                               @"list" : @{
+                                                                                                       @"objectClass" : @"RNFDictionaryDataDeserializer",
+                                                                                                       kRNFDictionaryDataDeserializerTargetClass : @"TestArrayModel"
+                                                                                               },
+                                                                                       kRNFDictionaryDataDeserializerTargetClass : @"TestModel"
+                                                                                               }}];
+            NSDictionary *data = @{ @"test" : @"value", @"identifier" : @3, @"list" : @[ @{ @"num" : @4, @"name" : @"1"}, @{ @"num" : @1, @"name" : @"2"} ]};
+            TestModel *output = [deserializer deserializeData:data];
+            [[theValue([output isKindOfClass:[TestModel class]]) should] beTrue];
+            [[[output list] should] haveCountOf:2];
+            TestArrayModel *obj = [output list][0];
+            [[[obj name] should] equal:@"1"];
+            obj = [output list][1];
+            [[[obj num] should] equal:@1];
+        });
+        
+        it(@"should correctly deserialize arrays when at the first level and with mappings", ^{
+            deserializer = [[RNFDictionaryDataDeserializer alloc] initWithDictionary:@{
+                                                                                       kRNFDictionaryDataDeserializerOnlyDeserializedMappedKeys : @YES,
+                                                                                       kRNFDictionaryDataDeserializerMappings : @{
+                                                                                               @"list" : @{
+                                                                                                       @"objectClass" : @"RNFDictionaryDataDeserializer",
+                                                                                                       kRNFDictionaryDataDeserializerTargetClass : @"TestArrayModel",
+                                                                                                       kRNFDictionaryDataDeserializerMappings : @{
+                                                                                                               @"number" : @"num",
+                                                                                                               @"firstName" : @"name"
+                                                                                                               }
+                                                                                                       },
+                                                                                               kRNFDictionaryDataDeserializerTargetClass : @"TestModel"
+                                                                                               }}];
+            NSDictionary *data = @{ @"test" : @"value", @"identifier" : @3, @"list" : @[ @{ @"number" : @4, @"firstName" : @"1"}, @{ @"number" : @1, @"firstName" : @"2"} ]};
+            TestModel *output = [deserializer deserializeData:data];
+            [[theValue([output isKindOfClass:[TestModel class]]) should] beTrue];
+            [[[output list] should] haveCountOf:2];
+            TestArrayModel *obj = [output list][0];
+            [[[obj name] should] equal:@"1"];
+            obj = [output list][1];
+            [[[obj num] should] equal:@1];
+        });
+        
+        it(@"should correctly deserialize arrays when at the second level", ^{
+            deserializer = [[RNFDictionaryDataDeserializer alloc] initWithDictionary:@{
+                                                                                       kRNFDictionaryDataDeserializerOnlyDeserializedMappedKeys : @YES,
+                                                                                       kRNFDictionaryDataDeserializerMappings : @{
+                                                                                               @"nested" : @{
+                                                                                                       @"objectClass" : @"RNFDictionaryDataDeserializer",
+                                                                                                       kRNFDictionaryDataDeserializerOnlyDeserializedMappedKeys : @NO,
+                                                                                                       kRNFDictionaryDataDeserializerTargetClass : @"TestKVC",
+                                                                                                       kRNFDictionaryDataDeserializerMappings : @{
+                                                                                                               @"uID" : @"ID",
+                                                                                                               @"nachname" : @"name",
+                                                                                                               @"nested" : @{
+                                                                                                                       @"objectClass" : @"RNFDictionaryDataDeserializer",
+                                                                                                                       kRNFDictionaryDataDeserializerOnlyDeserializedMappedKeys : @YES,
+                                                                                                                       kRNFDictionaryDataDeserializerTargetClass : @"TestModel",
+                                                                                                                       kRNFDictionaryDataDeserializerMappings : @{
+                                                                                                                               @"list" : @{
+                                                                                                                                       @"objectClass" : @"RNFDictionaryDataDeserializer",
+                                                                                                                                           kRNFDictionaryDataDeserializerTargetClass : @"TestArrayModel"
+                                                                                                                                           }
+                                                                                                                               }
+                                                                                                                       }
+                                                                                                               }
+                                                                                                       }
+                                                                                               },
+                                                                                       kRNFDictionaryDataDeserializerTargetClass : @"TestModel"
+                                                                                       }];
+            NSDictionary *data = @{
+                                   @"nested" : @{
+                                           @"uID" : @4,
+                                           @"nachname" : @"nestedWorks",
+                                           @"nested" : @{
+                                                   @"list" : @[ @{ @"num" : @4, @"name" : @"1"}, @{ @"num" : @1, @"name" : @"2"} ]
+                                                   }
+                                           }
+                                   };
+            TestModel *output = [deserializer deserializeData:data];
+            [[theValue([output isKindOfClass:[TestModel class]]) should] beTrue];
+            TestKVC *kvc = [output kvcProperty];
+            TestModel *nested = [kvc nested];
+            [[nested shouldNot] beNil];
+            [[[nested list] should] haveCountOf:2];
+            TestArrayModel *obj = [nested list][0];
+            [[[obj name] should] equal:@"1"];
+            obj = [nested list][1];
+            [[[obj num] should] equal:@1];
         });
     });
 });

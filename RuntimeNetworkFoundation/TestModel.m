@@ -17,6 +17,7 @@
     _name = [dict objectForKey:@"name"];
     _ID = [dict objectForKey:@"uID"];
     _kvcProperty = [dict objectForKey:@"nested"];
+    _list = [dict objectForKey:@"list"];
     
     return self;
 }

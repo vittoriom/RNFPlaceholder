@@ -73,6 +73,7 @@
 		529B9A0518AFE076002BA7F1 /* RNFParametersParserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 529B9A0418AFE076002BA7F1 /* RNFParametersParserTests.m */; };
 		52ABBAFA18AF8C7100446DB2 /* RNFJSONResponseDeserializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 52ABBAF918AF8C7100446DB2 /* RNFJSONResponseDeserializer.m */; };
 		52ABBAFD18AF8CD600446DB2 /* RNFJSONResponseDeserializerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 52ABBAFC18AF8CD600446DB2 /* RNFJSONResponseDeserializerTests.m */; };
+		52B78D7618CC544300D1037F /* TestArrayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 52B78D7518CC544300D1037F /* TestArrayModel.m */; };
 		52B944A118AE99F3006BF402 /* NSMethodSignatureCategoryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 52B944A018AE99F3006BF402 /* NSMethodSignatureCategoryTests.m */; };
 		52BC480818B1644900178A2F /* NSCache+RNFCacheHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 52BC480718B1644900178A2F /* NSCache+RNFCacheHandler.m */; };
 		52BC485618B1689800178A2F /* NSCacheHandlerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 52BC485518B1689800178A2F /* NSCacheHandlerTests.m */; };
@@ -203,6 +204,8 @@
 		52ABBAF818AF8C7100446DB2 /* RNFJSONResponseDeserializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNFJSONResponseDeserializer.h; path = RuntimeNetworkFoundation/ResponseDeserializers/RNFJSONResponseDeserializer.h; sourceTree = "<group>"; };
 		52ABBAF918AF8C7100446DB2 /* RNFJSONResponseDeserializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RNFJSONResponseDeserializer.m; path = RuntimeNetworkFoundation/ResponseDeserializers/RNFJSONResponseDeserializer.m; sourceTree = "<group>"; };
 		52ABBAFC18AF8CD600446DB2 /* RNFJSONResponseDeserializerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNFJSONResponseDeserializerTests.m; sourceTree = "<group>"; };
+		52B78D7418CC544300D1037F /* TestArrayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestArrayModel.h; sourceTree = "<group>"; };
+		52B78D7518CC544300D1037F /* TestArrayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestArrayModel.m; sourceTree = "<group>"; };
 		52B944A018AE99F3006BF402 /* NSMethodSignatureCategoryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSMethodSignatureCategoryTests.m; sourceTree = "<group>"; };
 		52BC480618B1644900178A2F /* NSCache+RNFCacheHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSCache+RNFCacheHandler.h"; path = "RuntimeNetworkFoundation/Caches/NSCache+RNFCacheHandler.h"; sourceTree = "<group>"; };
 		52BC480718B1644900178A2F /* NSCache+RNFCacheHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSCache+RNFCacheHandler.m"; path = "RuntimeNetworkFoundation/Caches/NSCache+RNFCacheHandler.m"; sourceTree = "<group>"; };
@@ -490,6 +493,8 @@
 				52733F9718C3949800DF29F4 /* RNFDictionaryDataDeserializerTests.m */,
 				52733F9918C39C5700DF29F4 /* TestKVC.h */,
 				52733F9A18C39C5700DF29F4 /* TestKVC.m */,
+				52B78D7418CC544300D1037F /* TestArrayModel.h */,
+				52B78D7518CC544300D1037F /* TestArrayModel.m */,
 			);
 			name = DataDeserializers;
 			sourceTree = "<group>";
@@ -773,7 +778,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/appledoc \\\n--project-name \"RuntimeNetworkFoundation\" \\\n--project-company \"Vittorio Monaco\" \\\n--company-id \"it.vittoriomonaco\" \\\n--keep-undocumented-objects \\\n--keep-undocumented-members \\\n--search-undocumented-doc \\\n--exit-threshold 2 \\\n--ignore .m \\\n--ignore Pods \\\n--ignore \"RNFAppDelegate.h\" \\\n--ignore \"TestModel.h\" \\\n--ignore \"TestKVC.h\" \\\n--output \"AppleDoc\" .\n\ncp -R \"/Users/MacBookPro/Library/Developer/Shared/Documentation/DocSets/it.vittoriomonaco.RuntimeNetworkFoundation.docset\" \"${SRCROOT}/AppleDoc/\"";
+			shellScript = "/usr/local/bin/appledoc \\\n--project-name \"RuntimeNetworkFoundation\" \\\n--project-company \"Vittorio Monaco\" \\\n--company-id \"it.vittoriomonaco\" \\\n--keep-undocumented-objects \\\n--keep-undocumented-members \\\n--search-undocumented-doc \\\n--exit-threshold 2 \\\n--ignore .m \\\n--ignore Pods \\\n--ignore \"RNFAppDelegate.h\" \\\n--ignore \"TestModel.h\" \\\n--ignore \"TestKVC.h\" \\\n--ignore \"TestArrayModel.h\" \\\n--output \"AppleDoc\" .\n\ncp -R \"/Users/MacBookPro/Library/Developer/Shared/Documentation/DocSets/it.vittoriomonaco.RuntimeNetworkFoundation.docset\" \"${SRCROOT}/AppleDoc/\"";
 		};
 		5A45627D428D412EBC157FF6 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -878,6 +883,7 @@
 				529B9A0518AFE076002BA7F1 /* RNFParametersParserTests.m in Sources */,
 				52ABBAFD18AF8CD600446DB2 /* RNFJSONResponseDeserializerTests.m in Sources */,
 				528AA5B118AE911F00A07294 /* RNFBaseOperationConfigurationTests.m in Sources */,
+				52B78D7618CC544300D1037F /* TestArrayModel.m in Sources */,
 				52F7A2A518A8191100378EFA /* RNFEndpointManagerTests.m in Sources */,
 				526B789118BDCFE70010CFDC /* NSStringAdditionsTests.m in Sources */,
 				5280FC5118ABF9B100835D48 /* RNFDictionaryEndpointConfigurationTests.m in Sources */,
