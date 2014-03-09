@@ -14,6 +14,7 @@ static const NSString * kRNFDictionaryDataDeserializerMappings = @"mappings";
 static const NSString * kRNFDictionaryDataDeserializerTransforms = @"transforms";
 static const NSString * kRNFDictionaryDataDeserializerTargetClass = @"targetClass";
 static const NSString * kRNFDictionaryDataDeserializerOnlyDeserializedMappedKeys = @"skipNotMapped";
+static const NSString * kRNFDictionaryDataDeserializerMapTo = @"mapResultTo";
 
 @interface RNFDictionaryDataDeserializer : NSObject <RNFDataDeserializer, RNFInitializableWithDictionary>
 

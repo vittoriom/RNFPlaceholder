@@ -15,6 +15,7 @@
 @property (nonatomic, strong) Class targetClass;
 @property (nonatomic, strong) NSDictionary *transforms; //Unused for now
 @property (nonatomic, assign) BOOL onlyDeserializeMappedKeys;
+@property (nonatomic, strong) NSString *mapResultTo;
 
 @end
 
@@ -30,6 +31,8 @@
     
     NSString *tClass = [dict objectForKey:kRNFDictionaryDataDeserializerTargetClass];
     _targetClass = tClass ? NSClassFromString(tClass) : nil;
+    
+    _mapResultTo = [dict objectForKey:kRNFDictionaryDataDeserializerMapTo];
     
     _onlyDeserializeMappedKeys = [[dict objectForKey:kRNFDictionaryDataDeserializerOnlyDeserializedMappedKeys] boolValue];
     
@@ -68,7 +71,12 @@
             //Process nested deserialization
             id<RNFDataDeserializer> deserializer = [RNFDictionaryConfigurationHelper objectConformToProtocol:@protocol(RNFDataDeserializer) forKey:mapFrom inDictionary:self.mappings];
             intermediateResult = [deserializer deserializeData:intermediateResult];
-            [toProcess setObject:intermediateResult forKey:mapFrom];
+            if ([deserializer isKindOfClass:[RNFDictionaryDataDeserializer class]] && [(RNFDictionaryDataDeserializer *)deserializer mapResultTo]) {
+                [toProcess setObject:intermediateResult forKey:[(RNFDictionaryDataDeserializer *)deserializer mapResultTo]];
+            } else
+            {
+                [toProcess setObject:intermediateResult forKey:mapFrom];
+            }
         } else
         {
             [toProcess setObject:intermediateResult forKey:mapTo];
