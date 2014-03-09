@@ -49,6 +49,18 @@ describe(@"Dictionary-based data deserializer", ^{
             [[[deserializer deserializeData:data] should] equal:@{ @"uID" : @3, @"proper" : @"value" }];
         });
         
+        it(@"should let the user specify the same values for from and to in the mappings dictionary", ^{
+            deserializer = [[RNFDictionaryDataDeserializer alloc] initWithDictionary:@{
+                                                                                       kRNFDictionaryDataDeserializerOnlyDeserializedMappedKeys : @YES,
+                                                                                       kRNFDictionaryDataDeserializerMappings : @{
+                                                                                               @"identifier" : @"uID",
+                                                                                               @"test" : @"test"
+                                                                                               }
+                                                                                       }];
+            NSDictionary *data = @{ @"test" : @"value", @"identifier" : @3, @"notIncluded" : @[ @1, @2 ] };
+            [[[deserializer deserializeData:data] should] equal:@{ @"uID" : @3, @"test" : @"value" }];
+        });
+        
         it(@"should return the target class initialized with the mappings if it conforms to RNFInitializableWithDictionary", ^{
             deserializer = [[RNFDictionaryDataDeserializer alloc] initWithDictionary:@{
                                                                                        kRNFDictionaryDataDeserializerOnlyDeserializedMappedKeys : @YES,
