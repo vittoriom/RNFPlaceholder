@@ -224,7 +224,8 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"completionBlock";
             for(int i=0; i<argsCount; i++)
             {
                 arg = va_arg(args, id);
-                [argsArray addObject:arg];
+                if (arg) //TODO find a way to handle nil arguments!!
+                    [argsArray addObject:arg];
                 
                 if ([arg isKindOfClass:NSClassFromString(@"NSBlock")]) {
                     if(!completion)
