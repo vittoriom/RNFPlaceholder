@@ -6,21 +6,25 @@
 //  Copyright (c) 2014 Vittorio Monaco. All rights reserved.
 //
 
-#import "NSArray+Blocks.h"
+#import "NSArray+RNFBlocks.h"
 
-@implementation NSArray (Blocks)
+@implementation NSArray (RNFBlocks)
 
-- (id) objectPassingTest:(RNFPassingTest)test
+- (id) rnf_objectPassingTest:(RNFPassingTest)test
 {
-    if(!test)
+    if (!test)
+    {
         return nil;
-    
+    }
+
     for (id object in self)
     {
-        if(test(object))
+        if (test(object))
+        {
             return object;
+        }
     }
-    
+
     return nil;
 }
 

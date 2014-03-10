@@ -31,7 +31,7 @@
 
 //Categories
 #import "NSMethodSignature+OperateOnSelectors.h"
-#import "NSArray+Blocks.h"
+#import "NSArray+RNFBlocks.h"
 #import "NSCache+RNFCacheHandler.h"
 #import "NSString+Additions.h"
 #import "NSURL+Additions.h"

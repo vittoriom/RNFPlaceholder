@@ -66,6 +66,9 @@
     [mappings enumerateKeysAndObjectsUsingBlock:^(id mapFrom, id mapTo, BOOL *stop) {
         id intermediateResult = [sourceData objectForKey:mapFrom];
         
+        if ([toProcess objectForKey:mapFrom])
+            [toProcess removeObjectForKey:mapFrom];
+        
         if ([mapTo isKindOfClass:[NSDictionary class]])
         {
             //Process nested deserialization
@@ -81,9 +84,6 @@
         {
             [toProcess setObject:intermediateResult forKey:mapTo];
         }
-        
-        if ([toProcess objectForKey:mapFrom] && ![mapTo isKindOfClass:[NSDictionary class]] && ![mapFrom isEqualToString:mapTo])
-            [toProcess removeObjectForKey:mapFrom];
     }];
 }
 
