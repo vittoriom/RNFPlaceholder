@@ -41,8 +41,7 @@
 
 - (NSString *) uniqueIdentifier
 {
-    //TODO smarter method here
-    return nil;
+    return [[self.request.URL.absoluteString dataUsingEncoding:NSUTF8StringEncoding] base64EncodedStringWithOptions:NSDataBase64Encoding76CharacterLineLength];
 }
 
 @end
