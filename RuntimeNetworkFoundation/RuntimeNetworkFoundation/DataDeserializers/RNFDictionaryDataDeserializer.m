@@ -68,7 +68,7 @@
     [mappings enumerateKeysAndObjectsUsingBlock:^(id mapFrom, id mapTo, BOOL *stop) {
         id intermediateResult = [sourceData objectForKey:mapFrom];
         
-        if ([toProcess objectForKey:mapFrom] && ![mapTo isKindOfClass:[NSDictionary class]])
+        if ([toProcess objectForKey:mapFrom])
             [toProcess removeObjectForKey:mapFrom];
         
         if ([mapTo isKindOfClass:[NSDictionary class]])

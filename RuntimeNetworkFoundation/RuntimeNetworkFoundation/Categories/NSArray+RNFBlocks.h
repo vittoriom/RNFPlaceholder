@@ -8,9 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-typedef BOOL(^RNFPassingTest)(id object);
+typedef BOOL (^RNFPassingTest)(id object);
 
-@interface NSArray (Blocks)
+@interface NSArray (RNFBlocks)
 
 /**
  *  Inspects the elements of the NSArray in a linear fashion, to find one passing the specified test
@@ -19,6 +19,6 @@ typedef BOOL(^RNFPassingTest)(id object);
  *
  *  @return the object passing the test
  */
-- (id) objectPassingTest:(RNFPassingTest)test;
+- (id) rnf_objectPassingTest:(RNFPassingTest)test;
 
 @end
