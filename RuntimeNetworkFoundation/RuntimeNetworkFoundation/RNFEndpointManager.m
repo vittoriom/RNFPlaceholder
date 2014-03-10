@@ -19,6 +19,17 @@
 
 #pragma mark - Initialization
 
++ (instancetype) sharedManager
+{
+    static RNFEndpointManager *manager;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        manager = [[RNFEndpointManager alloc] init];
+    });
+    
+    return manager;
+}
+
 - (id) init
 {
     self = [super init];

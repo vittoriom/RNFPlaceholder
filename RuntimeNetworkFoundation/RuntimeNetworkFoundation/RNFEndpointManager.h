@@ -38,4 +38,11 @@
  */
 - (BOOL) addEndpoint:(RNFEndpoint *)endpoint;
 
+/**
+ *  Convenience method to get the singleton RNFEndpointManager of your application
+ *
+ *  @return The shared RNFEndpointManager instance that manages all the endpoints
+ */
++ (instancetype) sharedManager;
+
 @end

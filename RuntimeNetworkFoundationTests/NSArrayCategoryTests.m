@@ -1,4 +1,4 @@
-#import "NSArray+Blocks.h"
+#import "NSArray+RNFBlocks.h"
 
 SPEC_BEGIN(NSArrayCategory)
 
@@ -20,11 +20,11 @@ describe(@"Array category for blocks",^{
     });
     
     it(@"should return nil if the test is nil", ^{
-        [[[testArray objectPassingTest:nil] should] beNil];
+        [[[testArray rnf_objectPassingTest:nil] should] beNil];
     });
     
     it(@"should return the object if the test is passing for some element", ^{
-        [[[testArray objectPassingTest:^BOOL(NSDictionary *object) {
+        [[[testArray rnf_objectPassingTest:^BOOL(NSDictionary *object) {
             return [object[@"key"] isEqualToNumber:@2];
         }] should] equal:@{
                            @"key" : @2
@@ -32,7 +32,7 @@ describe(@"Array category for blocks",^{
     });
     
     it(@"should return nil if the test is not passing for any element", ^{
-        [[[testArray objectPassingTest:^BOOL(id object) {
+        [[[testArray rnf_objectPassingTest:^BOOL(id object) {
             return [object[@"key"] isEqualToNumber:@10];
         }] should] beNil];
     });
