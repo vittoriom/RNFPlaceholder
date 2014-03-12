@@ -58,10 +58,6 @@ describe(@"Unified configuration", ^{
             [[obj should] beNil];
         });
         
-        it(@"should return a nil port number", ^{
-            [[[sut portNumber] should] beNil];
-        });
-        
         it(@"should return nil query string parameters", ^{
             [[[sut queryStringParameters] should] beNil];
         });
@@ -119,7 +115,6 @@ describe(@"Unified configuration", ^{
                                                                          ],
                                                                      kRNFConfigurationEndpointResponseDeserializer : @"RNFJSONResponseDeserializer",
                                                                      kRNFConfigurationEndpointShouldCacheResults : @NO,
-                                                                     kRNFConfigurationEndpointPortNumber : @443,
                                                                      kRNFConfigurationEndpointDefaultQueryStringParameters : @{
                                                                          @"customP" : @"customV"
                                                                          },
@@ -171,10 +166,6 @@ describe(@"Unified configuration", ^{
 //            id obj = [sut dataSerializer];
 //            [[obj should] beNil];
 //        });
-        
-        it(@"should return a valid port number", ^{
-            [[[sut portNumber] should] equal:theValue(443)];
-        });
         
         it(@"should return valid query string parameters", ^{
             [[[sut queryStringParameters] should] equal:@{ @"customP" : @"customV" }];
@@ -283,10 +274,6 @@ describe(@"Unified configuration", ^{
 //            [[obj shouldNot] beNil];
 //        });
         
-        it(@"should return a nil port number", ^{
-            [[[sut portNumber] should] beNil];
-        });
-        
         it(@"should return nil query string parameters", ^{
             [[[sut queryStringParameters] should] beNil];
         });
@@ -365,8 +352,7 @@ describe(@"Unified configuration", ^{
                                                                                         kRNFConfigurationEndpointResponseDeserializer : @"RNFJSONResponseDeserializer",
                                                                                         kRNFConfigurationEndpointShouldCacheResults : @NO,
                                                                                         kRNFConfigurationEndpointResponseValidator : @"RNFYesResponseValidator",
-                                                                                        kRNFConfigurationEndpointPortNumber : @443,
-                                                                                             kRNFConfigurationEndpointDefaultQueryStringParameters : @{
+                                                                                        kRNFConfigurationEndpointDefaultQueryStringParameters : @{
                                                                                                 @"customP" : @"customV"
                                                                                                 }
                                                                                         }];
@@ -436,10 +422,6 @@ describe(@"Unified configuration", ^{
         
         it(@"should return POST as HTTPMethod", ^{
             [[[sut HTTPMethod] should] equal:@"POST"];
-        });
-        
-        it(@"should return a valid port number", ^{
-            [[[sut portNumber] should] equal:theValue(443)];
         });
         
         it(@"should return valid query string parameters", ^{

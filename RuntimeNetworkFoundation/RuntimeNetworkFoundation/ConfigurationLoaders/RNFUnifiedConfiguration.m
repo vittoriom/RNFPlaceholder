@@ -124,15 +124,6 @@
         return nil;
 }
 
-- (NSNumber *) portNumber
-{
-    if ([self.endpointConfiguration respondsToSelector:@selector(portNumber)])
-    {
-        return [self.endpointConfiguration portNumber];
-    } else
-        return nil;
-}
-
 - (NSDictionary *) queryStringParameters
 {
     if ([self.endpointConfiguration respondsToSelector:@selector(queryStringParameters)])

@@ -26,7 +26,6 @@ static const NSString * kRNFConfigurationEndpointOperationQueueClass = @"operati
 static const NSString * kRNFConfigurationEndpointShouldCacheResults = @"cacheResults";
 static const NSString * kRNFConfigurationEndpointCacheClass = @"cacheClass";
 static const NSString * kRNFConfigurationEndpointLoggerClass = @"loggerClass";
-static const NSString * kRNFConfigurationEndpointPortNumber = @"port";
 static const NSString * kRNFConfigurationEndpointDefaultQueryStringParameters = @"queryString";
 static const NSString * kRNFConfigurationEndpointResponseValidator = @"responseValidator";
 static const NSString * kRNFConfigurationEndpointUserDefinedParameters = @"userDefined";
@@ -66,15 +65,6 @@ static const NSString * kRNFConfigurationEndpointUserDefinedParameters = @"userD
  *  @return a validator or nil, if none is needed
  */
 - (id<RNFResponseValidator>) responseValidator;
-
-/**
- *  The port number to reach the endpoint
- *
- *  @discussion this parameter is optional, so it may return nil or a default number
- *
- *  @return the port number to reach the endpoint, or nil if not configured
- */
-- (NSNumber *) portNumber;
 
 /**
  *  The default query string parameters to add to all the operations on this endpoint

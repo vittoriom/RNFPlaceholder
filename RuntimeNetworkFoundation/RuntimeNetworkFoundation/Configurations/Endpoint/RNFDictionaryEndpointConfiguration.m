@@ -145,11 +145,6 @@
     return responseDeserializer ?: [super responseDeserializer];
 }
 
-- (NSNumber *) portNumber
-{
-    return [self.internalDictionary objectForKey:kRNFConfigurationEndpointPortNumber] ?: [super portNumber];
-}
-
 - (Class<RNFOperation>) operationClass
 {
     return [RNFDictionaryConfigurationHelper classFromKey:kRNFConfigurationEndpointOperationClass inDictionary:self.internalDictionary] ?: [super operationClass];

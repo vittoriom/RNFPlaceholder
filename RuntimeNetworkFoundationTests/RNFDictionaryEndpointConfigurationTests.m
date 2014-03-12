@@ -94,7 +94,6 @@ describe(@"Dictionary configuration", ^{
                                                                              ],
                                                                      kRNFConfigurationEndpointResponseDeserializer : @"RNFJSONResponseDeserializer",
                                                                      kRNFConfigurationEndpointShouldCacheResults : @NO,
-                                                                     kRNFConfigurationEndpointPortNumber : @443,
                                                                      kRNFConfigurationEndpointDefaultQueryStringParameters : @{
                                                                              @"customP" : @"customV"
                                                                              },
@@ -170,10 +169,6 @@ describe(@"Dictionary configuration", ^{
         
         it(@"should correctly read whether the endpoint should cache results or not", ^{
             [[theValue([configuration cacheResults]) should] beFalse];
-        });
-        
-        it(@"should correctly read the port number", ^{
-            [[[configuration portNumber] should] equal:@443];
         });
         
         it(@"should correctly read query string parameters", ^{

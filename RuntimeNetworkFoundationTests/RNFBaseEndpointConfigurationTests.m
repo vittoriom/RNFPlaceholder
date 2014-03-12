@@ -71,10 +71,6 @@ describe(@"Base configuration",^{
             [[theValue(cacheClass) shouldNot] beNil];
         });
         
-        it(@"should return a port number", ^{
-            [[[_configuration portNumber] should] beNil];
-        });
-        
         it(@"should return nil user defined configuration", ^{
             id obj = [_configuration userDefinedConfiguration];
             [[obj should] beNil];
