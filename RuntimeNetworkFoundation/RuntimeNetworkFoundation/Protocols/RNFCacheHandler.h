@@ -29,6 +29,17 @@
 - (id) cachedObjectWithKey:(NSString *)key;
 
 /**
+ *  This method is called to check whether a cached object is still valid or not.  
+ *  If the object is still valid, no further network request will be made after serving the cached data.
+ *  If it's not valid, the cached data will be used just as a placeholder
+ *
+ *  @param key the key used to store the object previously
+ *
+ *  @return YES if the data is still valid, NO otherwise
+ */
+- (BOOL) cachedDataIsValidWithKey:(NSString *)key;
+
+/**
  *  Initializes a new instance of a RNFCacheHandler with a specified capacity
  *
  *  @param maxCost The capacity for the newly created cache

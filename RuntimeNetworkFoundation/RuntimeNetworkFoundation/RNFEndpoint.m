@@ -290,7 +290,10 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"completionBlock";
                     failureBlock:errorBlock];
 		} errorBlock:errorBlock];
         
-        [self.networkQueue enqueueOperation:operation];
+        if (!cachedData || ![self.cacheHandler cachedDataIsValidWithKey:[operation uniqueIdentifier]])
+        {
+            [self.networkQueue enqueueOperation:operation];
+        }
         
         return operation;
     }), [NSMethodSignature methodSignatureForMethodWithArguments:argsCount]);

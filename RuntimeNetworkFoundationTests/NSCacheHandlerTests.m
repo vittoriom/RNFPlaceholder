@@ -25,6 +25,10 @@ describe(@"NSCache as a RNFCacheHandler", ^{
         beforeAll(^{
             cacheHandler = [[NSCache alloc] init];
         });
+    
+        it(@"should return NO when asked for validity of data", ^{
+            [[theValue([cacheHandler cachedDataIsValidWithKey:@"testKey"]) should] beFalse];
+        });
         
         it(@"should cache objects", ^{
             NSString *stringSample = @"Test string to cache";

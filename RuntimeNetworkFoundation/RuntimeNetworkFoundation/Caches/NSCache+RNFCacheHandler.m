@@ -36,4 +36,9 @@
     return self;
 }
 
+- (BOOL) cachedDataIsValidWithKey:(NSString *)key
+{
+    return NO;
+}
+
 @end
