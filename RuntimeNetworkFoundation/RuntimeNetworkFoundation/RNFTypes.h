@@ -9,6 +9,8 @@
 #ifndef RuntimeNetworkFoundation_RNFTypes_h
 #define RuntimeNetworkFoundation_RNFTypes_h
 
+static NSString * RNFErrorDomain = @"RNFErrorDomain";
+
 @protocol RNFOperation;
 
 /**

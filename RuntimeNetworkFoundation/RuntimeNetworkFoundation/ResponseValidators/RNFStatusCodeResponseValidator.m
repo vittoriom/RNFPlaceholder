@@ -8,6 +8,7 @@
 
 #import "RNFStatusCodeResponseValidator.h"
 #import "RNFMalformedConfiguration.h"
+#import "RNFTypes.h"
 
 @interface RNFStatusCodeResponseValidator ()
 
@@ -171,19 +172,21 @@
     {
     } else if ([self code:statusCode isContainedInRanges:self.rejectedStatusCodes])
     {
-        error = [NSError errorWithDomain:NSStringFromClass([self class])
+        error = [NSError errorWithDomain:RNFErrorDomain
                                      code:statusCode
                                  userInfo:@{
-                                            @"description" : [NSString stringWithFormat:@"Response has been rejected because %d status code is configured to be rejected",statusCode]
+                                            NSLocalizedDescriptionKey : @"Response has been rejected",
+                                            NSLocalizedFailureReasonErrorKey : [NSString stringWithFormat:@"%d status code is configured to be rejected",statusCode]
                                             }];
     } else if ([self acceptIfNoneMatches])
     {
     } else
     {
-        error = [NSError errorWithDomain:NSStringFromClass([self class])
+        error = [NSError errorWithDomain:RNFErrorDomain
                                              code:statusCode
                                          userInfo:@{
-                                                    @"description" : [NSString stringWithFormat:@"Response has been rejected because %d status code is unknown and %@ is NO",statusCode,kRNFStatusCodeResponseValidatorAcceptIfNoneMatches]
+                                                    NSLocalizedDescriptionKey : @"Response has been rejected",
+                                                    NSLocalizedFailureReasonErrorKey : [NSString stringWithFormat:@"%d status code is unknown and %@ is NO",statusCode,kRNFStatusCodeResponseValidatorAcceptIfNoneMatches]
                                                     }];
     }
     
