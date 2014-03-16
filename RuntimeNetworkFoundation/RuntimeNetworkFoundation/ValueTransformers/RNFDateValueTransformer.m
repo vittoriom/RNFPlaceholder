@@ -29,7 +29,8 @@
         [_formatter setDateFormat:format];
     } else if(!format)
     {
-        [_formatter setDateStyle:NSDateFormatterMediumStyle];
+        [_formatter setDateStyle:NSDateFormatterShortStyle];
+        [_formatter setTimeStyle:NSDateFormatterNoStyle];
     } else
     {
         @throw [[RNFMalformedConfiguration alloc] initWithName:NSStringFromClass([RNFMalformedConfiguration class])

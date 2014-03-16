@@ -11,7 +11,7 @@ describe(@"RNFDateValueTransformer", ^{
     });
     
     context(@"when initialized properly", ^{
-        beforeAll(^{
+        beforeEach(^{
             transformer = [[RNFDateValueTransformer alloc] initWithDictionary:@{
                                                                                 kRNFDateValueTransformerFormat : @"dd/MM/yyyy"
                                                                                 }];
@@ -25,11 +25,19 @@ describe(@"RNFDateValueTransformer", ^{
         });
         
         it(@"should also support empty formats", ^{
-            //TODO
+            transformer = [[RNFDateValueTransformer alloc] initWithDictionary:@{}];
+            NSDateFormatter *formatter = [NSDateFormatter new];
+            NSDate *date = [transformer transformedValue:@"03/10/14"];
+            [formatter setDateFormat:@"MM/dd/yy"];
+            [[[formatter stringFromDate:date] should] equal:@"03/10/14"];
         });
         
         it(@"should also convert timestamps", ^{
-            //TODO
+            transformer = [[RNFDateValueTransformer alloc] initWithDictionary:@{}];
+            NSDateFormatter *formatter = [NSDateFormatter new];
+            NSDate *date = [transformer transformedValue:@1395005030];
+            [formatter setDateFormat:@"MM/dd/yy"];
+            [[[formatter stringFromDate:date] should] equal:@"03/16/14"];
         });
         
         it(@"should return the original value if not supported", ^{
