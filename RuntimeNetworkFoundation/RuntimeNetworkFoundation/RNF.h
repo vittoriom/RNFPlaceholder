@@ -35,6 +35,7 @@
 #import "NSCache+RNFCacheHandler.h"
 #import "NSString+Additions.h"
 #import "NSURL+Additions.h"
+#import "NSValueTransformer+RNFValueTransformer.h"
 
 //Exceptions
 #import "RNFConfigurationNotFound.h"
