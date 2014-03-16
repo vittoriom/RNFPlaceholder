@@ -101,11 +101,11 @@
         if ([transformTo isKindOfClass:[NSString class]])
         {
             id<RNFValueTransformer> transformer = [RNFDictionaryConfigurationHelper objectConformToProtocol:@protocol(RNFValueTransformer) forKey:transformFrom inDictionary:transforms];
-            intermediateResult = [transformer transformedValueFromOriginalValue:intermediateResult];
+            intermediateResult = [transformer transformedValue:intermediateResult];
         } else if([transformTo isKindOfClass:[NSDictionary class]])
         {
             id<RNFValueTransformer> transformer = [RNFDictionaryConfigurationHelper objectConformToProtocol:@protocol(RNFValueTransformer) forKey:transformFrom inDictionary:transforms];
-            intermediateResult = [transformer transformedValueFromOriginalValue:intermediateResult];
+            intermediateResult = [transformer transformedValue:intermediateResult];
         } else {
             @throw [[RNFMalformedConfiguration alloc] initWithName:NSStringFromClass([RNFMalformedConfiguration class])
                                                             reason:[NSString stringWithFormat:@"Value %@ for transform %@ is not a known value transformer format",transformTo,transformFrom]

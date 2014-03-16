@@ -7,7 +7,7 @@ describe(@"RNFDateValueTransformer", ^{
     
     it(@"should not work if initialized directly", ^{
         transformer = [RNFDateValueTransformer new];
-        [[[transformer transformedValueFromOriginalValue:@"10/03/2014"] should] beNil];
+        [[[transformer transformedValue:@"10/03/2014"] should] beNil];
     });
     
     context(@"when initialized properly", ^{
@@ -18,7 +18,7 @@ describe(@"RNFDateValueTransformer", ^{
         });
         
         it(@"should correctly transform dates from strings", ^{
-            NSDate *date = [transformer transformedValueFromOriginalValue:@"10/03/2014"];
+            NSDate *date = [transformer transformedValue:@"10/03/2014"];
             NSDateFormatter *formatter = [NSDateFormatter new];
             [formatter setDateFormat:@"dd/MM/yyyy"];
             [[[formatter stringFromDate:date] should] equal:@"10/03/2014"];
@@ -33,7 +33,7 @@ describe(@"RNFDateValueTransformer", ^{
         });
         
         it(@"should return the original value if not supported", ^{
-            [[[transformer transformedValueFromOriginalValue:@[@1, @2]] should] equal:@[@1,@2]];
+            [[[transformer transformedValue:@[@1, @2]] should] equal:@[@1,@2]];
         });
     });
     

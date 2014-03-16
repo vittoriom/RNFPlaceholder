@@ -16,6 +16,6 @@
  *
  *  @return The processed value as it should be used for data deserialization or for further processing
  */
-- (id) transformedValueFromOriginalValue:(id)originalValue;
+- (id) transformedValue:(id)originalValue;
 
 @end

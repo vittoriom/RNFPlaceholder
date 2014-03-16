@@ -10,7 +10,7 @@
 
 @implementation RNFURLValueTransformer
 
-- (id) transformedValueFromOriginalValue:(id)originalValue
+- (id) transformedValue:(id)originalValue
 {
     if ([originalValue isKindOfClass:[NSString class]])
     {
