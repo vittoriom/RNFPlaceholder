@@ -38,8 +38,4 @@ typedef enum {
 
 - (BOOL) shouldLogEvent:(RNFLoggerEvent)event;
 
-@optional
-
-+ (id<RNFLogger>) loggerForEndpoint:(RNFEndpoint *)endpoint;
-
 @end

@@ -145,6 +145,14 @@
     return responseDeserializer ?: [super responseDeserializer];
 }
 
+- (id<RNFLogger>) logger
+{
+    id logger = [RNFDictionaryConfigurationHelper objectConformToProtocol:@protocol(RNFLogger)
+                                                                   forKey:kRNFConfigurationEndpointLogger
+                                                             inDictionary:self.internalDictionary];
+    return logger ?: [super logger];
+}
+
 - (Class<RNFOperation>) operationClass
 {
     return [RNFDictionaryConfigurationHelper classFromKey:kRNFConfigurationEndpointOperationClass inDictionary:self.internalDictionary] ?: [super operationClass];
@@ -158,11 +166,6 @@
 - (Class<RNFCacheHandler>) cacheClass
 {
     return [RNFDictionaryConfigurationHelper classFromKey:kRNFConfigurationEndpointCacheClass inDictionary:self.internalDictionary] ?: [super cacheClass];
-}
-
-- (Class<RNFLogger>) logger
-{
-    return [RNFDictionaryConfigurationHelper classFromKey:kRNFConfigurationEndpointLoggerClass inDictionary:self.internalDictionary];
 }
 
 #pragma mark - UserDefined parameters

@@ -167,6 +167,14 @@
         return nil;
 }
 
+- (id<RNFLogger>) logger
+{
+    if([self.endpointConfiguration respondsToSelector:@selector(logger)])
+        return [self.endpointConfiguration logger];
+    else
+        return nil;
+}
+
 - (Class<RNFOperationQueue>) operationQueueClass
 {
     if ([self.endpointConfiguration respondsToSelector:@selector(operationQueueClass)])
@@ -197,14 +205,6 @@
     {
         return [self.endpointConfiguration cacheClass];
     } else
-        return nil;
-}
-
-- (Class<RNFLogger>) logger
-{
-    if([self.endpointConfiguration respondsToSelector:@selector(logger)])
-        return [self.endpointConfiguration logger];
-    else
         return nil;
 }
 

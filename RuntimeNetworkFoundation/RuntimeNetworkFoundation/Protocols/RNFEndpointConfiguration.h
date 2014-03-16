@@ -25,7 +25,7 @@ static const NSString * kRNFConfigurationEndpointOperationClass = @"operationCla
 static const NSString * kRNFConfigurationEndpointOperationQueueClass = @"operationQueueClass";
 static const NSString * kRNFConfigurationEndpointShouldCacheResults = @"cacheResults";
 static const NSString * kRNFConfigurationEndpointCacheClass = @"cacheClass";
-static const NSString * kRNFConfigurationEndpointLoggerClass = @"loggerClass";
+static const NSString * kRNFConfigurationEndpointLogger = @"loggerClass";
 static const NSString * kRNFConfigurationEndpointDefaultQueryStringParameters = @"queryString";
 static const NSString * kRNFConfigurationEndpointResponseValidator = @"responseValidator";
 static const NSString * kRNFConfigurationEndpointUserDefinedParameters = @"userDefined";
@@ -133,6 +133,6 @@ static const NSString * kRNFConfigurationEndpointUserDefinedParameters = @"userD
  *
  *  @return The logger instance to use as a logging component, or nil if no logger is specified
  */
-- (Class<RNFLogger>) logger;
+- (id<RNFLogger>) logger;
 
 @end

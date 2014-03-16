@@ -79,7 +79,7 @@ describe(@"Dictionary configuration", ^{
                                                                              @"Accept" : @"gzip",
                                                                              @"Encoding" : @"UTF8"
                                                                              },
-                                                                     kRNFConfigurationEndpointLoggerClass : @"NSString",
+                                                                     kRNFConfigurationEndpointLogger : @"NSString",
                                                                      kRNFConfigurationEndpointName : @"test",
                                                                      kRNFConfigurationEndpointOperationClass : @"RNFBaseOperation",
                                                                      kRNFConfigurationEndpointOperationQueueClass : @"NSOperationQueue",
@@ -136,9 +136,8 @@ describe(@"Dictionary configuration", ^{
         });
         
         it(@"should correctly instantiate the logger", ^{
-            Class logger = [configuration logger];
+            id logger = [configuration logger];
             [[logger shouldNot] beNil];
-            [[theValue([logger isSubclassOfClass:[NSString class]]) should] beTrue];
         });
         
         it(@"should correctly read the endpoint name", ^{

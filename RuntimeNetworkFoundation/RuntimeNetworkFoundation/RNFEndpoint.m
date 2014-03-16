@@ -15,17 +15,15 @@
 
 #import <objc/runtime.h>
 
-static NSString * const kRNFParsedRuntimeArguments = @"arguments";
-static NSString * const kRNFParsedRuntimeErrorBlock = @"errorBlock";
-static NSString * const kRNFParsedRuntimeCompletionBlock = @"completionBlock";
+static NSString * const kRNFParsedRuntimeArguments = @"rnf_arguments";
+static NSString * const kRNFParsedRuntimeErrorBlock = @"rnf_errorBlock";
+static NSString * const kRNFParsedRuntimeCompletionBlock = @"rnf_completionBlock";
 
 @interface RNFEndpoint ()
 
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) id<RNFConfigurationLoader> configurator;
 @property (nonatomic, strong) id<RNFEndpointConfiguration> configuration;
-
-//TODO: remove these as soon as the configuration returns them already
 @property (nonatomic, strong) id<RNFOperationQueue> networkQueue;
 @property (nonatomic, strong) id<RNFCacheHandler> cacheHandler;
 @property (nonatomic, strong) id<RNFLogger> logger;
@@ -105,15 +103,8 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"completionBlock";
                 self.cacheHandler = [cacheHandler new];
         }
         
-        Class loggerClass = [config logger];
-        if (loggerClass)
-        {
-            if([loggerClass respondsToSelector:@selector(loggerForEndpoint:)])
-               self.logger = [loggerClass loggerForEndpoint:self];
-            else
-               self.logger = [loggerClass new];
-        }
-
+        self.logger = [config logger];
+        
         self.configuration = config;
     }
 }

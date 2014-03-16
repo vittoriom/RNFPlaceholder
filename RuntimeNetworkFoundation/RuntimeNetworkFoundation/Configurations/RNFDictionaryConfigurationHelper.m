@@ -20,10 +20,6 @@ static const NSString * kRNFDictionaryOperationConfigurationCustomObjectClass = 
 + (id) objectConformToProtocol:(Protocol *)protocol forKey:(const NSString *)key inDictionary:(NSDictionary *)configurationDictionary
 {
     id object = [configurationDictionary objectForKey:key];
-    if (!object)
-    {
-        return nil;
-    }
     
     if ([object isKindOfClass:[NSString class]])
     {

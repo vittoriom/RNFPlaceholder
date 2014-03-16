@@ -76,7 +76,7 @@
     return [NSCache class];
 }
 
-- (Class<RNFLogger>) logger
+- (id<RNFLogger>) logger
 {
     return nil;
 }

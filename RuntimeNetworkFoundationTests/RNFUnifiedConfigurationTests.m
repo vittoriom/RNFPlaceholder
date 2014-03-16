@@ -100,7 +100,7 @@ describe(@"Unified configuration", ^{
                                                                          @"Accept" : @"gzip",
                                                                          @"Encoding" : @"UTF8"
                                                                          },
-                                                                     kRNFConfigurationEndpointLoggerClass : @"NSString",
+                                                                     kRNFConfigurationEndpointLogger : @"NSString",
                                                                      kRNFConfigurationEndpointName : @"test",
                                                                      kRNFConfigurationEndpointOperationClass : @"RNFBaseOperation",
                                                                      kRNFConfigurationEndpointOperationQueueClass : @"NSOperationQueue",
@@ -336,7 +336,7 @@ describe(@"Unified configuration", ^{
                                                                                                 @"Accept" : @"gzip",
                                                                                                 @"Encoding" : @"UTF8"
                                                                                                 },
-                                                                                        kRNFConfigurationEndpointLoggerClass : @"NSString",
+                                                                                        kRNFConfigurationEndpointLogger : @"NSString",
                                                                                         kRNFConfigurationEndpointName : @"test",
                                                                                         kRNFConfigurationEndpointOperationClass : @"RNFBaseOperation",
                                                                                         kRNFConfigurationEndpointOperationQueueClass : @"NSOperationQueue",
