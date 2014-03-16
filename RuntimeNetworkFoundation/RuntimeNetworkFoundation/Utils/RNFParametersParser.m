@@ -12,14 +12,6 @@
 
 @implementation RNFParametersParser
 
-- (BOOL) objectIsSerializable:(id)argObject
-{
-    return ([argObject isKindOfClass:[NSNumber class]] ||
-            [argObject isKindOfClass:[NSString class]] ||
-            [argObject isKindOfClass:[NSDictionary class]] ||
-            [argObject conformsToProtocol:@protocol(RNFSerializable)]);
-}
-
 - (NSMutableString *) parseString:(NSMutableString *)source withArguments:(NSArray *)arguments
 {
     NSRegularExpression *curlyBraces = [NSRegularExpression regularExpressionWithPattern:@"\\{\\{([^}])\\}\\}"
@@ -44,13 +36,13 @@
                                                         reason:[NSString stringWithFormat:@"Placeholder %@ references an object out of the arguments array bounds",NSStringFromRange(completePlaceholderRange)]
                                                       userInfo:nil];
         
-        id argObject = arguments[argIndex];
+        NSObject<RNFSerializable> *argObject = arguments[argIndex];
         
-        NSString *serializedObject = [argObject conformsToProtocol:@protocol(RNFSerializable)] ? [(id<RNFSerializable>)argObject serialize] : [argObject description];
+        NSString *serializedObject = [argObject serialize];
         
         serializedObject = [serializedObject URLEncodedString];
         
-        if(![self objectIsSerializable:argObject])
+        if(![argObject isSerializable])
             @throw [RNFParametersParserError exceptionWithName:NSStringFromClass([RNFParametersParserError class])
                                                         reason:[NSString stringWithFormat:@"Object %@ is not serializable",argObject]
                                                       userInfo:nil];
@@ -81,11 +73,11 @@
         
         NSString *serializedObject;
         NSString *key = [source substringWithRange:placeholderValueRange];
-        id providedValue = [provider valueForUserDefinedParameter:key];
+        NSObject<RNFSerializable> *providedValue = [provider valueForUserDefinedParameter:key];
         
-        if (providedValue && [self objectIsSerializable:providedValue])
+        if ([providedValue isSerializable])
         {
-            serializedObject = [providedValue conformsToProtocol:@protocol(RNFSerializable)] ? [(id<RNFSerializable>)providedValue serialize] : [providedValue description];
+            serializedObject = [providedValue serialize];
             
             [result replaceCharactersInRange:completePlaceholderRange
                                   withString:serializedObject];

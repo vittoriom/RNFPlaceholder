@@ -36,6 +36,7 @@
 #import "NSString+Additions.h"
 #import "NSURL+Additions.h"
 #import "NSValueTransformer+RNFValueTransformer.h"
+#import "NSObject+RNFSerializable.h"
 
 //Exceptions
 #import "RNFConfigurationNotFound.h"
