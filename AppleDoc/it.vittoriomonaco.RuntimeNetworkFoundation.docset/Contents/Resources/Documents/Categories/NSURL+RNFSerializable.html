@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
-		<title>RNFUnifiedConfiguration Class Reference</title>
+		<title>NSURL(RNFSerializable) Category Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
@@ -16,7 +16,7 @@
 			</div>
 			
 			<div id="title" role="banner">
-				<h1 class="hideInXcode">RNFUnifiedConfiguration Class Reference</h1>
+				<h1 class="hideInXcode">NSURL(RNFSerializable) Category Reference</h1>
 			</div>
 			<ul id="headerButtons" role="toolbar">
 				<li id="toc_button">
@@ -26,10 +26,7 @@
 					<select id="jumpTo">
 	<option value="top">Jump To&#133;</option>
 	
-	
-	
-	
-	<option value="tasks">Tasks</option>
+	<option value="overview">Overview</option>
 	
 	
 	
@@ -39,9 +36,7 @@
 	
 	
 	
-	<option value="instance_methods">Instance Methods</option>
 	
-	<option value="//api/name/initWithEndpointConfiguration:operationConfiguration:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithEndpointConfiguration:operationConfiguration:</option>
 	
 	
 	
@@ -52,12 +47,7 @@
 		<nav id="tocContainer" class="isShowingTOC">
 			<ul id="toc" role="tree">
 				
-
-
-
-<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
-	
-</ul></li>
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
 
 
 
@@ -67,18 +57,15 @@
 
 
 
-<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithEndpointConfiguration:operationConfiguration:">initWithEndpointConfiguration:operationConfiguration:</a></span></li>
-	
-</ul></li>
+
+
 
 
 			</ul>
 		</nav>
 		<article>
 			<div id="contents" class="isShowingTOC" role="main">
-				<a title="RNFUnifiedConfiguration Class Reference" name="top"></a>
+				<a title="NSURL(RNFSerializable) Category Reference" name="top"></a>
 				<div class="main-navigation navigation-top">
 					<ul>
 	<li><a href="../index.html">Index</a></li>
@@ -87,47 +74,28 @@
 				</div>
 				<div id="header">
 					<div class="section-header">
-						<h1 class="title title-header">RNFUnifiedConfiguration Class Reference</h1>
+						<h1 class="title title-header">NSURL(RNFSerializable) Category Reference</h1>
 					</div>		
 				</div>
 				<div id="container">	
 					
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
-	<td class="specification-title">Inherits from</td>
-	<td class="specification-value">NSObject</td>
-</tr><tr>
 	<td class="specification-title">Conforms to</td>
-	<td class="specification-value"><a href="../Protocols/RNFEndpointConfiguration.html">RNFEndpointConfiguration</a><br /><a href="../Protocols/RNFOperationConfiguration.html">RNFOperationConfiguration</a></td>
+	<td class="specification-value"><a href="../Protocols/RNFSerializable.html">RNFSerializable</a></td>
 </tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">RNFUnifiedConfiguration.h</td>
+	<td class="specification-value">NSURL+RNFSerializable.h</td>
 </tr>
 						</tbody></table></div>
 					
                     
                     
 					
-					
-					
-					<div class="section section-tasks">
-						<a title="Tasks" name="tasks"></a>
-						<h2 class="subtitle subtitle-tasks">Tasks</h2>
-						
-						
-						
-						
-
-						<ul class="task-list">
-							<li>
-	<span class="tooltip">
-		<code><a href="#//api/name/initWithEndpointConfiguration:operationConfiguration:">&ndash;&nbsp;initWithEndpointConfiguration:operationConfiguration:</a></code>
-	</span>
-	
-	
-</li>
-						</ul>
-						
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>NSURL category that conforms to <a href="../Protocols/RNFSerializable.html">RNFSerializable</a>. This lets you pass NSURL instances to runtime calls on <a href="../Classes/RNFEndpoint.html">RNFEndpoint</a> objects, so that they can be successfully serialized.</p>
 					</div>
 					
 					
@@ -138,72 +106,9 @@
 					
 					
 					
-					<div class="section section-methods">
-						<a title="Instance Methods" name="instance_methods"></a>
-						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
-						
-						<div class="section-method">
-	<a name="//api/name/initWithEndpointConfiguration:operationConfiguration:" title="initWithEndpointConfiguration:operationConfiguration:"></a>
-	<h3 class="subsubtitle method-title">initWithEndpointConfiguration:operationConfiguration:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Creates an instance of a unified configuration. This lets you have a single object to query when you want to get configuration values for an operation on a specific endpoint, without having to care about combining the results or querying the single configurations</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (instancetype)initWithEndpointConfiguration:(id&lt;RNFEndpointConfiguration&gt;)<em>endpoint</em> operationConfiguration:(id&lt;RNFOperationConfiguration&gt;)<em>operation</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>endpoint</em></dt>
-			<dd><p>The endpoint configuration</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>operation</em></dt>
-			<dd><p>The operation configuration. Can safely be nil</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	<div class="method-subsection return">
-		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>An instance of a RNFUnifiedConfiguration with the two specified configurations merged</p>
-	</div>
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Creates an instance of a unified configuration. This lets you have a single object to query when you want to get configuration values for an operation on a specific endpoint, without having to care about combining the results or querying the single configurations</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">RNFUnifiedConfiguration.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-					</div>
+					
+					
+					
 					
 					
                     

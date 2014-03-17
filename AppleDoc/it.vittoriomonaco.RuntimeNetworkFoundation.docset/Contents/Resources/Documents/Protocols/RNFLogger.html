@@ -26,6 +26,8 @@
 					<select id="jumpTo">
 	<option value="top">Jump To&#133;</option>
 	
+	<option value="overview">Overview</option>
+	
 	
 	
 	
@@ -37,20 +39,11 @@
 	
 	
 	
-	<option value="class_methods">Class Methods</option>
-	
-	<option value="//api/name/loggerForEndpoint:">&nbsp;&nbsp;&nbsp;&nbsp;+ loggerForEndpoint:</option>
-	
-	
 	
 	
 	<option value="instance_methods">Instance Methods</option>
 	
-	<option value="//api/name/log:">&nbsp;&nbsp;&nbsp;&nbsp;- log:</option>
-	
-	<option value="//api/name/logWithLevel:message:">&nbsp;&nbsp;&nbsp;&nbsp;- logWithLevel:message:</option>
-	
-	<option value="//api/name/shouldLogEvent:">&nbsp;&nbsp;&nbsp;&nbsp;- shouldLogEvent:</option>
+	<option value="//api/name/logEvent:withLevel:message:">&nbsp;&nbsp;&nbsp;&nbsp;- logEvent:withLevel:message:</option>
 	
 	
 	
@@ -61,6 +54,8 @@
 		<nav id="tocContainer" class="isShowingTOC">
 			<ul id="toc" role="tree">
 				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
 
 
 
@@ -74,21 +69,11 @@
 
 
 
-<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/loggerForEndpoint:">loggerForEndpoint:</a></span></li>
-	
-</ul></li>
-
 
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/log:">log:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/logWithLevel:message:">logWithLevel:message:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/shouldLogEvent:">shouldLogEvent:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/logEvent:withLevel:message:">logEvent:withLevel:message:</a></span></li>
 	
 </ul></li>
 
@@ -124,6 +109,14 @@
                     
                     
 					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>Unused for now</p>
+					</div>
+					
+					
+					
 					
 					
 					<div class="section section-tasks">
@@ -137,28 +130,10 @@
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/log:">&ndash;&nbsp;log:</a></code>
+		<code><a href="#//api/name/logEvent:withLevel:message:">&ndash;&nbsp;logEvent:withLevel:message:</a></code>
 	</span>
 	
 	<span class="task-item-suffix">required method</span>
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/logWithLevel:message:">&ndash;&nbsp;logWithLevel:message:</a></code>
-	</span>
-	
-	<span class="task-item-suffix">required method</span>
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/shouldLogEvent:">&ndash;&nbsp;shouldLogEvent:</a></code>
-	</span>
-	
-	<span class="task-item-suffix">required method</span>
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/loggerForEndpoint:">+&nbsp;loggerForEndpoint:</a></code>
-	</span>
-	
-	
 </li>
 						</ul>
 						
@@ -170,23 +145,6 @@
 					
 					
 					
-					<div class="section section-methods">
-						<a title="Class Methods" name="class_methods"></a>
-						<h2 class="subtitle subtitle-methods">Class Methods</h2>
-						
-						<div class="section-method">
-	<a name="//api/name/loggerForEndpoint:" title="loggerForEndpoint:"></a>
-	<h3 class="subsubtitle method-title">loggerForEndpoint:</h3>
-	
-	
-
-	<div class="method-subsection method-declaration"><code>+ (id&lt;RNFLogger&gt;)loggerForEndpoint:(RNFEndpoint *)<em>endpoint</em></code></div>
-
-    
-</div>
-						
-					</div>
-					
 					
 					
 					<div class="section section-methods">
@@ -194,36 +152,64 @@
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/log:" title="log:"></a>
-	<h3 class="subsubtitle method-title">log:</h3>
+	<a name="//api/name/logEvent:withLevel:message:" title="logEvent:withLevel:message:"></a>
+	<h3 class="subsubtitle method-title">logEvent:withLevel:message:</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p>Informs the logger that an event happened. The logger can ignore or redirect the log if needed</p>
+	</div>		
+	
+    
 
-	<div class="method-subsection method-declaration"><code>- (void)log:(NSString *)<em>fmt</em>, <em>...</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)logEvent:(RNFLoggerEvent)<em>event</em> withLevel:(RNFLoggerLevel)<em>level</em> message:(NSString *)<em>fmt</em>, <em>...</em></code></div>
 
     
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/logWithLevel:message:" title="logWithLevel:message:"></a>
-	<h3 class="subsubtitle method-title">logWithLevel:message:</h3>
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>event</em></dt>
+			<dd><p>the event that happened. @see RNFLoggerEvent for more information</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>level</em></dt>
+			<dd><p>the severity level of the event. @see RNFLoggerLevel for more information</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>fmt</em></dt>
+			<dd><p>the usual log message format</p></dd>
+		</dl>
+		
+	</div>
 	
 	
-
-	<div class="method-subsection method-declaration"><code>- (void)logWithLevel:(RNFLoggerLevel)<em>level</em> message:(NSString *)<em>fmt</em>, <em>...</em></code></div>
-
-    
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/shouldLogEvent:" title="shouldLogEvent:"></a>
-	<h3 class="subsubtitle method-title">shouldLogEvent:</h3>
 	
 	
-
-	<div class="method-subsection method-declaration"><code>- (BOOL)shouldLogEvent:(RNFLoggerEvent)<em>event</em></code></div>
-
-    
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Informs the logger that an event happened. The logger can ignore or redirect the log if needed</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">RNFLogger.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 					</div>
@@ -241,7 +227,7 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2014 Vittorio Monaco. All rights reserved. (Last updated: 2014-03-10)</span><br />
+						<p><span class="copyright">&copy; 2014 Vittorio Monaco. All rights reserved. (Last updated: 2014-03-17)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 963)</a>.</span></p>
 						
