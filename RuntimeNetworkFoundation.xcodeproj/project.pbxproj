@@ -43,6 +43,7 @@
 		5218572D18A8182500D70786 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2CB500C66AF8C6D65BF5FA /* Foundation.framework */; };
 		5218572E18A8182500D70786 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2CB0BD00D6F77F413E2749 /* UIKit.framework */; };
 		5218573418A8182500D70786 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5218573218A8182500D70786 /* InfoPlist.strings */; };
+		521B801318D79936002CC73C /* RNFNSLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 521B801218D79936002CC73C /* RNFNSLogger.m */; };
 		5224681818A97F8B00124AE5 /* RNFBaseOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5224681718A97F8B00124AE5 /* RNFBaseOperation.m */; };
 		5224681D18A97FA900124AE5 /* RNFConfigurationNotFound.m in Sources */ = {isa = PBXBuildFile; fileRef = 5224681A18A97FA900124AE5 /* RNFConfigurationNotFound.m */; };
 		5224681E18A97FA900124AE5 /* RNFPlistConfigurationLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 5224681C18A97FA900124AE5 /* RNFPlistConfigurationLoader.m */; };
@@ -153,6 +154,8 @@
 		5218573118A8182500D70786 /* RuntimeNetworkFoundationTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RuntimeNetworkFoundationTests-Info.plist"; sourceTree = "<group>"; };
 		5218573318A8182500D70786 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5218573718A8182500D70786 /* RuntimeNetworkFoundationTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RuntimeNetworkFoundationTests-Prefix.pch"; sourceTree = "<group>"; };
+		521B801118D79936002CC73C /* RNFNSLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNFNSLogger.h; path = RuntimeNetworkFoundation/Logger/RNFNSLogger.h; sourceTree = "<group>"; };
+		521B801218D79936002CC73C /* RNFNSLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RNFNSLogger.m; path = RuntimeNetworkFoundation/Logger/RNFNSLogger.m; sourceTree = "<group>"; };
 		5224681618A97F8B00124AE5 /* RNFBaseOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNFBaseOperation.h; path = RuntimeNetworkFoundation/Operations/RNFBaseOperation.h; sourceTree = "<group>"; };
 		5224681718A97F8B00124AE5 /* RNFBaseOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RNFBaseOperation.m; path = RuntimeNetworkFoundation/Operations/RNFBaseOperation.m; sourceTree = "<group>"; };
 		5224681918A97FA900124AE5 /* RNFConfigurationNotFound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNFConfigurationNotFound.h; path = RuntimeNetworkFoundation/ConfigurationLoaders/RNFConfigurationNotFound.h; sourceTree = "<group>"; };
@@ -376,6 +379,7 @@
 		5218570B18A7F98100D70786 /* RNF */ = {
 			isa = PBXGroup;
 			children = (
+				521B801018D79917002CC73C /* Logger */,
 				5263CC1318D60B9300EDD258 /* Serializable */,
 				52813AD918CCB2580013A805 /* ValueTransformers */,
 				52733F9518C38C4700DF29F4 /* DataDeserializers */,
@@ -429,6 +433,15 @@
 				5218573718A8182500D70786 /* RuntimeNetworkFoundationTests-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		521B801018D79917002CC73C /* Logger */ = {
+			isa = PBXGroup;
+			children = (
+				521B801118D79936002CC73C /* RNFNSLogger.h */,
+				521B801218D79936002CC73C /* RNFNSLogger.m */,
+			);
+			name = Logger;
 			sourceTree = "<group>";
 		};
 		5224681018A97F2D00124AE5 /* ConfigurationLoaders */ = {
@@ -940,6 +953,7 @@
 				5285650918AD6FE000CA9E46 /* RNFDictionaryEndpointConfiguration.m in Sources */,
 				52ABBAFA18AF8C7100446DB2 /* RNFJSONResponseDeserializer.m in Sources */,
 				52D3760F18C13CDA00A4C243 /* RNFYesResponseValidator.m in Sources */,
+				521B801318D79936002CC73C /* RNFNSLogger.m in Sources */,
 				5224681818A97F8B00124AE5 /* RNFBaseOperation.m in Sources */,
 				5263CC1218D5FBA400EDD258 /* NSValueTransformer+RNFValueTransformer.m in Sources */,
 				5218571F18A7FC0E00D70786 /* RNFEndpointManager.m in Sources */,

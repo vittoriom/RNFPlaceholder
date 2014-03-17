@@ -12,7 +12,6 @@
 #import "RNFParametersParser.h"
 #import "RNFUnifiedConfiguration.h"
 #import "RNFResponseValidator.h"
-
 #import <objc/runtime.h>
 
 static NSString * const kRNFParsedRuntimeArguments = @"rnf_arguments";
@@ -51,7 +50,6 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"rnf_completionBlock
 - (id) initWithName:(NSString *)name
 {
     id<RNFConfigurationLoader> configurationLoader = [RNFPlistConfigurationLoader RNFConfigurationLoaderForEndpointWithName:name];
-    
     self = [self initWithConfigurator:configurationLoader];
     
     //Eagerly load the configuration
@@ -106,6 +104,8 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"rnf_completionBlock
         self.logger = [config logger];
         
         self.configuration = config;
+        
+        [self.logger logEvent:RNFLoggerEventConfigurationLoaded withLevel:RNFLoggerLevelInfo message:@"Configuration successfully loaded for endpoint %@ with name %@",self, self.name];
     }
 }
 
@@ -156,6 +156,8 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"rnf_completionBlock
         if(cached) //Not handling errors for a cached response
             return;
         
+        [self.logger logEvent:RNFLoggerEventOperationFailed withLevel:RNFLoggerLevelError message:@"Operation %@ failed with error %@",operation, responseError];
+        
         if(errorBlock)
             errorBlock(deserializedResponse, responseError,statusCode);
         else
@@ -165,6 +167,8 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"rnf_completionBlock
     
     id<RNFDataDeserializer> dataDeserializer = [unifiedConfiguration dataDeserializer];
     deserializedResponse = dataDeserializer ? [dataDeserializer deserializeData:deserializedResponse] : deserializedResponse;
+    
+    [self.logger logEvent:RNFLoggerEventOperationFinished withLevel:RNFLoggerLevelInfo message:@"Operation %@ finished with status code %d, was cached: %d, data %@",operation, statusCode, cached, deserializedResponse];
     
     if(completion)
         completion(deserializedResponse, operation, statusCode, cached);
@@ -262,6 +266,7 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"rnf_completionBlock
         
         if (cachedData)
         {
+            [self.logger logEvent:RNFLoggerEventCacheHit withLevel:RNFLoggerLevelInfo message:@"Cache hit for operation %@",operation];
             [self handleResponse:cachedData
                     forOperation:operation
                   withStatusCode:200
@@ -269,6 +274,9 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"rnf_completionBlock
               usingConfiguration:unifiedConfiguration
              withCompletionBlock:completion
                     failureBlock:errorBlock];
+        } else
+        {
+            [self.logger logEvent:RNFLoggerEventCacheMiss withLevel:RNFLoggerLevelInfo message:@"Cache miss for operation %@",operation];
         }
         
         [operation setCompletionBlock:^(id response, id<RNFOperation> operation, NSUInteger statusCode, BOOL cached) {
@@ -284,6 +292,7 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"rnf_completionBlock
         if (!cachedData || ![self.cacheHandler cachedDataIsValidWithKey:[operation uniqueIdentifier]])
         {
             [self.networkQueue enqueueOperation:operation];
+            [self.logger logEvent:RNFLoggerEventOperationEnqueued withLevel:RNFLoggerLevelInfo message:@"Operation %@ enqueued for execution",operation];
         }
         
         return operation;

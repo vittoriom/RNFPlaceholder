@@ -14,7 +14,6 @@
 {
     return ([self isKindOfClass:[NSNumber class]] ||
             [self isKindOfClass:[NSString class]] ||
-//            [self isKindOfClass:[NSDictionary class]] ||
             [self conformsToProtocol:@protocol(RNFSerializable)]);
 }
 
