@@ -79,7 +79,7 @@ describe(@"Dictionary configuration", ^{
                                                                              @"Accept" : @"gzip",
                                                                              @"Encoding" : @"UTF8"
                                                                              },
-                                                                     kRNFConfigurationEndpointLogger : @"NSString",
+                                                                     kRNFConfigurationEndpointLogger : @"RNFNSLogger",
                                                                      kRNFConfigurationEndpointName : @"test",
                                                                      kRNFConfigurationEndpointOperationClass : @"RNFBaseOperation",
                                                                      kRNFConfigurationEndpointOperationQueueClass : @"NSOperationQueue",

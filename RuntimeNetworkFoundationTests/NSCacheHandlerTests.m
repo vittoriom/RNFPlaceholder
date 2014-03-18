@@ -1,4 +1,5 @@
 #import "NSCache+RNFCacheHandler.h"
+#import <Nocilla/Nocilla.h>
 
 SPEC_BEGIN(NSCacheHandlerTests)
 
@@ -32,7 +33,7 @@ describe(@"NSCache as a RNFCacheHandler", ^{
         
         it(@"should cache objects", ^{
             NSString *stringSample = @"Test string to cache";
-            [cacheHandler cacheObject:stringSample withKey:@"testKey" withCost:10];
+            [cacheHandler cacheObject:stringSample withKey:@"testKey" withCost:@10 validUntil:[NSDate dateWithTimeIntervalSinceNow:100]];
             
             [[[cacheHandler cachedObjectWithKey:@"testKey"] shouldNot] beNil];
             [[[cacheHandler cachedObjectWithKey:@"testKey"] should] equal:stringSample];
@@ -45,7 +46,7 @@ describe(@"NSCache as a RNFCacheHandler", ^{
         it(@"should cache the last object with the same key", ^{
             NSString *secondSample = @"Test string to cache, 2";
             [[[cacheHandler cachedObjectWithKey:@"testKey"] should] equal:@"Test string to cache"];
-            [cacheHandler cacheObject:secondSample withKey:@"testKey" withCost:10];
+            [cacheHandler cacheObject:secondSample withKey:@"testKey" withCost:@10 validUntil:[NSDate dateWithTimeIntervalSinceNow:100]];
             [[[cacheHandler cachedObjectWithKey:@"testKey"] shouldNot] beNil];
             [[[cacheHandler cachedObjectWithKey:@"testKey"] should] equal:secondSample];
         });

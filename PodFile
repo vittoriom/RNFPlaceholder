@@ -4,4 +4,5 @@ pod 'CocoaLumberjack'
 
 target :RuntimeNetworkFoundationTests, :exclusive => true do
 	pod 'Kiwi/XCTest'
+	pod 'Nocilla'
 end

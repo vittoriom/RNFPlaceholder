@@ -117,7 +117,10 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"rnf_completionBlock
         
         self.configuration = config;
         
-        [self.logger logEvent:RNFLoggerEventConfigurationLoaded withLevel:RNFLoggerLevelInfo message:@"Configuration successfully loaded for endpoint %@ with name %@",self, self.name];
+        if (self.logger)
+        {
+            [self.logger logEvent:RNFLoggerEventConfigurationLoaded withLevel:RNFLoggerLevelInfo message:@"Configuration successfully loaded for endpoint %@ with name %@",self, self.name];
+        }
     }
 }
 
@@ -169,7 +172,10 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"rnf_completionBlock
         if(cached) //Not handling errors for a cached response
             return;
         
-        [self.logger logEvent:RNFLoggerEventOperationFailed withLevel:RNFLoggerLevelError message:@"Operation %@ failed with error %@",operation, responseError];
+        if (self.logger)
+        {
+            [self.logger logEvent:RNFLoggerEventOperationFailed withLevel:RNFLoggerLevelError message:@"Operation %@ failed with error %@",operation, responseError];
+        }
         
         if(errorBlock)
             errorBlock(deserializedResponse, responseError,statusCode);
@@ -181,7 +187,10 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"rnf_completionBlock
     id<RNFDataDeserializer> dataDeserializer = [unifiedConfiguration dataDeserializer];
     deserializedResponse = dataDeserializer ? [dataDeserializer deserializeData:deserializedResponse] : deserializedResponse;
     
-    [self.logger logEvent:RNFLoggerEventOperationFinished withLevel:RNFLoggerLevelInfo message:@"Operation %@ finished with status code %d, was cached: %d, data %@",operation, statusCode, cached, deserializedResponse];
+    if (self.logger)
+    {
+        [self.logger logEvent:RNFLoggerEventOperationFinished withLevel:RNFLoggerLevelInfo message:@"Operation %@ finished with status code %d, was cached: %d, data %@",operation, statusCode, cached, deserializedResponse];
+    }
     
     if(completion)
         completion(deserializedResponse, operation, statusCode, cached, urlResponse);
@@ -301,7 +310,10 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"rnf_completionBlock
         
         if (cachedData)
         {
-            [self.logger logEvent:RNFLoggerEventCacheHit withLevel:RNFLoggerLevelInfo message:@"Cache hit for operation %@",operation];
+            if (self.logger)
+            {
+                [self.logger logEvent:RNFLoggerEventCacheHit withLevel:RNFLoggerLevelInfo message:@"Cache hit for operation %@",operation];
+            }
             [self handleResponse:cachedData
                  withURLResponse:nil
                     forOperation:operation
@@ -312,7 +324,10 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"rnf_completionBlock
                     failureBlock:errorBlock];
         } else
         {
-            [self.logger logEvent:RNFLoggerEventCacheMiss withLevel:RNFLoggerLevelInfo message:@"Cache miss for operation %@",operation];
+            if (self.logger)
+            {
+                [self.logger logEvent:RNFLoggerEventCacheMiss withLevel:RNFLoggerLevelInfo message:@"Cache miss for operation %@",operation];
+            }
         }
         
         [operation setCompletionBlock:^(id response, id<RNFOperation> operation, NSUInteger statusCode, BOOL cached, NSURLResponse *urlResponse) {
@@ -329,7 +344,10 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"rnf_completionBlock
         if (!cachedData || ![self.cacheHandler cachedDataIsValidWithKey:[operation uniqueIdentifier]])
         {
             [self.networkQueue enqueueOperation:operation];
-            [self.logger logEvent:RNFLoggerEventOperationEnqueued withLevel:RNFLoggerLevelInfo message:@"Operation %@ enqueued for execution",operation];
+            if (self.logger)
+            {
+                [self.logger logEvent:RNFLoggerEventOperationEnqueued withLevel:RNFLoggerLevelInfo message:@"Operation %@ enqueued for execution",operation];
+            }
         }
         
         return operation;

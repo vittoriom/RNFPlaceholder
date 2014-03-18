@@ -11,6 +11,8 @@
 #import "RNFUnifiedConfiguration.h"
 #import <objc/runtime.h>
 
+//static const NSUInteger RNFMemoryCacheDefaultSize = 10 * 1024 * 1024; //10 MB
+//static const NSUInteger RNFDiskCacheDefaultSize = 30 * 1024 * 1024; //30 MB
 static void * NSCacheAssociatedIndex = &NSCacheAssociatedIndex;
 
 @implementation NSCache (RNFCacheHandler)
@@ -40,7 +42,7 @@ static void * NSCacheAssociatedIndex = &NSCacheAssociatedIndex;
 
 - (void) cacheObject:(id)object withKey:(NSString *)key withCost:(NSNumber *)cost validUntil:(NSDate *)validUntil
 {
-    if ([validUntil timeIntervalSinceNow] < 0)
+    if ([validUntil timeIntervalSinceNow] > 0)
     {
         [self setObject:object forKey:key cost:[cost integerValue]];
         NSMutableDictionary *index = [self associatedIndex];
@@ -48,10 +50,10 @@ static void * NSCacheAssociatedIndex = &NSCacheAssociatedIndex;
     }
 }
 
-- (id) initWithCapacity:(NSUInteger)maxCost
+- (instancetype) initWithCapacity:(NSUInteger)maxCost
 {
     self = [self init];
-    
+
     [self setTotalCostLimit:maxCost];
     
     return self;
@@ -59,9 +61,16 @@ static void * NSCacheAssociatedIndex = &NSCacheAssociatedIndex;
 
 - (BOOL) cachedDataIsValidWithKey:(NSString *)key
 {
-    NSDictionary *index = [self associatedIndex];
+    NSMutableDictionary *index = [self associatedIndex];
     
-    return [[index objectForKey:key] timeIntervalSinceNow] < 0;
+    if([[index objectForKey:key] timeIntervalSinceNow] < 0)
+    {
+        return YES;
+    } else
+    {
+        [index removeObjectForKey:key];
+        return NO;
+    }
 }
 
 @end

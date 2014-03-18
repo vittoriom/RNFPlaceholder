@@ -9,13 +9,16 @@ PODS:
   - Kiwi/XCTest (2.2.3):
     - Kiwi/ARC
     - Kiwi/NonARC
+  - Nocilla (0.8.1)
 
 DEPENDENCIES:
   - CocoaLumberjack
   - Kiwi/XCTest
+  - Nocilla
 
 SPEC CHECKSUMS:
   CocoaLumberjack: 6ed94046d2ca7fde03a73b3d01b8cfc56574b314
   Kiwi: 04c51e880831d291748ec702d42c4101f7eb95c9
+  Nocilla: 0c8075046df476b1bc6482caa7f6a69db1a9b277
 
 COCOAPODS: 0.29.0

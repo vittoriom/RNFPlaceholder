@@ -6,6 +6,7 @@
 #import "RNFBaseOperation.h"
 #import "RNFYesResponseValidator.h"
 #import "RNFJSONResponseDeserializer.h"
+#import "RNFNSLogger.h"
 
 SPEC_BEGIN(RNFUnifiedConfigurationTests)
 
@@ -100,7 +101,7 @@ describe(@"Unified configuration", ^{
                                                                          @"Accept" : @"gzip",
                                                                          @"Encoding" : @"UTF8"
                                                                          },
-                                                                     kRNFConfigurationEndpointLogger : @"NSString",
+                                                                     kRNFConfigurationEndpointLogger : @"RNFNSLogger",
                                                                      kRNFConfigurationEndpointName : @"test",
                                                                      kRNFConfigurationEndpointOperationClass : @"RNFBaseOperation",
                                                                      kRNFConfigurationEndpointOperationQueueClass : @"NSOperationQueue",
@@ -199,7 +200,7 @@ describe(@"Unified configuration", ^{
         
         it(@"should return a valid logger", ^{
             id obj = [sut logger];
-            [[theValue(obj == [NSString class]) should] beTrue];
+            [[theValue([obj isKindOfClass:[RNFNSLogger class]]) should] beTrue];
         });
     });
     
@@ -336,7 +337,7 @@ describe(@"Unified configuration", ^{
                                                                                                 @"Accept" : @"gzip",
                                                                                                 @"Encoding" : @"UTF8"
                                                                                                 },
-                                                                                        kRNFConfigurationEndpointLogger : @"NSString",
+                                                                                        kRNFConfigurationEndpointLogger : @"RNFNSLogger",
                                                                                         kRNFConfigurationEndpointName : @"test",
                                                                                         kRNFConfigurationEndpointOperationClass : @"RNFBaseOperation",
                                                                                         kRNFConfigurationEndpointOperationQueueClass : @"NSOperationQueue",
@@ -447,7 +448,7 @@ describe(@"Unified configuration", ^{
         
         it(@"should return a valid logger", ^{
             id obj = [sut logger];
-            [[theValue(obj == [NSString class]) should] beTrue];
+            [[theValue([obj isKindOfClass:[RNFNSLogger class]]) should] beTrue];
         });
     });
 });
