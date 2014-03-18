@@ -8,7 +8,6 @@
 
 //Protocols
 #import "RNFCacheHandler.h"
-#import "RNFCacheStrategy.h"
 #import "RNFDataDeserializer.h"
 #import "RNFDataSerializer.h"
 #import "RNFOperation.h"

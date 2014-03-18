@@ -38,6 +38,18 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"rnf_completionBlock
 
 #pragma mark - Initializers
 
++ (NSDateFormatter *) expirationDateFormatter
+{
+    static NSDateFormatter *formatter;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        formatter = [NSDateFormatter new];
+        formatter.dateFormat = @"ddd, dd MMM yyyy HH:mm:ss 'GMT'";
+    });
+    
+    return formatter;
+}
+
 - (id) initWithConfigurator:(id<RNFConfigurationLoader>)configurator
 {
     self = [self init];
@@ -138,6 +150,7 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"rnf_completionBlock
 }
 
 - (void) handleResponse:(NSData *)response
+        withURLResponse:(NSURLResponse *)urlResponse
            forOperation:(id<RNFOperation>)operation
          withStatusCode:(NSInteger)statusCode
                  cached:(BOOL)cached
@@ -161,7 +174,7 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"rnf_completionBlock
         if(errorBlock)
             errorBlock(deserializedResponse, responseError,statusCode);
         else
-            completion(deserializedResponse, operation, statusCode, cached);
+            completion(deserializedResponse, operation, statusCode, cached, urlResponse);
         return;
     }
     
@@ -171,10 +184,32 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"rnf_completionBlock
     [self.logger logEvent:RNFLoggerEventOperationFinished withLevel:RNFLoggerLevelInfo message:@"Operation %@ finished with status code %d, was cached: %d, data %@",operation, statusCode, cached, deserializedResponse];
     
     if(completion)
-        completion(deserializedResponse, operation, statusCode, cached);
+        completion(deserializedResponse, operation, statusCode, cached, urlResponse);
     
     if(!cached && [unifiedConfiguration cacheResults] && [self.cacheHandler operationConfigurationCanBeCached:unifiedConfiguration])
-        [self.cacheHandler cacheObject:response withKey:[operation uniqueIdentifier] withCost:[response length]];
+    {
+        NSDate *validity = nil;
+        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)urlResponse;
+        NSDictionary *headers = [httpResponse allHeaderFields];
+        NSString *cacheControl = [headers valueForKey:@"Cache-Control"];
+        NSString *expires = [headers valueForKey:@"Expires"];
+        if (cacheControl)
+        {
+            NSRange validityRange = [cacheControl rangeOfString:@"max-cache="];
+            if (validityRange.location != NSNotFound)
+            {
+                validity = [NSDate dateWithTimeIntervalSinceNow:[[cacheControl substringFromIndex:validityRange.location + validityRange.length] integerValue]];
+            }
+        } else if(expires)
+        {
+            validity = [[RNFEndpoint expirationDateFormatter] dateFromString:expires];
+        }
+        
+        [self.cacheHandler cacheObject:response
+                               withKey:[operation uniqueIdentifier]
+                              withCost:[NSNumber numberWithUnsignedInteger:[response length]]
+                            validUntil:validity];
+    }
 }
 
 #pragma mark - Runtime machinery
@@ -268,6 +303,7 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"rnf_completionBlock
         {
             [self.logger logEvent:RNFLoggerEventCacheHit withLevel:RNFLoggerLevelInfo message:@"Cache hit for operation %@",operation];
             [self handleResponse:cachedData
+                 withURLResponse:nil
                     forOperation:operation
                   withStatusCode:200
                           cached:YES
@@ -279,8 +315,9 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"rnf_completionBlock
             [self.logger logEvent:RNFLoggerEventCacheMiss withLevel:RNFLoggerLevelInfo message:@"Cache miss for operation %@",operation];
         }
         
-        [operation setCompletionBlock:^(id response, id<RNFOperation> operation, NSUInteger statusCode, BOOL cached) {
+        [operation setCompletionBlock:^(id response, id<RNFOperation> operation, NSUInteger statusCode, BOOL cached, NSURLResponse *urlResponse) {
             [self handleResponse:response
+                 withURLResponse:urlResponse
                     forOperation:operation
                   withStatusCode:statusCode
                           cached:cached

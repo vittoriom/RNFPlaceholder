@@ -32,12 +32,13 @@ typedef void(^RNFCompletionBlockBasic)(id response);
 /**
  *  The most complete completion block
  *
- *  @param response   The real response from the network call
- *  @param operation  The operation that generated this response
- *  @param statusCode The HTTP status code
- *  @param cached     YES if the response was cached, NO if it's fresh from the web
+ *  @param response    The real response from the network call
+ *  @param operation   The operation that generated this response
+ *  @param statusCode  The HTTP status code
+ *  @param cached      YES if the response was cached, NO if it's fresh from the web
+ *  @param urlResponse The NSURLResponse so that you can get useful values from it (e.g. response headers)
  */
-typedef void(^RNFCompletionBlockComplete)(id response, id<RNFOperation> operation, NSUInteger statusCode, BOOL cached);
+typedef void(^RNFCompletionBlockComplete)(id response, id<RNFOperation> operation, NSUInteger statusCode, BOOL cached, NSURLResponse *urlResponse);
 
 /**
  *  The error block called when something goes wrong

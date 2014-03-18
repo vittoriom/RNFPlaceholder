@@ -13,11 +13,12 @@
 /**
  *  Asks the cache to cache data
  *
- *  @param object The data to cache (usually a NSData instance)
- *  @param key    The key for the data to cache (usually the uniqueIdentifier of the operation)
- *  @param cost   The cost of the cached data (usually the lenght in bytes)
+ *  @param object     The data to cache (usually a NSData instance)
+ *  @param key        The key for the data to cache (usually the uniqueIdentifier of the operation)
+ *  @param cost       The cost of the cached data (usually the lenght in bytes)
+ *  @param validUntil The expiration date of the object (usually the value taken from the headers of the response, if any). It can be nil if the object immediately expires
  */
-- (void) cacheObject:(id)object withKey:(NSString *)key withCost:(NSUInteger)cost;
+- (void) cacheObject:(id)object withKey:(NSString *)key withCost:(NSNumber *)cost validUntil:(NSDate *)validUntil;
 
 /**
  *  Asks the cache to retrieve data with a specified key

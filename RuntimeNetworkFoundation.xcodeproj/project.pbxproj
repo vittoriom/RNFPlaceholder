@@ -163,7 +163,6 @@
 		5224681B18A97FA900124AE5 /* RNFPlistConfigurationLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNFPlistConfigurationLoader.h; path = RuntimeNetworkFoundation/ConfigurationLoaders/RNFPlistConfigurationLoader.h; sourceTree = "<group>"; };
 		5224681C18A97FA900124AE5 /* RNFPlistConfigurationLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RNFPlistConfigurationLoader.m; path = RuntimeNetworkFoundation/ConfigurationLoaders/RNFPlistConfigurationLoader.m; sourceTree = "<group>"; };
 		5224681F18A97FC700124AE5 /* RNFCacheHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNFCacheHandler.h; path = RuntimeNetworkFoundation/Protocols/RNFCacheHandler.h; sourceTree = "<group>"; };
-		5224682018A97FC700124AE5 /* RNFCacheStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNFCacheStrategy.h; path = RuntimeNetworkFoundation/Protocols/RNFCacheStrategy.h; sourceTree = "<group>"; };
 		5224682118A97FC700124AE5 /* RNFEndpointConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNFEndpointConfiguration.h; path = RuntimeNetworkFoundation/Protocols/RNFEndpointConfiguration.h; sourceTree = "<group>"; };
 		5224682218A97FC700124AE5 /* RNFConfigurationLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNFConfigurationLoader.h; path = RuntimeNetworkFoundation/Protocols/RNFConfigurationLoader.h; sourceTree = "<group>"; };
 		5224682318A97FC700124AE5 /* RNFDataDeserializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNFDataDeserializer.h; path = RuntimeNetworkFoundation/Protocols/RNFDataDeserializer.h; sourceTree = "<group>"; };
@@ -655,14 +654,13 @@
 				526B53CF18AD6EAB00CAC6EC /* RNFOperationConfiguration.h */,
 				5259C3C918BE52620045AEF3 /* RNFInitializableWithDictionary.h */,
 				52D7308B18BFE80A004EFE3C /* RNFResponseValidator.h */,
+				5224682518A97FC700124AE5 /* RNFLogger.h */,
 				52C4CAA018C070D1003A614B /* RNFUserDefinedConfigurationParameters.h */,
 				52815F1518AAA51000A629C4 /* RNFValueTransformer.h */,
+				5224682A18A97FC700124AE5 /* RNFSerializable.h */,
 				5224682818A97FC700124AE5 /* RNFRequestAuthentication.h */,
 				526B53CE18AD6C9E00CAC6EC /* RNFOperationSerializer.h */,
-				5224682A18A97FC700124AE5 /* RNFSerializable.h */,
-				5224682518A97FC700124AE5 /* RNFLogger.h */,
 				5224682418A97FC700124AE5 /* RNFDataSerializer.h */,
-				5224682018A97FC700124AE5 /* RNFCacheStrategy.h */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
