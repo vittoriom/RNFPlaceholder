@@ -1,8 +1,12 @@
-platform :ios, :deployment_target => "5.1"
+platform :ios, :deployment_target => "6.1"
 
 pod 'CocoaLumberjack'
+pod 'AFNetworking'
+pod 'RNFCommons', :path => '../RNFCommons/RNFCommons.podspec'
+pod 'RNFSerialization', :path => '../RNFSerialization/RNFSerialization.podspec'
+pod 'RNFLogging', :path => '../RNFLogging/RNFLogging.podspec'
 
 target :RuntimeNetworkFoundationTests, :exclusive => true do
 	pod 'Kiwi/XCTest'
-	pod 'Nocilla'
+	pod 'OHHTTPStubs'
 end
