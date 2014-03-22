@@ -1,5 +1,5 @@
 //
-//  NSValueTransformer+RNFValueTransformer.h
+//  NSArray+RNFSerializable.h
 //  RuntimeNetworkFoundation
 //
 //  Created by Vittorio Monaco on 16/03/14.
@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "RNFValueTransformer.h"
+#import "RNFSerializable.h"
 
-@interface NSValueTransformer (RNFValueTransformer) <RNFValueTransformer>
+@interface NSArray (RNFSerializable) <RNFSerializable>
 
 @end

@@ -24,7 +24,7 @@
 #import "RNFOperationSerializer.h"
 #import "RNFOperationConfiguration.h"
 #import "RNFResponseValidator.h"
-#import <RNFCommons/RNFInitializableWithDictionary.h>
+#import "RNFInitializableWithDictionary.h"
 #import "RNFUserDefinedConfigurationParameters.h"
 #import "RNFTypes.h"
 

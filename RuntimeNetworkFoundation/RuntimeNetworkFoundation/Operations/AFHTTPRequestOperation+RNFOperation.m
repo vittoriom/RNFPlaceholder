@@ -7,6 +7,7 @@
 //
 
 #import "AFHTTPRequestOperation+RNFOperation.h"
+#import <objc/runtime.h>
 
 @implementation AFHTTPRequestOperation (RNFOperation)
 

@@ -1,4 +1,5 @@
 #import "NSCache+RNFCacheHandler.h"
+#import <Nocilla/Nocilla.h>
 
 SPEC_BEGIN(NSCacheHandlerTests)
 
