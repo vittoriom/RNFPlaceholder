@@ -358,7 +358,7 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"rnf_completionBlock
 
 #pragma mark - RNFOperationQueue
 
-- (void) enqueueOperation:(NSOperation<RNFOperation> *)operation
+- (void) enqueueOperation:(id<RNFOperation>)operation
 {
     if (self.networkQueue)
     {

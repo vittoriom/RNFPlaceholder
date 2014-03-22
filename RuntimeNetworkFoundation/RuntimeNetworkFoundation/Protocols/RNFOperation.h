@@ -5,10 +5,11 @@
 
 #import <Foundation/Foundation.h>
 #import "RNFTypes.h"
+#import "RNFRunnable.h"
 
 @class RNFEndpoint;
 
-@protocol RNFOperation <NSObject>
+@protocol RNFOperation <RNFRunnable>
 
 /**
  *  Initializes an RNFOperation with a given url and HTTP method

@@ -11,6 +11,7 @@
 #import "RNFDataDeserializer.h"
 #import "RNFDataSerializer.h"
 #import "RNFOperation.h"
+#import "RNFRunnable.h"
 #import "RNFOperationQueue.h"
 #import "RNFRequestAuthentication.h"
 #import "RNFResponseDeserializer.h"

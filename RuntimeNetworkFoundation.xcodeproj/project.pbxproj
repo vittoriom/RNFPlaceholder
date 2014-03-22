@@ -96,15 +96,6 @@
 		52D7384418B8A32E0043121A /* RNFUnifiedConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D7384318B8A32E0043121A /* RNFUnifiedConfiguration.m */; };
 		52DDF69E18CE454A0087FB98 /* NSArray+RNFBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 52DDF69D18CE454A0087FB98 /* NSArray+RNFBlocks.m */; };
 		52EBE9E718BA91DF00207CCE /* NSOperationQueue+RNFOperationQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 52EBE9E618BA91DF00207CCE /* NSOperationQueue+RNFOperationQueue.m */; };
-		52EBE9FC18BA92C200207CCE /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 52EBE9EA18BA92C200207CCE /* AFHTTPRequestOperation.m */; };
-		52EBE9FD18BA92C200207CCE /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 52EBE9EC18BA92C200207CCE /* AFHTTPRequestOperationManager.m */; };
-		52EBE9FE18BA92C200207CCE /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 52EBE9EE18BA92C200207CCE /* AFHTTPSessionManager.m */; };
-		52EBE9FF18BA92C200207CCE /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 52EBE9F118BA92C200207CCE /* AFNetworkReachabilityManager.m */; };
-		52EBEA0018BA92C200207CCE /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 52EBE9F318BA92C200207CCE /* AFSecurityPolicy.m */; };
-		52EBEA0118BA92C200207CCE /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 52EBE9F518BA92C200207CCE /* AFURLConnectionOperation.m */; };
-		52EBEA0218BA92C200207CCE /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 52EBE9F718BA92C200207CCE /* AFURLRequestSerialization.m */; };
-		52EBEA0318BA92C200207CCE /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 52EBE9F918BA92C200207CCE /* AFURLResponseSerialization.m */; };
-		52EBEA0418BA92C200207CCE /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 52EBE9FB18BA92C200207CCE /* AFURLSessionManager.m */; };
 		52EBEA0A18BA931800207CCE /* AFHTTPRequestOperation+RNFOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 52EBEA0918BA931800207CCE /* AFHTTPRequestOperation+RNFOperation.m */; };
 		52F7A2A518A8191100378EFA /* RNFEndpointManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 52F7A2A418A8191100378EFA /* RNFEndpointManagerTests.m */; };
 		52F8477218AD65900093A433 /* NSMethodSignature+OperateOnSelectors.m in Sources */ = {isa = PBXBuildFile; fileRef = 52F8477118AD65900093A433 /* NSMethodSignature+OperateOnSelectors.m */; };
@@ -140,6 +131,7 @@
 		52080C7018AC129400EA9C32 /* RNFTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNFTypes.h; path = RuntimeNetworkFoundation/RNFTypes.h; sourceTree = "<group>"; };
 		520A273B18AAC198000CF13B /* RNFMalformedConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNFMalformedConfiguration.h; path = RuntimeNetworkFoundation/Configurations/RNFMalformedConfiguration.h; sourceTree = "<group>"; };
 		520A273C18AAC198000CF13B /* RNFMalformedConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RNFMalformedConfiguration.m; path = RuntimeNetworkFoundation/Configurations/RNFMalformedConfiguration.m; sourceTree = "<group>"; };
+		520A46D318DDD20900BEBE9D /* RNFRunnable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNFRunnable.h; path = RuntimeNetworkFoundation/Protocols/RNFRunnable.h; sourceTree = "<group>"; };
 		5214C5A018BFE51000C3F49E /* RNFParametersParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RNFParametersParser.m; path = RuntimeNetworkFoundation/Utils/RNFParametersParser.m; sourceTree = "<group>"; };
 		5214C5A118BFE51000C3F49E /* RNFParametersParserError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNFParametersParserError.h; path = RuntimeNetworkFoundation/Utils/RNFParametersParserError.h; sourceTree = "<group>"; };
 		5214C5A218BFE51000C3F49E /* RNFParametersParserError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RNFParametersParserError.m; path = RuntimeNetworkFoundation/Utils/RNFParametersParserError.m; sourceTree = "<group>"; };
@@ -661,6 +653,7 @@
 				5224682818A97FC700124AE5 /* RNFRequestAuthentication.h */,
 				526B53CE18AD6C9E00CAC6EC /* RNFOperationSerializer.h */,
 				5224682418A97FC700124AE5 /* RNFDataSerializer.h */,
+				520A46D318DDD20900BEBE9D /* RNFRunnable.h */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -914,9 +907,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52EBEA0218BA92C200207CCE /* AFURLRequestSerialization.m in Sources */,
 				52380D8618C22A6100771005 /* RNFDictionaryUserDefinedParameters.m in Sources */,
-				52EBEA0118BA92C200207CCE /* AFURLConnectionOperation.m in Sources */,
 				52BC480818B1644900178A2F /* NSCache+RNFCacheHandler.m in Sources */,
 				5214C5A518BFE51000C3F49E /* RNFParametersParserError.m in Sources */,
 				5263CC1918D60C4B00EDD258 /* NSObject+RNFSerializable.m in Sources */,
@@ -926,12 +917,9 @@
 				5263CC1618D60BA700EDD258 /* NSURL+RNFSerializable.m in Sources */,
 				5224681E18A97FA900124AE5 /* RNFPlistConfigurationLoader.m in Sources */,
 				52D681E918BD443A00866B07 /* NSURL+Additions.m in Sources */,
-				52EBEA0418BA92C200207CCE /* AFURLSessionManager.m in Sources */,
 				520A273D18AAC198000CF13B /* RNFMalformedConfiguration.m in Sources */,
 				5285651018AD70CA00CA9E46 /* RNFDictionaryOperationConfiguration.m in Sources */,
 				52813ADF18CCB2F00013A805 /* RNFDateValueTransformer.m in Sources */,
-				52EBEA0018BA92C200207CCE /* AFSecurityPolicy.m in Sources */,
-				52EBE9FC18BA92C200207CCE /* AFHTTPRequestOperation.m in Sources */,
 				3B2CB38A6D148F8F07939136 /* RNFAppDelegate.m in Sources */,
 				5285650D18AD6FF800CA9E46 /* RNFBaseOperationConfiguration.m in Sources */,
 				52F8477218AD65900093A433 /* NSMethodSignature+OperateOnSelectors.m in Sources */,
@@ -939,13 +927,11 @@
 				52D681EC18BD44D600866B07 /* NSString+Additions.m in Sources */,
 				5263CC1C18D60D7100EDD258 /* NSArray+RNFSerializable.m in Sources */,
 				52EBEA0A18BA931800207CCE /* AFHTTPRequestOperation+RNFOperation.m in Sources */,
-				52EBE9FE18BA92C200207CCE /* AFHTTPSessionManager.m in Sources */,
 				52D7384418B8A32E0043121A /* RNFUnifiedConfiguration.m in Sources */,
 				5285650818AD6FE000CA9E46 /* RNFBaseEndpointConfiguration.m in Sources */,
 				5224681D18A97FA900124AE5 /* RNFConfigurationNotFound.m in Sources */,
 				5259C3C818BE521B0045AEF3 /* TestModel.m in Sources */,
 				5214C5A418BFE51000C3F49E /* RNFParametersParser.m in Sources */,
-				52EBE9FD18BA92C200207CCE /* AFHTTPRequestOperationManager.m in Sources */,
 				52DDF69E18CE454A0087FB98 /* NSArray+RNFBlocks.m in Sources */,
 				52733F9418C38C4300DF29F4 /* RNFDictionaryDataDeserializer.m in Sources */,
 				5285650918AD6FE000CA9E46 /* RNFDictionaryEndpointConfiguration.m in Sources */,
@@ -955,10 +941,8 @@
 				5224681818A97F8B00124AE5 /* RNFBaseOperation.m in Sources */,
 				5263CC1218D5FBA400EDD258 /* NSValueTransformer+RNFValueTransformer.m in Sources */,
 				5218571F18A7FC0E00D70786 /* RNFEndpointManager.m in Sources */,
-				52EBE9FF18BA92C200207CCE /* AFNetworkReachabilityManager.m in Sources */,
 				52813ADC18CCB26D0013A805 /* RNFURLValueTransformer.m in Sources */,
 				52733F9C18C39DDC00DF29F4 /* TestKVC.m in Sources */,
-				52EBEA0318BA92C200207CCE /* AFURLResponseSerialization.m in Sources */,
 				5218572218A7FCD900D70786 /* RNFEndpoint.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
