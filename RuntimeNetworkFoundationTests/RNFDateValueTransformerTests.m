@@ -41,7 +41,41 @@ describe(@"RNFDateValueTransformer", ^{
         });
         
         it(@"should return the original value if not supported", ^{
-            [[[transformer transformedValue:@[@1, @2]] should] equal:@[@1,@2]];
+            [[[transformer transformedValue:@{@"1" : @2}] should] equal:@{@"1" : @2}];
+        });
+        
+        it(@"should transform array of values", ^{
+            transformer = [[RNFDateValueTransformer alloc] initWithDictionary:@{}];
+            NSDateFormatter *formatter = [NSDateFormatter new];
+            NSArray *result = [transformer transformedValue:@[@1395005030, @1395360000]];
+            [formatter setDateFormat:@"MM/dd/yy"];
+            [[result should] haveCountOf:2];
+            [[[formatter stringFromDate:result[0]] should] equal:@"03/16/14"];
+            [[[formatter stringFromDate:result[1]] should] equal:@"03/21/14"];
+        });
+        
+        it(@"should also include invalid values", ^{
+            transformer = [[RNFDateValueTransformer alloc] initWithDictionary:@{}];
+            NSDateFormatter *formatter = [NSDateFormatter new];
+            NSArray *result = [transformer transformedValue:@[@1395005030, @{}, @1395360000]];
+            [formatter setDateFormat:@"MM/dd/yy"];
+            [[result should] haveCountOf:3];
+            [[[formatter stringFromDate:result[0]] should] equal:@"03/16/14"];
+            [[theValue([result[1] isKindOfClass:[NSDictionary class]]) should] beTrue];
+            [[[formatter stringFromDate:result[2]] should] equal:@"03/21/14"];
+        });
+        
+        it(@"should transform nested arrays of values", ^{
+            transformer = [[RNFDateValueTransformer alloc] initWithDictionary:@{}];
+            NSDateFormatter *formatter = [NSDateFormatter new];
+            NSArray *result = [transformer transformedValue:@[@1395005030, @1395360000, @[@1367280000]]];
+            [formatter setDateFormat:@"MM/dd/yy"];
+            [[result should] haveCountOf:3];
+            [[[formatter stringFromDate:result[0]] should] equal:@"03/16/14"];
+            [[[formatter stringFromDate:result[1]] should] equal:@"03/21/14"];
+            NSArray *nested = result[2];
+            [[nested should] haveCountOf:1];
+            [[[formatter stringFromDate:nested[0]] should] equal:@"04/30/13"];
         });
     });
     

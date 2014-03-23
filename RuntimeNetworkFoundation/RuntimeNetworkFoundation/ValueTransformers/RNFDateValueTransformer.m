@@ -49,9 +49,26 @@
     } else if([originalValue isKindOfClass:[NSNumber class]])
     {
         return [NSDate dateWithTimeIntervalSince1970:[originalValue integerValue]];
+    } else if([originalValue isKindOfClass:[NSArray class]])
+    {
+        NSMutableArray *result = [NSMutableArray array];
+        
+        for (id object in originalValue)
+        {
+            id product = [self transformedValue:object];
+            if (product)
+            {
+                [result addObject:product];
+            } else
+            {
+                NSLog(@"<%@> Cannot transform %@, it's not a NSString, a NSArray or a NSNumber",NSStringFromClass([self class]),product);
+            }
+        }
+        
+        return result;
     } else
     {
-        NSLog(@"<%@> Cannot transform %@, it's not a NSString or a NSNumber",NSStringFromClass([self class]),originalValue);
+        NSLog(@"<%@> Cannot transform %@, it's not a NSString, a NSArray or a NSNumber",NSStringFromClass([self class]),originalValue);
         return originalValue;
     }
 }

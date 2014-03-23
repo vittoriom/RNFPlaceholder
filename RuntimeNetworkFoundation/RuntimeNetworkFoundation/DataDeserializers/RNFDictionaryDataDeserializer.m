@@ -98,15 +98,13 @@
         if ([toProcess objectForKey:transformFrom] && ![transformTo isKindOfClass:[NSDictionary class]])
             [toProcess removeObjectForKey:transformFrom];
         
-        if ([transformTo isKindOfClass:[NSString class]])
+        id<RNFValueTransformer> transformer = [RNFDictionaryConfigurationHelper objectConformToProtocol:@protocol(RNFValueTransformer) forKey:transformFrom inDictionary:transforms];
+        
+        if (transformer)
         {
-            id<RNFValueTransformer> transformer = [RNFDictionaryConfigurationHelper objectConformToProtocol:@protocol(RNFValueTransformer) forKey:transformFrom inDictionary:transforms];
             intermediateResult = [transformer transformedValue:intermediateResult];
-        } else if([transformTo isKindOfClass:[NSDictionary class]])
+        } else
         {
-            id<RNFValueTransformer> transformer = [RNFDictionaryConfigurationHelper objectConformToProtocol:@protocol(RNFValueTransformer) forKey:transformFrom inDictionary:transforms];
-            intermediateResult = [transformer transformedValue:intermediateResult];
-        } else {
             @throw [[RNFMalformedConfiguration alloc] initWithName:NSStringFromClass([RNFMalformedConfiguration class])
                                                             reason:[NSString stringWithFormat:@"Value %@ for transform %@ is not a known value transformer format",transformTo,transformFrom]
                                                           userInfo:nil];
