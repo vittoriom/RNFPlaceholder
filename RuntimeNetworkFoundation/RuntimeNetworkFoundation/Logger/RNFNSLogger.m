@@ -10,12 +10,43 @@
 
 @implementation RNFNSLogger
 
-- (void) logEvent:(RNFLoggerEvent)event withLevel:(RNFLoggerLevel)level message:(NSString *)fmt, ...
+- (void) logEvent:(RNFLoggerEvent)event withLevel:(RNFLoggerLevel)level message:(NSString *)message
 {
-    va_list args;
-    va_start(args, fmt);
-    NSLog([NSString stringWithFormat:@"%@ - %@",[self humanReadableLogLevel:level],fmt],args);
-    va_end(args);
+    NSLog(@"%@ - %@",[self humanReadableLogLevel:level], message);
+}
+
+- (NSString *) humanReadableLoggerEvent:(RNFLoggerEvent)event
+{
+    switch (event)
+    {
+        case RNFLoggerEventAuthenticationSucceeded:
+            return @"Authentication succeeded";
+            break;
+        case RNFLoggerEventCacheHit:
+            return @"Cache hit";
+            break;
+        case RNFLoggerEventCacheMiss:
+            return @"Cache miss";
+            break;
+        case RNFLoggerEventOperationFailed:
+            return @"Operation failed";
+            break;
+        case RNFLoggerEventConfigurationLoaded:
+            return @"Configuration loaded";
+            break;
+        case RNFLoggerEventOperationCanceled:
+            return @"Operation was canceled";
+            break;
+        case RNFLoggerEventOperationEnqueued:
+            return @"Operation enqueued";
+            break;
+        case RNFLoggerEventOperationFinished:
+            return @"Operation finished";
+            break;
+        default:
+            return @"Unknown event";
+            break;
+    }
 }
 
 - (NSString *) humanReadableLogLevel:(RNFLoggerLevel)level

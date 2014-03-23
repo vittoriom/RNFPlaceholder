@@ -119,7 +119,7 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"rnf_completionBlock
         
         if (self.logger)
         {
-            [self.logger logEvent:RNFLoggerEventConfigurationLoaded withLevel:RNFLoggerLevelInfo message:@"Configuration successfully loaded for endpoint %@ with name %@",self, self.name];
+            [self.logger logEvent:RNFLoggerEventConfigurationLoaded withLevel:RNFLoggerLevelInfo message:[NSString stringWithFormat:@"Configuration successfully loaded for endpoint %@ with name %@",self, self.name]];
         }
     }
 }
@@ -174,7 +174,7 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"rnf_completionBlock
         
         if (self.logger)
         {
-            [self.logger logEvent:RNFLoggerEventOperationFailed withLevel:RNFLoggerLevelError message:@"Operation %@ failed with error %@",operation, responseError];
+            [self.logger logEvent:RNFLoggerEventOperationFailed withLevel:RNFLoggerLevelError message:[NSString stringWithFormat:@"Operation %@ failed with error %@",operation, responseError]];
         }
         
         if(errorBlock)
@@ -189,7 +189,7 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"rnf_completionBlock
     
     if (self.logger)
     {
-        [self.logger logEvent:RNFLoggerEventOperationFinished withLevel:RNFLoggerLevelInfo message:@"Operation %@ finished with status code %d, was cached: %d, data %@",operation, statusCode, cached, deserializedResponse];
+        [self.logger logEvent:RNFLoggerEventOperationFinished withLevel:RNFLoggerLevelInfo message:[NSString stringWithFormat:@"Operation %@ finished with status code %d, was cached: %d, data %@",operation, statusCode, cached, deserializedResponse]];
     }
     
     if(completion)
@@ -312,7 +312,7 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"rnf_completionBlock
         {
             if (self.logger)
             {
-                [self.logger logEvent:RNFLoggerEventCacheHit withLevel:RNFLoggerLevelInfo message:@"Cache hit for operation %@",operation];
+                [self.logger logEvent:RNFLoggerEventCacheHit withLevel:RNFLoggerLevelInfo message:[NSString stringWithFormat:@"Cache hit for operation %@",operation]];
             }
             [self handleResponse:cachedData
                  withURLResponse:nil
@@ -326,7 +326,7 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"rnf_completionBlock
         {
             if (self.logger)
             {
-                [self.logger logEvent:RNFLoggerEventCacheMiss withLevel:RNFLoggerLevelInfo message:@"Cache miss for operation %@",operation];
+                [self.logger logEvent:RNFLoggerEventCacheMiss withLevel:RNFLoggerLevelInfo message:[NSString stringWithFormat:@"Cache miss for operation %@",operation]];
             }
         }
         
@@ -346,7 +346,7 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"rnf_completionBlock
             [self.networkQueue enqueueOperation:operation];
             if (self.logger)
             {
-                [self.logger logEvent:RNFLoggerEventOperationEnqueued withLevel:RNFLoggerLevelInfo message:@"Operation %@ enqueued for execution",operation];
+                [self.logger logEvent:RNFLoggerEventOperationEnqueued withLevel:RNFLoggerLevelInfo message:[NSString stringWithFormat:@"Operation %@ enqueued for execution",operation]];
             }
         }
         

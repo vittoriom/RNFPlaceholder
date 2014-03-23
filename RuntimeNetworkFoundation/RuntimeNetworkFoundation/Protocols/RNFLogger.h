@@ -40,9 +40,9 @@ typedef enum {
  * Informs the logger that an event happened. The logger can ignore or redirect the log if needed
  * @param event the event that happened. @see RNFLoggerEvent for more information
  * @param level the severity level of the event. @see RNFLoggerLevel for more information
- * @param fmt the usual log message format
+ * @param fmt the message to log
  *
  */
-- (void) logEvent:(RNFLoggerEvent)event withLevel:(RNFLoggerLevel)level message:(NSString *)fmt, ...;
+- (void) logEvent:(RNFLoggerEvent)event withLevel:(RNFLoggerLevel)level message:(NSString *)message;
 
 @end
