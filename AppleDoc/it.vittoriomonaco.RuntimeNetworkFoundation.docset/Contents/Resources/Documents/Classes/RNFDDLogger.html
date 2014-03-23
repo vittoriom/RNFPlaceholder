@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
-		<title>RNFStatusCodeResponseValidator Class Reference</title>
+		<title>RNFDDLogger Class Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
@@ -16,7 +16,7 @@
 			</div>
 			
 			<div id="title" role="banner">
-				<h1 class="hideInXcode">RNFStatusCodeResponseValidator Class Reference</h1>
+				<h1 class="hideInXcode">RNFDDLogger Class Reference</h1>
 			</div>
 			<ul id="headerButtons" role="toolbar">
 				<li id="toc_button">
@@ -65,7 +65,7 @@
 		</nav>
 		<article>
 			<div id="contents" class="isShowingTOC" role="main">
-				<a title="RNFStatusCodeResponseValidator Class Reference" name="top"></a>
+				<a title="RNFDDLogger Class Reference" name="top"></a>
 				<div class="main-navigation navigation-top">
 					<ul>
 	<li><a href="../index.html">Index</a></li>
@@ -74,7 +74,7 @@
 				</div>
 				<div id="header">
 					<div class="section-header">
-						<h1 class="title title-header">RNFStatusCodeResponseValidator Class Reference</h1>
+						<h1 class="title title-header">RNFDDLogger Class Reference</h1>
 					</div>		
 				</div>
 				<div id="container">	
@@ -85,10 +85,10 @@
 	<td class="specification-value">NSObject</td>
 </tr><tr>
 	<td class="specification-title">Conforms to</td>
-	<td class="specification-value"><a href="../Protocols/RNFInitializableWithDictionary.html">RNFInitializableWithDictionary</a><br /><a href="../Protocols/RNFResponseValidator.html">RNFResponseValidator</a></td>
+	<td class="specification-value"><a href="../Protocols/RNFLogger.html">RNFLogger</a></td>
 </tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">RNFStatusCodeResponseValidator.h</td>
+	<td class="specification-value">RNFDDLogger.h</td>
 </tr>
 						</tbody></table></div>
 					
@@ -98,9 +98,7 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>A response validator that can be configured through a list of accepted and rejected status codes, plus a policy to adopt when the status code is in neither set.
-The status codes can be specified as single values (e.g. 200) or as ranges (e.g. 200-204), and they can be NSStrings or NSNumbers.
-The validator also conforms to <a href="../Protocols/RNFInitializableWithDictionary.html">RNFInitializableWithDictionary</a>, so you can use the above keys and pass your configuration values to the initializer</p>
+						<p>A DDLog based implementation of <a href="../Protocols/RNFLogger.html">RNFLogger</a> in case you use CocoaLumberjack in your application</p>
 					</div>
 					
 					
