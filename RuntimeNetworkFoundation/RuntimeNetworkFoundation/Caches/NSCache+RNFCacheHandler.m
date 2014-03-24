@@ -37,7 +37,13 @@ static void * NSCacheAssociatedIndex = &NSCacheAssociatedIndex;
 
 - (id) cachedObjectWithKey:(NSString *)key
 {
-    return [self objectForKey:key];
+    if([self cachedDataIsValidWithKey:key])
+    {
+        return [self objectForKey:key];
+    } else
+    {
+        return nil;
+    }
 }
 
 - (void) cacheObject:(id)object withKey:(NSString *)key withCost:(NSNumber *)cost validUntil:(NSDate *)validUntil
@@ -62,8 +68,9 @@ static void * NSCacheAssociatedIndex = &NSCacheAssociatedIndex;
 - (BOOL) cachedDataIsValidWithKey:(NSString *)key
 {
     NSMutableDictionary *index = [self associatedIndex];
+    NSDate *validUntil = [index objectForKey:key];
     
-    if([[index objectForKey:key] timeIntervalSinceNow] < 0)
+    if([validUntil timeIntervalSinceNow] > 0)
     {
         return YES;
     } else

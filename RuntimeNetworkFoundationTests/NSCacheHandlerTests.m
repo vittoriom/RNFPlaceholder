@@ -1,4 +1,5 @@
 #import "NSCache+RNFCacheHandler.h"
+#import "RNF.h"
 
 SPEC_BEGIN(NSCacheHandlerTests)
 
@@ -26,8 +27,8 @@ describe(@"NSCache as a RNFCacheHandler", ^{
             cacheHandler = [[NSCache alloc] init];
         });
     
-        it(@"should return NO when asked for validity of data", ^{
-            [[theValue([cacheHandler cachedDataIsValidWithKey:@"testKey"]) should] beFalse];
+        it(@"should return NO when asked for validity of data if the data is not present", ^{
+            [[theValue([cacheHandler cachedDataIsValidWithKey:@"-_testKey"]) should] beFalse];
         });
         
         it(@"should cache objects", ^{
@@ -48,6 +49,25 @@ describe(@"NSCache as a RNFCacheHandler", ^{
             [cacheHandler cacheObject:secondSample withKey:@"testKey" withCost:@10 validUntil:[NSDate dateWithTimeIntervalSinceNow:100]];
             [[[cacheHandler cachedObjectWithKey:@"testKey"] shouldNot] beNil];
             [[[cacheHandler cachedObjectWithKey:@"testKey"] should] equal:secondSample];
+        });
+        
+        it(@"should cache GET requests", ^{
+            id dummyConfig = [RNFUnifiedConfiguration nullMock];
+            [dummyConfig stub:@selector(HTTPMethod) andReturn:@"GET"];
+            [[theValue([cacheHandler operationConfigurationCanBeCached:dummyConfig]) should] beTrue];
+        });
+        
+        it(@"should not cache POST requests", ^{
+            id dummyConfig = [RNFUnifiedConfiguration nullMock];
+            [dummyConfig stub:@selector(HTTPMethod) andReturn:@"POST"];
+            [[theValue([cacheHandler operationConfigurationCanBeCached:dummyConfig]) should] beFalse];
+        });
+        
+        it(@"should take into account validity of objects", ^{
+            NSString *objectToCache = @"Object to cache";
+            [cacheHandler cacheObject:objectToCache withKey:@"_testKey" withCost:@1 validUntil:[NSDate dateWithTimeIntervalSinceNow:2]];
+            [[[cacheHandler cachedObjectWithKey:@"_testKey"] should] equal:objectToCache];
+            [[expectFutureValue([cacheHandler cachedObjectWithKey:@"_testKey"]) shouldEventuallyBeforeTimingOutAfter(2)] beNil];
         });
     });
 });

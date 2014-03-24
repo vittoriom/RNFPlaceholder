@@ -11,6 +11,8 @@
 
 /**
  *  A DDLog based implementation of RNFLogger in case you use CocoaLumberjack in your application
+ *  This implementation assumes that the static int variable ddLogLevel is already defined in the pch file of the project.
+ *  If this is not the case, the compiler will throw an error because the ddLogLevel won't be visible.
  */
 @interface RNFDDLogger : NSObject <RNFLogger>
 

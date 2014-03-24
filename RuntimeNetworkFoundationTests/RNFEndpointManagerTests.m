@@ -27,7 +27,7 @@ describe(@"Endpoint manager", ^{
             [[theValue([manager addEndpoint:endpoint]) should] beTrue];
             
             RNFEndpoint *endpoint2 = [RNFEndpoint new];
-            [endpoint stub:@selector(name) andReturn:@"name1"];
+            [endpoint2 stub:@selector(name) andReturn:@"name1"];
             [[theValue([manager addEndpoint:endpoint2]) should] beFalse];
             
             [[[manager endpointWithName:@"name1"] should] equal:endpoint];
