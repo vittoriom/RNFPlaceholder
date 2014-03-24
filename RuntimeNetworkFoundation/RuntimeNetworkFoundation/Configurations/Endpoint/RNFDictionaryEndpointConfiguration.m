@@ -153,6 +153,14 @@
     return logger ?: [super logger];
 }
 
+- (id<RNFRequestAuthentication>) authenticationHandler
+{
+    id authHandler = [RNFDictionaryConfigurationHelper objectConformToProtocol:@protocol(RNFRequestAuthentication)
+                                                                        forKey:kRNFConfigurationEndpointAuthenticationHandler
+                                                                  inDictionary:self.internalDictionary];
+    return authHandler ?: [super authenticationHandler];
+}
+
 - (Class<RNFOperation>) operationClass
 {
     return [RNFDictionaryConfigurationHelper classFromKey:kRNFConfigurationEndpointOperationClass inDictionary:self.internalDictionary] ?: [super operationClass];

@@ -8,6 +8,7 @@
 
 #import "RNFBaseEndpointConfiguration.h"
 #import "RNFMalformedConfiguration.h"
+#import "RNFRequestAuthentication.h"
 #import "RNFBaseOperation.h"
 
 @implementation RNFBaseEndpointConfiguration
@@ -52,6 +53,11 @@
 }
 
 - (id<RNFResponseDeserializer>) responseDeserializer
+{
+    return nil;
+}
+
+- (id<RNFRequestAuthentication>) authenticationHandler
 {
     return nil;
 }

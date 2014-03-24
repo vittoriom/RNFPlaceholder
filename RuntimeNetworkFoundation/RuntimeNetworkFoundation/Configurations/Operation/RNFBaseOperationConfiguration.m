@@ -56,6 +56,11 @@
     return nil;
 }
 
+- (id<RNFRequestAuthentication>) authenticationHandler
+{
+    return nil;
+}
+
 - (Class<RNFOperation>) operationClass
 {
     return nil;

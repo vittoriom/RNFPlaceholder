@@ -112,6 +112,14 @@
     return responseDeserializer ?: [super responseDeserializer];
 }
 
+- (id<RNFRequestAuthentication>) authenticationHandler
+{
+    id authHandler = [RNFDictionaryConfigurationHelper objectConformToProtocol:@protocol(RNFRequestAuthentication)
+                                                                        forKey:kRNFConfigurationOperationAuthenticationHandler
+                                                                  inDictionary:self.internalDictionary];
+    return authHandler ?: [super authenticationHandler];
+}
+
 - (Class<RNFOperation>) operationClass
 {
     Class operationClass = [RNFDictionaryConfigurationHelper classFromKey:kRNFConfigurationOperationOperationClass

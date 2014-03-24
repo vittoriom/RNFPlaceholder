@@ -10,6 +10,21 @@
 #import "RNFBaseEndpointConfiguration.h"
 #import "RNFUserDefinedConfigurationParameters.h"
 
+static const NSString * kRNFConfigurationEndpointBaseURL = @"baseURL";
+static const NSString * kRNFConfigurationEndpointOperations = @"operations";
+static const NSString * kRNFConfigurationEndpointName = @"name";
+static const NSString * kRNFConfigurationEndpointDefaultHeaders = @"headers";
+static const NSString * kRNFConfigurationEndpointResponseDeserializer = @"responseDeserializer";
+static const NSString * kRNFConfigurationEndpointOperationClass = @"operationClass";
+static const NSString * kRNFConfigurationEndpointOperationQueueClass = @"operationQueueClass";
+static const NSString * kRNFConfigurationEndpointShouldCacheResults = @"cacheResults";
+static const NSString * kRNFConfigurationEndpointCacheClass = @"cacheClass";
+static const NSString * kRNFConfigurationEndpointLogger = @"loggerClass";
+static const NSString * kRNFConfigurationEndpointDefaultQueryStringParameters = @"queryString";
+static const NSString * kRNFConfigurationEndpointAuthenticationHandler = @"authHandler";
+static const NSString * kRNFConfigurationEndpointResponseValidator = @"responseValidator";
+static const NSString * kRNFConfigurationEndpointUserDefinedParameters = @"userDefined";
+
 @interface RNFDictionaryEndpointConfiguration : RNFBaseEndpointConfiguration <RNFUserDefinedConfigurationParameters>
 
 /**

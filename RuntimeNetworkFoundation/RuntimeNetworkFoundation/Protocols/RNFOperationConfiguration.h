@@ -10,21 +10,9 @@
 #import "RNFResponseDeserializer.h"
 #import "RNFDataSerializer.h"
 #import "RNFDataDeserializer.h"
+#import "RNFRequestAuthentication.h"
 #import "RNFOperation.h"
 #import "RNFResponseValidator.h"
-
-static const NSString * kRNFConfigurationOperationURL = @"URL";
-static const NSString * kRNFConfigurationOperationName = @"name";
-static const NSString * kRNFConfigurationOperationHTTPMethod = @"HTTPMethod";
-static const NSString * kRNFConfigurationOperationHTTPBody = @"body";
-static const NSString * kRNFConfigurationOperationResponseDeserializer = @"responseDeserializer";
-static const NSString * kRNFConfigurationOperationDataDeserializer = @"dataDeserializer";
-static const NSString * kRNFConfigurationOperationDataSerializer = @"dataSerializer";
-static const NSString * kRNFConfigurationOperationAuthenticationHandler = @"authenticationHandler";
-static const NSString * kRNFConfigurationOperationHeaders = @"headers";
-static const NSString * kRNFConfigurationOperationShouldCacheResults = @"cacheResults";
-static const NSString * kRNFConfigurationOperationOperationClass = @"operationClass";
-static const NSString * kRNFConfigurationOperationResponseValidator = @"responseValidator";
 
 @protocol RNFOperationConfiguration <NSObject>
 
@@ -85,7 +73,10 @@ static const NSString * kRNFConfigurationOperationResponseValidator = @"response
  */
 - (NSData *) HTTPBody;
 
-//- (id<RNFRequestAuthentication>) authenticationHandler;
+/**
+ *  @return The authentication handler to use for the operation, if different from the one specified for the endpoint
+ */
+- (id<RNFRequestAuthentication>) authenticationHandler;
 
 /**
  *  @return The response deserializer to use after NSData comes from the network

@@ -184,6 +184,23 @@
         return nil;
 }
 
+- (id<RNFRequestAuthentication>) authenticationHandler
+{
+    if ([self.operationConfiguration respondsToSelector:@selector(authenticationHandler)])
+    {
+        id handler = [self.operationConfiguration authenticationHandler];
+        if (handler)
+        {
+            return handler;
+        }
+    }
+    if ([self.endpointConfiguration respondsToSelector:@selector(authenticationHandler)])
+    {
+        return [self.endpointConfiguration authenticationHandler];
+    } else
+        return nil;
+}
+
 - (BOOL) cacheResults
 {
     BOOL operation = YES, endpoint = YES;

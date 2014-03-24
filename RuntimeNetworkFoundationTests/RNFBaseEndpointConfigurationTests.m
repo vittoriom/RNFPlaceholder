@@ -75,6 +75,11 @@ describe(@"Base configuration",^{
             id obj = [_configuration userDefinedConfiguration];
             [[obj should] beNil];
         });
+        
+        it(@"should return a nil auth handler", ^{
+            id obj = [_configuration authenticationHandler];
+            [[obj should] beNil];
+        });
     });
 });
 

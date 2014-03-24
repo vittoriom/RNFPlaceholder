@@ -330,6 +330,12 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"rnf_completionBlock
             }
         }
         
+        id<RNFRequestAuthentication> authHandler = [unifiedConfiguration authenticationHandler];
+        if (authHandler)
+        {
+            [operation setCredential:[authHandler credentialObject]];
+        }
+        
         [operation setCompletionBlock:^(id response, id<RNFOperation> operation, NSUInteger statusCode, BOOL cached, NSURLResponse *urlResponse) {
             [self handleResponse:response
                  withURLResponse:urlResponse

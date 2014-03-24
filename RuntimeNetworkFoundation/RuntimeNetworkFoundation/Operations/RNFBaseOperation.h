@@ -14,4 +14,6 @@
  */
 @interface RNFBaseOperation : NSOperation <RNFOperation>
 
+@property (nonatomic, strong) NSURLCredential *credential;
+
 @end

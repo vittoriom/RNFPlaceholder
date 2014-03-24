@@ -5,6 +5,7 @@
 #import "RNFDictionaryOperationConfiguration.h"
 #import "RNFBaseOperation.h"
 #import "RNFYesResponseValidator.h"
+#import "DummyAuthHandler.h"
 #import "RNFJSONResponseDeserializer.h"
 #import "RNFNSLogger.h"
 
@@ -63,6 +64,10 @@ describe(@"Unified configuration", ^{
             [[[sut queryStringParameters] should] beNil];
         });
         
+        it(@"should return a nil auth handler", ^{
+            [[(id)[sut authenticationHandler] should] beNil];
+        });
+        
         it(@"should return nil headers", ^{
             [[[sut headers] should] equal:@{}];
         });
@@ -119,6 +124,7 @@ describe(@"Unified configuration", ^{
                                                                      kRNFConfigurationEndpointDefaultQueryStringParameters : @{
                                                                          @"customP" : @"customV"
                                                                          },
+                                                                     kRNFConfigurationEndpointAuthenticationHandler : @"DummyAuthHandler",
                                                                      kRNFConfigurationEndpointResponseValidator : @"RNFYesResponseValidator"
                                                                     }];
             sut = [[RNFUnifiedConfiguration alloc] initWithEndpointConfiguration:endpoint operationConfiguration:nil];
@@ -148,6 +154,11 @@ describe(@"Unified configuration", ^{
         
         it(@"should return a valid operationClass", ^{
             [[theValue([sut operationClass]) should] equal:theValue([RNFBaseOperation class])];
+        });
+        
+        it(@"should return a valid auth handler", ^{
+            id handler = [sut authenticationHandler];
+            [[theValue([handler isKindOfClass:[DummyAuthHandler class]]) should] beTrue];
         });
         
         it(@"should return GET as HTTPMethod", ^{
@@ -216,6 +227,7 @@ describe(@"Unified configuration", ^{
                                                                                   @"param1" : @"value1",
                                                                                   @"param2" : @2
                                                                                   },
+                                                                          kRNFConfigurationOperationAuthenticationHandler : @"DummyAuthHandler",
                                                                           kRNFConfigurationOperationHTTPMethod : @"POST",
                                                                           kRNFConfigurationOperationName : @"test",
                                                                           kRNFConfigurationOperationOperationClass : @"RNFBaseOperation",
@@ -255,6 +267,11 @@ describe(@"Unified configuration", ^{
         
         it(@"should return POST as HTTPMethod", ^{
             [[[sut HTTPMethod] should] equal:@"POST"];
+        });
+        
+        it(@"should return a valid auth handler", ^{
+            id handler = [sut authenticationHandler];
+            [[theValue([handler isKindOfClass:[DummyAuthHandler class]]) should] beTrue];
         });
         
         it(@"should return a valid body", ^{
@@ -325,6 +342,7 @@ describe(@"Unified configuration", ^{
                                                                                           kRNFConfigurationOperationHTTPMethod : @"POST",
                                                                                           kRNFConfigurationOperationName : @"test",
                                                                                           kRNFConfigurationOperationOperationClass : @"RNFBaseOperation",
+                                                                                          kRNFConfigurationOperationAuthenticationHandler : @"DummyAuthHandler",
                                                                                           kRNFConfigurationOperationResponseDeserializer : @"RNFJSONResponseDeserializer",
                                                                                           kRNFConfigurationOperationShouldCacheResults : @NO,
                                                                                           kRNFConfigurationOperationURL : @"testURL"
@@ -379,6 +397,11 @@ describe(@"Unified configuration", ^{
         
         it(@"should return a valid operationClass", ^{
             [[theValue([sut operationClass]) should] equal:theValue([RNFBaseOperation class])];
+        });
+        
+        it(@"should return a valid auth handler", ^{
+            id handler = [sut authenticationHandler];
+            [[theValue([handler isKindOfClass:[DummyAuthHandler class]]) should] beTrue];
         });
         
         it(@"should return a valid body", ^{

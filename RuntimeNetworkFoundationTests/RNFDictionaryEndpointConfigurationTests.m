@@ -1,9 +1,10 @@
 #import "RNFDictionaryEndpointConfiguration.h"
 #import "RNFBaseOperation.h"
 #import "RNFOperationConfiguration.h"
-#import "RNFBaseOperationConfiguration.h"
+#import "RNFDictionaryOperationConfiguration.h"
 #import "RNFUserDefinedConfigurationParameters.h"
 #import "RNFJSONResponseDeserializer.h"
+#import "DummyAuthHandler.h"
 #import "RNFYesResponseValidator.h"
 
 SPEC_BEGIN(RNFDictionaryEndpointConfigurationTests)
@@ -97,6 +98,7 @@ describe(@"Dictionary configuration", ^{
                                                                      kRNFConfigurationEndpointDefaultQueryStringParameters : @{
                                                                              @"customP" : @"customV"
                                                                              },
+                                                                     kRNFConfigurationEndpointAuthenticationHandler : @"DummyAuthHandler",
                                                                      kRNFConfigurationEndpointUserDefinedParameters : @{
                                                                                                                         @"runtime:" : @2,
                                                                                                                         @"runtime2:" : @"TEST"},
@@ -107,6 +109,11 @@ describe(@"Dictionary configuration", ^{
         it(@"should correctly read the response validator", ^{
             id validator = [configuration responseValidator];
             [[theValue([validator isKindOfClass:[RNFYesResponseValidator class]]) should] beTrue];
+        });
+        
+        it(@"should parse the auth handler", ^{
+            id handler = [configuration authenticationHandler];
+            [[theValue([handler isKindOfClass:[DummyAuthHandler class]]) should] beTrue];
         });
         
         it(@"should correctly read user-defined parameters", ^{

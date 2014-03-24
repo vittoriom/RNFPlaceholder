@@ -10,4 +10,11 @@
 
 @protocol RNFRequestAuthentication <NSObject>
 
+/**
+ *  Asks the authentication handler a NSURLCredential instance to handle a possible authentication challenge
+ *
+ *  @return The NSURLCredential with the username and password to use for the basic authentication
+ */
+- (NSURLCredential *) credentialObject;
+
 @end

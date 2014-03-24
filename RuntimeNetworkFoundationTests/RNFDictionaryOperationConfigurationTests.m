@@ -1,6 +1,7 @@
 #import "RNFDictionaryOperationConfiguration.h"
 #import "RNFJSONResponseDeserializer.h"
 #import "RNFYesResponseValidator.h"
+#import "DummyAuthHandler.h"
 
 SPEC_BEGIN(RNFDictionaryOperationConfigurationTests)
 
@@ -57,6 +58,7 @@ describe(@"Dictionary operation configurations", ^{
                                                                                               kRNFConfigurationOperationResponseDeserializer : @"RNFJSONResponseDeserializer",
                                                                                               kRNFConfigurationOperationShouldCacheResults : @NO,
                                                                                               kRNFConfigurationOperationURL : @"testURL",
+                                                                                              kRNFConfigurationOperationAuthenticationHandler : @"DummyAuthHandler",
                                                                                               kRNFConfigurationOperationResponseValidator : @"RNFYesResponseValidator"
                                                                                               }];
         });
@@ -80,6 +82,11 @@ describe(@"Dictionary operation configurations", ^{
             NSDictionary *headers = [configuration headers];
             [[headers shouldNot] beNil];
             [[headers[@"accept"] should] equal:@"gzip"];
+        });
+        
+        it(@"should parse the auth handler", ^{
+            id handler = [configuration authenticationHandler];
+            [[theValue([handler isKindOfClass:[DummyAuthHandler class]]) should] beTrue];
         });
         
         it(@"should parse the body", ^{

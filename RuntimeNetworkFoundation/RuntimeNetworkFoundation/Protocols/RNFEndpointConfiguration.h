@@ -14,21 +14,8 @@
 @protocol RNFOperationQueue;
 @protocol RNFCacheHandler;
 @protocol RNFLogger;
+@protocol RNFRequestAuthentication;
 @protocol RNFResponseValidator;
-
-static const NSString * kRNFConfigurationEndpointBaseURL = @"baseURL";
-static const NSString * kRNFConfigurationEndpointOperations = @"operations";
-static const NSString * kRNFConfigurationEndpointName = @"name";
-static const NSString * kRNFConfigurationEndpointDefaultHeaders = @"headers";
-static const NSString * kRNFConfigurationEndpointResponseDeserializer = @"responseDeserializer";
-static const NSString * kRNFConfigurationEndpointOperationClass = @"operationClass";
-static const NSString * kRNFConfigurationEndpointOperationQueueClass = @"operationQueueClass";
-static const NSString * kRNFConfigurationEndpointShouldCacheResults = @"cacheResults";
-static const NSString * kRNFConfigurationEndpointCacheClass = @"cacheClass";
-static const NSString * kRNFConfigurationEndpointLogger = @"loggerClass";
-static const NSString * kRNFConfigurationEndpointDefaultQueryStringParameters = @"queryString";
-static const NSString * kRNFConfigurationEndpointResponseValidator = @"responseValidator";
-static const NSString * kRNFConfigurationEndpointUserDefinedParameters = @"userDefined";
 
 @protocol RNFEndpointConfiguration <NSObject>
 
@@ -134,5 +121,10 @@ static const NSString * kRNFConfigurationEndpointUserDefinedParameters = @"userD
  *  @return The logger instance to use as a logging component, or nil if no logger is specified
  */
 - (id<RNFLogger>) logger;
+
+/**
+ *  @return The authentication handler to use for the endpoint
+ */
+- (id<RNFRequestAuthentication>) authenticationHandler;
 
 @end

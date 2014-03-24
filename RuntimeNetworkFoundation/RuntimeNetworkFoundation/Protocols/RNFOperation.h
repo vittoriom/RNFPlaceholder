@@ -39,6 +39,13 @@
                        errorBlock:(RNFErrorBlock)error;
 
 /**
+ *  Sets a NSURLCredential object on the operation for the Basic authentication handling
+ *
+ *  @param credential The NSURLCredential object to set on the operation
+ */
+- (void) setCredential:(NSURLCredential *)credential;
+
+/**
  *  The uniqueIdentifier of the operation
  *  This can be overriden in your implementation if you have special needs
  */

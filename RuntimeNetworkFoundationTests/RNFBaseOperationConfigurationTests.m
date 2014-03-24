@@ -61,6 +61,11 @@ describe(@"Base operation configuration",^{
         id serializer = [configuration dataSerializer];
         [[serializer should] beNil];
     });
+    
+    it(@"should return a nil auth handler", ^{
+        id obj = [configuration authenticationHandler];
+        [[obj should] beNil];
+    });
 });
 
 SPEC_END
