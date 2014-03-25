@@ -84,6 +84,7 @@
 		528AA5B118AE911F00A07294 /* RNFBaseOperationConfigurationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 528AA5B018AE911F00A07294 /* RNFBaseOperationConfigurationTests.m */; };
 		5297A2C918DDD33D007286C3 /* RNFDDLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 5297A2C818DDD33D007286C3 /* RNFDDLogger.m */; };
 		529B9A0518AFE076002BA7F1 /* RNFParametersParserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 529B9A0418AFE076002BA7F1 /* RNFParametersParserTests.m */; };
+		52A0B25518E22D21000ABE07 /* AFHTTPRequestOperation+RNFOperationSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 52A0B25418E22D21000ABE07 /* AFHTTPRequestOperation+RNFOperationSpec.m */; };
 		52ABBAFA18AF8C7100446DB2 /* RNFJSONResponseDeserializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 52ABBAF918AF8C7100446DB2 /* RNFJSONResponseDeserializer.m */; };
 		52ABBAFD18AF8CD600446DB2 /* RNFJSONResponseDeserializerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 52ABBAFC18AF8CD600446DB2 /* RNFJSONResponseDeserializerTests.m */; };
 		52B78D7618CC544300D1037F /* TestArrayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 52B78D7518CC544300D1037F /* TestArrayModel.m */; };
@@ -225,6 +226,7 @@
 		5297A2C718DDD33D007286C3 /* RNFDDLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNFDDLogger.h; path = RuntimeNetworkFoundation/Logger/RNFDDLogger.h; sourceTree = "<group>"; };
 		5297A2C818DDD33D007286C3 /* RNFDDLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RNFDDLogger.m; path = RuntimeNetworkFoundation/Logger/RNFDDLogger.m; sourceTree = "<group>"; };
 		529B9A0418AFE076002BA7F1 /* RNFParametersParserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNFParametersParserTests.m; sourceTree = "<group>"; };
+		52A0B25418E22D21000ABE07 /* AFHTTPRequestOperation+RNFOperationSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHTTPRequestOperation+RNFOperationSpec.m"; sourceTree = "<group>"; };
 		52ABBAF818AF8C7100446DB2 /* RNFJSONResponseDeserializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNFJSONResponseDeserializer.h; path = RuntimeNetworkFoundation/ResponseDeserializers/RNFJSONResponseDeserializer.h; sourceTree = "<group>"; };
 		52ABBAF918AF8C7100446DB2 /* RNFJSONResponseDeserializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RNFJSONResponseDeserializer.m; path = RuntimeNetworkFoundation/ResponseDeserializers/RNFJSONResponseDeserializer.m; sourceTree = "<group>"; };
 		52ABBAFC18AF8CD600446DB2 /* RNFJSONResponseDeserializerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNFJSONResponseDeserializerTests.m; sourceTree = "<group>"; };
@@ -403,6 +405,7 @@
 		5218572F18A8182500D70786 /* RuntimeNetworkFoundationTests */ = {
 			isa = PBXGroup;
 			children = (
+				52A0B25318E22D10000ABE07 /* Operations */,
 				5253952B18E0DA08000B73CA /* AuthenticationHandlers */,
 				5263CC1D18D6102600EDD258 /* Serializable */,
 				52813AE018CCB5010013A805 /* ValueTransformers */,
@@ -615,6 +618,14 @@
 				5285650F18AD70CA00CA9E46 /* RNFDictionaryOperationConfiguration.m */,
 			);
 			name = Operation;
+			sourceTree = "<group>";
+		};
+		52A0B25318E22D10000ABE07 /* Operations */ = {
+			isa = PBXGroup;
+			children = (
+				52A0B25418E22D21000ABE07 /* AFHTTPRequestOperation+RNFOperationSpec.m */,
+			);
+			name = Operations;
 			sourceTree = "<group>";
 		};
 		52ABBAF718AF8C5800446DB2 /* ResponseDeserializers */ = {
@@ -976,6 +987,7 @@
 				529B9A0518AFE076002BA7F1 /* RNFParametersParserTests.m in Sources */,
 				52ABBAFD18AF8CD600446DB2 /* RNFJSONResponseDeserializerTests.m in Sources */,
 				528AA5B118AE911F00A07294 /* RNFBaseOperationConfigurationTests.m in Sources */,
+				52A0B25518E22D21000ABE07 /* AFHTTPRequestOperation+RNFOperationSpec.m in Sources */,
 				52B78D7618CC544300D1037F /* TestArrayModel.m in Sources */,
 				52F7A2A518A8191100378EFA /* RNFEndpointManagerTests.m in Sources */,
 				526B789118BDCFE70010CFDC /* NSStringAdditionsTests.m in Sources */,
