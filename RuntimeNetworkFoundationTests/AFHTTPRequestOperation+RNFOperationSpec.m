@@ -75,7 +75,26 @@ describe(@"AFHTTPRequestOperation+RNFOperation", ^{
     context(@"when executing the operation", ^{
         context(@"when the operation requires basic auth", ^{
             it(@"should fail if no credential is provided", ^{
-                //TODO: I need a ws with a basic auth request
+                [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
+                    return [request.HTTPMethod isEqualToString:@"GET"] &&
+                    [request.URL.absoluteString isEqualToString:@"http://www.github.com/auth"];
+                } withStubResponse:^OHHTTPStubsResponse *(NSURLRequest *request) {
+                    return [OHHTTPStubsResponse responseWithData:[NSJSONSerialization dataWithJSONObject:@{
+                                                                                                           @"test" : @"OK"
+                                                                                                           } options:0 error:nil] statusCode:401 headers:@{ @"Content-Type" : @"text/html", @"WWW-Authenticate" : @"Basic realm=\"Mercurial Repositories\"" }];
+                }];
+                
+                __block NSNumber *sentinel = @0;
+                AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithURL:[NSURL URLWithString:@"http://www.github.com/auth"] method:@"GET" headers:@{ @"X-RNF-Version" : @"1.0" } body:nil];
+                [operation setCompletionBlock:^(id response, id<RNFOperation> operation, NSUInteger statusCode, BOOL cached, NSURLResponse *urlResponse) {
+                    sentinel = @(-1);
+                } errorBlock:^(id response, NSError *error, NSUInteger statusCode) {
+                    sentinel = @1;
+                }];
+                
+                [operation start];
+                
+                [[expectFutureValue(sentinel) shouldEventuallyBeforeTimingOutAfter(1)] equal:@1];
             });
             
             it(@"should succeed if a valid credential is provided", ^{
