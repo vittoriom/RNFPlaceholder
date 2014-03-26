@@ -40,7 +40,7 @@
 
 - (NSString *) uniqueIdentifier
 {
-    return [[self.request.URL.absoluteString dataUsingEncoding:NSUTF8StringEncoding] base64EncodedStringWithOptions:NSDataBase64Encoding76CharacterLineLength];
+    return [[[NSString stringWithFormat:@"%@%@",self.request.URL.absoluteString,self.request.HTTPMethod] dataUsingEncoding:NSUTF8StringEncoding] base64EncodedStringWithOptions:NSDataBase64Encoding76CharacterLineLength];
 }
 
 @end
