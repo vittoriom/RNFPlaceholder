@@ -882,7 +882,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/appledoc \\\n--project-name \"RuntimeNetworkFoundation\" \\\n--project-company \"Vittorio Monaco\" \\\n--company-id \"it.vittoriomonaco\" \\\n--keep-undocumented-objects \\\n--keep-undocumented-members \\\n--search-undocumented-doc \\\n--exit-threshold 2 \\\n--ignore .m \\\n--ignore Pods \\\n--ignore \"RNFAppDelegate.h\" \\\n--ignore \"TestModel.h\" \\\n--ignore \"TestKVC.h\" \\\n--ignore \"TestArrayModel.h\" \\\n--output \"AppleDoc\" .\n\n#cp -R \"/Users/MacBookPro/Library/Developer/Shared/Documentation/DocSets/it.vittoriomonaco.RuntimeNetworkFoundation.docset\" \"${SRCROOT}/AppleDoc/\"";
+			shellScript = "/usr/local/bin/appledoc \\\n--project-name \"RuntimeNetworkFoundation\" \\\n--project-company \"Vittorio Monaco\" \\\n--company-id \"it.vittoriomonaco\" \\\n--keep-undocumented-objects \\\n--keep-undocumented-members \\\n--search-undocumented-doc \\\n--exit-threshold 2 \\\n--ignore .m \\\n--ignore Pods \\\n--ignore \"RNFAppDelegate.h\" \\\n--ignore \"TestModel.h\" \\\n--ignore \"TestKVC.h\" \\\n--ignore \"TestArrayModel.h\" \\\n--ignore \"DummyAuthHandler.h\" \\\n--output \"AppleDoc\" .\n\n#cp -R \"/Users/MacBookPro/Library/Developer/Shared/Documentation/DocSets/it.vittoriomonaco.RuntimeNetworkFoundation.docset\" \"${SRCROOT}/AppleDoc/\"";
 		};
 		5A45627D428D412EBC157FF6 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
