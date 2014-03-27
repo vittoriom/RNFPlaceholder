@@ -7,8 +7,13 @@
 //
 
 #if defined(__has_include)
-#if __has_include(<CocoaLumberjack/DDLog.h>) && defined(ddLogLevel)
+#if __has_include(<CocoaLumberjack/DDLog.h>)
 #import <Foundation/Foundation.h>
+
+#ifndef LOG_LEVEL_DEF
+#define LOG_LEVEL_DEF LOG_LEVEL_ERROR
+#endif 
+
 #import <CocoaLumberjack/DDLog.h>
 #import "RNFLogger.h"
 

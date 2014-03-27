@@ -7,7 +7,7 @@
 //
 
 #if defined(__has_include)
-#if __has_include(<CocoaLumberjack/DDLog.h>) && defined(ddLogLevel)
+#if __has_include(<CocoaLumberjack/DDLog.h>)
 #import "RNFDDLogger.h"
 
 @implementation RNFDDLogger
