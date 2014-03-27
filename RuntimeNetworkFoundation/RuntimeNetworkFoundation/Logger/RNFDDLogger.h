@@ -6,7 +6,10 @@
 //  Copyright (c) 2014 Vittorio Monaco. All rights reserved.
 //
 
+#if defined(__has_include)
+#if __has_include(<CocoaLumberjack/DDLog.h>) && defined(ddLogLevel)
 #import <Foundation/Foundation.h>
+#import <CocoaLumberjack/DDLog.h>
 #import "RNFLogger.h"
 
 /**
@@ -17,3 +20,6 @@
 @interface RNFDDLogger : NSObject <RNFLogger>
 
 @end
+
+#endif
+#endif

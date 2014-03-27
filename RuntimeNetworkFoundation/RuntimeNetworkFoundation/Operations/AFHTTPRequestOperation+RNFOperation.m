@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Vittorio Monaco. All rights reserved.
 //
 
+#if defined(__has_include)
+#if __has_include(<AFNetworking/AFHTTPRequestOperation.h>)
 #import "AFHTTPRequestOperation+RNFOperation.h"
 
 @implementation AFHTTPRequestOperation (RNFOperation)
@@ -44,3 +46,6 @@
 }
 
 @end
+
+#endif
+#endif
