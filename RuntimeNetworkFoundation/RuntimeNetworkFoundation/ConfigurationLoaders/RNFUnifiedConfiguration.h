@@ -20,6 +20,7 @@
  *
  *  @return An instance of a RNFUnifiedConfiguration with the two specified configurations merged
  */
-- (instancetype) initWithEndpointConfiguration:(id<RNFEndpointConfiguration>)endpoint operationConfiguration:(id<RNFOperationConfiguration>)operation;
+- (instancetype) initWithEndpointConfiguration:(id<RNFEndpointConfiguration>)endpoint
+                        operationConfiguration:(id<RNFOperationConfiguration>)operation;
 
 @end

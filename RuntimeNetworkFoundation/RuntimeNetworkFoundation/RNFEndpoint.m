@@ -189,7 +189,7 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"rnf_completionBlock
     
     if (self.logger)
     {
-        [self.logger logEvent:RNFLoggerEventOperationFinished withLevel:RNFLoggerLevelInfo message:[NSString stringWithFormat:@"Operation %@ finished with status code %d, was cached: %d, data %@",operation, statusCode, cached, deserializedResponse]];
+        [self.logger logEvent:RNFLoggerEventOperationFinished withLevel:RNFLoggerLevelInfo message:[NSString stringWithFormat:@"Operation %@ finished with status code %ld, was cached: %d, data %@",operation, (long)statusCode, cached, deserializedResponse]];
     }
     
     if(completion)
@@ -294,9 +294,13 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"rnf_completionBlock
         urlString = [urlString URLStringByAppendingQueryStringParameters:[unifiedConfiguration queryStringParameters]];
         
         RNFParametersParser *parser = [RNFParametersParser new];
-        NSURL *operationURL = [NSURL URLWithString:[parser parseString:urlString withArguments:parsedRuntimeMethodName[kRNFParsedRuntimeArguments] userDefinedParametersProvider:[self.configuration userDefinedConfiguration]]];
+        NSURL *operationURL = [NSURL URLWithString:[parser parseString:urlString
+                                                         withArguments:parsedRuntimeMethodName[kRNFParsedRuntimeArguments]
+                                         userDefinedParametersProvider:[self.configuration userDefinedConfiguration]]];
         
-        NSDictionary *headersToUse = [parser parseDictionary:[unifiedConfiguration headers] withArguments:parsedRuntimeMethodName[kRNFParsedRuntimeArguments] userDefinedParametersProvider:[self.configuration userDefinedConfiguration]];
+        NSDictionary *headersToUse = [parser parseDictionary:[unifiedConfiguration headers]
+                                               withArguments:parsedRuntimeMethodName[kRNFParsedRuntimeArguments]
+                               userDefinedParametersProvider:[self.configuration userDefinedConfiguration]];
         
         Class operationClass = [unifiedConfiguration operationClass];
         id<RNFOperation> operation = [[operationClass alloc] initWithURL:operationURL

@@ -32,7 +32,7 @@
     return [self.operationConfiguration name];
 }
 
-- (NSURL *) baseURL
+- (NSString *) baseURL
 {
     return [self.endpointConfiguration baseURL];
 }
@@ -61,7 +61,7 @@
 
 - (NSString *) URL
 {
-    NSString *component1 = [self baseURL] ? [self baseURL].absoluteString : nil;
+    NSString *component1 = [self baseURL] ?: nil;
     NSString *component2 = [self.operationConfiguration URL] ?: @"";
     
     if(!component1)

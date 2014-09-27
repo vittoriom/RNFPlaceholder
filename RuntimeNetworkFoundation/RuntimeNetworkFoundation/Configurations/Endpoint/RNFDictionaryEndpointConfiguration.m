@@ -77,12 +77,6 @@
     }
     self.internalDictionary[kRNFConfigurationEndpointOperations] = operationsObjects;
     
-    NSURL *baseURL = self.baseURL;
-    if(!baseURL)
-    {
-        errorMessage = [NSString stringWithFormat:@"The specified %@ is not valid", kRNFConfigurationEndpointBaseURL];
-    }
-    
     if(errorMessage)
         @throw [[RNFMalformedConfiguration alloc] initWithName:NSStringFromClass([RNFMalformedConfiguration class])
                                                     reason:errorMessage
@@ -91,9 +85,9 @@
 
 #pragma mark - Getters
 
-- (NSURL *) baseURL
+- (NSString *) baseURL
 {
-    return [NSURL URLWithString:self.internalDictionary[kRNFConfigurationEndpointBaseURL]];
+    return self.internalDictionary[kRNFConfigurationEndpointBaseURL];
 }
 
 - (NSDictionary *) queryStringParameters

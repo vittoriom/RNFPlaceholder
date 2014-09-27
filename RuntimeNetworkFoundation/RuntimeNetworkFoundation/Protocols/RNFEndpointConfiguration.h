@@ -26,7 +26,7 @@
  *
  *  @return the baseURL of the endpoint
  */
-- (NSURL *) baseURL;
+- (NSString *) baseURL;
 
 /**
  *  The operations array of the configured endpoint
