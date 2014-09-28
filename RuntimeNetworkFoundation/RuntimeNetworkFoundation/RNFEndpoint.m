@@ -131,7 +131,7 @@ static NSString * const kRNFParsedRuntimeCompletionBlock = @"rnf_completionBlock
     if(!_configuration)
         [self loadConfigurationForConfigurator:self.configurator];
     
-    return [self.configuration baseURL];
+    return [NSURL URLWithString:[self.configuration baseURL]];
 }
 
 - (NSArray *) operations

@@ -176,7 +176,7 @@
                                      code:statusCode
                                  userInfo:@{
                                             NSLocalizedDescriptionKey : @"Response has been rejected",
-                                            NSLocalizedFailureReasonErrorKey : [NSString stringWithFormat:@"%d status code is configured to be rejected",statusCode]
+                                            NSLocalizedFailureReasonErrorKey : [NSString stringWithFormat:@"%ld status code is configured to be rejected",(long)statusCode]
                                             }];
     } else if ([self acceptIfNoneMatches])
     {
@@ -186,7 +186,7 @@
                                              code:statusCode
                                          userInfo:@{
                                                     NSLocalizedDescriptionKey : @"Response has been rejected",
-                                                    NSLocalizedFailureReasonErrorKey : [NSString stringWithFormat:@"%d status code is unknown and %@ is NO",statusCode,kRNFStatusCodeResponseValidatorAcceptIfNoneMatches]
+                                                    NSLocalizedFailureReasonErrorKey : [NSString stringWithFormat:@"%ld status code is unknown and %@ is NO",(long)statusCode,kRNFStatusCodeResponseValidatorAcceptIfNoneMatches]
                                                     }];
     }
     
